@@ -1,262 +1,144 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  useTheme,
-  useMediaQuery,
-  Stack,
-} from '@mui/material';
-import {
-  WhatsApp as WhatsAppIcon,
-  Telegram as TelegramIcon,
-  Email as EmailIcon,
-} from '@mui/icons-material';
+'use client';
 
-const Contact = () => {
-  const { t } = useTranslation();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { MessageCircle, Send, Mail, ArrowRight } from 'lucide-react';
 
-  const contactMethods = [
-    {
-      name: 'WhatsApp',
-      icon: <WhatsAppIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />,
-      link: 'https://wa.me/77088413062',
-      color: '#25D366',
-    },
-    {
-      name: 'Telegram',
-      icon: <TelegramIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />,
-      link: 'https://t.me/RahmetLabs',
-      color: '#0088cc',
-    },
-    {
-      name: 'Email',
-      icon: <EmailIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />,
-      link: 'mailto:rahmetlabs@gmail.com',
-      color: '#00D2FF',
-    },
-  ];
+const contactMethods = [
+  {
+    icon: MessageCircle,
+    title: 'WhatsApp',
+    link: 'https://wa.me/77088413062',
+    label: 'Start a conversation',
+    description: 'Quick response, direct messaging',
+    badge: 'WHATSAPP',
+    accent: 'rgba(52, 211, 153, 0.15)',
+  },
+  {
+    icon: Send,
+    title: 'Telegram',
+    link: 'https://t.me/RahmetLabs',
+    label: 'Send a message',
+    description: 'Fast communication, file sharing',
+    badge: 'TELEGRAM',
+    accent: 'rgba(56, 189, 248, 0.15)',
+  },
+  {
+    icon: Mail,
+    title: 'Email',
+    link: 'mailto:rahmetlabs@gmail.com',
+    label: 'Get in touch',
+    description: 'Detailed inquiries, proposals',
+    badge: 'EMAIL',
+    accent: 'rgba(192, 132, 252, 0.15)',
+  },
+];
+
+export default function Contact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <Box
-      component="section"
-      id="contact"
-      sx={{
-        position: 'relative',
-        minHeight: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        background: 'linear-gradient(180deg, rgba(0,12,24,1) 0%, rgba(0,0,0,0.95) 100%)',
-        overflow: 'hidden',
-        py: { xs: 6, sm: 8, md: 10 },
-      }}
-    >
-      {/* Primary Background Gradient */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(circle at 50% 50%, rgba(0,210,255,0.15) 0%, rgba(0,0,0,0) 70%)',
-          opacity: 0.6,
-          animation: 'pulse 8s ease-in-out infinite',
-          '@keyframes pulse': {
-            '0%, 100%': {
-              transform: 'scale(1)',
-              opacity: 0.6,
-            },
-            '50%': {
-              transform: 'scale(1.2)',
-              opacity: 0.8,
-            },
-          },
-        }}
-      />
-
-      {/* Background Pattern */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.1,
-          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%2300D2FF" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-          animation: 'moveBackground 30s linear infinite',
-          '@keyframes moveBackground': {
-            from: { backgroundPosition: '0 0' },
-            to: { backgroundPosition: '60px 60px' },
-          },
-        }}
-      />
-
-      {/* Top Gradient Transition */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'linear-gradient(0deg, rgba(0,12,24,0) 0%, rgba(0,12,24,1) 100%)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
-      {/* Bottom Gradient Transition */}
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'linear-gradient(180deg, rgba(0,12,24,0) 0%, rgba(0,12,24,1) 100%)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
-      <Container 
-        maxWidth="xl" 
-        sx={{ 
-          position: 'relative',
-          zIndex: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-        }}
-      >
+    <section id="contact" ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
-              fontWeight: 800,
-              color: '#fff',
-              mb: { xs: 3, md: 4 },
-              '& .highlight': {
-                background: 'linear-gradient(135deg, #00D2FF 0%, #00FFF0 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                position: 'relative',
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(135deg, #00D2FF 0%, #00FFF0 100%)',
-                  filter: 'blur(40px)',
-                  opacity: 0.2,
-                  zIndex: -1,
-                },
-              }
-            }}
-          >
-            {t('contact.title')}
-          </Typography>
+          animate={{
+            opacity: [0.15, 0.25, 0.15],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 12, repeat: Infinity }}
+          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[150px]"
+          style={{ background: 'radial-gradient(circle, rgba(248,113,113,0.2), transparent)' }}
+        />
+        <motion.div
+          animate={{
+            opacity: [0.15, 0.25, 0.15],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 14, repeat: Infinity, delay: 2 }}
+          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[130px]"
+          style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.2), transparent)' }}
+        />
+      </div>
 
-          <Typography
-            sx={{
-              color: 'rgba(255,255,255,0.8)',
-              fontSize: { xs: '1.1rem', md: '1.25rem' },
-              lineHeight: 1.8,
-              maxWidth: '600px',
-              mx: 'auto',
-              mb: { xs: 6, md: 8 },
-            }}
+      <div className="relative z-10 max-w-6xl mx-auto space-y-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-4"
+        >
+          <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">GET IN TOUCH</p>
+          <h2
+            className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.9] tracking-[-0.02em] text-white"
+            style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
-            {t('contact.description')}
-          </Typography>
+            Contact
+          </h2>
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mt-4" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+            Let's discuss how we can transform your business
+          </p>
         </motion.div>
 
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          spacing={{ xs: 4, sm: 6, md: 8 }}
-          alignItems="center"
-          justifyContent="center"
-        >
-          {contactMethods.map((method, index) => (
-            <motion.div
-              key={method.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <Box
-                component="a"
+        <div className="grid md:grid-cols-3 gap-6">
+          {contactMethods.map((method, index) => {
+            const Icon = method.icon;
+            return (
+              <motion.a
+                key={index}
                 href={method.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: 'block',
+                target={method.link.startsWith('http') ? '_blank' : undefined}
+                rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="relative group p-8 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden"
+                style={{
+                  boxShadow: `0 20px 60px ${method.accent}`,
                 }}
               >
-                <Stack
-                  alignItems="center"
-                  spacing={2}
-                  sx={{
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      '& .contact-icon': {
-                        background: `linear-gradient(135deg, ${method.color} 0%, rgba(0,210,255,0.2) 100%)`,
-                        boxShadow: `0 0 30px ${method.color}40`,
-                      },
-                      '& .contact-text': {
-                        color: method.color,
-                      },
-                    },
-                  }}
-                >
-                  <Box
-                    className="contact-icon"
-                    sx={{
-                      width: { xs: 64, sm: 80 },
-                      height: { xs: 64, sm: 80 },
-                      borderRadius: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: 'rgba(255,255,255,0.1)',
-                      backdropFilter: 'blur(10px)',
-                      transition: 'all 0.3s ease',
-                      color: method.color,
-                    }}
-                  >
-                    {method.icon}
-                  </Box>
-                  <Typography
-                    className="contact-text"
-                    sx={{
-                      color: 'rgba(255,255,255,0.9)',
-                      fontSize: { xs: '1.1rem', sm: '1.25rem' },
-                      fontWeight: 600,
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    {method.name}
-                  </Typography>
-                </Stack>
-              </Box>
-            </motion.div>
-          ))}
-        </Stack>
-      </Container>
-    </Box>
-  );
-};
+                <div className="relative z-10 space-y-5">
+                  <div className="flex items-center justify-between">
+                    <div className={`p-4 rounded-xl bg-gradient-to-br ${method.accent.replace('0.15', '0.2')} border border-white/10 group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="text-[0.5rem] uppercase tracking-[0.4em] text-white/40">{method.badge}</p>
+                  </div>
 
-export default Contact;
+                  <div className="space-y-2">
+                    <h3
+                      className="text-xl font-bold text-white"
+                      style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+                    >
+                      {method.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                      {method.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="inline-flex items-center gap-2 text-white/80 group-hover:text-white transition-colors text-sm font-medium">
+                      {method.label}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at center, ${method.accent}, transparent)`,
+                  }}
+                />
+              </motion.a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

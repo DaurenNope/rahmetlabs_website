@@ -1,363 +1,236 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Button,
-} from '@mui/material';
-import {
-  AccountBalance as TaxIcon,
-  Gavel as LegalIcon,
-  LocalHospital as MedicalIcon,
-  OpenInNew as OpenInNewIcon,
-} from '@mui/icons-material';
+'use client';
 
-const Services = () => {
-  const { t } = useTranslation();
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { Zap, Code, Database, Globe, Smartphone, Palette, Megaphone, ArrowRight, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
-  const services = [
-    {
-      title: t('services.items.automation.title'),
-      description: t('services.items.automation.description'),
-      icon: <TaxIcon sx={{ fontSize: 64, color: '#00D2FF' }} />,
-      features: t('services.items.automation.features', { returnObjects: true }) || [],
-      status: t('services.items.automation.status'),
-      isHighlighted: true,
-      link: 'https://chat.rahmetlabs.xyz',
-    },
-    {
-      title: t('services.items.ai.title'),
-      description: t('services.items.ai.description'),
-      icon: <LegalIcon sx={{ fontSize: 64, color: '#00D2FF' }} />,
-      features: t('services.items.ai.features', { returnObjects: true }) || [],
-      status: t('services.items.ai.status'),
-    },
-    {
-      title: t('services.items.development.title'),
-      description: t('services.items.development.description'),
-      icon: <MedicalIcon sx={{ fontSize: 64, color: '#00D2FF' }} />,
-      features: t('services.items.development.features', { returnObjects: true }) || [],
-      status: t('services.items.development.status'),
-    },
-  ];
+const services = [
+  {
+    icon: Zap,
+    title: 'Automation & AI Ops',
+    badge: 'AUTOMATION',
+    description: 'n8n workflows, AI agents, custom integrations that eliminate manual work',
+    examples: ['Support ticket routing', 'Data sync pipelines', 'AI-powered workflows'],
+    color: 'from-yellow-400 to-orange-500',
+    accent: 'rgba(251, 191, 36, 0.15)',
+  },
+  {
+    icon: Code,
+    title: 'Web Development',
+    badge: 'DEVELOPMENT',
+    description: 'Next.js, React, full-stack apps built for scale and performance',
+    examples: ['SaaS platforms', 'E-commerce systems', 'Custom web apps'],
+    color: 'from-blue-400 to-cyan-500',
+    accent: 'rgba(56, 189, 248, 0.15)',
+  },
+  {
+    icon: Database,
+    title: 'Backend & APIs',
+    badge: 'INFRASTRUCTURE',
+    description: 'Robust APIs, databases, microservices architecture',
+    examples: ['REST/GraphQL APIs', 'Database design', 'Cloud infrastructure'],
+    color: 'from-purple-400 to-pink-500',
+    accent: 'rgba(192, 132, 252, 0.15)',
+  },
+  {
+    icon: Globe,
+    title: 'Web3 & Blockchain',
+    badge: 'WEB3',
+    description: 'Smart contracts, DeFi, NFT platforms, blockchain integrations',
+    examples: ['Smart contract development', 'Web3 frontends', 'Token systems'],
+    color: 'from-green-400 to-emerald-500',
+    accent: 'rgba(52, 211, 153, 0.15)',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile Apps',
+    badge: 'MOBILE',
+    description: 'iOS, Android, React Native apps that work seamlessly',
+    examples: ['Native mobile apps', 'Cross-platform solutions', 'Mobile-first web'],
+    color: 'from-indigo-400 to-blue-500',
+    accent: 'rgba(99, 102, 241, 0.15)',
+  },
+  {
+    icon: Palette,
+    title: 'Design & UX',
+    badge: 'DESIGN',
+    description: 'UI/UX design, design systems, prototypes that convert',
+    examples: ['Design systems', 'User research', 'High-fidelity prototypes'],
+    color: 'from-rose-400 to-pink-500',
+    accent: 'rgba(251, 113, 133, 0.15)',
+  },
+  {
+    icon: Megaphone,
+    title: 'Marketing & GTM',
+    badge: 'GTM',
+    description: 'Marketing automation, analytics dashboards, growth tools',
+    examples: ['Marketing automation', 'Analytics platforms', 'Growth tools'],
+    color: 'from-teal-400 to-cyan-500',
+    accent: 'rgba(45, 212, 191, 0.15)',
+  },
+  {
+    icon: Sparkles,
+    title: 'Custom Solutions',
+    badge: 'ENTERPRISE',
+    description: 'Whatever you need—we build it. No project too complex.',
+    examples: ['Enterprise systems', 'Legacy modernization', 'Custom integrations'],
+    color: 'from-violet-400 to-purple-500',
+    accent: 'rgba(139, 92, 246, 0.15)',
+  },
+];
+
+export default function Services() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(null);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % services.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isInView]);
 
   return (
-    <Box
-      component="section"
-      id="services"
-      sx={{
-        position: 'relative',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        background: 'linear-gradient(180deg, rgba(0,12,24,1) 0%, rgba(0,0,0,0.95) 100%)',
-        overflow: 'hidden',
-        py: { xs: 8, sm: 10, md: 16 },
-      }}
-    >
-      {/* Primary Background Gradient */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(circle at 50% 50%, rgba(0,210,255,0.15) 0%, rgba(0,0,0,0) 70%)',
-          opacity: 0.6,
-          animation: 'pulse 8s ease-in-out infinite',
-          '@keyframes pulse': {
-            '0%, 100%': {
-              transform: 'scale(1)',
-              opacity: 0.6,
-            },
-            '50%': {
-              transform: 'scale(1.2)',
-              opacity: 0.8,
-            },
-          },
-        }}
-      />
-
-      {/* Background Pattern */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.1,
-          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%2300D2FF" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-          animation: 'moveBackground 30s linear infinite',
-          '@keyframes moveBackground': {
-            from: { backgroundPosition: '0 0' },
-            to: { backgroundPosition: '60px 60px' },
-          },
-        }}
-      />
-
-      {/* Top Gradient Transition */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'linear-gradient(0deg, rgba(0,12,24,0) 0%, rgba(0,12,24,1) 100%)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
-      {/* Bottom Gradient Transition */}
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'linear-gradient(180deg, rgba(0,12,24,0) 0%, rgba(0,12,24,1) 100%)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
-      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-        {/* Title Section */}
-        <Box sx={{ mb: { xs: 6, sm: 8, md: 10 } }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
-                fontWeight: 800,
-                textAlign: 'center',
-                mb: 3,
-                background: 'linear-gradient(135deg, #00D2FF 0%, #00FFF0 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                position: 'relative',
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(135deg, #00D2FF 0%, #00FFF0 100%)',
-                  filter: 'blur(40px)',
-                  opacity: 0.3,
-                  zIndex: -1,
-                },
-              }}
-            >
-              {t('services.title')}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: 'rgba(255, 255, 255, 0.9)',
-                textAlign: 'center',
-                maxWidth: '800px',
-                mx: 'auto',
-                fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.4rem' },
-                lineHeight: 1.6,
-                textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
-              }}
-            >
-              {t('services.description')}
-            </Typography>
-          </motion.div>
-        </Box>
-
-        {/* Cards Section */}
-        <Grid 
-          container 
-          spacing={4}
-          sx={{ 
-            mt: 0,
-            display: 'flex',
-            justifyContent: 'center'
+    <section id="services" ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.3, 0.2],
+            scale: [1, 1.1, 1],
           }}
-        >
-          {services.map((service, index) => (
-            <Grid 
-              item 
-              xs={12}
-              md={4}
-              key={index}
-              sx={{
-                display: 'flex'
-              }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                style={{ width: '100%' }}
-              >
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '24px',
-                    transition: 'all 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 12px 24px rgba(0, 0, 0, 0.2)',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      '& .MuiSvgIcon-root': {
-                        transform: 'scale(1.1)',
-                      },
-                    },
-                  }}
-                >
-                  <CardContent 
-                    sx={{ 
-                      p: 4, 
-                      height: '100%', 
-                      display: 'flex', 
-                      flexDirection: 'column',
-                      '&:last-child': { pb: 4 }
-                    }}
-                  >
-                    <Box sx={{ mb: 3, transition: 'transform 0.3s ease-in-out' }}>
-                      {service.icon}
-                    </Box>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        mb: 2,
-                        fontWeight: 700,
-                        color: '#00D2FF',
-                        fontSize: { xs: '1.25rem', sm: '1.5rem' },
-                        minHeight: { md: '3.5rem' },
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        mb: 3,
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        fontSize: { xs: '0.95rem', sm: '1rem' },
-                        lineHeight: 1.5,
-                        minHeight: { md: '3rem' },
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {service.description}
-                    </Typography>
-                    <Box 
-                      sx={{ 
-                        flexGrow: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-start',
-                        minHeight: { md: '11rem' }  // Ensure consistent height for features section
-                      }}
-                    >
-                      {Array.isArray(service.features) && service.features.map((feature, featureIndex) => (
-                        <Typography
-                          key={featureIndex}
-                          sx={{
-                            color: 'rgba(255, 255, 255, 0.8)',
-                            fontSize: '0.9rem',
-                            mb: 1.5,  // Increased spacing between features
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            lineHeight: 1.4,
-                            '&:before': {
-                              content: '"•"',
-                              color: '#00D2FF',
-                              mr: 1.5,  // Increased spacing for bullet points
-                              fontSize: '1.2rem',
-                              lineHeight: 1,
-                              mt: '0.2rem',
-                              flexShrink: 0,  // Prevent bullet point from shrinking
-                            },
-                          }}
-                        >
-                          {feature}
-                        </Typography>
-                      ))}
-                    </Box>
-                    <Box 
-                      sx={{ 
-                        mt: 'auto',  // Push to bottom
-                        pt: 2,
-                        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'space-between',
-                        gap: 2,
-                        flexWrap: 'wrap'
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: service.status === t('services.items.automation.status') ? '#4CAF50' : '#FFA726',
-                          fontSize: '0.9rem',
-                          fontWeight: 600,
-                        }}
-                      >
-                        {service.status}
-                      </Typography>
-                      {service.isHighlighted && (
-                        <Button
-                          href={service.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="outlined"
-                          endIcon={<OpenInNewIcon />}
-                          sx={{
-                            color: '#00D2FF',
-                            borderColor: 'rgba(0, 210, 255, 0.5)',
-                            borderRadius: '12px',
-                            fontSize: '0.9rem',
-                            fontWeight: 600,
-                            py: 0.75,
-                            px: 1.5,
-                            minWidth: 'auto',
-                            marginLeft: 'auto',  // Push button to the right
-                            '&:hover': {
-                              borderColor: '#00D2FF',
-                              background: 'rgba(0, 210, 255, 0.1)',
-                            },
-                          }}
-                        >
-                          {t('services.items.automation.tryNow')}
-                        </Button>
-                      )}
-                    </Box>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
-  );
-};
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.3), transparent)' }}
+        />
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.3, 0.2],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+          className="absolute bottom-20 right-10 w-80 h-80 rounded-full blur-[100px]"
+          style={{ background: 'radial-gradient(circle, rgba(248,113,113,0.3), transparent)' }}
+        />
+      </div>
 
-export default Services;
+      <div className="relative z-10 max-w-6xl mx-auto space-y-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-4"
+        >
+          <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">WHAT WE BUILD</p>
+          <h2
+            className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.9] tracking-[-0.02em] text-white"
+            style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+          >
+            Services
+          </h2>
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mt-4" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+            Full-stack development, automation, web3, design—we handle everything dev-related.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            const isActive = active === index;
+            const isHovered = hovered === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                onMouseEnter={() => setHovered(index)}
+                onMouseLeave={() => setHovered(null)}
+                className={`relative rounded-3xl border overflow-hidden transition-all cursor-pointer ${
+                  isActive || isHovered
+                    ? 'border-white/30 bg-white/[0.08]'
+                    : 'border-white/10 bg-white/[0.02]'
+                }`}
+                style={{
+                  boxShadow: isActive || isHovered ? `0 20px 60px ${service.accent}` : 'none',
+                }}
+              >
+                <div className="p-6 space-y-5">
+                  <div className="flex items-center justify-between">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${service.color} opacity-20`}>
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+                    <p className="text-[0.5rem] uppercase tracking-[0.4em] text-white/40">{service.badge}</p>
+                  </div>
+                  
+                  <h3
+                    className="text-lg font-bold text-white"
+                    style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+                  >
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-sm text-white/70 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                    {service.description}
+                  </p>
+                  
+                  <div className="space-y-2 pt-2 border-t border-white/10">
+                    {service.examples.slice(0, 2).map((example, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: index * 0.05 + idx * 0.1 }}
+                        className="text-xs text-white/50 flex items-center gap-2"
+                      >
+                        <div className="w-1 h-1 rounded-full bg-white/30" />
+                        {example}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {(isActive || isHovered) && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle at center, ${service.accent}, transparent)`,
+                    }}
+                  />
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center pt-8"
+        >
+          <Link href="#contact">
+            <motion.button
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-black font-semibold text-sm uppercase tracking-[0.2em] hover:bg-white/90 transition-all"
+              style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+            >
+              Discuss Your Project
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

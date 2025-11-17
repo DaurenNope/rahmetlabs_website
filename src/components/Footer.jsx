@@ -1,119 +1,53 @@
-import React from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Link,
-} from '@mui/material';
-import { motion } from 'framer-motion';
-import {
-  Stack,
-  IconButton,
-} from '@mui/material';
-import {
-  Telegram as TelegramIcon,
-  WhatsApp as WhatsAppIcon,
-  X as XIcon,
-} from '@mui/icons-material';
-import ThreadsIcon from './ThreadsIcon';
+'use client';
 
-const Footer = () => {
+import Link from 'next/link';
+
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    {
-      label: 'Telegram',
-      href: 'https://t.me/RahmetLabs',
-      icon: TelegramIcon,
-      color: '#0088cc',
-    },
-    {
-      label: 'WhatsApp',
-      href: 'https://wa.me/77088413062',
-      icon: WhatsAppIcon,
-      color: '#25D366',
-    },
-    {
-      label: 'X',
-      href: 'https://x.com/rahmetlabs',
-      icon: XIcon,
-      color: '#ffffff',
-    },
-    {
-      label: 'Threads',
-      href: 'https://threads.net/@rahmetlabs',
-      icon: ThreadsIcon,
-      color: '#ffffff',
-    },
-  ];
-
   return (
-    <Box
-      component="footer"
-      sx={{
-        position: 'relative',
-        background: 'linear-gradient(180deg, rgba(0,12,24,1) 0%, rgba(0,0,0,0.95) 100%)',
-        py: { xs: 4, md: 5 },
-        color: 'white',
-      }}
-    >
-      <Container maxWidth="xl">
-        <Stack 
-          spacing={3}
-          alignItems="center"
-        >
-          <Stack 
-            direction="row" 
-            spacing={2}
-            sx={{
-              '& .MuiIconButton-root': {
-                color: 'rgba(255,255,255,0.8)',
-                transition: 'all 0.2s ease',
-                width: { xs: 36, sm: 40 },
-                height: { xs: 36, sm: 40 },
-                padding: '8px',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                },
-                '& svg, & img': {
-                  width: { xs: 20, sm: 24 },
-                  height: { xs: 20, sm: 24 },
-                },
-              },
-            }}
-          >
-            {socialLinks.map((social) => (
-              <IconButton
-                key={social.label}
-                component="a"
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="small"
-                sx={{
-                  '&:hover': {
-                    color: social.color,
-                  },
-                }}
-              >
-                <social.icon />
-              </IconButton>
-            ))}
-          </Stack>
-
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'rgba(255,255,255,0.6)',
-              fontSize: { xs: '0.875rem', md: '0.95rem' },
-            }}
-          >
-            © {currentYear} Rahmet Labs
-          </Typography>
-        </Stack>
-      </Container>
-    </Box>
+    <footer className="py-16 px-6 md:px-12 lg:px-20 border-t border-white/10 bg-black">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div>
+            <p className="text-sm text-white/60" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+              © {currentYear} Rahmet Labs. All rights reserved.
+            </p>
+          </div>
+          <div className="flex items-center gap-8">
+            <a
+              href="https://wa.me/77088413062"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/60 hover:text-white transition-colors"
+              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+            >
+              WhatsApp
+            </a>
+            <a
+              href="https://t.me/RahmetLabs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/60 hover:text-white transition-colors"
+              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+            >
+              Telegram
+            </a>
+            <a
+              href="mailto:rahmetlabs@gmail.com"
+              className="text-sm text-white/60 hover:text-white transition-colors"
+              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+            >
+              Email
+            </a>
+          </div>
+        </div>
+        <div className="mt-12 pt-8 border-t border-white/10 text-center">
+          <p className="text-sm text-white/40" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+            Built with Next.js, React, and Framer Motion
+          </p>
+        </div>
+      </div>
+    </footer>
   );
-};
-
-export default Footer;
+}

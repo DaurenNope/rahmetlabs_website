@@ -1,203 +1,103 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import {
-  Box,
-  Container,
-  IconButton,
-  Stack,
-  Typography,
-  AppBar,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
-import {
-  Instagram as InstagramIcon,
-  Telegram as TelegramIcon,
-  WhatsApp as WhatsAppIcon,
-  X as XIcon,
-  Email as EmailIcon,
-  GitHub as GitHubIcon,
-  Menu as MenuIcon,
-} from '@mui/icons-material';
-import ThreadsIcon from './ThreadsIcon';
-import { IOSSwitch } from './IOSSwitch';
+'use client';
 
-const Header = () => {
-  const { i18n, t } = useTranslation();
-  const [language, setLanguage] = React.useState(localStorage.getItem('i18nextLng') || 'en');
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Initialize with stored language
-    const storedLang = localStorage.getItem('i18nextLng');
-    if (storedLang) {
-      i18n.changeLanguage(storedLang);
-      setLanguage(storedLang);
-    }
-  }, [i18n]);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const handleLanguageChange = () => {
-    const newLang = language === 'en' ? 'ru' : 'en';
-    i18n.changeLanguage(newLang);
-    setLanguage(newLang);
-    localStorage.setItem('i18nextLng', newLang);
-  };
-
-  const socialLinks = [
-    {
-      label: 'Telegram',
-      href: 'https://t.me/RahmetLabs',
-      icon: TelegramIcon,
-    },
-    {
-      label: 'WhatsApp',
-      href: 'https://wa.me/77088413062',
-      icon: WhatsAppIcon,
-    },
-    {
-      label: 'X',
-      href: 'https://x.com/rahmetlabs',
-      icon: XIcon,
-    },
-    {
-      label: 'Threads',
-      href: 'https://threads.net/@rahmetlabs',
-      icon: ThreadsIcon,
-    },
+  const navigation = [
+    { name: 'Services', href: '#services' },
+    { name: 'Capabilities', href: '#capabilities' },
+    { name: 'Work', href: '#portfolio' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <Box
-      component="header"
-      sx={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        background: 'transparent',
-      }}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-black/85 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
+      }`}
     >
-      <Container maxWidth="xl">
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ 
-            minHeight: { xs: '80px', md: '90px' },
-            position: 'relative',
-            py: { xs: 2, md: 2.5 },
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Box
-              component="img"
-              src="/logo/rahmet-logo-white.png"
-              alt="Rahmet Labs"
-              sx={{
-                height: { xs: '48px', sm: '56px', md: '100px' },
-                cursor: 'pointer',
-                transition: 'transform 0.3s ease',
-                ml: { xs: 2, sm: 3, md: 10 },
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                },
-              }}
-            />
-          </motion.div>
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
+        <nav className="h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="text-lg font-black tracking-[0.4em] text-white">RAHMET</div>
+            <div className="text-xs uppercase tracking-[0.5em] text-white/60">LABS</div>
+          </Link>
 
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={{ xs: 1.5, sm: 2, md: 2.5 }}
-            sx={{
-              position: { xs: 'static', sm: 'absolute' },
-              left: '50%',
-              transform: { xs: 'none', sm: 'translateX(-50%)' },
-            }}
-          >
-            {socialLinks.map((social) => (
-              <motion.div
-                key={social.label}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+          <div className="hidden md:flex items-center space-x-6">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white transition-colors"
               >
-                <IconButton
-                  component="a"
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="small"
-                  sx={{
-                    color: 'rgba(255, 255, 255, 0.8)',
-                    transition: 'all 0.3s ease',
-                    width: { xs: '32px', sm: '36px', md: '40px' },
-                    height: { xs: '32px', sm: '36px', md: '40px' },
-                    '&:hover': {
-                      color: '#fff',
-                      transform: 'translateY(-2px)',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                    },
-                    '& svg': {
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem' },
-                    },
-                    '& img': {
-                      width: { xs: '20px', sm: '22px', md: '24px' },
-                      height: { xs: '20px', sm: '22px', md: '24px' },
-                    },
-                  }}
-                >
-                  <social.icon />
-                </IconButton>
-              </motion.div>
+                {item.name}
+              </a>
             ))}
-          </Stack>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Stack
-              direction="row"
-              alignItems="center"
-              spacing={1}
-              sx={{ mr: { xs: 2, sm: 3, md: 10 } }}
+            <Link
+              href="#contact"
+              className="px-5 py-2 rounded-full text-xs font-semibold tracking-[0.35em] uppercase bg-white text-black hover:opacity-90 transition"
             >
-              <Typography
-                variant="body2"
-                sx={{
-                  color: language === 'en' ? '#00D2FF' : 'rgba(255, 255, 255, 0.6)',
-                  fontWeight: 500,
-                }}
-              >
-                EN
-              </Typography>
-              <IOSSwitch
-                checked={language === 'ru'}
-                onChange={handleLanguageChange}
-                sx={{ mx: 1 }}
-              />
-              <Typography
-                variant="body2"
-                sx={{
-                  color: language === 'ru' ? '#00D2FF' : 'rgba(255, 255, 255, 0.6)',
-                  fontWeight: 500,
-                }}
-              >
-                RU
-              </Typography>
-            </Stack>
-          </motion.div>
-        </Stack>
-      </Container>
-    </Box>
-  );
-};
+              Talk to us
+            </Link>
+          </div>
 
-export default Header;
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-lg"
+            >
+              <div className="py-4 space-y-2">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-4 py-3 text-white/80 hover:text-white tracking-[0.35em] uppercase text-xs"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <div className="px-4 pt-4">
+                  <Link
+                    href="#contact"
+                    className="w-full inline-flex justify-center px-5 py-3 rounded-full text-xs font-semibold tracking-[0.3em] uppercase bg-white text-black"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Talk to us
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </header>
+  );
+}
