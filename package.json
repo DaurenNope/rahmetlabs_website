@@ -1,12 +1,16 @@
 {
   "name": "rahmet-labs-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Rahmet Labs website - Full-stack product studio for web, mobile, automation, AI, and Web3",
   "private": true,
+  "author": "Rahmet Labs",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build"
   },
   "dependencies": {
     "@types/three": "^0.181.0",
