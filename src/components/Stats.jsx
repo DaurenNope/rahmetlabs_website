@@ -46,7 +46,7 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10"
+      className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10"
     >
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />

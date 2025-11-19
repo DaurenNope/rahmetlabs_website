@@ -35,7 +35,7 @@ export default function Services() {
   }, [isInView, cardCount]);
 
   return (
-    <section id="services" ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
+    <section id="services" ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none mix-blend-screen">
@@ -78,7 +78,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.cards.map((service, index) => {
             const Icon = iconMap[service.icon] ?? Sparkles;
             const isActive = active === index;
@@ -158,11 +158,11 @@ export default function Services() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center pt-8"
         >
-          <Link href="#contact">
+          <Link href="/contact">
             <motion.button
               whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-black font-semibold text-sm uppercase tracking-[0.2em] hover:bg-white/90 transition-all"
+              className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-white text-black font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] hover:bg-white/90 transition-all"
               style={{ fontFamily: 'var(--font-syne), sans-serif' }}
             >
               {services.cta}

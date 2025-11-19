@@ -20,7 +20,7 @@ export default function Process() {
   const milestoneLabels = processCopy.milestones || [];
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
+    <section ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none mix-blend-screen">
@@ -54,10 +54,11 @@ export default function Process() {
           className="relative overflow-hidden rounded-[44px] border border-white/10 bg-gradient-to-br from-white/[0.02] via-white/[0.03] to-white/[0.08] p-6 md:p-10"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent)] opacity-60 pointer-events-none" />
-          <div className="relative space-y-16">
+              <div className="relative space-y-12 sm:space-y-16">
             {processCopy.steps.map((step, index) => {
               const Icon = iconMap[step.icon] ?? Search;
               const [phaseLabel, durationLabel] = step.subtitle.split('/').map((part) => part?.trim() || '');
+                  const milestone = milestoneLabels?.[index];
               return (
                 <motion.div
                   key={index}
@@ -91,10 +92,12 @@ export default function Process() {
                     <div className="space-y-3">
                       <p className="text-xs uppercase tracking-[0.35em] text-white/45">{phaseLabel}</p>
                       {durationLabel && <p className="text-sm text-white/60">{durationLabel}</p>}
-                      <div className="space-y-1">
-                        <p className="text-[0.65rem] uppercase tracking-[0.35em] text-white/40">{milestoneLabels[index].title}</p>
-                        <p className="text-xs text-white/55">{milestoneLabels[index].hint}</p>
-                      </div>
+                          {milestone && (
+                            <div className="space-y-1">
+                              <p className="text-[0.6rem] uppercase tracking-[0.35em] text-white/40">{milestone.title}</p>
+                              <p className="text-xs text-white/55">{milestone.hint}</p>
+                            </div>
+                          )}
                     </div>
                   </div>
                   <div className="rounded-3xl border border-white/10 bg-black/30 p-6 md:p-8 backdrop-blur-sm" style={{ boxShadow: `0 16px 45px ${step.accent}` }}>

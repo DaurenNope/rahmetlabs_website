@@ -52,13 +52,16 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageSwitcher variant="mobile" className="md:hidden min-w-[120px]" />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-white/70 hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </nav>
 
         <AnimatePresence>
@@ -70,7 +73,10 @@ export default function Header() {
               transition={{ duration: 0.25 }}
               className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-lg"
             >
-              <div className="py-4 space-y-2">
+              <div className="py-4 space-y-4">
+                <div className="px-4">
+                  <LanguageSwitcher variant="mobile" className="md:hidden w-full" />
+                </div>
                 {navigation.map((item) => (
                   <Link
                     key={item.name}

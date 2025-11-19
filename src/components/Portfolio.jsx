@@ -19,7 +19,7 @@ export default function Portfolio() {
   const gridProjects = preview.cards.filter((card) => !heroProjects.map((proj) => proj.id).includes(card.id));
 
   return (
-    <section id="portfolio" ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
+    <section id="portfolio" ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none mix-blend-screen">
@@ -68,23 +68,26 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: heroIdx * 0.1 }}
-                className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 flex flex-col gap-6"
+                className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col gap-6"
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                   <div className="space-y-2">
-                    <p className="text-xs uppercase tracking-[0.4em] text-white/50">{project.tag}</p>
-                    <h3 className="text-3xl font-black text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                    <p className="text-[0.65rem] uppercase tracking-[0.4em] text-white/50">{project.tag}</p>
+                    <h3
+                      className="text-2xl sm:text-3xl font-black text-white"
+                      style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+                    >
                       {project.title}
                     </h3>
                   </div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/60">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 sm:px-4 py-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/60 w-full sm:w-auto justify-center">
                     {preview.hero}
                     <span className="w-1 h-1 rounded-full bg-white/30" />
                     {project.tag}
                   </div>
                 </div>
                 <p className="text-white/75 text-base leading-relaxed">{project.note}</p>
-                    <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {(project.focus && project.focus.length ? project.focus : ['Design system', 'Interactions']).map((pill) => (
                     <div key={pill} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                       <p className="text-[0.55rem] uppercase tracking-[0.35em] text-white/40 mb-2">{preview.focus}</p>
@@ -96,7 +99,7 @@ export default function Portfolio() {
                   href={project.link || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.35em] text-white/80 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-3 text-xs sm:text-sm uppercase tracking-[0.3em] text-white/80 hover:text-white transition-colors"
                 >
                   {preview.viewProject}
                   <ArrowRight className="w-4 h-4" />
@@ -109,7 +112,7 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {gridProjects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -138,7 +141,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-[28px] border border-white/10 bg-gradient-to-r from-white/[0.05] to-transparent px-6 py-5 flex flex-wrap items-center justify-between gap-4"
+            className="rounded-[24px] sm:rounded-[28px] border border-white/10 bg-gradient-to-r from-white/[0.05] to-transparent px-5 sm:px-6 py-5 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-4 text-center sm:text-left"
           >
             <div>
               <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/50">{preview.label}</p>
