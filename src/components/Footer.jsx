@@ -16,7 +16,7 @@ export default function Footer() {
   const { dictionary } = useLanguage();
   const footer = dictionary.footer;
   const contactLinks = dictionary.contact.methods;
-  const quickTargets = ['#services', '#capabilities', '#portfolio', '#contact'];
+  const quickTargets = ['/services', '/about', '/portfolio', '/contact'];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,16 +49,19 @@ export default function Footer() {
           <div className="space-y-4">
             <p className="text-[0.6rem] uppercase tracking-[0.4em] text-white/50 mb-4">{footer.label || 'Quick links'}</p>
             <nav className="space-y-3">
-              {footer.quickLinks.map((name, idx) => (
-                <a
-                  key={name}
-                  href={quickTargets[idx] || '#'}
-                  className="block text-sm text-white/60 hover:text-white transition-colors"
-                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-                >
-                  {name}
-                </a>
-              ))}
+              {footer.quickLinks.map((name, idx) => {
+                const target = quickTargets[idx] || '#';
+                return (
+                  <Link
+                    key={name}
+                    href={target}
+                    className="block text-sm text-white/60 hover:text-white transition-colors"
+                    style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                  >
+                    {name}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 

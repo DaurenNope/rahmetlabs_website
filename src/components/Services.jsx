@@ -24,6 +24,7 @@ export default function Services() {
   const [hovered, setHovered] = useState(null);
   const { dictionary } = useLanguage();
   const services = dictionary.services;
+  const quickWins = services.quickWins;
   const cardCount = services.cards.length;
 
   useEffect(() => {
@@ -152,11 +153,55 @@ export default function Services() {
           })}
         </div>
 
+        {quickWins?.kits?.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-10 pt-8"
+          >
+            <div className="text-center space-y-3 max-w-3xl mx-auto">
+              <p className="text-[0.55rem] uppercase tracking-[0.7em] text-white/50">{quickWins.badge}</p>
+              <h3 className="text-2xl sm:text-3xl font-semibold text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                {quickWins.heading}
+              </h3>
+              <p className="text-white/65 text-sm sm:text-base">{quickWins.subheading}</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {quickWins.kits.map((kit, index) => (
+                <motion.div
+                  key={kit.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 flex flex-col gap-4 h-full"
+                >
+                  <div className="space-y-2">
+                    <p className="text-[0.5rem] uppercase tracking-[0.45em] text-white/40">{kit.badge}</p>
+                    <h4 className="text-xl font-semibold text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                      {kit.title}
+                    </h4>
+                    <p className="text-sm text-white/70 leading-relaxed">{kit.description}</p>
+                  </div>
+                  <div className="space-y-2">
+                    {kit.items.map((item) => (
+                      <div key={item} className="flex items-start gap-2 text-sm text-white/70">
+                        <span className="mt-1 h-1 w-1 rounded-full bg-white/40" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center pt-8"
+          className="text-center pt-10"
         >
           <Link href="/contact">
             <motion.button
@@ -169,6 +214,15 @@ export default function Services() {
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </Link>
+          <div className="mt-4 flex justify-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors"
+            >
+              <span>{services.builderCta}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

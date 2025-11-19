@@ -214,34 +214,34 @@ export default function Hero() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 sm:gap-6">
+            <div className="flex flex-col lg:flex-row flex-wrap items-stretch lg:items-center gap-4 sm:gap-6 w-full">
               <motion.div
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto"
+                className="w-full lg:flex-1"
               >
                 <Link
                   href="/contact"
-                  className="group relative inline-flex items-center gap-3 px-6 sm:px-10 py-4 rounded-full overflow-hidden w-full sm:w-auto justify-center min-w-fit"
+                  className="group relative flex flex-col sm:flex-row sm:items-center gap-3 px-6 sm:px-10 py-4 rounded-full overflow-hidden w-full text-center sm:text-left"
                 >
                   <div className="absolute inset-0 bg-white" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-rose-500 via-rose-400 to-emerald-400 mix-blend-screen" />
-                  <span className="relative z-10 text-black font-bold tracking-[0.2em] uppercase text-xs sm:text-sm text-center">
+                  <span className="relative z-10 text-black font-bold tracking-[0.2em] uppercase text-xs sm:text-sm leading-snug">
                     {heroCopy.highlightCta}
                   </span>
-                  <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 flex-shrink-0" />
+                  <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 flex-shrink-0 self-center sm:self-auto" />
                 </Link>
               </motion.div>
               <motion.div
                 whileHover={{ x: 4 }}
-                className="flex items-center w-full sm:w-auto justify-center sm:justify-start"
+                className="flex w-full lg:w-auto"
               >
                 <Link
                   href="/portfolio"
-                  className="group inline-flex items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-xs sm:text-sm uppercase tracking-[0.3em] text-center sm:text-left"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-xs sm:text-sm uppercase tracking-[0.3em] w-full justify-center sm:justify-start text-center sm:text-left leading-snug"
                 >
                   <span>{heroCopy.highlightSecondary}</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 flex-shrink-0" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 flex-shrink-0 self-center sm:self-auto" />
                 </Link>
               </motion.div>
             </div>

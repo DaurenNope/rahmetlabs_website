@@ -23,6 +23,7 @@ export default function Header() {
   const navigation = [
     { name: dictionary.navigation.services, href: '/services' },
     { name: dictionary.navigation.work, href: '/portfolio' },
+    { name: dictionary.navigation.about, href: '/about' },
     { name: dictionary.navigation.contact, href: '/contact' },
   ].filter(item => !item.href.startsWith('#'));
 

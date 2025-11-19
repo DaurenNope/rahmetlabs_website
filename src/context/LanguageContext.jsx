@@ -6,7 +6,7 @@ import { translations, locales } from '../lib/i18n';
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('ru');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -23,6 +23,12 @@ export function LanguageProvider({ children }) {
       localStorage.setItem('rahmetlabs-lang', lang);
     }
   };
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('lang', language);
+    }
+  }, [language]);
 
   const value = {
     language,
