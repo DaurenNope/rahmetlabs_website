@@ -1,81 +1,22 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const projects = [
-  {
-    id: 1,
-    title: 'Web3 Airdrop Farming System',
-    type: 'Web3 + Automation',
-    badge: 'WEB3',
-    problem: { label: 'Before', details: ['Manual airdrop tracking', 'Missed opportunities', 'Time-consuming research'] },
-    solution: { label: 'Solution', details: ['Smart contracts (Solidity, Rust)', 'Automated farming workflows', 'Social media automations'] },
-    impact: { label: 'Impact', details: ['Successful airdrop farming', 'Automated execution', 'Multi-chain support'] },
-    accent: 'rgba(139, 92, 246, 0.1)',
-    url: null,
-  },
-  {
-    id: 2,
-    title: 'Education Platform Suite',
-    type: 'Full-Stack Development',
-    badge: 'DEVELOPMENT',
-    problem: { label: 'Before', details: ['Outdated platforms', 'Poor user experience', 'Limited functionality'] },
-    solution: { label: 'Solution', details: ['Modern web platforms', 'Responsive design', 'Custom features'] },
-    impact: { label: 'Impact', details: ['ageu.edu.kz', 'q-university.edu.kz', 'qgroup.asia'] },
-    accent: 'rgba(56, 189, 248, 0.1)',
-    urls: ['https://ageu.edu.kz', 'https://q-university.edu.kz', 'https://qgroup.asia'],
-  },
-  {
-    id: 3,
-    title: 'Multi-Platform Bot Suite',
-    type: 'Automation',
-    badge: 'AUTOMATION',
-    problem: { label: 'Before', details: ['Manual messaging', 'Repetitive tasks', 'Limited reach'] },
-    solution: { label: 'Solution', details: ['WhatsApp bots', 'Telegram bots', 'Twitter & Threads automation'] },
-    impact: { label: 'Impact', details: ['Varying complexities', 'Automated workflows', 'Multi-platform coverage'] },
-    accent: 'rgba(251, 191, 36, 0.1)',
-    url: null,
-  },
-  {
-    id: 4,
-    title: 'Beyond Lines',
-    type: 'Full-Stack Development',
-    badge: 'DEVELOPMENT',
-    problem: { label: 'Before', details: ['Concept needed execution', 'Creative vision', 'Technical implementation'] },
-    solution: { label: 'Solution', details: ['Modern web application', 'Creative design', 'Full-stack architecture'] },
-    impact: { label: 'Impact', details: ['Live at beyondlines-web.vercel.app', 'Creative showcase', 'Pet project'] },
-    accent: 'rgba(52, 211, 153, 0.1)',
-    url: 'https://beyondlines-web.vercel.app',
-  },
-  {
-    id: 5,
-    title: 'Unhireable',
-    type: 'Full-Stack Development',
-    badge: 'DEVELOPMENT',
-    problem: { label: 'Before', details: ['Portfolio needed', 'Personal branding', 'Showcase platform'] },
-    solution: { label: 'Solution', details: ['Custom website', 'Modern design', 'Performance optimized'] },
-    impact: { label: 'Impact', details: ['Live at unhireable-website.vercel.app', 'Personal brand', 'Pet project'] },
-    accent: 'rgba(192, 132, 252, 0.1)',
-    url: 'https://unhireable-website.vercel.app',
-  },
-  {
-    id: 6,
-    title: 'Full-Stack Applications',
-    type: 'Full-Stack Development',
-    badge: 'DEVELOPMENT',
-    problem: { label: 'Before', details: ['Simple to complex needs', 'Various requirements', 'Scalable solutions'] },
-    solution: { label: 'Solution', details: ['Custom web applications', 'Landing pages', 'Complex platforms'] },
-    impact: { label: 'Impact', details: ['Range of projects', 'Scalable architecture', 'Modern tech stack'] },
-    accent: 'rgba(56, 189, 248, 0.1)',
-    url: null,
-  },
-];
+const heroAccent = ['rgba(248,113,113,0.35)', 'rgba(52,211,153,0.25)'];
 
 export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { dictionary } = useLanguage();
+  const preview = dictionary.portfolioPreview;
+  const heroProjectsFallback = preview.cards.slice(0, 2);
+  const heroProjectsFiltered = preview.cards.filter((card) => ['unhireable', 'beyond'].includes(card.id));
+  const heroProjects = heroProjectsFiltered.length ? heroProjectsFiltered : heroProjectsFallback;
+  const gridProjects = preview.cards.filter((card) => !heroProjects.map((proj) => proj.id).includes(card.id));
 
   return (
     <section id="portfolio" ref={ref} className="relative overflow-hidden bg-black text-white py-32 px-4 sm:px-6 lg:px-10">
@@ -102,122 +43,119 @@ export default function Portfolio() {
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto space-y-16">
+      <div className="relative z-10 max-w-6xl mx-auto space-y-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center space-y-4"
+          className="space-y-10"
         >
-          <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">OUR WORK</p>
-          <h2
-            className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.9] tracking-[-0.02em] text-white"
-            style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-          >
-            Portfolio
-          </h2>
-          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mt-4" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-            Real projects across automation, web development, web3, and more
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="relative p-8 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden"
-              style={{
-                boxShadow: `0 20px 60px ${project.accent}`,
-              }}
+          <div className="text-center space-y-4">
+            <p className="text-[0.55rem] uppercase tracking-[0.7em] text-white/50">{preview.label}</p>
+            <h2
+              className="text-[clamp(2rem,6vw,4rem)] font-black tracking-[-0.03em]"
+              style={{ fontFamily: 'var(--font-syne), sans-serif' }}
             >
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-2 flex-1">
-                    <p className="text-[0.5rem] uppercase tracking-[0.4em] text-white/40">{project.badge}</p>
-                    <h3
-                      className="text-xl md:text-2xl font-bold text-white"
-                      style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-                    >
+              {preview.heading}
+            </h2>
+            <p className="text-white/70 max-w-2xl mx-auto">{preview.subheading}</p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {heroProjects.map((project, heroIdx) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: heroIdx * 0.1 }}
+                className="relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 flex flex-col gap-6"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-[0.4em] text-white/50">{project.tag}</p>
+                    <h3 className="text-3xl font-black text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                       {project.title}
                     </h3>
-                    <p className="text-sm text-white/50 uppercase tracking-[0.3em]">{project.type}</p>
                   </div>
-                  {project.url && (
-                    <motion.a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      className="p-2 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4 text-white/70" />
-                    </motion.a>
-                  )}
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/60">
+                    {preview.hero}
+                    <span className="w-1 h-1 rounded-full bg-white/30" />
+                    {project.tag}
+                  </div>
                 </div>
-
-                <div className="grid gap-4">
-                  {[project.problem, project.solution, project.impact].map((section, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ delay: index * 0.08 + idx * 0.05 }}
-                      className={`p-4 rounded-2xl border ${
-                        idx === 0
-                          ? 'border-rose-500/30 bg-rose-500/5'
-                          : idx === 1
-                          ? 'border-white/10 bg-white/[0.02]'
-                          : 'border-emerald-500/30 bg-emerald-500/5'
-                      }`}
-                    >
-                      <p className="text-[0.6rem] uppercase tracking-[0.4em] text-white/50 mb-3">{section.label}</p>
-                      <ul className="space-y-1.5" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                        {section.details.map((detail, detailIdx) => (
-                          <li key={detailIdx} className="text-sm text-white/70 flex items-start gap-2">
-                            <span className="text-white/30 mt-1.5">•</span>
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
+                <p className="text-white/75 text-base leading-relaxed">{project.note}</p>
+                    <div className="grid grid-cols-2 gap-4">
+                  {(project.focus && project.focus.length ? project.focus : ['Design system', 'Interactions']).map((pill) => (
+                    <div key={pill} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <p className="text-[0.55rem] uppercase tracking-[0.35em] text-white/40 mb-2">{preview.focus}</p>
+                      <p className="text-sm text-white/80">{pill}</p>
+                    </div>
                   ))}
                 </div>
+                <a
+                  href={project.link || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.35em] text-white/80 hover:text-white transition-colors"
+                >
+                  {preview.viewProject}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-60"
+                  style={{ background: `radial-gradient(circle at top right, ${heroAccent[heroIdx % heroAccent.length]}, transparent)` }}
+                />
+              </motion.div>
+            ))}
+          </div>
 
-                {project.urls && (
-                  <div className="pt-2 border-t border-white/10">
-                    <p className="text-[0.6rem] uppercase tracking-[0.4em] text-white/50 mb-2">Live Sites</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.urls.map((url, urlIdx) => (
-                        <motion.a
-                          key={urlIdx}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-white/70 hover:text-white border border-white/10 hover:border-white/20 transition-colors"
-                        >
-                          {url.replace('https://', '')}
-                          <ExternalLink className="w-3 h-3" />
-                        </motion.a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {gridProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/50">{project.tag}</p>
+                  <ExternalLink className="w-4 h-4 text-white/40" />
+                </div>
+                <h4 className="text-xl font-semibold text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                  {project.title}
+                </h4>
+                <p className="text-sm text-white/65">{project.note}</p>
+                <div className="pt-3 text-xs uppercase tracking-[0.3em] text-white/50 flex items-center justify-between">
+                  <span>{preview.cta}</span>
+                  <ArrowRight className="w-4 h-4 text-white/60" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-              <div
-                className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at center, ${project.accent}, transparent)`,
-                }}
-              />
-            </motion.div>
-          ))}
-        </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="rounded-[28px] border border-white/10 bg-gradient-to-r from-white/[0.05] to-transparent px-6 py-5 flex flex-wrap items-center justify-between gap-4"
+          >
+            <div>
+              <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/50">{preview.label}</p>
+              <p className="text-sm text-white/70">{preview.footerText}</p>
+            </div>
+            <Link href="/portfolio">
+              <motion.button
+                whileHover={{ y: -2, scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-3 text-xs uppercase tracking-[0.3em] text-white"
+              >
+                {preview.cta}
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

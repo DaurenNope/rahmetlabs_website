@@ -3,6 +3,7 @@ import { Syne, Inter, Space_Grotesk } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ScrollProgress from '../components/ScrollProgress';
+import { LanguageProvider } from '../context/LanguageContext';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -33,10 +34,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${syne.variable} ${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}>
       <body className={`${inter.className} bg-black text-white antialiased`}>
-        <ScrollProgress />
-        <Header />
-        {children}
-        <Footer />
+        <LanguageProvider>
+          <ScrollProgress />
+          <Header />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

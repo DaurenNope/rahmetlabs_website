@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { dictionary } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +21,10 @@ export default function Header() {
   }, []);
 
   const navigation = [
-    { name: 'Services', href: '#services' },
-    { name: 'Capabilities', href: '#capabilities' },
-    { name: 'Work', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' },
-  ];
+    { name: dictionary.navigation.services, href: '/services' },
+    { name: dictionary.navigation.work, href: '/portfolio' },
+    { name: dictionary.navigation.contact, href: '/contact' },
+  ].filter(item => !item.href.startsWith('#'));
 
   return (
     <header
@@ -39,20 +41,15 @@ export default function Header() {
 
           <div className="hidden md:flex items-center space-x-6">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white transition-colors"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
-            <Link
-              href="#contact"
-              className="px-5 py-2 rounded-full text-xs font-semibold tracking-[0.35em] uppercase bg-white text-black hover:opacity-90 transition"
-            >
-              Talk to us
-            </Link>
+            <LanguageSwitcher />
           </div>
 
           <button
@@ -75,26 +72,17 @@ export default function Header() {
             >
               <div className="py-4 space-y-2">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="block px-4 py-3 text-white/80 hover:text-white tracking-[0.35em] uppercase text-xs"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
-                  </a>
-                ))}
-                <div className="px-4 pt-4">
-                  <Link
-                    href="#contact"
-                    className="w-full inline-flex justify-center px-5 py-3 rounded-full text-xs font-semibold tracking-[0.3em] uppercase bg-white text-black"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Talk to us
                   </Link>
-                </div>
+                ))}
               </div>
-            </motion.div>
+          </motion.div>
           )}
         </AnimatePresence>
       </div>

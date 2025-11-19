@@ -1,68 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const heroScenes = {
-  manual: {
-    badge: 'MANUAL OPS — CRITICAL LOAD',
-    label: 'What burning teams feel',
-    headline: 'Manual heroics hide the cracks, nothing is synced, nothing is observable.',
-    description:
-      'Teams power through outages with copy/paste and pagers. Finance waits for consensus spreadsheets while customers churn on stalled support queues.',
-    playbook: [
-      { title: 'Bottleneck', detail: 'Ops leaders chase signals across CRM, ERP, support, and spreadsheets.' },
-      { title: 'Rahmet entrypoint', detail: 'Instrument telemetry, map manual loops, surface the ugliest outages.' },
-      { title: 'First win', detail: 'Automate the repetitive grind so teams reclaim 40+ hours per week.' },
-    ],
-    metrics: [
-      { label: 'Tickets waiting', value: '187', hint: 'Support backlog', tone: 'bad' },
-      { label: 'Ops burn / month', value: '$12K', hint: 'Contractor overtime', tone: 'bad' },
-      { label: 'Response time', value: '24h', hint: 'Escalations answered', tone: 'bad' },
-    ],
-    pains: [
-      { title: 'CRM → ERP sync', detail: 'CSV export stuck at 73% for 4h' },
-      { title: 'Finance roll-up', detail: '8 spreadsheets in approval limbo' },
-      { title: 'Support queue', detail: '120 tickets waiting on humans' },
-      { title: 'Compliance audit', detail: 'Zero breadcrumb trail, high risk' },
-    ],
-    log: [
-      { time: '02:07', message: 'Finance ping: “Need weekly roll-up.”', tone: 'bad' },
-      { time: '02:09', message: 'Support escalated 45 stuck tickets.', tone: 'bad' },
-      { time: '02:15', message: 'Ops lead paging engineers on Slack.', tone: 'bad' },
-    ],
-  },
-  autonomous: {
-    badge: 'AUTONOMOUS OPS — STABLE SIGNAL',
-    label: 'What transformed ops feel',
-    headline: 'Every system streams truth in real time. People just steer outcomes.',
-    description:
-      'Playbooks trigger on their own, finance closes in hours, and every alert routes to an autonomous responder before anyone has to ask.',
-    playbook: [
-      { title: 'Orchestration', detail: 'Every signal flows into one control plane with embedded guardrails.' },
-      { title: 'Rahmet pattern', detail: 'AI agents route, sync, and brief every team in real time.' },
-      { title: 'Momentum', detail: 'Leaders steer outcomes because ops run on autopilot.' },
-    ],
-    metrics: [
-      { label: 'Tickets waiting', value: '0', hint: 'Auto-triaged', tone: 'good' },
-      { label: 'Ops burn / month', value: '-$8K', hint: 'No overtime spend', tone: 'good' },
-      { label: 'Response time', value: '45s', hint: 'Signals resolved', tone: 'good' },
-    ],
-    pains: [
-      { title: 'Signals fused', detail: 'CRM ↔ ERP ↔ billing streaming live' },
-      { title: 'Finance ops', detail: 'Close in 4 hours, not 4 days' },
-      { title: 'Support intelligence', detail: 'AI resolves 92% of tickets' },
-      { title: 'Compliance trail', detail: 'Every action auto-logged' },
-    ],
-    log: [
-      { time: '09:15', message: 'AI resolved subscription churn playbook.', tone: 'good' },
-      { time: '09:26', message: 'Ledger sync verified in 42 seconds.', tone: 'good' },
-      { time: '09:39', message: 'Executive dashboard auto-updated.', tone: 'good' },
-    ],
-  },
-};
+import { useLanguage } from '../context/LanguageContext';
 
 const toneMap = {
   good: 'text-emerald-300',
@@ -85,8 +27,12 @@ export default function Hero() {
   const [mode, setMode] = useState('manual');
   const [activePain, setActivePain] = useState(0);
   const [activeLog, setActiveLog] = useState(0);
-  const scene = heroScenes[mode];
+  const { dictionary } = useLanguage();
+  const heroCopy = dictionary.hero;
+  const scene = heroCopy.scenes[mode];
   const palette = paletteMap[mode];
+  const brandHeadline = ['Rahmet', 'Labs'];
+  const chipLabels = heroCopy.chips;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -98,7 +44,7 @@ export default function Hero() {
   useEffect(() => {
     setActivePain(0);
     setActiveLog(0);
-  }, [mode]);
+  }, [mode, scene]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -171,8 +117,6 @@ export default function Hero() {
     };
   }, [palette.accent, palette.accentSoft]);
 
-const brandHeadline = ['Rahmet', 'Labs'];
-
   return (
     <section className="relative overflow-hidden bg-black text-white py-16 sm:py-20">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80" />
@@ -194,7 +138,7 @@ const brandHeadline = ['Rahmet', 'Labs'];
                 mode === key ? 'bg-white text-black' : 'border border-white/20 text-white/60'
               }`}
             >
-              {key === 'manual' ? 'Manual Ops' : 'Autonomous Mode'}
+              {heroCopy.modeLabels[key]}
             </button>
           ))}
         </div>
@@ -211,9 +155,7 @@ const brandHeadline = ['Rahmet', 'Labs'];
                     {line}
                   </div>
                 ))}
-                <p className="text-base md:text-xl text-white/75 mt-4">
-                  We build what you need, automate what you hate. Full-stack development + intelligent automation.
-                </p>
+                <p className="text-base md:text-xl text-white/75 mt-4">{heroCopy.brandTagline}</p>
               </div>
             </div>
 
@@ -229,7 +171,7 @@ const brandHeadline = ['Rahmet', 'Labs'];
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">{scene.badge}</p>
                   <p className="text-[0.6rem] uppercase tracking-[0.6em] text-white/40">
-                    {mode === 'manual' ? 'Chaos detected' : 'Autonomy engaged'}
+                    {heroCopy.sceneStatus[mode]}
                   </p>
                 </div>
                 <div className="space-y-4 text-white/70">
@@ -237,7 +179,7 @@ const brandHeadline = ['Rahmet', 'Labs'];
                   <p className="text-lg font-semibold text-white/85">{scene.headline}</p>
                   <p className="text-sm text-white/60 max-w-2xl">{scene.description}</p>
                 <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
-                    {['Automation', 'AI Ops', 'Web3', 'Design', 'GTM'].map((tag) => (
+                    {chipLabels.map((tag) => (
                       <motion.span
                         key={tag}
                         whileHover={{ y: -2, scale: 1.02 }}
@@ -272,33 +214,34 @@ const brandHeadline = ['Rahmet', 'Labs'];
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 sm:gap-6">
               <motion.div
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto"
               >
                 <Link
-                  href="#contact"
-                  className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full overflow-hidden w-full sm:w-auto justify-center"
+                  href="/contact"
+                  className="group relative inline-flex items-center gap-3 px-6 sm:px-10 py-4 rounded-full overflow-hidden w-full sm:w-auto justify-center min-w-fit"
                 >
                   <div className="absolute inset-0 bg-white" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-rose-500 via-rose-400 to-emerald-400 mix-blend-screen" />
-                  <span className="relative z-10 text-black font-bold tracking-[0.2em] uppercase text-sm whitespace-nowrap">
-                    Start automation
+                  <span className="relative z-10 text-black font-bold tracking-[0.2em] uppercase text-xs sm:text-sm text-center">
+                    {heroCopy.highlightCta}
                   </span>
-                  <ArrowRight className="relative z-10 w-5 h-5 text-black transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 flex-shrink-0" />
                 </Link>
               </motion.div>
               <motion.div
                 whileHover={{ x: 4 }}
-                className="flex items-center"
+                className="flex items-center w-full sm:w-auto justify-center sm:justify-start"
               >
                 <Link
-                  href="#portfolio"
-                  className="group inline-flex items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-sm uppercase tracking-[0.3em] whitespace-nowrap"
+                  href="/portfolio"
+                  className="group inline-flex items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-xs sm:text-sm uppercase tracking-[0.3em] text-center sm:text-left"
                 >
-                  <span>View proof</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <span>{heroCopy.highlightSecondary}</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 flex-shrink-0" />
                 </Link>
               </motion.div>
             </div>
@@ -321,11 +264,15 @@ const brandHeadline = ['Rahmet', 'Labs'];
                 }}
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-xs uppercase tracking-[0.35em] text-white/50">Ops snapshot</p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-white/50">{heroCopy.panels.snapshotLabel}</p>
                   <div className="flex items-center gap-2 text-[0.55rem] uppercase tracking-[0.4em]">
-                    <span className={mode === 'manual' ? 'text-white' : 'text-white/40'}>Manual</span>
+                    <span className={mode === 'manual' ? 'text-white' : 'text-white/40'}>
+                      {heroCopy.panels.switchLabels.manual}
+                    </span>
                     <span className="text-white/30">/</span>
-                    <span className={mode === 'autonomous' ? 'text-white' : 'text-white/40'}>Auto</span>
+                    <span className={mode === 'autonomous' ? 'text-white' : 'text-white/40'}>
+                      {heroCopy.panels.switchLabels.autonomous}
+                    </span>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -352,9 +299,9 @@ const brandHeadline = ['Rahmet', 'Labs'];
               }}
             >
               <div className="flex items-center justify-between">
-                <p className="text-xs uppercase tracking-[0.35em] text-white/50">Ops feed</p>
+                <p className="text-xs uppercase tracking-[0.35em] text-white/50">{heroCopy.panels.feedLabel}</p>
                 <p className={`text-xs font-semibold ${mode === 'manual' ? 'text-rose-300' : 'text-emerald-300'}`}>
-                  {mode === 'manual' ? 'Escalations' : 'Autonomous stream'}
+                  {heroCopy.panels.feedStatus[mode]}
                 </p>
               </div>
               <div className="space-y-2">
@@ -381,7 +328,7 @@ const brandHeadline = ['Rahmet', 'Labs'];
               className="p-6 rounded-3xl border bg-white/[0.03] space-y-4 w-full"
               style={{ borderColor: 'rgba(255,255,255,0.08)' }}
             >
-              <p className="text-xs uppercase tracking-[0.35em] text-white/50">Rahmet playbook</p>
+              <p className="text-xs uppercase tracking-[0.35em] text-white/50">{heroCopy.panels.playbookLabel}</p>
               <div className="space-y-3">
                 {scene.playbook.map((step, index) => (
                   <div key={step.title} className="p-4 rounded-2xl bg-white/[0.02] border border-white/10">
