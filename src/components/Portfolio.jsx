@@ -19,10 +19,10 @@ export default function Portfolio() {
   const gridProjects = preview.cards.filter((card) => !heroProjects.map((proj) => proj.id).includes(card.id));
 
   return (
-    <section id="portfolio" ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
+    <section id="portfolio" ref={ref} className="relative overflow-hidden bg-black text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
         <motion.div
           animate={{
             opacity: [0.15, 0.25, 0.15],
@@ -61,14 +61,14 @@ export default function Portfolio() {
             <p className="text-white/70 max-w-2xl mx-auto">{preview.subheading}</p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid grid-flow-col auto-cols-[90%] gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-1 lg:grid-cols-2 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
             {heroProjects.map((project, heroIdx) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: heroIdx * 0.1 }}
-                className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col gap-6"
+                className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-5 sm:p-8 flex flex-col gap-6 snap-center"
               >
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                   <div className="space-y-2">
@@ -112,14 +112,14 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid grid-flow-col auto-cols-[80%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
             {gridProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 space-y-3"
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 space-y-3 snap-center"
               >
                 <div className="flex items-center justify-between">
                   <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/50">{project.tag}</p>

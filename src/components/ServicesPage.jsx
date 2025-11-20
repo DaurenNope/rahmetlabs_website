@@ -29,7 +29,7 @@ export default function ServicesPage() {
   return (
     <main className="relative bg-black text-white min-h-screen">
       {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
         <motion.div
           animate={{
             opacity: [0.15, 0.25, 0.15],
@@ -50,7 +50,7 @@ export default function ServicesPage() {
         />
       </div>
 
-      <div className="relative z-10 pt-32 pb-32 px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 pt-24 sm:pt-32 pb-24 sm:pb-32 px-4 sm:px-6 lg:px-10">
         <div className="max-w-7xl mx-auto space-y-20">
           {/* Header */}
           <motion.div
@@ -73,7 +73,7 @@ export default function ServicesPage() {
           </motion.div>
 
           {/* Services Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
             {cards.map((service, index) => {
               const Icon = iconMap[service.icon] ?? Sparkles;
               return (
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                   whileHover={{ y: -4, scale: 1.02 }}
-                  className="relative p-6 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all"
+                  className="relative p-5 sm:p-6 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all snap-center"
                   style={{
                     boxShadow: `0 20px 60px ${service.accent}`,
                   }}
@@ -138,14 +138,14 @@ export default function ServicesPage() {
                   {pageCopy.useCases.subheading}
                 </h2>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
                 {pageCopy.useCases.items.map((useCase, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 space-y-3"
+                    className="rounded-3xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 space-y-3 snap-center"
                   >
                     <h3 className="text-lg font-semibold text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                       {useCase.title}
@@ -223,9 +223,9 @@ export default function ServicesPage() {
                   {pageCopy.engagement.subheading}
                 </h3>
               </div>
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
                 {pageCopy.engagement.plans.map((plan) => (
-                  <div key={plan.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 flex flex-col gap-4">
+                  <div key={plan.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 flex flex-col gap-4 snap-center">
                     <div className="space-y-2">
                       <p className="text-[0.55rem] uppercase tracking-[0.35em] text-white/40">{plan.highlight}</p>
                       <h4 className="text-xl font-semibold text-white">{plan.title}</h4>

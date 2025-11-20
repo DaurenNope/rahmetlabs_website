@@ -20,10 +20,10 @@ export default function Process() {
   const milestoneLabels = processCopy.milestones || [];
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
+    <section ref={ref} className="relative overflow-hidden bg-black text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
         <motion.div
           animate={{
             opacity: [0.15, 0.25, 0.15],

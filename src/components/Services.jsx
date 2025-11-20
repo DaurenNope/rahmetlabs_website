@@ -36,10 +36,10 @@ export default function Services() {
   }, [isInView, cardCount]);
 
   return (
-    <section id="services" ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
+    <section id="services" ref={ref} className="relative overflow-hidden bg-black text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
         <motion.div
           animate={{
             opacity: [0.2, 0.3, 0.2],
@@ -79,7 +79,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
           {services.cards.map((service, index) => {
             const Icon = iconMap[service.icon] ?? Sparkles;
             const isActive = active === index;
@@ -93,7 +93,7 @@ export default function Services() {
                 whileHover={{ y: -4, scale: 1.02 }}
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
-                className={`relative rounded-3xl border overflow-hidden transition-all cursor-pointer ${
+                className={`relative rounded-3xl border overflow-hidden transition-all cursor-pointer snap-center ${
                   isActive || isHovered
                     ? 'border-white/30 bg-white/[0.08]'
                     : 'border-white/10 bg-white/[0.02]'
@@ -102,7 +102,7 @@ export default function Services() {
                   boxShadow: isActive || isHovered ? `0 20px 60px ${service.accent}` : 'none',
                 }}
               >
-                <div className="p-6 space-y-5">
+                <div className="p-5 sm:p-6 space-y-5">
                   <div className="flex items-center justify-between">
                     <div className={`p-3 rounded-xl bg-gradient-to-br ${service.color} opacity-20`}>
                       <Icon className="w-5 h-5 text-white" />
@@ -167,14 +167,14 @@ export default function Services() {
               </h3>
               <p className="text-white/65 text-sm sm:text-base">{quickWins.subheading}</p>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
               {quickWins.kits.map((kit, index) => (
                 <motion.div
                   key={kit.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 flex flex-col gap-4 h-full"
+                  className="rounded-3xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 flex flex-col gap-4 h-full snap-center"
                 >
                   <div className="space-y-2">
                     <p className="text-[0.5rem] uppercase tracking-[0.45em] text-white/40">{kit.badge}</p>
