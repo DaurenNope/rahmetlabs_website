@@ -43,11 +43,11 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                  key={item.name}
                 href={item.href}
-                className="text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white transition-colors"
-              >
-                {item.name}
+                  className="text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white transition-colors"
+                >
+                  {item.name}
               </Link>
             ))}
             <LanguageSwitcher />
@@ -55,13 +55,13 @@ export default function Header() {
 
           <div className="md:hidden flex items-center gap-3">
             <LanguageSwitcher variant="mobile" className="md:hidden min-w-[120px]" />
-            <button
-              onClick={() => setIsOpen(!isOpen)}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-white/70 hover:text-white transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           </div>
         </nav>
 

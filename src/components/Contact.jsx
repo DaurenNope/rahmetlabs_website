@@ -18,10 +18,10 @@ export default function Contact() {
   const contact = dictionary.contact;
 
   return (
-    <section id="contact" ref={ref} className="relative overflow-hidden bg-black text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10">
+    <section id="contact" ref={ref} className="relative overflow-hidden bg-black text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-10">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
         <motion.div
           animate={{
             opacity: [0.15, 0.25, 0.15],
@@ -61,7 +61,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-flow-col auto-cols-[80%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
+        <div className="grid md:grid-cols-3 gap-6">
           {contact.methods.map((method, index) => {
             const Icon = iconMap[method.icon] ?? MessageCircle;
             const accentColor = typeof method.accent === 'string' ? method.accent : 'rgba(52, 211, 153, 0.2)';
@@ -76,7 +76,7 @@ export default function Contact() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className="relative group p-6 sm:p-8 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden snap-center"
+                className="relative group p-8 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden"
                 style={{
                   boxShadow: `0 20px 60px ${accentColor}`,
                 }}

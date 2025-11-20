@@ -53,12 +53,12 @@ export default function Footer() {
                 const target = quickTargets[idx] || '#';
                 return (
                   <Link
-                    key={name}
+                  key={name}
                     href={target}
-                    className="block text-sm text-white/60 hover:text-white transition-colors"
-                    style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-                  >
-                    {name}
+                  className="block text-sm text-white/60 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  {name}
                   </Link>
                 );
               })}

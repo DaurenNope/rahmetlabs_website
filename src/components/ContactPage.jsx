@@ -52,7 +52,7 @@ export default function ContactPage() {
               </motion.button>
             </Link>
             <div className="text-center space-y-4">
-              <h1 className="text-[clamp(3rem,10vw,6rem)] font-black leading-[0.9] tracking-[-0.02em]" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+              <h1 className="text-[clamp(2.3rem,8vw,5.3rem)] font-black leading-[0.95] tracking-[-0.02em]" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                 {contact.heading}
               </h1>
               <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
@@ -93,7 +93,7 @@ export default function ContactPage() {
                       <h3 className="text-xl font-bold text-white mb-2 group-hover:text-white transition-colors" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                         {method.title}
                       </h3>
-                      <p className="text-sm text-white/50 uppercase tracking-[0.3em]">{method.label}</p>
+                      <p className="text-sm text-white/50 uppercase tracking-[0.18em] sm:tracking-[0.3em]">{method.label}</p>
                     </div>
                     <p className="text-sm text-white/70 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                       {method.description}

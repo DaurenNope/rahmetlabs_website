@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { useIsMobile } from '../hooks/useMediaQuery';
 
 const toneMap = {
   good: 'text-emerald-300',
@@ -34,17 +33,13 @@ export default function Hero() {
   const palette = paletteMap[mode];
   const brandHeadline = ['Rahmet', 'Labs'];
   const chipLabels = heroCopy.chips;
-  const isMobile = useIsMobile();
-  const prefersReducedMotion = useReducedMotion();
-  const enableCanvas = !prefersReducedMotion && !isMobile;
 
   useEffect(() => {
-    const delay = isMobile ? 9000 : 6500;
     const timer = setTimeout(() => {
       setMode((prev) => (prev === 'manual' ? 'autonomous' : 'manual'));
-    }, delay);
+    }, 6500);
     return () => clearTimeout(timer);
-  }, [mode, isMobile]);
+  }, [mode]);
 
   useEffect(() => {
     setActivePain(0);
@@ -55,12 +50,12 @@ export default function Hero() {
     const interval = setInterval(() => {
       setActivePain((prev) => (prev + 1) % scene.pains.length);
       setActiveLog((prev) => (prev + 1) % scene.log.length);
-    }, isMobile ? 4000 : 2600);
+    }, 2600);
     return () => clearInterval(interval);
-  }, [scene, isMobile]);
+  }, [scene]);
 
   useEffect(() => {
-    if (!enableCanvas || !canvasRef.current) return undefined;
+    if (!canvasRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
@@ -120,20 +115,20 @@ export default function Hero() {
       cancelAnimationFrame(frame);
       window.removeEventListener('resize', setCanvasSize);
     };
-  }, [palette.accent, palette.accentSoft, enableCanvas]);
+  }, [palette.accent, palette.accentSoft]);
 
   return (
-    <section className="relative overflow-hidden bg-black text-white py-14 sm:py-20">
-      {enableCanvas && <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80" />}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
+    <section className="relative overflow-hidden bg-black text-white py-16 sm:py-20">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
         <div className="absolute -top-20 -left-10 w-80 h-80 rounded-full blur-3xl opacity-40"
           style={{ background: 'radial-gradient(circle, rgba(248,113,113,0.4), transparent)' }} />
         <div className="absolute top-10 right-0 w-96 h-96 rounded-full blur-[120px] opacity-35"
           style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.4), transparent)' }} />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 space-y-10 md:space-y-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 space-y-12">
         <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
           {['manual', 'autonomous'].map((key) => (
             <button
@@ -155,7 +150,7 @@ export default function Hero() {
                 {brandHeadline.map((line) => (
                   <div
                     key={line}
-                    className="text-[clamp(2.4rem,11vw,8.5rem)] font-black leading-[0.9] tracking-[-0.04em] text-white"
+                    className="text-[clamp(2.2rem,9vw,7.5rem)] font-black leading-[0.85] tracking-[-0.04em] text-white"
                   >
                     {line}
                   </div>
@@ -174,15 +169,13 @@ export default function Hero() {
                 className="space-y-6"
               >
                 <div className="flex items-center justify-between flex-wrap gap-4">
-                  <p className="text-[0.6rem] uppercase tracking-[0.5em] sm:tracking-[0.8em] text-white/60">{scene.badge}</p>
-                  <p className="text-[0.6rem] uppercase tracking-[0.4em] sm:tracking-[0.6em] text-white/40">
+                  <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">{scene.badge}</p>
+                  <p className="text-[0.6rem] uppercase tracking-[0.6em] text-white/40">
                     {heroCopy.sceneStatus[mode]}
                   </p>
                 </div>
                 <div className="space-y-4 text-white/70">
-                  <p className="text-[0.65rem] uppercase tracking-[0.25em] sm:tracking-[0.4em] text-white/45">
-                    {scene.label}
-                  </p>
+                  <p className="text-sm uppercase tracking-[0.4em] text-white/45">{scene.label}</p>
                   <p className="text-lg font-semibold text-white/85">{scene.headline}</p>
                   <p className="text-sm text-white/60 max-w-2xl">{scene.description}</p>
                 <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
@@ -190,7 +183,7 @@ export default function Hero() {
                       <motion.span
                         key={tag}
                         whileHover={{ y: -2, scale: 1.02 }}
-                        className="px-4 py-2 rounded-full text-[0.6rem] tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-white/10"
+                        className="px-4 py-2 rounded-full text-xs tracking-[0.3em] uppercase border border-white/10"
                         style={{
                           background:
                             mode === 'manual'
@@ -205,21 +198,13 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div
-                  className={`gap-4 ${
-                    isMobile
-                      ? 'grid grid-flow-col auto-cols-[78%] overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar'
-                      : 'grid grid-cols-1 sm:grid-cols-2'
-                  }`}
-                >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {scene.pains.map((pain, index) => (
                     <motion.div
                       key={pain.title}
                       animate={{ opacity: activePain === index ? 1 : 0.3, y: activePain === index ? 0 : 4 }}
                       transition={{ duration: 0.4 }}
-                      className={`p-4 rounded-2xl border border-white/10 bg-white/[0.02] ${
-                        isMobile ? 'min-h-[140px] snap-center' : ''
-                      }`}
+                      className="p-4 rounded-2xl border border-white/10 bg-white/[0.02]"
                     >
                       <p className="text-sm font-semibold text-white/80">{pain.title}</p>
                       <p className="text-sm text-white/60">{pain.detail}</p>
@@ -237,11 +222,11 @@ export default function Hero() {
               >
                 <Link
                   href="/contact"
-                  className="group relative flex flex-col sm:flex-row sm:items-center gap-3 px-6 sm:px-10 py-4 rounded-full overflow-hidden w-full text-center sm:text-left"
+                  className="group relative flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 px-5 sm:px-10 py-4 rounded-full overflow-hidden w-full text-center sm:text-left"
                 >
                   <div className="absolute inset-0 bg-white" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-rose-500 via-rose-400 to-emerald-400 mix-blend-screen" />
-                  <span className="relative z-10 text-black font-bold tracking-[0.2em] uppercase text-xs sm:text-sm leading-snug">
+                  <span className="relative z-10 text-black font-bold tracking-[0.15em] sm:tracking-[0.25em] uppercase text-[0.78rem] sm:text-sm leading-snug">
                     {heroCopy.highlightCta}
                   </span>
                   <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 flex-shrink-0 self-center sm:self-auto" />
@@ -253,7 +238,7 @@ export default function Hero() {
               >
                 <Link
                   href="/portfolio"
-                  className="group flex flex-col sm:flex-row sm:items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-xs sm:text-sm uppercase tracking-[0.3em] w-full justify-center sm:justify-start text-center sm:text-left leading-snug"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-2 text-white/60 hover:text-white transition-all duration-300 text-[0.7rem] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.3em] w-full justify-center sm:justify-start text-center sm:text-left leading-snug"
                 >
                   <span>{heroCopy.highlightSecondary}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 flex-shrink-0 self-center sm:self-auto" />
@@ -290,13 +275,7 @@ export default function Hero() {
                     </span>
                   </div>
                 </div>
-                <div
-                  className={`gap-6 ${
-                    isMobile
-                      ? 'grid grid-flow-col auto-cols-[70%] overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar'
-                      : 'grid grid-cols-1 sm:grid-cols-3'
-                  }`}
-                >
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {scene.metrics.map((metric) => (
                     <div key={metric.label} className="space-y-1">
                       <p className={`text-2xl font-semibold ${toneMap[metric.tone]}`}>{metric.value}</p>

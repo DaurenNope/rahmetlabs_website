@@ -29,7 +29,7 @@ export default function ServicesPage() {
   return (
     <main className="relative bg-black text-white min-h-screen">
       {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none mix-blend-screen hidden md:block">
+      <div className="absolute inset-0 pointer-events-none mix-blend-screen">
         <motion.div
           animate={{
             opacity: [0.15, 0.25, 0.15],
@@ -50,7 +50,7 @@ export default function ServicesPage() {
         />
       </div>
 
-      <div className="relative z-10 pt-24 sm:pt-32 pb-24 sm:pb-32 px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 pt-32 pb-32 px-4 sm:px-6 lg:px-10">
         <div className="max-w-7xl mx-auto space-y-20">
           {/* Header */}
           <motion.div
@@ -62,7 +62,7 @@ export default function ServicesPage() {
           >
             <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">{pageCopy.label}</p>
             <h1
-              className="text-[clamp(3rem,10vw,6rem)] font-black leading-[0.9] tracking-[-0.02em] text-white"
+              className="text-[clamp(2.3rem,8vw,5.3rem)] font-black leading-[0.95] tracking-[-0.02em] text-white"
               style={{ fontFamily: 'var(--font-syne), sans-serif' }}
             >
               {pageCopy.heading}
@@ -73,7 +73,7 @@ export default function ServicesPage() {
           </motion.div>
 
           {/* Services Grid */}
-          <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {cards.map((service, index) => {
               const Icon = iconMap[service.icon] ?? Sparkles;
               return (
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                   whileHover={{ y: -4, scale: 1.02 }}
-                  className="relative p-5 sm:p-6 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all snap-center"
+                  className="relative p-6 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all"
                   style={{
                     boxShadow: `0 20px 60px ${service.accent}`,
                   }}
@@ -138,18 +138,18 @@ export default function ServicesPage() {
                   {pageCopy.useCases.subheading}
                 </h2>
               </div>
-              <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {pageCopy.useCases.items.map((useCase, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    className="rounded-3xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 space-y-3 snap-center"
+                    className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 space-y-3"
                   >
                     <h3 className="text-lg font-semibold text-white" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                       {useCase.title}
-                    </h3>
+                      </h3>
                     <p className="text-sm text-white/70 leading-relaxed">{useCase.description}</p>
                     {useCase.examples && useCase.examples.length > 0 && (
                       <div className="space-y-2 pt-2">
@@ -159,11 +159,11 @@ export default function ServicesPage() {
                             <span>{example}</span>
                           </div>
                         ))}
-                      </div>
+                    </div>
                     )}
-                  </motion.div>
-                ))}
-              </div>
+                        </motion.div>
+                      ))}
+                    </div>
             </motion.section>
           )}
 
@@ -173,7 +173,7 @@ export default function ServicesPage() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center space-y-10"
-          >
+                            >
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
               {pageCopy.ctaText || 'Tell us what you need — we\'ll map the solution and timeline in one call.'}
             </p>
@@ -181,7 +181,7 @@ export default function ServicesPage() {
               <motion.button
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-black font-semibold text-sm uppercase tracking-[0.2em] hover:bg-white/90 transition-all"
+                className="inline-flex items-center justify-center gap-3 px-7 sm:px-10 py-4 rounded-full bg-white text-black font-semibold text-[0.8rem] sm:text-sm uppercase tracking-[0.14em] sm:tracking-[0.22em] hover:bg-white/90 transition-all"
                 style={{ fontFamily: 'var(--font-syne), sans-serif' }}
               >
                 {pageCopy.cta || 'Discuss your project'}
@@ -223,9 +223,9 @@ export default function ServicesPage() {
                   {pageCopy.engagement.subheading}
                 </h3>
               </div>
-              <div className="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0">
+              <div className="grid md:grid-cols-3 gap-4">
                 {pageCopy.engagement.plans.map((plan) => (
-                  <div key={plan.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 flex flex-col gap-4 snap-center">
+                  <div key={plan.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 flex flex-col gap-4">
                     <div className="space-y-2">
                       <p className="text-[0.55rem] uppercase tracking-[0.35em] text-white/40">{plan.highlight}</p>
                       <h4 className="text-xl font-semibold text-white">{plan.title}</h4>
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/contact" className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors">
+                    <Link href="/contact" className="inline-flex items-center gap-2 text-[0.78rem] sm:text-sm uppercase tracking-[0.18em] sm:tracking-[0.3em] text-white/70 hover:text-white transition-colors">
                       <span>{plan.cta}</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -253,7 +253,7 @@ export default function ServicesPage() {
             <section className="space-y-6">
               <div className="text-center space-y-2">
                 <p className="text-[0.55rem] uppercase tracking-[0.6em] text-white/50">{pageCopy.faq.heading}</p>
-              </div>
+                </div>
               <div className="space-y-3">
                 {pageCopy.faq.items.map((item) => (
                   <details key={item.question} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4">

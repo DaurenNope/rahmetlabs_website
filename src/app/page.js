@@ -57,15 +57,15 @@ export default function Home() {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <main className="relative bg-black">
-        <Hero />
-        <Services />
-        <Capabilities />
-        <Portfolio />
-        <Process />
-        <Stats />
-        <Contact />
-      </main>
+    <main className="relative bg-black">
+      <Hero />
+      <Services />
+      <Capabilities />
+      <Portfolio />
+      <Process />
+      <Stats />
+      <Contact />
+    </main>
     </>
   );
 }

@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="space-y-6 text-center md:text-left">
             <p className="text-[0.65rem] uppercase tracking-[0.7em] text-white/60">{hero.badge}</p>
             <h1
-              className="text-[clamp(2.5rem,7vw,4.5rem)] font-black leading-[1] tracking-[-0.02em]"
+              className="text-[clamp(2.1rem,6vw,4.2rem)] font-black leading-[1.05] tracking-[-0.02em]"
               style={{ fontFamily: 'var(--font-syne), sans-serif' }}
             >
               {hero.heading}
@@ -65,7 +65,7 @@ export default function AboutPage() {
               <motion.button
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em]"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-6 sm:px-8 py-4 text-[0.8rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.28em]"
               >
                 {hero.ctas.primary}
                 <ArrowRight className="w-4 h-4" />
@@ -75,7 +75,7 @@ export default function AboutPage() {
               <motion.button
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 hover:text-white transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 sm:px-8 py-4 text-[0.8rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.28em] text-white/80 hover:text-white transition-colors"
               >
                 {hero.ctas.secondary}
                 <Users className="w-4 h-4" />
@@ -271,12 +271,12 @@ export default function AboutPage() {
             {cta.heading}
           </h3>
           <p className="text-white/70 text-base max-w-2xl mx-auto">{cta.subheading}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link href="/contact">
               <motion.button
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 rounded-full bg-white text-black px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                  className="inline-flex items-center gap-2 rounded-full bg-white text-black px-6 sm:px-8 py-3 text-[0.8rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.28em]"
               >
                 {cta.primary}
                 <ArrowRight className="w-4 h-4" />
@@ -286,7 +286,7 @@ export default function AboutPage() {
               <motion.button
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 sm:px-8 py-3 text-[0.8rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.28em] text-white/80 hover:text-white"
               >
                 {cta.secondary}
                 <ArrowRight className="w-4 h-4" />

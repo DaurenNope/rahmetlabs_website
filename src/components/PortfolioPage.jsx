@@ -70,7 +70,7 @@ export default function PortfolioPage() {
             </Link>
             <div className="text-center space-y-4">
               <p className="text-[0.6rem] uppercase tracking-[0.8em] text-white/60">{portfolio.heading}</p>
-              <h1 className="text-[clamp(3rem,10vw,6rem)] font-black leading-[0.9] tracking-[-0.02em]" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+              <h1 className="text-[clamp(2.3rem,8vw,5.3rem)] font-black leading-[0.95] tracking-[-0.02em]" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                 {portfolio.heading}
               </h1>
               <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
