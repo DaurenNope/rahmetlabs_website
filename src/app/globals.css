@@ -1,64 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --black: #000000;
-  --surface: #0a0a0a;
-  --white: #ffffff;
-  --success: #00ff88;
-  --warning: #ffaa00;
-  --error: #ff4444;
+  color-scheme: light;
 }
 
-/* Base Styles */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
-  font-size: 16px;
+  background: #FAFAF8;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
 }
 
 body {
-  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 400;
-  line-height: 1.75;
-  color: var(--white);
-  background-color: var(--black);
+  line-height: 1.6;
+  color: #17181C;
+  background-color: #FAFAF8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Typography - Clean, No Conflicts */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-syne), 'Syne', sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 700;
-  line-height: 1.1;
-  color: var(--white);
   letter-spacing: -0.02em;
+  color: #17181C;
 }
 
-/* Custom Scrollbar */
+.font-data {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid #D97706;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #D97706;
+  color: #FAFAF8;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--black);
+  background: #FAFAF8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  background: #DEDCD2;
+  border: 2px solid #FAFAF8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #9B9C98;
+}
+
+.bg-viewport ::selection {
+  background: #D97706;
+  color: #F5F4EE;
+}
+
+/* Live status dot — a genuine functional indicator, not decoration */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.status-dot {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
 }
