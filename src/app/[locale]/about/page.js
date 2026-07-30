@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { isValidLocale } from '../../../lib/locales';
 import { getDictionary } from '../../../lib/content';
 import About from '../../../components/About';
+import Principles from '../../../components/Principles';
+import JsonLd from '../../../components/JsonLd';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -19,5 +21,18 @@ export default async function AboutPage({ params }) {
   if (!isValidLocale(locale)) notFound();
   const dict = getDictionary(locale);
 
-  return <About locale={locale} about={dict.about} />;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: dict.meta.about.title,
+    description: dict.meta.about.description,
+    url: `https://rahmetlabs.com/${locale}/about`,
+  };
+
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <About locale={locale} about={dict.about} />
+    </>
+  );
 }

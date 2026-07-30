@@ -1,95 +1,108 @@
-import TerminalPanel, { Kicker } from './TerminalPanel';
-import Button from './Button';
+'use client';
+
+/**
+ * Services — editorial index rows with expanding capability panels.
+ * Rows 01–05, hairline-ruled; the active row reveals a hand-drawn-feeling
+ * thread underline and a double-bezel detail panel.
+ */
+
+import { useId, useState } from 'react';
 import Reveal from './Reveal';
-import { IconAutomation, IconAI, IconWeb, IconMobile, IconBackend, IconWeb3 } from './Icons';
 
-const ICONS = [IconAutomation, IconAI, IconWeb, IconMobile, IconBackend, IconWeb3];
+export default function Services({ services, locale, sectionId = 'services' }) {
+  const [openId, setOpenId] = useState(services.categories[0]?.id ?? null);
+  const uid = useId();
 
-function num(code) {
-  return code.replace(/^[A-Z]+0*/, '').padStart(2, '0');
-}
-
-export default function Services({ locale, services, full = false }) {
   return (
-    <TerminalPanel>
-      <div className="py-16 lg:py-24">
-        <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
-            <Kicker>{services.kicker}</Kicker>
-            {full ? (
-              <h1 className="text-display text-balance text-ink">{services.heading}</h1>
-            ) : (
-              <h2 className="text-headline text-ink">{services.heading}</h2>
-            )}
-            <p className="mt-4 text-lg text-ink-muted">{services.subheading}</p>
-          </div>
-          {!full ? (
-            <Button href={`/${locale}/services`} variant="ghost" size="sm" className="shrink-0">
-              {services.ctaLabel}
-            </Button>
-          ) : null}
+    <section id={sectionId} className="relative border-t border-hairline/70 py-28 md:py-40" aria-labelledby={`${sectionId}-heading`}>
+      <div className="mx-auto max-w-content px-5 md:px-10 lg:px-16">
+        <Reveal variant="fade" className="mb-14 max-w-[760px]">
+          <p className="kicker mb-6">{services.kicker}</p>
+          <h2 id={`${sectionId}-heading`} className="mb-5 text-headline font-bold text-ink">
+            {services.heading}
+          </h2>
+          <p className="text-[1.05rem] leading-relaxed text-ink-muted">{services.subheading}</p>
         </Reveal>
 
-        <div className="mt-10 border-t border-hairline">
-          {services.functions.map((fn, i) => {
-            const Icon = ICONS[i % ICONS.length];
+        <div className="ltr-stagger">
+          {services.categories.map((cat, idx) => {
+            const open = openId === cat.id;
+            const panelId = `${uid}-${cat.id}`;
             return (
-              <Reveal key={fn.code} delay={Math.min(i, 5) * 60}>
-                <div className="group grid grid-cols-1 gap-5 border-b border-hairline py-8 transition-colors hover:bg-panel/60 sm:grid-cols-[64px_1fr] sm:gap-6 lg:grid-cols-[64px_56px_220px_1fr] lg:items-start">
-                  <span className="font-data text-sm text-ink-faint transition-colors group-hover:text-amber">{num(fn.code)}</span>
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-hairline text-ink transition-colors group-hover:border-amber group-hover:text-amber">
-                    <Icon className="h-5 w-5" />
+              <Reveal as="article" key={cat.id} variant="fade" className="group border-t border-hairline/70 first:border-t-0">
+                <button
+                  type="button"
+                  onClick={() => setOpenId(open ? null : cat.id)}
+                  aria-expanded={open}
+                  aria-controls={panelId}
+                  className="flex w-full items-baseline gap-5 py-6 text-left transition-colors duration-500 md:gap-10 md:py-8"
+                >
+                  <span
+                    className={`font-serif text-2xl italic leading-none transition-colors duration-500 md:text-4xl ${
+                      open ? 'text-amber' : 'text-ink-faint group-hover:text-ink-muted'
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-xl font-semibold text-ink lg:pt-2">{fn.title}</h3>
-                  <div>
-                    <p className="text-sm text-ink-muted sm:text-base">{fn.description}</p>
-                    {full ? (
-                      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                        {fn.capabilities.map((cap) => (
-                          <li key={cap} className="flex gap-2 text-sm text-ink-muted">
-                            <span className="text-amber">—</span>
-                            {cap}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
+
+                  <span className="flex-1">
+                    <span
+                      className={`block font-sans text-xl font-bold tracking-tight transition-all duration-500 md:text-3xl ${
+                        open ? 'text-ink' : 'text-ink group-hover:translate-x-2'
+                      }`}
+                    >
+                      {cat.title}
+                    </span>
+                    <span className="serif-accent mt-1 block text-[0.95rem] text-ink-muted md:text-[1.05rem]">
+                      {cat.tagline}
+                    </span>
+                  </span>
+
+                  <span
+                    className={`relative flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                      open ? 'rotate-45 border-amber text-amber' : 'border-hairline text-ink-muted group-hover:border-ink-muted'
+                    }`}
+                    aria-hidden="true"
+                  >
+                    <span className="absolute h-3 w-px bg-current" />
+                    <span className="absolute h-px w-3 bg-current" />
+                  </span>
+                </button>
+
+                {/* expanding detail panel — double bezel */}
+                <div
+                  id={panelId}
+                  className="grid transition-all duration-700 ease-reveal"
+                  style={{ gridTemplateRows: open ? '1fr' : '0fr', opacity: open ? 1 : 0 }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="pb-8 md:pb-10 md:pl-[4.5rem] lg:pl-[5.5rem]">
+                      <div className="rounded-[1.25rem] border border-white/[0.06] bg-white/[0.03] p-1.5">
+                        <div className="rounded-[calc(1.25rem-0.375rem)] border border-hairline bg-raised p-6 md:p-8">
+                          <p className="mb-6 max-w-[62ch] text-[1rem] leading-relaxed text-ink-muted">
+                            {cat.description}
+                          </p>
+                          <ul className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                            {cat.capabilities.map((cap) => (
+                              <li key={cap} className="flex items-start gap-3 text-[0.92rem] text-ink">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mt-1 flex-shrink-0 text-amber" aria-hidden="true">
+                                  <path d="M2 7h10M7 2v10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                                </svg>
+                                {cap}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Reveal>
             );
           })}
         </div>
-
-        {full ? (
-          <Reveal className="mt-20">
-            <h3 className="text-headline text-ink">{services.engagementHeading}</h3>
-            <p className="mt-3 max-w-2xl text-ink-muted">{services.engagementSubheading}</p>
-            <div className="mt-8 grid gap-px border border-hairline bg-hairline sm:grid-cols-3">
-              {services.engagements.map((plan) => (
-                <div key={plan.title} className="bg-void p-7 transition-colors hover:bg-panel">
-                  <span className="label text-amber">{plan.title}</span>
-                  <p className="mt-3 text-sm text-ink-muted">{plan.description}</p>
-                  <p className="mt-4 border-t border-hairline pt-3 text-xs text-ink-faint">{plan.bestFor}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        ) : null}
-
-        {full ? (
-          <Reveal className="mt-20">
-            <h3 className="text-headline text-ink">{services.faqHeading}</h3>
-            <div className="mt-6 border-t border-hairline">
-              {services.faq.map((item) => (
-                <div key={item.q} className="border-b border-hairline py-5">
-                  <p className="font-semibold text-ink">{item.q}</p>
-                  <p className="mt-2 text-sm text-ink-muted">{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        ) : null}
       </div>
-    </TerminalPanel>
+    </section>
   );
 }

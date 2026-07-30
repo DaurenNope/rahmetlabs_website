@@ -1,38 +1,60 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+/**
+ * Reveal — scroll-triggered entrance animation.
+ * Primary mechanism: IntersectionObserver + CSS transitions on transform/opacity.
+ * Engages a `.ltr-in` class that CSS selectors use to animate descendants
+ * via `calc(var(--i) * stagger)` delays.
+ */
 
-export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
+import { useEffect, useRef } from 'react';
+
+export default function Reveal({
+  as: Tag = 'div',
+  variant = 'fade',
+  delay = 0,
+  stagger = 70,
+  once = true,
+  className = '',
+  children,
+  ...rest
+}) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return undefined;
+    if (!el) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setVisible(true);
-      return undefined;
+      el.classList.add('ltr-in');
+      return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+    el.style.setProperty('--reveal-delay', `${delay}ms`);
+    el.style.setProperty('--ltr-stagger', `${stagger}ms`);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add('ltr-in');
+            if (once) io.disconnect();
+          } else if (!once) {
+            el.classList.remove('ltr-in');
+          }
+        });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
     );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    io.observe(el);
+    return () => io.disconnect();
+  }, [delay, stagger, once]);
 
   return (
     <Tag
       ref={ref}
-      className={`transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`ltr ltr-${variant} ${className}`}
+      {...rest}
     >
       {children}
     </Tag>

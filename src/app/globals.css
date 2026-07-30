@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -11,23 +12,24 @@
 }
 
 html {
-  background: #FAFAF8;
+  background: #08090A;
 }
 
-html.lenis {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto;
+  scroll-behavior: auto !important;
 }
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: #17181C;
-  background-color: #FAFAF8;
+  color: #F4F1EA;
+  background-color: #08090A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -37,30 +39,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #17181C;
-}
-
-.font-data {
-  font-family: var(--font-plex-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-}
-
-.label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Focus visibility */
-:focus-visible {
-  outline: 2px solid #D97706;
-  outline-offset: 2px;
+  color: #F4F1EA;
 }
 
 ::selection {
-  background: #D97706;
-  color: #FAFAF8;
+  background: #E8A33D;
+  color: #08090A;
+}
+
+/* Focus visibility — amber ring, always visible on dark ground */
+:focus-visible {
+  outline: 2px solid #E8A33D;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* Scrollbar */
@@ -68,33 +59,131 @@ h1, h2, h3, h4, h5, h6 {
   width: 10px;
   height: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #FAFAF8;
+  background: #08090A;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #DEDCD2;
-  border: 2px solid #FAFAF8;
+  background: #2A2D30;
+  border: 3px solid #08090A;
+  border-radius: 6px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #9B9C98;
+  background: #3A3D40;
 }
 
-.bg-viewport ::selection {
-  background: #D97706;
-  color: #F5F4EE;
+/* ------------------------------------------------------------------ */
+/* Kicker — eyebrow label above section headings                       */
+/* ------------------------------------------------------------------ */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #99978B;
+}
+.kicker::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: #E8A33D;
+  flex-shrink: 0;
 }
 
-/* Live status dot — a genuine functional indicator, not decoration */
+/* ------------------------------------------------------------------ */
+/* Editorial italic accent — Fraunces between sans CJK blocks          */
+/* ------------------------------------------------------------------ */
+.serif-accent {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Text reveal — masked rise, engaged from JS                          */
+/* ------------------------------------------------------------------ */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+}
+.reveal-line > span {
+  display: block;
+  transform: translateY(112%);
+  transition: transform 1s var(--ease-reveal);
+}
+.reveal-line.is-in > span {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Live status dot — genuine functional indicator, not decoration      */
+/* ------------------------------------------------------------------ */
 @keyframes status-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
+  50% { opacity: 0.3; }
 }
-
 .status-dot {
   animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pinned chapter scene (scroll-scrub, desktop only)                   */
+/* ------------------------------------------------------------------ */
+.chapter-scene {
+  height: calc(var(--chapters, 1) * 100vh);
+  position: relative;
+}
+.chapter-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+.chapter-frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.65s var(--ease-reveal), transform 0.85s var(--ease-reveal);
+  transform: translateY(26px);
+  pointer-events: none;
+}
+.chapter-frame.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.chapter-frame.is-done {
+  opacity: 0;
+  transform: translateY(-26px);
+}
+
+@media (max-width: 860px), (prefers-reduced-motion: reduce) {
+  .chapter-scene {
+    height: auto;
+  }
+  .chapter-pin {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+  .chapter-frame {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    padding: 2.5rem 0;
+  }
+  .chapter-frame + .chapter-frame {
+    border-top: 1px solid #202326;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -104,6 +193,204 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal-line > span {
+    transform: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Lead-trailers reveal system (IO-driven, transform/opacity only)     */
+/* ------------------------------------------------------------------ */
+.ltr {
+  --reveal-delay: 0ms;
+  --ltr-stagger: 70ms;
+  --i: 0;
+}
+
+.ltr-fade {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease-reveal) var(--reveal-delay),
+              transform 0.9s var(--ease-reveal) var(--reveal-delay);
+}
+.ltr-rise {
+  opacity: 0;
+  transform: translateY(46px);
+  transition: opacity 1.05s var(--ease-reveal) var(--reveal-delay),
+              transform 1.05s var(--ease-reveal) var(--reveal-delay);
+}
+.ltr.scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.85s var(--ease-reveal) var(--reveal-delay),
+              transform 0.85s var(--ease-reveal) var(--reveal-delay);
+}
+.ltr-line {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: opacity 0.7s var(--ease-reveal) var(--reveal-delay),
+              transform 0.9s var(--ease-reveal) var(--reveal-delay);
+}
+
+/* Staggered variant: direct children use computed delay from --i */
+.ltr-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s var(--ease-reveal) calc(var(--reveal-delay) + var(--i, 0) * var(--ltr-stagger)),
+              transform 0.8s var(--ease-reveal) calc(var(--reveal-delay) + var(--i, 0) * var(--ltr-stagger));
+}
+.ltr-stagger > *:nth-child(1) { --i: 0; }
+.ltr-stagger > *:nth-child(2) { --i: 1; }
+.ltr-stagger > *:nth-child(3) { --i: 2; }
+.ltr-stagger > *:nth-child(4) { --i: 3; }
+.ltr-stagger > *:nth-child(5) { --i: 4; }
+.ltr-stagger > *:nth-child(6) { --i: 5; }
+.ltr-stagger > *:nth-child(7) { --i: 6; }
+.ltr-stagger > *:nth-child(8) { --i: 7; }
+.ltr-stagger > *:nth-child(9) { --i: 8; }
+.ltr-stagger > *:nth-child(10) { --i: 9; }
+.ltr-stagger > *:nth-child(11) { --i: 10; }
+.ltr-stagger > *:nth-child(12) { --i: 11; }
+
+.ltr-in.ltr-fade,
+.ltr-in.ltr-rise,
+.ltr-in.ltr-scale,
+.ltr-in.ltr-line {
+  opacity: 1;
+  transform: none;
+}
+.ltr-in.ltr-stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Thread — SVG path drawing                                           */
+/* ------------------------------------------------------------------ */
+.thread-path {
+  fill: none;
+  stroke: #E8A33D;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2600;
+  stroke-dashoffset: 2600;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+.thread-wrap.ltr-in .thread-path {
+  stroke-dashoffset: 0;
+}
+.thread-dot {
+  fill: #E8A33D;
+  opacity: 0;
+  transition: opacity 0.4s ease 2.4s;
+}
+.thread-wrap.ltr-in .thread-dot {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .thread-path {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .thread-dot {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .ltr-fade, .ltr-rise, .ltr-scale, .ltr-line, .ltr-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Chart — manual vs system                                            */
+/* ------------------------------------------------------------------ */
+.chart-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chart-line-manual {
+  stroke: #C1503B;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
+}
+.chart-line-auto {
+  stroke: #E8A33D;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.9s;
+}
+.chart-wrap.ltr-in .chart-line-manual,
+.chart-wrap.ltr-in .chart-line-auto {
+  stroke-dashoffset: 0;
+}
+.chart-fill {
+  opacity: 0;
+  transition: opacity 1.2s ease 1.4s;
+}
+.chart-wrap.ltr-in .chart-fill {
+  opacity: 1;
+}
+.chart-dot {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.chart-wrap.ltr-in .chart-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+.chart-grid {
+  stroke: #1C1F22;
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chart-line-manual, .chart-line-auto, .chart-fill, .chart-dot {
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Marquee                                                             */
+/* ------------------------------------------------------------------ */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-x 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Grain overlay — fixed, pointer-events none                          */
+/* ------------------------------------------------------------------ */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.028;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
 .text-balance {

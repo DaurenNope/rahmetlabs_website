@@ -1,5 +1,5 @@
 import '../globals.css';
-import { Onest, IBM_Plex_Mono } from 'next/font/google';
+import { Onest, IBM_Plex_Mono, Fraunces } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { locales, htmlLang, isValidLocale } from '../../lib/locales';
 import { getDictionary } from '../../lib/content';
@@ -17,8 +17,16 @@ const onest = Onest({
 
 const plexMono = IBM_Plex_Mono({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   variable: '--font-plex-mono',
+  display: 'swap',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -38,7 +46,7 @@ export async function generateMetadata({ params }) {
 
   return {
     metadataBase: new URL(siteUrl),
-    title: { default: meta.title, template: `%s | Rahmet Labs` },
+    title: { default: meta.title, template: '%s | Rahmet Labs' },
     description: meta.description,
     keywords: meta.keywords,
     alternates: {
@@ -82,10 +90,7 @@ export default async function LocaleLayout({ children, params }) {
     logo: `${siteUrl}/favicon.svg`,
     description: dict.facts.whatWeDo,
     areaServed: ['Kazakhstan', 'Central Asia', 'Europe', 'Gulf Cooperation Council'],
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'KZ',
-    },
+    address: { '@type': 'PostalAddress', addressCountry: 'KZ' },
     sameAs: ['https://t.me/RahmetLabs'],
     contactPoint: [
       {
@@ -107,14 +112,15 @@ export default async function LocaleLayout({ children, params }) {
   };
 
   return (
-    <html lang={htmlLang[locale]} className={`${onest.variable} ${plexMono.variable}`}>
+    <html lang={htmlLang[locale]} className={`${onest.variable} ${plexMono.variable} ${fraunces.variable}`}>
       <body className="bg-void font-sans text-ink antialiased">
         <JsonLd data={organizationJsonLd} />
         <SmoothScroll>
           <SiteChrome locale={locale} nav={dict.nav} />
-          <main className="pt-[68px]">{children}</main>
+          <main>{children}</main>
           <Footer locale={locale} footer={dict.footer} nav={dict.nav} />
         </SmoothScroll>
+        <div className="grain-overlay" aria-hidden="true" />
       </body>
     </html>
   );

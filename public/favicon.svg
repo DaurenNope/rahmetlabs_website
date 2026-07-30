@@ -1,19 +1,16 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="rhGradient" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0B1020"/>
-      <stop offset="100%" stop-color="#5B1D72"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height  ="512" rx="96" fill="url(#rhGradient)"/>
-  <g fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2">
-    <path d="M40 120h432M40 392h432" />
-    <path d="M96 60v392M416 60v392" />
+  <rect width="512" height="512" rx="0" fill="#F5F3EE"/>
+  <!-- the thread: a hand-drawn line resolving from scribble into one clean stroke -->
+  <g fill="none" stroke="#1C1A16" stroke-linecap="round" stroke-linejoin="round">
+    <!-- scribble phase -->
+    <path d="M96 320c14-46 8-84 24-96s30 30 8 44 28 42 40 4 22-50 34-14 34 62 44 18" stroke-width="10" opacity="0.28"/>
+    <!-- clean resolving thread -->
+    <path d="M96 384c80 0 96-136 172-136 60 0 66 60 122 60 34 0 62-18 66-48" stroke-width="14"/>
+    <!-- amber knot at origin -->
+    <circle cx="100" cy="384" r="16" fill="#C2851F" stroke="none"/>
+    <!-- terminal arrowhead -->
+    <path d="M436 236l22-24 4 32-32-4 6-4z" fill="#1C1A16" stroke="none"/>
   </g>
-  <g fill="white" font-family="'Inter', 'Segoe UI', 'Arial', sans-serif" font-weight="700" text-anchor="middle">
-    <text x="256" y="250" font-size="126" letter-spacing="14">RAHMET</text>
-    <text x="256" y="350" font-size="84" letter-spacing="28" fill="#F4B5FF">LABS</text>
-  </g>
-  <rect x="156" y="374" width="200" height="10" rx="5" fill="#F054A6"/>
+  <!-- monogram -->
+  <text x="256" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="104" fill="#1C1A16" letter-spacing="2">RL</text>
 </svg>
-

@@ -1,0 +1,130 @@
+'use client';
+
+/**
+ * ThreadChapters — pinned publisher. Three story chapters scrub past as the
+ * user scrolls 300vh; each chapter is a huge editorial statement with an
+ * amber rule that grows across it. Falls back to stacked sections on mobile
+ * and reduced-motion.
+ */
+
+import { useEffect, useRef, useState } from 'react';
+
+const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+export default function ThreadChapters({ chapters }) {
+  const rootRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 860px)').matches;
+    setReduced(isReduced || isMobile);
+    if (isReduced || isMobile) return;
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const el = rootRef.current;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const total = el.offsetHeight - window.innerHeight;
+          const p = clamp01(-rect.top / Math.max(1, total));
+          const idx = Math.min(chapters.length - 1, Math.floor(p * chapters.length));
+          setActive((prev) => (prev === idx ? prev : idx));
+        }
+        ticking = false;
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [chapters.length]);
+
+  /* -------- mobile / reduced-motion: stacked -------- */
+  if (reduced) {
+    return (
+      <section aria-label="Story" className="relative">
+        {chapters.map((ch, i) => (
+          <article key={ch.key} className="mx-auto max-w-content px-5 py-16 md:px-10">
+            <div className="flex items-start gap-6">
+              <span className="mt-2 font-serif text-6xl italic leading-none text-amber/90">{ch.key}</span>
+              <div>
+                <h2 className="mb-5 text-subhead font-bold text-ink md:text-headline">{ch.title}</h2>
+                <p className="mb-3 max-w-[58ch] text-[1.02rem] leading-relaxed text-ink-muted">{ch.lead}</p>
+                <p className="serif-accent text-[1.02rem] text-amber">{ch.detail}</p>
+              </div>
+            </div>
+            {i < chapters.length - 1 && <div className="mt-14 h-px w-full bg-hairline/60" aria-hidden="true" />}
+          </article>
+        ))}
+      </section>
+    );
+  }
+
+  /* -------- desktop: pinned scrub -------- */
+  return (
+    <section
+      ref={rootRef}
+      aria-label="Story"
+      className="chapter-scene relative"
+      style={{ '--chapters': chapters.length }}
+    >
+      <div className="chapter-pin">
+        <div className="pointer-events-none absolute inset-y-0 left-5 hidden w-px bg-hairline/50 md:left-10 md:block" aria-hidden="true" />
+
+        {chapters.map((ch, i) => {
+          const state = i === active ? 'is-active' : i < active ? 'is-done' : '';
+          return (
+            <div key={ch.key} className={`chapter-frame ${state}`}>
+              <div className="mx-auto grid w-full max-w-content grid-cols-12 items-center gap-8 px-5 md:px-10 lg:px-16">
+                {/* oversized index numeral */}
+                <div className="col-span-12 md:col-span-3">
+                  <span
+                    className="block font-serif italic leading-[0.85] text-amber"
+                    style={{ fontSize: 'clamp(6rem, 16vw, 13rem)', fontWeight: 500 }}
+                    aria-hidden="true"
+                  >
+                    {ch.key}
+                  </span>
+                </div>
+
+                <div className="col-span-12 md:col-span-8 md:col-start-5">
+                  {/* amber rule growing across */}
+                  <div
+                    className="mb-8 h-[3px] bg-amber transition-all duration-1000 ease-reveal"
+                    style={{ width: i === active ? '7rem' : '2rem' }}
+                    aria-hidden="true"
+                  />
+                  <h2 className="mb-7 max-w-[16ch] text-headline font-bold text-ink">
+                    {ch.title}
+                  </h2>
+                  <p className="mb-4 max-w-[58ch] text-[1.08rem] leading-[1.75] text-ink-muted">
+                    {ch.lead}
+                  </p>
+                  <p className="serif-accent text-[1.1rem] text-amber">{ch.detail}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* progress meter */}
+        <div className="absolute bottom-10 right-6 flex flex-col items-end gap-2 md:right-10" aria-hidden="true">
+          {chapters.map((ch, i) => (
+            <span
+              key={ch.key}
+              className={`font-mono text-[0.62rem] tracking-[0.2em] transition-colors duration-500 ${
+                i === active ? 'text-amber' : 'text-ink-faint'
+              }`}
+            >
+              {ch.key}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

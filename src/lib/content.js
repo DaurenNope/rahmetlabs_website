@@ -1,33 +1,33 @@
-// Rahmet Labs — site content, curated per PRODUCT.md (no fabricated stats,
-// no invented testimonials, no invented pricing). Real, verifiable work is
-// marked status: 'live' and carries a real external link.
+// Rahmet Labs — site content, curated per PRODUCT.md: no fabricated stats,
+// no invented testimonials, no invented metrics. Live work carries real links.
+// Languages: EN / RU / KZ.
 
 const en = {
   meta: {
     home: {
       title: 'Rahmet Labs — Automation, AI & Product Engineering Studio',
       description:
-        'Rahmet Labs turns manual operations into automated systems: workflow automation, AI agents, web & mobile products, and Web3 infrastructure — built and operated by one accountable team.',
-      keywords: ['automation studio', 'AI development', 'business automation', 'Next.js agency', 'n8n experts', 'web3 development', 'full-stack development'],
+        'Rahmet Labs replaces manual operations with automation, AI systems, and engineered products — built and run by one accountable team, from Almaty to the Gulf.',
+      keywords: ['automation studio', 'AI development', 'business automation', 'Next.js agency', 'web3 development', 'full-stack development'],
     },
     services: {
       title: 'Services — Automation, AI, Web, Mobile & Web3 | Rahmet Labs',
-      description: 'Six functions, one accountable team: automation & ops, AI systems, web & product, mobile, backend & data, and Web3 & blockchain.',
-      keywords: ['automation services', 'AI agents', 'web development services', 'mobile app development', 'smart contract development'],
+      description: 'Five functions, one accountable team: business automation, AI agents, web & mobile products, backend & data, and delivery & operations.',
+      keywords: ['automation services', 'AI agents', 'web development services', 'mobile app development'],
     },
     portfolio: {
-      title: 'Work — Systems We\u2019ve Shipped | Rahmet Labs',
-      description: 'A sample of automation, AI, web, and Web3 systems Rahmet Labs has shipped — live links included where available.',
-      keywords: ['portfolio', 'case studies', 'automation projects', 'web3 projects'],
+      title: 'Work — Systems We Have Shipped | Rahmet Labs',
+      description: 'A sample of automation, AI, web, and Web3 systems Rahmet Labs has shipped — with live links where they exist.',
+      keywords: ['portfolio', 'automation projects', 'AI projects', 'web3 projects'],
     },
     about: {
-      title: 'About Rahmet Labs — Who Builds Your Systems',
+      title: 'About Rahmet Labs — The Team That Builds Your Systems',
       description: 'Rahmet Labs is a small senior team building automation, AI, web/mobile, and Web3 systems — the people who scope your project are the people who build it.',
-      keywords: ['about rahmet labs', 'automation team', 'product studio'],
+      keywords: ['about rahmet labs', 'product studio', 'automation team'],
     },
     contact: {
       title: 'Contact Rahmet Labs — Start a Project',
-      description: 'Tell Rahmet Labs what\u2019s manual today. Reach us by WhatsApp, Telegram, email, or a short project brief.',
+      description: 'Tell us what is manual today. Reach Rahmet Labs directly by WhatsApp, Telegram, or email.',
       keywords: ['contact automation studio', 'start a project', 'hire automation team'],
     },
   },
@@ -36,118 +36,127 @@ const en = {
     whatWeDo:
       'Rahmet Labs is a full-stack technology studio that builds business automation, AI systems, web and mobile products, and Web3 infrastructure for companies replacing manual operations with software.',
     whoFor:
-      'Founders, operations leaders, and technical teams who need a single accountable partner instead of separate freelancers for strategy, automation, and engineering.',
+      'Founders, operations leaders, and technical teams who need one accountable partner instead of separate freelancers for strategy, automation, and engineering.',
     basedIn: 'Rahmet Labs is based in Kazakhstan and works with clients across Central Asia, Europe, and the Gulf.',
   },
 
   nav: {
     wordmark: 'RAHMET LABS',
-    ticker: 'RHMT',
-    functions: [
-      { key: 'F1', label: 'SERVICES', href: '/services' },
-      { key: 'F2', label: 'WORK', href: '/portfolio' },
-      { key: 'F3', label: 'ABOUT', href: '/about' },
-      { key: 'F4', label: 'CONTACT', href: '/contact' },
+    closeWordmark: 'RL',
+    links: [
+      { label: 'Work', href: '/portfolio' },
+      { label: 'Services', href: '/services' },
+      { label: 'About', href: '/about' },
     ],
-    start: { key: 'F5', label: 'START A PROJECT', href: '/contact' },
-    menuLabel: 'MENU',
-    closeLabel: 'CLOSE',
+    cta: 'Start a project',
+    menuLabel: 'Menu',
+    closeLabel: 'Close',
   },
 
   hero: {
-    kicker: 'Overview',
-    statusLabel: 'LIVE',
-    headline: 'Chaos in. One system out.',
+    kicker: 'Rahmet Labs — Automation, AI & Product Engineering',
+    line1: 'Your business',
+    line2: 'is drowning in',
+    line2Accent: 'manual work.',
+    line3: 'We build',
+    line3Accent: 'the systems',
+    line3Tail: 'that end it.',
     subheadline:
-      'Rahmet Labs replaces the spreadsheets, copy-paste, and follow-up threads with automation, AI, and software that actually holds together — then we stay on to run it.',
-    ctaPrimary: 'START A PROJECT',
-    ctaSecondary: 'SEE THE WORK',
-    comparisonLabel: 'SAME FIVE FUNCTIONS \u2014 BEFORE AND AFTER',
-    manualLabel: 'MANUAL',
-    automatedLabel: 'AUTOMATED',
-    rows: [
-      { fn: 'Customer Support', manualStatus: 'QUEUED', manualDetail: '6H BACKLOG', autoStatus: 'RESOLVED', autoDetail: 'LIVE' },
-      { fn: 'Lead Follow-up', manualStatus: 'MISSED', manualDetail: 'NO REPLY 2D', autoStatus: 'SENT', autoDetail: 'INSTANT' },
-      { fn: 'Invoicing', manualStatus: 'PENDING', manualDetail: 'RECONCILED FRI', autoStatus: 'CLEARED', autoDetail: 'CONTINUOUS' },
-      { fn: 'Reporting', manualStatus: 'STALE', manualDetail: 'UPDATED 3D AGO', autoStatus: 'SYNCED', autoDetail: 'REAL-TIME' },
-      { fn: 'Onboarding', manualStatus: 'STUCK', manualDetail: 'EMAIL THREAD', autoStatus: 'PROVISIONED', autoDetail: 'AUTO' },
-    ],
-    mergeLabel: 'ONE SYSTEM.',
-    mergeDetail: 'Every row above becomes one dashboard your team actually opens.',
+      'One senior team designs, ships, and operates the automation and AI that replace your spreadsheets, copy-paste routines, and follow-up threads — software that runs the busywork so your people run the business.',
+    ctaPrimary: 'Start a project',
+    ctaSecondary: 'See the work',
+    supportingLabel: 'One accountable team · EN / RU / KZ',
+    supportingChannels: 'WhatsApp · Telegram · Email',
+    scrollLabel: 'Scroll',
   },
 
-  services: {
-    kicker: 'Services',
-    heading: 'Six functions. One accountable team.',
+  thread: {
+    chapters: [
+      {
+        key: '01',
+        title: 'The work is invisible — until it breaks.',
+        lead: 'Someone copies numbers into a spreadsheet. Someone remembers to send the invoice. Someone checks the tender portal at midnight. None of it is in a system; all of it is in somebody’s head.',
+        detail: 'Hiring more people grows the chaos, not the capacity.',
+      },
+      {
+        key: '02',
+        title: 'It doesn’t need heroic effort. It needs a system.',
+        lead: 'Most of what your team does by hand is a repeatable pattern: watch, compare, copy, decide, send. Repeatable patterns are exactly what software is for.',
+        detail: 'The issue is never effort — it’s architecture.',
+      },
+      {
+        key: '03',
+        title: 'That system is what we build.',
+        lead: 'Automation that runs itself, AI that reads and decides, products your clients actually use — designed, shipped, and operated by one accountable team.',
+        detail: 'Scroll on. This is the whole pitch.',
+      },
+    ],
+  },
+
+  whatWeBuild: {
+    kicker: 'What we build',
+    heading: 'One studio, every layer of the system.',
     subheading:
-      'We don\u2019t hand off a spec and disappear. Each function ships as working software, wired into the others, with us on call after launch.',
-    ctaLabel: 'SCOPE YOUR PROJECT',
-    functions: [
+      'Strategy, automation, AI, and engineering under one roof — so nothing gets lost between a consultant’s deck and a developer’s backlog.',
+    categories: [
       {
-        code: 'FN01',
-        title: 'Automation & Ops',
-        description: 'Workflow automation that connects the tools you already run, so work moves without someone copy-pasting it forward.',
-        capabilities: ['Process automation & orchestration', 'System integrations (CRM, ERP, finance, support)', 'Internal tools & admin panels', 'Monitoring, alerting, audit trails'],
+        id: 'automation',
+        title: 'Business Automation',
+        tagline: 'Kill the copy-paste',
+        description:
+          'Workflows that run without a human in the loop: approvals, invoicing, reporting, tender monitoring, CRM↔ERP sync.',
+        capabilities: ['Workflow automation (n8n, Make)', 'System & API integration', 'Ops dashboards & alerting', 'Browser & data automation'],
       },
       {
-        code: 'FN02',
+        id: 'ai',
         title: 'AI Systems',
-        description: 'AI agents and assistants that do real work inside your operation \u2014 answering, routing, drafting, deciding \u2014 not a chatbot bolted onto a landing page.',
-        capabilities: ['Support & sales copilots', 'Document and data extraction', 'Multi-step AI agents', 'Model integration & evaluation'],
+        tagline: 'AI that reads, decides, acts',
+        description:
+          'AI wired into real operations — agents, RAG over your own data, content pipelines — not a demo chatbot.',
+        capabilities: ['AI agents & assistants', 'RAG over private data', 'Content generation pipelines', 'Matching, scoring & routing'],
       },
       {
-        code: 'FN03',
-        title: 'Web & Product',
-        description: 'Full-stack web products on Next.js and React \u2014 from a single launch page to a multi-tenant dashboard \u2014 shipped fast and built to keep shipping.',
-        capabilities: ['Next.js / React applications', 'Marketing sites & landing systems', 'SaaS dashboards & internal tools', 'CMS & content platforms'],
+        id: 'product',
+        title: 'Web & Mobile Products',
+        tagline: 'Software clients actually use',
+        description:
+          'From multilingual marketing systems to full SaaS platforms and mobile apps — designed, built, and shipped end to end.',
+        capabilities: ['Web apps & SaaS platforms', 'Mobile apps (React Native)', 'CMS-driven sites & editors', 'Booking & member areas'],
       },
       {
-        code: 'FN04',
-        title: 'Mobile',
-        description: 'Native-feeling apps for iOS and Android from one React Native codebase, wired into the same backend as everything else you run.',
-        capabilities: ['React Native cross-platform apps', 'App store release & maintenance', 'Push, offline, native integrations', 'Shared backend with your web product'],
-      },
-      {
-        code: 'FN05',
+        id: 'backend',
         title: 'Backend & Data',
-        description: 'The infrastructure underneath everything else \u2014 APIs, databases, and data pipelines that stay observable instead of becoming a black box.',
-        capabilities: ['REST / GraphQL API design', 'Database architecture', 'Data pipelines & ETL', 'Cloud infrastructure & DevOps'],
+        tagline: 'The plumbing that holds',
+        description:
+          'APIs, databases, and infrastructure that keep the system observable, secure, and boringly reliable.',
+        capabilities: ['API design & integration', 'Postgres / Supabase data layers', 'Auth, roles & permissions', 'Monitoring & logging'],
       },
       {
-        code: 'FN06',
+        id: 'web3',
         title: 'Web3 & Blockchain',
-        description: 'Smart contracts and on-chain infrastructure for teams that need it correct, tested, and monitored after deploy \u2014 not shipped and forgotten.',
-        capabilities: ['Smart contract development (Solidity)', 'EVM chains \u2014 Ethereum, BSC, Arbitrum', 'Token & credentialing systems', 'Contract testing & live monitoring'],
+        tagline: 'On-chain, without drama',
+        description:
+          'Smart contracts and on-chain automation with the same engineering discipline as the rest of the stack.',
+        capabilities: ['Solidity contracts', 'Multi-chain deployment (ETH, BSC, Arbitrum)', 'Multi-sig pipelines', 'On-chain monitoring'],
       },
-    ],
-    engagementHeading: 'How we work together',
-    engagementSubheading: 'No published price list \u2014 every build has a different shape. Three ways to start:',
-    engagements: [
-      { title: 'Sprint', description: 'A scoped, fixed-length build for one function \u2014 a bot, an integration, a single product surface.', bestFor: 'One clear problem, one clear deadline.' },
-      { title: 'Build', description: 'A full product or automation system shipped in stages, with working software at the end of each stage.', bestFor: 'A new product or a system replacing several manual tools at once.' },
-      { title: 'Partner', description: 'An embedded, ongoing relationship \u2014 we keep building, operating, and improving your systems as your business changes.', bestFor: 'Teams who want this to stay someone\u2019s job, permanently.' },
-    ],
-    faqHeading: 'Questions we get before the first call',
-    faq: [
-      { q: 'How fast can you start?', a: 'Most Sprint engagements start within a week of a scoping call. Build and Partner engagements start once we\u2019ve mapped the system together \u2014 usually one to two weeks.' },
-      { q: 'Do we own what you build?', a: 'Yes. Repositories, infrastructure access, and documentation transfer to you from day one. Nothing is held in our accounts.' },
-      { q: 'What if we only need one small thing automated?', a: 'That\u2019s exactly what a Sprint is for \u2014 small, working, and shipped. A good way to test the relationship before a larger Build.' },
     ],
   },
 
   work: {
     kicker: 'Selected work',
-    heading: 'What we’ve built.',
-    subheading: 'Real systems, live today — most of the links below actually work. Click through.',
-    statusLive: 'LIVE',
-    statusShipped: 'SHIPPED',
-    viewLabel: 'OPEN',
+    heading: 'Systems we’ve shipped.',
+    subheading: 'Real, verifiable work — live links wherever they exist.',
+    archiveLink: 'All work',
+    statusLive: 'Live',
+    statusShipped: 'Shipped',
+    viewLabel: 'Open',
     positions: [
       {
-        code: 'POS-01',
+        code: '01',
         title: 'Education Platform Suite',
         type: 'Web & Product',
-        description: 'Three production sites for university and education clients \u2014 admissions, program pages, and CMS-driven content built for editors who aren\u2019t developers.',
+        description:
+          'Three production sites for university and education clients — admissions, program pages, and CMS-driven content built for editors who aren’t developers.',
         tech: ['Next.js', 'React', 'CMS'],
         status: 'live',
         links: [
@@ -157,295 +166,416 @@ const en = {
         ],
       },
       {
-        code: 'POS-02',
+        code: '02',
         title: 'Beyond Lines',
         type: 'AI & Automation',
-        description: 'An autonomous content intelligence pipeline scanning 60+ sources across crypto, security, and AI, then curating and publishing through a Telegram bot and web dashboard.',
+        description:
+          'An autonomous content-intelligence pipeline scanning 60+ sources across crypto, security, and AI, then curating and publishing through a Telegram bot and web dashboard.',
         tech: ['Next.js', 'AI curation', 'Telegram Bot'],
         status: 'live',
         links: [{ label: 'beyondlines-web.vercel.app', url: 'https://beyondlines-web.vercel.app' }],
       },
       {
-        code: 'POS-03',
+        code: '03',
         title: 'Unhireable',
         type: 'AI & Automation',
-        description: 'A desktop job-search system that scrapes hh.kz, Wellfound, and LinkedIn, matches roles with AI, and generates tailored resumes automatically.',
-        tech: ['Desktop App', 'AI matching', 'Multi-platform scraping'],
+        description:
+          'A desktop job-search system that scrapes hh.kz, Wellfound, and LinkedIn, matches roles with AI, and generates tailored résumés automatically.',
+        tech: ['Desktop app', 'AI matching', 'Multi-platform scraping'],
         status: 'live',
         links: [{ label: 'unhireable-website.vercel.app', url: 'https://unhireable-website.vercel.app' }],
       },
       {
-        code: 'POS-04',
+        code: '04',
         title: 'Multi-Platform Bot Suite',
         type: 'Automation',
-        description: 'A shared automation layer behind WhatsApp, Telegram, and Twitter \u2014 one routing brain, three channels, no duplicated logic to maintain.',
+        description:
+          'A shared automation layer behind WhatsApp, Telegram, and Twitter — one routing brain, three channels, no duplicated logic to maintain.',
         tech: ['Bot APIs', 'Automation', 'AI routing'],
         status: 'shipped',
       },
       {
-        code: 'POS-05',
+        code: '05',
         title: 'Smart Contract Automation Suite',
         type: 'Web3',
-        description: 'Solidity contracts across BSC, Ethereum, and Arbitrum with automated test coverage, multi-sig deploy pipelines, and live on-chain monitoring.',
+        description:
+          'Solidity contracts across BSC, Ethereum, and Arbitrum with automated test coverage, multi-sig deploy pipelines, and live on-chain monitoring.',
         tech: ['Solidity', 'Hardhat', 'Multi-sig'],
         status: 'shipped',
       },
       {
-        code: 'POS-06',
+        code: '06',
         title: 'Tender Automation Platform',
         type: 'Automation',
-        description: 'A custom admin panel paired with browser automation that monitors public tenders, drafts replies, and hands off fulfillment without manual tracking.',
+        description:
+          'A custom admin panel paired with browser automation that monitors public tenders, drafts replies, and hands off fulfillment without manual tracking.',
         tech: ['Playwright', 'AI agents', 'Admin panel'],
         status: 'shipped',
       },
       {
-        code: 'POS-07',
-        title: 'CRM \u2194 ERP Automation Bridge',
+        code: '07',
+        title: 'CRM ↔ ERP Automation Bridge',
         type: 'Automation',
-        description: 'A sync layer joining finance, CRM, and support stacks that previously required manual data entry between systems.',
+        description:
+          'A sync layer joining finance, CRM, and support stacks that previously required manual data entry between systems.',
         tech: ['n8n', 'Postgres', 'REST API'],
         status: 'shipped',
       },
       {
-        code: 'POS-08',
+        code: '08',
         title: 'Multilingual Landing System',
         type: 'Web & Product',
-        description: 'A repeatable landing-page framework used to launch dozens of localized pages for startups and public programs, wired to shared analytics and CRM.',
+        description:
+          'A repeatable landing-page framework used to launch dozens of localized pages for startups and public programs, wired to shared analytics and CRM.',
         tech: ['Next.js', 'Vercel', 'Analytics'],
         status: 'shipped',
       },
     ],
     contactPrompt: 'Have a similar system in mind?',
-    contactCta: 'START A PROJECT',
+    contactCta: 'Start a project',
   },
 
-  process: {
-    kicker: 'Process',
-    heading: 'How a build actually runs',
-    subheading: 'Four stages. Every stage ends with something you can see running, not a slide deck.',
-    steps: [
-      { code: '01', title: 'Scan', command: 'rahmet scan --target=ops', detail: 'We map what\u2019s actually happening today \u2014 the tools, the manual steps, the handoffs nobody documented \u2014 before proposing anything.' },
-      { code: '02', title: 'Design', command: 'rahmet design --output=architecture', detail: 'We architect the system: what gets automated, what gets built, what stays human, and how it all talks to each other.' },
-      { code: '03', title: 'Ship', command: 'rahmet ship --stage=1', detail: 'We build in stages, each one a working piece of software you can use \u2014 not a spec waiting on the next invoice.' },
-      { code: '04', title: 'Operate', command: 'rahmet operate --watch', detail: 'We stay on. Systems get monitored, adjusted, and extended as your business changes, instead of degrading the day we leave.' },
+  // Terminal comparison — illustrative model of a support inbox, not a client metric.
+  comparison: {
+    kicker: 'Manual vs system',
+    heading: 'Same inbox. Two ways to run it.',
+    subheading: 'An illustrative rebuild of a typical support week — what changes when a system owns the queue.',
+    note: 'Illustrative model, not a client metric.',
+    seriesManual: 'Manual way',
+    seriesAuto: 'With a system',
+    resolutionLabel: 'avg. response time',
+    resolutionManual: '~14 h',
+    resolutionAuto: '~11 min',
+    beats: [
+      { title: 'Message arrives', manual: 'Sits in a shared inbox until someone’s free.', auto: 'Classified and routed in seconds, 24/7.' },
+      { title: 'Routine question', manual: 'Copy-paste the same answer for the 40th time.', auto: 'Answered instantly from your own knowledge base.' },
+      { title: 'Edge case', manual: 'Bounced between three people, twice.', auto: 'Escalated to one owner with full context attached.' },
+      { title: 'Reporting', manual: 'Numbers assembled Friday night, if at all.', auto: 'A live view your team actually opens on Monday.' },
     ],
   },
 
-  why: {
-    kicker: 'Why us',
-    heading: 'Why teams choose Rahmet Labs',
-    subheading: 'Not because we\u2019re the biggest. Because of how we work.',
+  process: {
+    kicker: 'How it works',
+    heading: 'From first call to running system.',
+    subheading: 'Four stages. Every stage ends with something you can see working — not a slide deck.',
+    stages: [
+      {
+        code: '01',
+        title: 'Scan',
+        duration: '1–2 weeks',
+        description:
+          'We map what actually happens today — the tools, the manual steps, the handoffs nobody documented — before proposing anything.',
+      },
+      {
+        code: '02',
+        title: 'Design',
+        duration: '1–2 weeks',
+        description:
+          'We architect the system: what gets automated, what gets built, what stays human, and how it all talks to each other.',
+      },
+      {
+        code: '03',
+        title: 'Build & ship',
+        duration: '2–8 weeks',
+        description:
+          'Working software in stages. Each stage is something you can test and use — a misunderstanding costs a week, not three months.',
+      },
+      {
+        code: '04',
+        title: 'Operate',
+        duration: 'Ongoing',
+        description:
+          'We stay on. Systems get monitored, adjusted, and extended as the business changes instead of degrading the day we leave.',
+      },
+    ],
+  },
+
+  principles: {
+    kicker: 'How we operate',
+    heading: 'Why teams stay with us.',
+    subheading: 'Not because we’re the biggest. Because of how the work gets done.',
     points: [
-      { title: 'One accountable team', detail: 'No handoffs between a strategy shop, a dev shop, and an ops consultant. The people who scope the system are the people who build and run it.' },
-      { title: 'You own everything', detail: 'Repositories, infrastructure, and documentation transfer to you from day one. No dependency on us to keep the lights on.' },
-      { title: 'Ship in stages, not one big reveal', detail: 'You see working software at every stage of a Build, so a misunderstanding costs a week, not three months.' },
-      { title: 'We stay after launch', detail: 'Automation and AI systems drift as your business changes. We operate and adjust them instead of disappearing after handover.' },
+      { title: 'One accountable team', detail: 'No relay between a strategy shop, a dev shop, and an ops consultant. The people who scope your system are the people who build and run it.' },
+      { title: 'You own everything', detail: 'Repositories, infrastructure, and documentation transfer from day one. If we disappeared tomorrow, your systems would keep running.' },
+      { title: 'Working software at every step', detail: 'You see something real at each stage of a build — so drift in expectations costs days, not a quarter.' },
+      { title: 'We stay after launch', detail: 'Automation and AI drift as your business changes. We operate and adjust them instead of vanishing after handover.' },
     ],
   },
 
   about: {
     kicker: 'About',
-    heroHeading: 'A small senior team, not an account-management layer.',
-    heroSubheading:
-      'Rahmet Labs is a full-stack technology studio: automation, AI systems, web and mobile products, and Web3 infrastructure, delivered by the people who actually build it.',
+    heading: 'A small senior team, not an account-management layer.',
+    subheading:
+      'Rahmet Labs is a full-stack technology studio: automation, AI systems, web and mobile products, and Web3 infrastructure — delivered by the people who actually build it.',
     teamHeading: 'Who you work with',
-    teamIntro: 'We rotate a small group of senior people across every engagement instead of staffing you with juniors and a project manager.',
+    teamIntro:
+      'We put a small group of senior people on every engagement instead of staffing you with juniors and a project manager.',
     team: [
-      { name: 'Core builders', role: 'Product \u00b7 Automation \u00b7 Web3', bio: 'Senior engineers who scope, build, and ship the system end to end \u2014 the people in your kickoff call are the people writing the code.' },
-      { name: 'AI & automation partners', role: 'AI Ops \u00b7 Integrations', bio: 'Specialists in workflow automation, LLM integration, and systems orchestration who plug in for the automation and AI portions of a build.' },
-      { name: 'Design & delivery ring', role: 'Design \u00b7 QA \u00b7 Launch', bio: 'The people who make sure what ships is usable, tested, and ready for your team on day one \u2014 not a prototype dressed up for a demo.' },
+      {
+        name: 'Core builders',
+        role: 'Product · Automation · Web3',
+        bio: 'Senior engineers who scope, build, and ship the system end to end — the people on your kickoff call are the people writing the code.',
+      },
+      {
+        name: 'AI & automation partners',
+        role: 'AI Ops · Integrations',
+        bio: 'Specialists in workflow automation, LLM integration, and systems orchestration who plug in for the automation and AI portions of a build.',
+      },
+      {
+        name: 'Design & delivery ring',
+        role: 'Design · QA · Launch',
+        bio: 'The people who make sure what ships is usable, tested, and ready for your team on day one — not a prototype dressed up for a demo.',
+      },
     ],
     principlesHeading: 'How we operate',
-    principles: [
-      { title: 'Telemetry first', description: 'We wire monitoring and logging before we automate anything, so every workflow stays observable instead of becoming a black box.' },
-      { title: 'Design and code together', description: 'Product, design, and engineering sit in the same room. No backlog handoff between a design team and a dev team.' },
-      { title: 'Automation over headcount', description: 'When a workflow can run itself, we build it to run itself \u2014 so you scale without adding another layer of people to manage the manual steps.' },
-      { title: 'You own everything', description: 'Repos, infrastructure, and runbooks transfer on day one. If we disappeared tomorrow, your systems would keep running.' },
-    ],
     toolkitHeading: 'Stack we work in',
     toolkit: ['Next.js', 'React', 'React Native', 'Solidity', 'Hardhat', 'Supabase', 'Postgres', 'n8n', 'LangChain', 'OpenAI', 'Vercel', 'Playwright'],
-    ctaHeading: 'Ready to see your ops mapped out?',
-    ctaSubheading: 'Tell us what\u2019s manual today. We\u2019ll tell you what we\u2019d automate first.',
-    ctaPrimary: 'START A PROJECT',
-    ctaSecondary: 'SEE THE WORK',
+    ctaHeading: 'Talk to the people who’ll build it.',
+    ctaSubheading: 'A 15-minute call with senior staff — not a sales rep.',
+    ctaPrimary: 'Start a project',
+    ctaSecondary: 'See the work',
   },
+
+  servicesPage: {
+    kicker: 'Services',
+    heading: 'Five functions. One accountable team.',
+    subheading: 'Everything below is a capability we run in production today — not a wish list.',
+    engagementHeading: 'Ways to work together',
+    engagement: [
+      { title: 'Project build', detail: 'A defined system, scoped and shipped in stages with a fixed cadence of reviews.' },
+      { title: 'Operational retainer', detail: 'We run and extend what we built — monitoring, adjustments, new features as the business evolves.' },
+      { title: 'Technical advisor', detail: 'Senior eyes on your architecture, hiring, and roadmap — a few days a month, no retainers of air.' },
+    ],
+    faqHeading: 'Common questions',
+    ctaHeading: 'Not sure which function you need?',
+    ctaSubheading: 'Describe the manual work that’s eating your week. We’ll tell you plainly what a system could do with it.',
+  },
+
+  faq: [
+    {
+      q: 'How quickly can we start?',
+      a: 'Usually within one to two weeks. A short call, a written scope of the first stage, and we begin. We don’t do three-month discovery phases.',
+    },
+    {
+      q: 'Do you work with our existing tools?',
+      a: 'Yes — that’s the point. We connect and automate around your CRM, ERP, and messengers first, and only replace what genuinely can’t be salvaged.',
+    },
+    {
+      q: 'What does a project typically cost?',
+      a: 'It depends on scope — a focused automation is a very different build from a full product. After one call we give a written estimate for a first stage you can actually use, so you never commit to a black box.',
+    },
+    {
+      q: 'Who owns the code and infrastructure?',
+      a: 'You do, from day one. Repos, cloud accounts, and documentation transfer to your team as part of delivery.',
+    },
+    {
+      q: 'What happens after launch?',
+      a: 'Most clients keep us on an operational retainer: monitoring, adjustments, and extensions as the business changes. If you prefer to run it yourself, we hand over with training and runbooks.',
+    },
+    {
+      q: 'Which languages can we work in?',
+      a: 'English, Russian, and Kazakh — calls, documentation, and the interfaces we ship.',
+    },
+  ],
 
   contact: {
     kicker: 'Contact',
-    heading: 'Open a channel.',
-    subheading: 'Tell us what\u2019s broken or slow. We\u2019ll reply from a real person, not a ticket queue.',
-    formHeading: 'Send a brief',
-    formNameLabel: 'NAME',
-    formContactLabel: 'EMAIL OR PHONE',
-    formProjectLabel: 'WHAT DO YOU NEED?',
-    formProjectOptions: ['Automation', 'AI system', 'Web / product', 'Mobile app', 'Web3', 'Not sure yet'],
-    formMessageLabel: 'BRIEF',
-    formMessagePlaceholder: 'What\u2019s manual today? What would you replace first?',
-    formSubmit: 'SEND VIA WHATSAPP',
-    directHeading: 'Or reach us directly',
+    heading: 'Tell us what’s manual today.',
+    subheading: 'A message, a call, or a voice note — whichever is fastest. A real person replies.',
+    channelsHeading: 'Reach us directly',
     channels: [
-      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062' },
-      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs' },
-      { id: 'email', label: 'Email', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com' },
+      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062', note: 'Fastest — usually same hour' },
+      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs', note: 'Same day' },
+      { id: 'email', label: 'Email', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com', note: 'Within 24 hours' },
     ],
-    responseNote: 'We read every message ourselves \u2014 no support ticket, no account manager relay.',
+    guideHeading: 'What happens next',
+    guide: [
+      { code: '01', title: 'You describe the manual work', detail: 'Two sentences are enough. We read everything ourselves — no ticket queue, no account manager relay.' },
+      { code: '02', title: 'We reply with a point of view', detail: 'What we’d automate first, what we’d leave alone, and what a first working stage could look like.' },
+      { code: '03', title: 'A 15-minute call with senior staff', detail: 'The people who would build your system, not a sales rep. If we’re not the right fit, we’ll say so.' },
+    ],
+    socialHeading: 'Elsewhere',
+    socials: [
+      { label: 'GitHub', href: 'https://github.com/rahmetlabs' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/company/rahmetlabs' },
+      { label: 'X', href: 'https://x.com/rahmetlabs' },
+    ],
+  },
+
+  cta: {
+    kicker: 'Start',
+    heading: 'Start with the manual work',
+    headingAccent: 'that eats your week.',
+    subheading:
+      'Tell us what your team still does by hand. We’ll reply with a plain answer: what a system could take over, what it would take, and what we’d build first.',
+    primary: 'Start a project',
+    whatsapp: 'WhatsApp us',
   },
 
   footer: {
-    tagline: 'Automation, AI, and product engineering \u2014 run as one system.',
-    quickLinksLabel: 'MAP',
-    locationNote: 'Based in Kazakhstan \u00b7 working with teams worldwide.',
-    copyrightPrefix: '\u00a9',
-    copyrightSuffix: 'Rahmet Labs.',
+    tagline: 'Automation, AI systems, and engineered products — built and run by one accountable team.',
+    mapLabel: 'Site',
+    contactLabel: 'Contact',
+    locationNote: 'Based in Kazakhstan · working with teams worldwide · EN / RU / KZ',
+    copyrightSuffix: 'Rahmet Labs. Built with the same care we put into client systems.',
   },
 };
 
 const ru = {
   meta: {
     home: {
-      title: 'Rahmet Labs \u2014 \u0441\u0442\u0443\u0434\u0438\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438, ИИ и \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432',
+      title: 'Rahmet Labs — студия автоматизации, ИИ и продуктовой разработки',
       description:
-        'Rahmet Labs \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0440\u0443\u0447\u043d\u044b\u0435 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u044b \u0432 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b: \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432, ИИ-\u0430\u0433\u0435\u043d\u0442\u044b, \u0432\u0435\u0431- \u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u0438 Web3-\u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u2014 \u043e\u0434\u043d\u043e\u0439 \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u0439.',
-      keywords: ['\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0431\u0438\u0437\u043d\u0435\u0441\u0430', 'ИИ \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430', 'Next.js \u0441\u0442\u0443\u0434\u0438\u044f', 'web3 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430', 'n8n \u044d\u043a\u0441\u043f\u0435\u0440\u0442\u044b'],
+        'Rahmet Labs заменяет ручные операции автоматикой, ИИ-системами и инженерными продуктами — проектирует, запускает и сопровождает одна ответственная команда.',
+      keywords: ['автоматизация бизнеса', 'разработка ИИ', 'ИИ-агенты', 'веб-разработка', 'web3 разработка'],
     },
     services: {
-      title: '\u0423\u0441\u043b\u0443\u0433\u0438 \u2014 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f, ИИ, \u0432\u0435\u0431, \u043c\u043e\u0431\u0430\u0439\u043b \u0438 Web3 | Rahmet Labs',
-      description: '\u0428\u0435\u0441\u0442\u044c \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439, \u043e\u0434\u043d\u0430 \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430: \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f, ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0432\u0435\u0431 \u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442, \u043c\u043e\u0431\u0430\u0439\u043b, \u0431\u044d\u043a\u0435\u043d\u0434 \u0438 \u0434\u0430\u043d\u043d\u044b\u0435, Web3 \u0438 \u0431\u043b\u043e\u043a\u0447\u0435\u0439\u043d.',
-      keywords: ['\u0443\u0441\u043b\u0443\u0433\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438', 'ИИ-\u0430\u0433\u0435\u043d\u0442\u044b', '\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0441\u0430\u0439\u0442\u043e\u0432', '\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0445 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0439'],
+      title: 'Услуги — автоматизация, ИИ, веб, мобайл и Web3 | Rahmet Labs',
+      description: 'Пять функций, одна ответственная команда: автоматизация бизнеса, ИИ-агенты, веб- и мобильные продукты, бэкенд и сопровождение.',
+      keywords: ['автоматизация процессов', 'ИИ-агенты', 'разработка веб-приложений', 'мобильные приложения'],
     },
     portfolio: {
-      title: '\u0420\u0430\u0431\u043e\u0442\u044b \u2014 \u0432\u043d\u0435\u0434\u0440\u0451\u043d\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b | Rahmet Labs',
-      description: '\u041f\u0440\u0438\u043c\u0435\u0440\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438, ИИ, \u0432\u0435\u0431 \u0438 Web3-\u0441\u0438\u0441\u0442\u0435\u043c, \u0432\u043d\u0435\u0434\u0440\u0451\u043d\u043d\u044b\u0445 Rahmet Labs \u2014 \u0441 \u0440\u0435\u0430\u043b\u044c\u043d\u044b\u043c\u0438 \u0441\u0441\u044b\u043b\u043a\u0430\u043c\u0438, \u0433\u0434\u0435 \u044d\u0442\u043e \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e.',
-      keywords: ['\u043f\u043e\u0440\u0442\u0444\u043e\u043b\u0438\u043e', '\u043a\u0435\u0439\u0441\u044b', '\u043f\u0440\u043e\u0435\u043a\u0442\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438'],
+      title: 'Работы — запущенные системы | Rahmet Labs',
+      description: 'Примеры систем автоматизации, ИИ, веба и Web3, которые запустила Rahmet Labs, — с живыми ссылками, где они есть.',
+      keywords: ['портфолио', 'проекты автоматизации', 'ИИ-проекты'],
     },
     about: {
-      title: '\u041e Rahmet Labs \u2014 \u043a\u0442\u043e \u0441\u0442\u0440\u043e\u0438\u0442 \u0432\u0430\u0448\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b',
-      description: 'Rahmet Labs \u2014 \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0441\u0435\u043d\u044c\u043e\u0440\u043e\u0432, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0441\u0442\u0440\u043e\u0438\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044e, ИИ, \u0432\u0435\u0431/\u043c\u043e\u0431\u0430\u0439\u043b \u0438 Web3-\u0441\u0438\u0441\u0442\u0435\u043c\u044b.',
-      keywords: ['\u043e Rahmet Labs', '\u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438'],
+      title: 'О Rahmet Labs — команда, которая строит ваши системы',
+      description: 'Rahmet Labs — небольшая senior-команда: автоматизация, ИИ, веб/мобайл и Web3. Кто оценивает проект, тот его и делает.',
+      keywords: ['о rahmet labs', 'продуктовая студия'],
     },
     contact: {
-      title: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b Rahmet Labs \u2014 \u043d\u0430\u0447\u0430\u0442\u044c \u043f\u0440\u043e\u0435\u043a\u0442',
-      description: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 Rahmet Labs, \u0447\u0442\u043e \u0441\u0435\u0439\u0447\u0430\u0441 \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e. \u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0432 WhatsApp, Telegram, \u043d\u0430 \u043f\u043e\u0447\u0442\u0443 \u0438\u043b\u0438 \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0431\u0440\u0438\u0444.',
-      keywords: ['\u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0441\u0442\u0443\u0434\u0438\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438', '\u043d\u0430\u0447\u0430\u0442\u044c \u043f\u0440\u043e\u0435\u043a\u0442'],
+      title: 'Контакты Rahmet Labs — начать проект',
+      description: 'Расскажите, что у вас до сих пор делается вручную. Напишите нам в WhatsApp, Telegram или на почту.',
+      keywords: ['связаться со студией автоматизации', 'начать проект'],
     },
   },
 
   facts: {
     whatWeDo:
-      'Rahmet Labs \u2014 \u044d\u0442\u043e full-stack \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0441\u0442\u0443\u0434\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0441\u0442\u0440\u043e\u0438\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044e \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432, ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0432\u0435\u0431- \u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u0438 Web3-\u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0443 \u0434\u043b\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439, \u0437\u0430\u043c\u0435\u043d\u044f\u044e\u0449\u0438\u0445 \u0440\u0443\u0447\u043d\u044b\u0435 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u044b \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043d\u044b\u043c\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438.',
+      'Rahmet Labs — продуктовая технологическая студия: автоматизация бизнеса, ИИ-системы, веб- и мобильные продукты и Web3-инфраструктура для компаний, которые заменяют ручные операции софтом.',
     whoFor:
-      '\u041e\u0441\u043d\u043e\u0432\u0430\u0442\u0435\u043b\u0438, \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u0438 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u043e\u0442\u0434\u0435\u043b\u043e\u0432 \u0438 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u043c \u043d\u0443\u0436\u0435\u043d \u043e\u0434\u0438\u043d \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u043f\u0430\u0440\u0442\u043d\u0451\u0440, \u0430 \u043d\u0435 \u043d\u0430\u0431\u043e\u0440 \u0440\u0430\u0437\u043d\u044b\u0445 \u0444\u0440\u0438\u043b\u0430\u043d\u0441\u0435\u0440\u043e\u0432.',
-    basedIn: 'Rahmet Labs \u0431\u0430\u0437\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d\u0435 \u0438 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438 \u0432 \u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0439 \u0410\u0437\u0438\u0438, \u0415\u0432\u0440\u043e\u043f\u0435 \u0438 \u0421\u0442\u0440\u0430\u043d\u0430\u0445 \u0417\u0430\u043b\u0438\u0432\u0430.',
+      'Основатели, операционные директора и технические команды, которым нужен один ответственный партнёр вместо россыпи фрилансеров для стратегии, автоматики и разработки.',
+    basedIn: 'Rahmet Labs находится в Казахстане и работает с клиентами по Центральной Азии, Европе и Персидскому заливу.',
   },
 
   nav: {
     wordmark: 'RAHMET LABS',
-    ticker: 'RHMT',
-    functions: [
-      { key: 'F1', label: '\u0423\u0421\u041b\u0423\u0413\u0418', href: '/services' },
-      { key: 'F2', label: '\u0420\u0410\u0411\u041e\u0422\u042b', href: '/portfolio' },
-      { key: 'F3', label: '\u041e \u041d\u0410\u0421', href: '/about' },
-      { key: 'F4', label: '\u041a\u041e\u041d\u0422\u0410\u041a\u0422\u042b', href: '/contact' },
+    closeWordmark: 'RL',
+    links: [
+      { label: 'Работы', href: '/portfolio' },
+      { label: 'Услуги', href: '/services' },
+      { label: 'О нас', href: '/about' },
     ],
-    start: { key: 'F5', label: '\u041d\u0410\u0427\u0410\u0422\u042c \u041f\u0420\u041e\u0415\u041a\u0422', href: '/contact' },
-    menuLabel: '\u041c\u0415\u041d\u042e',
-    closeLabel: '\u0417\u0410\u041a\u0420\u042b\u0422\u042c',
+    cta: 'Начать проект',
+    menuLabel: 'Меню',
+    closeLabel: 'Закрыть',
   },
 
   hero: {
-    kicker: '\u041e\u0431\u0437\u043e\u0440',
-    statusLabel: 'LIVE',
-    headline: '\u0411\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e \u0431\u0438\u0437\u043d\u0435\u0441\u043e\u0432 \u0434\u0435\u0440\u0436\u0438\u0442\u0441\u044f \u043d\u0430 \u0440\u0443\u0447\u043d\u043e\u043c \u0442\u0440\u0443\u0434\u0435, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043f\u0440\u0438\u0442\u0432\u043e\u0440\u044f\u0435\u0442\u0441\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u043e\u0439.',
+    kicker: 'Rahmet Labs — автоматизация, ИИ и инженерия продуктов',
+    line1: 'Ваш бизнес',
+    line2: 'тонет в',
+    line2Accent: 'ручной работе.',
+    line3: 'Мы строим',
+    line3Accent: 'системы',
+    line3Tail: 'которые это меняют.',
     subheadline:
-      'Rahmet Labs \u0437\u0430\u043c\u0435\u043d\u044f\u0435\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u044b, \u043a\u043e\u043f\u0438-\u043f\u0435\u0439\u0441\u0442 \u0438 \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0443 \u0432 \u0447\u0430\u0442\u0430\u0445 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0435\u0439, ИИ \u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043d\u044b\u043c\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0442 \u0432\u043c\u0435\u0441\u0442\u0435 \u2014 \u0438 \u043e\u0441\u0442\u0430\u0451\u043c\u0441\u044f, \u0447\u0442\u043e\u0431\u044b \u0438\u0445 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0442\u044c.',
-    ctaPrimary: '\u041d\u0410\u0427\u0410\u0422\u042c \u041f\u0420\u041e\u0415\u041a\u0422',
-    ctaSecondary: '\u0421\u041c\u041e\u0422\u0420\u0415\u0422\u042c \u0420\u0410\u0411\u041e\u0422\u042b',
-    comparisonLabel: '\u041e\u0414\u041d\u0418 \u0418 \u0422\u0415 \u0416\u0415 \u041f\u042f\u0422\u042c \u0424\u0423\u041d\u041a\u0426\u0418\u0419 \u2014 \u0414\u041e \u0418 \u041f\u041e\u0421\u041b\u0415',
-    manualLabel: '\u0412\u0420\u0423\u0427\u041d\u0423\u042e',
-    automatedLabel: '\u0410\u0412\u0422\u041e\u041c\u0410\u0422\u0418\u0417\u0418\u0420\u041e\u0412\u0410\u041d\u041e',
-    rows: [
-      { fn: '\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432', manualStatus: '\u0412 \u041e\u0427\u0415\u0420\u0415\u0414\u0418', manualDetail: '6\u0427 \u041e\u0422\u0421\u0422\u0410\u0412\u0410\u041d\u0418\u0415', autoStatus: '\u0417\u0410\u041a\u0420\u042b\u0422\u041e', autoDetail: 'LIVE' },
-      { fn: '\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043b\u0438\u0434\u043e\u0432', manualStatus: '\u041f\u0420\u041e\u041f\u0423\u0429\u0415\u041d\u041e', manualDetail: '\u0411\u0415\u0417 \u041e\u0422\u0412\u0415\u0422\u0410 2\u0414', autoStatus: '\u041e\u0422\u041f\u0420\u0410\u0412\u041b\u0415\u041d\u041e', autoDetail: '\u041c\u0413\u041d\u041e\u0412\u0415\u041d\u041d\u041e' },
-      { fn: '\u0421\u0447\u0451\u0442\u0430', manualStatus: '\u041e\u0416\u0418\u0414\u0410\u0415\u0422', manualDetail: '\u0421\u0412\u0415\u0420\u041a\u0410 \u041f\u0422', autoStatus: '\u041f\u0420\u041e\u0412\u0415\u0414\u0415\u041d\u041e', autoDetail: '\u041d\u0415\u041f\u0420\u0415\u0420\u042b\u0412\u041d\u041e' },
-      { fn: '\u041e\u0442\u0447\u0451\u0442\u043d\u043e\u0441\u0442\u044c', manualStatus: '\u0423\u0421\u0422\u0410\u0420\u0415\u041b\u041e', manualDetail: '\u041e\u0411\u041d\u041e\u0412\u041b\u0415\u041d\u041e 3\u0414 \u041d\u0410\u0417\u0410\u0414', autoStatus: '\u0421\u0418\u041d\u0425\u0420\u041e\u041d\u0418\u0417\u0418\u0420\u041e\u0412\u0410\u041d\u041e', autoDetail: '\u0412 \u0420\u0415\u0410\u041b\u042c\u041d\u041e\u041c \u0412\u0420\u0415\u041c\u0415\u041d\u0418' },
-      { fn: '\u041e\u043d\u0431\u043e\u0440\u0434\u0438\u043d\u0433', manualStatus: '\u0417\u0410\u0421\u0422\u0420\u042f\u041b\u041e', manualDetail: '\u041f\u0415\u0420\u0415\u041f\u0418\u0421\u041a\u0410 \u041d\u0410 \u041f\u041e\u0427\u0422\u0415', autoStatus: '\u0420\u0410\u0417\u0412\u0451\u0420\u041d\u0423\u0422\u041e', autoDetail: '\u0410\u0412\u0422\u041e\u041c\u0410\u0422\u0418\u0427\u0415\u0421\u041a\u0418' },
-    ],
-    mergeLabel: '\u041e\u0414\u041d\u0410 \u0421\u0418\u0421\u0422\u0415\u041c\u0410.',
-    mergeDetail: '\u041a\u0430\u0436\u0434\u0430\u044f \u0441\u0442\u0440\u043e\u043a\u0430 \u0432\u044b\u0448\u0435 \u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0441\u044f \u043e\u0434\u043d\u043e\u0439 \u043f\u0430\u043d\u0435\u043b\u044c\u044e, \u043a\u043e\u0442\u043e\u0440\u0443\u044e \u0432\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u0435\u0442.',
+      'Одна senior-команда проектирует, запускает и сопровождает автоматику и ИИ, которые заменяют ваши таблицы, копипаст и бесконечные переписки. Софт делает рутину — люди делают бизнес.',
+    ctaPrimary: 'Начать проект',
+    ctaSecondary: 'Смотреть работы',
+    supportingLabel: 'Одна ответственная команда · EN / RU / KZ',
+    supportingChannels: 'WhatsApp · Telegram · почта',
+    scrollLabel: 'Листайте',
   },
 
-  services: {
-    kicker: '\u0423\u0441\u043b\u0443\u0433\u0438',
-    heading: '\u0428\u0435\u0441\u0442\u044c \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439. \u041e\u0434\u043d\u0430 \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430.',
+  thread: {
+    chapters: [
+      {
+        key: '01',
+        title: 'Работа незаметна — пока не сломается.',
+        lead: 'Кто-то переносит цифры в таблицу. Кто-то помнит, что надо отправить счёт. Кто-то в полночь проверяет тендерный портал. Ничего этого нет в системе — всё это в чьей-то голове.',
+        detail: 'Новые наймы увеличивают хаос, а не мощность.',
+      },
+      {
+        key: '02',
+        title: 'Не нужен героизм. Нужна система.',
+        lead: 'Большая часть того, что команда делает руками, — повторяемый паттерн: посмотреть, сравнить, скопировать, решить, отправить. А повторяемые паттерны — это ровно то, для чего существует софт.',
+        detail: 'Проблема никогда в усилиях — всегда в архитектуре.',
+      },
+      {
+        key: '03',
+        title: 'Эту систему мы и строим.',
+        lead: 'Автоматика, которая работает сама, ИИ, который читает и решает, продукты, которыми реально пользуются клиенты, — одна ответственная команда от проектирования до эксплуатации.',
+        detail: 'Листайте дальше. Это и есть весь питч.',
+      },
+    ],
+  },
+
+  whatWeBuild: {
+    kicker: 'Что мы делаем',
+    heading: 'Одна студия — все слои системы.',
     subheading:
-      '\u041c\u044b \u043d\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u043c \u0442\u0435\u0445\u0437\u0430\u0434\u0430\u043d\u0438\u0435 \u0438 \u043d\u0435 \u0438\u0441\u0447\u0435\u0437\u0430\u0435\u043c. \u041a\u0430\u0436\u0434\u043e\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u044b\u0445\u043e\u0434\u0438\u0442 \u0440\u0430\u0431\u043e\u0447\u0438\u043c \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043d\u044b\u043c \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u043c, \u0441\u0432\u044f\u0437\u0430\u043d\u043d\u044b\u043c \u0441 \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u043c\u0438, \u0438 \u043c\u044b \u043d\u0430 \u0441\u0432\u044f\u0437\u0438 \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430.',
-    ctaLabel: '\u041e\u041f\u0418\u0421\u0410\u0422\u042c \u041f\u0420\u041e\u0415\u041a\u0422',
-    functions: [
+      'Стратегия, автоматика, ИИ и разработка под одной крышей — ничего не теряется между презентацией консультанта и бэклогом разработчика.',
+    categories: [
       {
-        code: 'FN01',
-        title: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0438 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438',
-        description: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0441\u0432\u044f\u0437\u044b\u0432\u0430\u0435\u0442 \u0443\u0436\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u043c\u044b\u0435 \u0432\u0430\u043c\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0431\u043e\u0442\u0430 \u0434\u0432\u0438\u0433\u0430\u043b\u0430\u0441\u044c \u0431\u0435\u0437 \u0440\u0443\u0447\u043d\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0430 \u0434\u0430\u043d\u043d\u044b\u0445.',
-        capabilities: ['\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0438 \u043e\u0440\u043a\u0435\u0441\u0442\u0440\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432', '\u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441\u0438\u0441\u0442\u0435\u043c (CRM, ERP, \u0444\u0438\u043d\u0430\u043d\u0441\u044b, \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430)', '\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b \u0438 \u0430\u0434\u043c\u0438\u043d\u043a\u0438-\u043f\u0430\u043d\u0435\u043b\u0438', '\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433, \u0430\u043b\u0435\u0440\u0442\u044b, \u0430\u0443\u0434\u0438\u0442'],
+        id: 'automation',
+        title: 'Автоматизация бизнеса',
+        tagline: 'Конец эпохи копипаста',
+        description:
+          'Процессы, которые идут без человека в цикле: согласования, счета, отчётность, мониторинг тендеров, синхронизация CRM↔ERP.',
+        capabilities: ['Автоматизация процессов (n8n, Make)', 'Интеграция систем и API', 'Дашборды и алерты для операционки', 'Браузерная и дата-автоматизация'],
       },
       {
-        code: 'FN02',
-        title: 'ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u044b',
-        description: 'ИИ-\u0430\u0433\u0435\u043d\u0442\u044b \u0438 \u0430\u0441\u0441\u0438\u0441\u0442\u0435\u043d\u0442\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044e\u0442 \u0440\u0435\u0430\u043b\u044c\u043d\u0443\u044e \u0440\u0430\u0431\u043e\u0442\u0443 \u0432\u043d\u0443\u0442\u0440\u0438 \u0432\u0430\u0448\u0435\u0433\u043e \u0431\u0438\u0437\u043d\u0435\u0441\u0430 \u2014 \u043e\u0442\u0432\u0435\u0447\u0430\u044e\u0442, \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0438\u0440\u0443\u044e\u0442, \u0433\u043e\u0442\u043e\u0432\u044f\u0442 \u0447\u0435\u0440\u043d\u043e\u0432\u0438\u043a\u0438, \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u044e\u0442 \u0440\u0435\u0448\u0435\u043d\u0438\u044f, \u0430 \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u0447\u0430\u0442-\u0431\u043e\u0442 \u043d\u0430 \u043b\u0435\u043d\u0434\u0438\u043d\u0433\u0435.',
-        capabilities: ['ИИ-\u043a\u043e\u043f\u0438\u043b\u043e\u0442\u044b \u0434\u043b\u044f \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438 \u0438 \u043f\u0440\u043e\u0434\u0430\u0436', '\u0418\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438\u0437 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u0432', '\u041c\u043d\u043e\u0433\u043e\u0448\u0430\u0433\u043e\u0432\u044b\u0435 ИИ-\u0430\u0433\u0435\u043d\u0442\u044b', '\u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f \u0438 \u043e\u0446\u0435\u043d\u043a\u0430 \u043c\u043e\u0434\u0435\u043b\u0435\u0439'],
+        id: 'ai',
+        title: 'ИИ-системы',
+        tagline: 'ИИ, который читает, решает, действует',
+        description:
+          'ИИ, встроенный в реальную операционку: агенты, RAG по вашим данным, контент-пайплайны — а не демо-чатбот.',
+        capabilities: ['ИИ-агенты и ассистенты', 'RAG по закрытым данным', 'Пайплайны генерации контента', 'Мэтчинг, скоринг и маршрутизация'],
       },
       {
-        code: 'FN03',
-        title: '\u0412\u0435\u0431 \u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442',
-        description: 'Full-stack \u0432\u0435\u0431-\u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u043d\u0430 Next.js \u0438 React \u2014 \u043e\u0442 \u043e\u0434\u043d\u043e\u0439 \u043b\u0435\u043d\u0434\u0438\u043d\u0433-\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u0434\u043e \u043c\u043d\u043e\u0433\u043e\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u043f\u0430\u043d\u0435\u043b\u0438 \u2014 \u0432\u044b\u043f\u0443\u0449\u0435\u043d\u043d\u044b\u0435 \u0431\u044b\u0441\u0442\u0440\u043e \u0438 \u0433\u043e\u0442\u043e\u0432\u044b\u0435 \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0442\u044c\u0441\u044f \u0434\u0430\u043b\u044c\u0448\u0435.',
-        capabilities: ['\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043d\u0430 Next.js / React', '\u0421\u0430\u0439\u0442\u044b \u0438 \u043b\u0435\u043d\u0434\u0438\u043d\u0433-\u0441\u0438\u0441\u0442\u0435\u043c\u044b', 'SaaS-\u043f\u0430\u043d\u0435\u043b\u0438 \u0438 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b', 'CMS \u0438 \u043a\u043e\u043d\u0442\u0435\u043d\u0442-\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u044b'],
+        id: 'product',
+        title: 'Веб- и мобильные продукты',
+        tagline: 'Софт, которым пользуются',
+        description:
+          'От мультиязычных сайт-систем до SaaS-платформ и мобильных приложений — полный цикл: дизайн, разработка, запуск.',
+        capabilities: ['Веб-приложения и SaaS-платформы', 'Мобильные приложения (React Native)', 'Сайты на CMS для редакторов', 'Бронирование и личные кабинеты'],
       },
       {
-        code: 'FN04',
-        title: '\u041c\u043e\u0431\u0430\u0439\u043b\u044c\u043d\u044b\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f',
-        description: '\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0441 \u043d\u0430\u0442\u0438\u0432\u043d\u044b\u043c \u043e\u0449\u0443\u0449\u0435\u043d\u0438\u0435\u043c \u0434\u043b\u044f iOS \u0438 Android \u0438\u0437 \u043e\u0434\u043d\u043e\u0439 \u043a\u043e\u0434\u043e\u0432\u043e\u0439 \u0431\u0430\u0437\u044b \u043d\u0430 React Native, \u0441\u0432\u044f\u0437\u0430\u043d\u043d\u044b\u0435 \u0441 \u0442\u0435\u043c \u0436\u0435 \u0431\u044d\u043a\u0435\u043d\u0434\u043e\u043c, \u0447\u0442\u043e \u0438 \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b.',
-        capabilities: ['\u041a\u0440\u043e\u0441\u0441-\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0435\u043d\u043d\u044b\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043d\u0430 React Native', '\u041f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u044f \u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u0432 \u0441\u0442\u043e\u0440\u0430\u0445', 'Push, \u043e\u0444\u043b\u0430\u0439\u043d, \u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0435 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438', '\u041e\u0431\u0449\u0438\u0439 \u0431\u044d\u043a\u0435\u043d\u0434 \u0441 \u0432\u0435\u0431-\u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u043c'],
+        id: 'backend',
+        title: 'Бэкенд и данные',
+        tagline: 'Фундамент, который держит',
+        description:
+          'API, базы данных и инфраструктура, которые делают систему наблюдаемой, безопасной и скучно надёжной.',
+        capabilities: ['Проектирование API и интеграции', 'Данные на Postgres / Supabase', 'Авторизация, роли и доступы', 'Мониторинг и логирование'],
       },
       {
-        code: 'FN05',
-        title: '\u0411\u044d\u043a\u0435\u043d\u0434 \u0438 \u0434\u0430\u043d\u043d\u044b\u0435',
-        description: '\u0418\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u043f\u043e\u0434 \u0432\u0441\u0435\u043c \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u043c \u2014 API, \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043f\u0430\u0439\u043f\u043b\u0430\u0439\u043d\u044b \u0434\u0430\u043d\u043d\u044b\u0445, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043e\u0441\u0442\u0430\u044e\u0442\u0441\u044f \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u043c\u0438, \u0430 \u043d\u0435 \u0447\u0451\u0440\u043d\u044b\u043c \u044f\u0449\u0438\u043a\u043e\u043c.',
-        capabilities: ['\u041f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 REST / GraphQL API', '\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445', '\u041f\u0430\u0439\u043f\u043b\u0430\u0439\u043d\u044b \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 ETL', '\u041e\u0431\u043b\u0430\u0447\u043d\u0430\u044f \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0438 DevOps'],
+        id: 'web3',
+        title: 'Web3 и блокчейн',
+        tagline: 'Он-чейн без драмы',
+        description:
+          'Смарт-контракты и он-чейн автоматизация с той же инженерной дисциплиной, что и остальной стек.',
+        capabilities: ['Контракты на Solidity', 'Мультичейн-деплой (ETH, BSC, Arbitrum)', 'Multi-sig конвейеры', 'Он-чейн мониторинг'],
       },
-      {
-        code: 'FN06',
-        title: 'Web3 \u0438 \u0431\u043b\u043e\u043a\u0447\u0435\u0439\u043d',
-        description: '\u0421\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u044b \u0438 \u043e\u043d-\u0447\u0435\u0439\u043d \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0434\u043b\u044f \u043a\u043e\u043c\u0430\u043d\u0434, \u043a\u043e\u0442\u043e\u0440\u044b\u043c \u0432\u0430\u0436\u043d\u0430 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0441\u0442\u044c, \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0438 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043f\u043e\u0441\u043b\u0435 \u0434\u0435\u043f\u043b\u043e\u044f.',
-        capabilities: ['\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0441\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u043e\u0432 (Solidity)', 'EVM-\u0441\u0435\u0442\u0438 \u2014 Ethereum, BSC, Arbitrum', '\u0422\u043e\u043a\u0435\u043d\u044b \u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438', '\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0438 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u043e\u0432'],
-      },
-    ],
-    engagementHeading: '\u041a\u0430\u043a \u043c\u044b \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u043c',
-    engagementSubheading: '\u0411\u0435\u0437 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u0433\u043e \u043f\u0440\u0430\u0439\u0441-\u043b\u0438\u0441\u0442\u0430 \u2014 \u043a\u0430\u0436\u0434\u044b\u0439 \u043f\u0440\u043e\u0435\u043a\u0442 \u0440\u0430\u0437\u043d\u044b\u0439. \u0422\u0440\u0438 \u0441\u043f\u043e\u0441\u043e\u0431\u0430 \u043d\u0430\u0447\u0430\u0442\u044c:',
-    engagements: [
-      { title: 'Sprint', description: '\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u043d\u044b\u0439 \u043f\u043e \u0441\u0440\u043e\u043a\u0430\u043c \u043f\u0440\u043e\u0435\u043a\u0442 \u043f\u043e\u0434 \u043e\u0434\u043d\u043e \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u2014 \u0431\u043e\u0442, \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f, \u043e\u0434\u0438\u043d \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u044b\u0439 \u043c\u043e\u0434\u0443\u043b\u044c.', bestFor: '\u041e\u0434\u043d\u0430 \u0447\u0451\u0442\u043a\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430, \u043e\u0434\u0438\u043d \u0447\u0451\u0442\u043a\u0438\u0439 \u0441\u0440\u043e\u043a.' },
-      { title: 'Build', description: '\u041f\u043e\u043b\u043d\u043e\u0446\u0435\u043d\u043d\u044b\u0439 \u043f\u0440\u043e\u0434\u0443\u043a\u0442 \u0438\u043b\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0432\u044b\u0445\u043e\u0434\u0438\u0442 \u044d\u0442\u0430\u043f\u0430\u043c\u0438, \u0441 \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0449\u0438\u043c \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u043c \u0432 \u043a\u043e\u043d\u0446\u0435 \u043a\u0430\u0436\u0434\u043e\u0433\u043e \u044d\u0442\u0430\u043f\u0430.', bestFor: '\u041d\u043e\u0432\u044b\u0439 \u043f\u0440\u043e\u0434\u0443\u043a\u0442 \u0438\u043b\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430, \u0437\u0430\u043c\u0435\u043d\u044f\u044e\u0449\u0430\u044f \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0440\u0443\u0447\u043d\u044b\u0445 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u0432 \u0441\u0440\u0430\u0437\u0443.' },
-      { title: 'Partner', description: '\u0412\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u043e\u0435, \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u043e\u0435 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u2014 \u043c\u044b \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u043c \u0441\u0442\u0440\u043e\u0438\u0442\u044c, \u044d\u043a\u0441\u043f\u043b\u0443\u0430\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438 \u0443\u043b\u0443\u0447\u0448\u0430\u0442\u044c \u0432\u0430\u0448\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u043f\u043e \u043c\u0435\u0440\u0435 \u0440\u043e\u0441\u0442\u0430 \u0431\u0438\u0437\u043d\u0435\u0441\u0430.', bestFor: '\u041a\u043e\u043c\u0430\u043d\u0434\u0430\u043c, \u043a\u043e\u0442\u043e\u0440\u044b\u043c \u043d\u0443\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u044d\u0442\u043e \u043e\u0441\u0442\u0430\u0432\u0430\u043b\u043e\u0441\u044c \u0447\u044c\u0435\u0439-\u0442\u043e \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u043e\u0439 \u0437\u0430\u0434\u0430\u0447\u0435\u0439.' },
-    ],
-    faqHeading: '\u0412\u043e\u043f\u0440\u043e\u0441\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u043c \u0437\u0430\u0434\u0430\u044e\u0442 \u0434\u043e \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0437\u0432\u043e\u043d\u043a\u0430',
-    faq: [
-      { q: '\u041a\u0430\u043a \u0431\u044b\u0441\u0442\u0440\u043e \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0447\u0430\u0442\u044c?', a: '\u0411\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e Sprint-\u043f\u0440\u043e\u0435\u043a\u0442\u043e\u0432 \u043d\u0430\u0447\u0438\u043d\u0430\u044e\u0442\u0441\u044f \u0432 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 \u043d\u0435\u0434\u0435\u043b\u0438 \u043f\u043e\u0441\u043b\u0435 \u0437\u0432\u043e\u043d\u043a\u0430. Build \u0438 Partner \u043d\u0430\u0447\u0438\u043d\u0430\u044e\u0442\u0441\u044f \u043f\u043e\u0441\u043b\u0435 \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u043d\u043e\u0433\u043e \u043a\u0430\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u2014 \u043e\u0431\u044b\u0447\u043d\u043e \u0447\u0435\u0440\u0435\u0437 \u043e\u0434\u043d\u0443-\u0434\u0432\u0435 \u043d\u0435\u0434\u0435\u043b\u0438.' },
-      { q: '\u041a\u043e\u043c\u0443 \u043f\u0440\u0438\u043d\u0430\u0434\u043b\u0435\u0436\u0438\u0442 \u0442\u043e, \u0447\u0442\u043e \u0432\u044b \u0441\u0442\u0440\u043e\u0438\u0442\u0435?', a: '\u0412\u0430\u043c. \u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0438, \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0435 \u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u044e\u0442\u0441\u044f \u0432\u0430\u043c \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0434\u043d\u044f. \u041c\u044b \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u0434\u0435\u0440\u0436\u0438\u043c \u0432 \u0441\u0432\u043e\u0438\u0445 \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430\u0445.' },
-      { q: '\u0410 \u0435\u0441\u043b\u0438 \u043d\u0443\u0436\u043d\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u0435\u0433\u043e \u043e\u0434\u043d\u0443 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0443\u044e \u0432\u0435\u0449\u044c?', a: '\u0418\u043c\u0435\u043d\u043d\u043e \u0434\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 Sprint \u2014 \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u043e\u0439, \u0440\u0430\u0431\u043e\u0447\u0438\u0439 \u0438 \u0431\u044b\u0441\u0442\u0440\u043e \u0432\u044b\u043f\u0443\u0449\u0435\u043d\u043d\u044b\u0439. \u0425\u043e\u0440\u043e\u0448\u0438\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u0430\u0441 \u043f\u0435\u0440\u0435\u0434 \u0431\u043e\u043b\u044c\u0448\u0438\u043c Build.' },
     ],
   },
 
   work: {
-    kicker: '\u0420\u0430\u0431\u043e\u0442\u044b',
-    heading: '\u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0435 \u043f\u043e\u0437\u0438\u0446\u0438\u0438.',
-    subheading: '\u041f\u0440\u0438\u043c\u0435\u0440\u044b \u0432\u043d\u0435\u0434\u0440\u0451\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c. \u0416\u0438\u0432\u044b\u0435 \u0441\u0441\u044b\u043b\u043a\u0438 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0435 \u2014 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u0435 \u043f\u043e \u043d\u0438\u043c.',
-    statusLive: 'LIVE',
-    statusShipped: '\u0417\u0410\u041f\u0423\u0429\u0415\u041d\u041e',
-    viewLabel: '\u041e\u0422\u041a\u0420\u042b\u0422\u042c',
+    kicker: 'Избранные работы',
+    heading: 'Запущенные системы.',
+    subheading: 'Реальные, проверяемые проекты — с живыми ссылками, где они есть.',
+    archiveLink: 'Все работы',
+    statusLive: 'В работе',
+    statusShipped: 'Сдано',
+    viewLabel: 'Открыть',
     positions: [
       {
-        code: 'POS-01',
-        title: '\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430',
-        type: '\u0412\u0435\u0431 \u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442',
-        description: '\u0422\u0440\u0438 \u0440\u0430\u0431\u043e\u0447\u0438\u0445 \u0441\u0430\u0439\u0442\u0430 \u0434\u043b\u044f \u0432\u0443\u0437\u043e\u0432 \u0438 \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439 \u2014 \u043f\u0440\u0438\u0451\u043c\u043d\u0430\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f, \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c \u0438 \u043a\u043e\u043d\u0442\u0435\u043d\u0442 \u043d\u0430 CMS \u0434\u043b\u044f \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440\u043e\u0432 \u0431\u0435\u0437 \u043d\u0430\u0432\u044b\u043a\u043e\u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0438.',
+        code: '01',
+        title: 'Платформа для образования',
+        type: 'Веб и продукт',
+        description:
+          'Три боевых сайта для университета и образовательных клиентов: приёмная кампания, страницы программ и CMS-контент для редакторов, а не разработчиков.',
         tech: ['Next.js', 'React', 'CMS'],
         status: 'live',
         links: [
@@ -455,295 +585,415 @@ const ru = {
         ],
       },
       {
-        code: 'POS-02',
+        code: '02',
         title: 'Beyond Lines',
-        type: 'ИИ и \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-        description: '\u0410\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043a\u043e\u043d\u0432\u0435\u0439\u0435\u0440 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043f\u0440\u043e\u0441\u043a\u0430\u043d\u0438\u0440\u0443\u0435\u0442 60+ \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u043a\u0440\u0438\u043f\u0442\u043e, \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u0438 ИИ, \u0437\u0430\u0442\u0435\u043c \u043e\u0442\u0431\u0438\u0440\u0430\u0435\u0442 \u0438 \u043f\u0443\u0431\u043b\u0438\u043a\u0443\u0435\u0442 \u0447\u0435\u0440\u0435\u0437 Telegram-\u0431\u043e\u0442\u0430 \u0438 \u0432\u0435\u0431-\u043f\u0430\u043d\u0435\u043b\u044c.',
-        tech: ['Next.js', 'ИИ-\u043a\u0443\u0440\u0430\u0446\u0438\u044f', 'Telegram Bot'],
+        type: 'ИИ и автоматизация',
+        description:
+          'Автономный контент-конвейер: сканирует 60+ источников про крипту, безопасность и ИИ, отбирает и публикует через Telegram-бота и веб-дашборд.',
+        tech: ['Next.js', 'ИИ-курация', 'Telegram-бот'],
         status: 'live',
         links: [{ label: 'beyondlines-web.vercel.app', url: 'https://beyondlines-web.vercel.app' }],
       },
       {
-        code: 'POS-03',
+        code: '03',
         title: 'Unhireable',
-        type: 'ИИ и \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-        description: '\u0414\u0435\u0441\u043a\u0442\u043e\u043f\u043d\u0430\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u043f\u043e\u0438\u0441\u043a\u0430 \u0440\u0430\u0431\u043e\u0442\u044b, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0435 \u0441 hh.kz, Wellfound \u0438 LinkedIn, \u043f\u043e\u0434\u0431\u0438\u0440\u0430\u0435\u0442 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u0447\u0435\u0440\u0435\u0437 ИИ \u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0433\u0435\u043d\u0435\u0440\u0438\u0440\u0443\u0435\u0442 \u0440\u0435\u0437\u044e\u043c\u0435.',
-        tech: ['Desktop App', 'ИИ-\u043c\u044d\u0442\u0447\u0438\u043d\u0433', '\u041c\u0443\u043b\u044c\u0442\u0438\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0435\u043d\u043d\u044b\u0439 \u0441\u043a\u0440\u0430\u043f\u0438\u043d\u0433'],
+        type: 'ИИ и автоматизация',
+        description:
+          'Десктопная система поиска работы: парсит hh.kz, Wellfound и LinkedIn, мэтчит вакансии через ИИ и автоматически собирает резюме под каждую.',
+        tech: ['Десктоп-приложение', 'ИИ-мэтчинг', 'Мультиплатформенный парсинг'],
         status: 'live',
         links: [{ label: 'unhireable-website.vercel.app', url: 'https://unhireable-website.vercel.app' }],
       },
       {
-        code: 'POS-04',
-        title: '\u041d\u0430\u0431\u043e\u0440 \u0431\u043e\u0442\u043e\u0432 \u0434\u043b\u044f \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u0438\u0445 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-        description: '\u041e\u0431\u0449\u0438\u0439 \u0441\u043b\u043e\u0439 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u0437\u0430 WhatsApp, Telegram \u0438 Twitter \u2014 \u043e\u0434\u0438\u043d \u0446\u0435\u043d\u0442\u0440 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u0438, \u0442\u0440\u0438 \u043a\u0430\u043d\u0430\u043b\u0430, \u0431\u0435\u0437 \u0434\u0443\u0431\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043b\u043e\u0433\u0438\u043a\u0438.',
-        tech: ['Bot API', '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f', 'ИИ-\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u044f'],
+        code: '04',
+        title: 'Мультиплатформенные боты',
+        type: 'Автоматизация',
+        description:
+          'Общий слой автоматики за WhatsApp, Telegram и Twitter: один маршрутизирующий мозг, три канала, ноль дублированной логики.',
+        tech: ['Bot API', 'Автоматизация', 'ИИ-маршрутизация'],
         status: 'shipped',
       },
       {
-        code: 'POS-05',
-        title: '\u0421\u0432\u0438\u0442\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u0441\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u043e\u0432',
+        code: '05',
+        title: 'Автоматизация смарт-контрактов',
         type: 'Web3',
-        description: '\u041a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u044b \u043d\u0430 Solidity \u0432 \u0441\u0435\u0442\u044f\u0445 BSC, Ethereum \u0438 Arbitrum \u0441 \u0430\u0432\u0442\u043e\u0442\u0435\u0441\u0442\u0430\u043c\u0438, multi-sig \u0434\u0435\u043f\u043b\u043e\u0435\u043c \u0438 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u043e\u043c \u0432 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u043c \u0432\u0440\u0435\u043c\u0435\u043d\u0438.',
+        description:
+          'Контракты на Solidity в BSC, Ethereum и Arbitrum: покрытие автотестами, деплой через multi-sig, живой он-чейн мониторинг.',
         tech: ['Solidity', 'Hardhat', 'Multi-sig'],
         status: 'shipped',
       },
       {
-        code: 'POS-06',
-        title: '\u041f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u0442\u0435\u043d\u0434\u0435\u0440\u043e\u0432',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-        description: '\u041a\u0430\u0441\u0442\u043e\u043c\u043d\u0430\u044f \u0430\u0434\u043c\u0438\u043d\u043a\u0430-\u043f\u0430\u043d\u0435\u043b\u044c \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0435\u0439 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0435\u0442 \u0433\u043e\u0441\u0437\u0430\u043a\u0443\u043f\u043a\u0438, \u0433\u043e\u0442\u043e\u0432\u0438\u0442 \u043e\u0442\u0432\u0435\u0442\u044b \u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u0442 \u0438\u0441\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0431\u0435\u0437 \u0440\u0443\u0447\u043d\u043e\u0433\u043e \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u044f.',
-        tech: ['Playwright', 'ИИ-\u0430\u0433\u0435\u043d\u0442\u044b', '\u0410\u0434\u043c\u0438\u043d\u043a\u0430-\u043f\u0430\u043d\u0435\u043b\u044c'],
+        code: '06',
+        title: 'Тендерная платформа',
+        type: 'Автоматизация',
+        description:
+          'Панель администратора + браузерная автоматика: следит за госзакупками, готовит черновики ответов и передаёт на исполнение без ручного трекинга.',
+        tech: ['Playwright', 'ИИ-агенты', 'Админ-панель'],
         status: 'shipped',
       },
       {
-        code: 'POS-07',
-        title: '\u041c\u043e\u0441\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 CRM \u2194 ERP',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-        description: '\u0421\u043b\u043e\u0439 \u0441\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u0438, \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u044f\u044e\u0449\u0438\u0439 \u0444\u0438\u043d\u0430\u043d\u0441\u044b, CRM \u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0443, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0440\u0430\u043d\u044c\u0448\u0435 \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043b\u0438 \u0440\u0443\u0447\u043d\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043c\u0435\u0436\u0434\u0443 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438.',
+        code: '07',
+        title: 'Мост CRM ↔ ERP',
+        type: 'Автоматизация',
+        description:
+          'Слой синхронизации между финансами, CRM и поддержкой — туда, где раньше данные переносились руками между системами.',
         tech: ['n8n', 'Postgres', 'REST API'],
         status: 'shipped',
       },
       {
-        code: 'POS-08',
-        title: '\u041c\u043d\u043e\u0433\u043e\u044f\u0437\u044b\u0447\u043d\u0430\u044f \u043b\u0435\u043d\u0434\u0438\u043d\u0433-\u0441\u0438\u0441\u0442\u0435\u043c\u0430',
-        type: '\u0412\u0435\u0431 \u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442',
-        description: '\u041f\u043e\u0432\u0442\u043e\u0440\u044f\u0435\u043c\u044b\u0439 \u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a \u043b\u0435\u043d\u0434\u0438\u043d\u0433\u043e\u0432, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0434\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u0434\u0435\u0441\u044f\u0442\u043a\u043e\u0432 \u043b\u043e\u043a\u0430\u043b\u0438\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u0441\u0442\u0440\u0430\u043d\u0438\u0446 \u0434\u043b\u044f \u0441\u0442\u0430\u0440\u0442\u0430\u043f\u043e\u0432 \u0438 \u0433\u043e\u0441\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c, \u0441\u0432\u044f\u0437\u0430\u043d\u043d\u044b\u0439 \u0441 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u043e\u0439 \u0438 CRM.',
-        tech: ['Next.js', 'Vercel', 'Analytics'],
+        code: '08',
+        title: 'Мультиязычные лендинги',
+        type: 'Веб и продукт',
+        description:
+          'Повторяемый фреймворк лендингов, на котором запущены десятки локализованных страниц для стартапов и госпрограмм, — с общей аналитикой и CRM.',
+        tech: ['Next.js', 'Vercel', 'Аналитика'],
         status: 'shipped',
       },
     ],
-    contactPrompt: '\u0415\u0441\u0442\u044c \u043f\u043e\u0445\u043e\u0436\u0438\u0439 \u043f\u0440\u043e\u0435\u043a\u0442 \u043d\u0430 \u043f\u0440\u0438\u043c\u0435\u0442\u0435?',
-    contactCta: '\u041d\u0410\u0427\u0410\u0422\u042c \u041f\u0420\u041e\u0415\u041a\u0422',
+    contactPrompt: 'Похожая система у вас в голове?',
+    contactCta: 'Начать проект',
   },
 
-  process: {
-    kicker: '\u041f\u0440\u043e\u0446\u0435\u0441\u0441',
-    heading: '\u041a\u0430\u043a \u043d\u0430 \u0441\u0430\u043c\u043e\u043c \u0434\u0435\u043b\u0435 \u0438\u0434\u0451\u0442 \u043f\u0440\u043e\u0435\u043a\u0442',
-    subheading: '\u0427\u0435\u0442\u044b\u0440\u0435 \u044d\u0442\u0430\u043f\u0430. \u041a\u0430\u0436\u0434\u044b\u0439 \u0437\u0430\u043a\u0430\u043d\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u0447\u0435\u043c-\u0442\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0449\u0438\u043c, \u0430 \u043d\u0435 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0435\u0439.',
-    steps: [
-      { code: '01', title: 'Scan', command: 'rahmet scan --target=ops', detail: '\u041c\u044b \u043a\u0430\u0440\u0442\u0438\u0440\u0443\u0435\u043c, \u0447\u0442\u043e \u043f\u0440\u043e\u0438\u0441\u0445\u043e\u0434\u0438\u0442 \u043d\u0430 \u0441\u0430\u043c\u043e\u043c \u0434\u0435\u043b\u0435 \u0441\u0435\u0439\u0447\u0430\u0441 \u2014 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b, \u0440\u0443\u0447\u043d\u044b\u0435 \u0448\u0430\u0433\u0438, \u043d\u0435\u0437\u0430\u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u2014 \u043f\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043c \u0447\u0442\u043e-\u0442\u043e \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0442\u044c.' },
-      { code: '02', title: 'Design', command: 'rahmet design --output=architecture', detail: '\u041c\u044b \u043f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u0443\u0435\u043c \u0441\u0438\u0441\u0442\u0435\u043c\u0443: \u0447\u0442\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u0443\u0435\u0442\u0441\u044f, \u0447\u0442\u043e \u0441\u0442\u0440\u043e\u0438\u0442\u0441\u044f, \u0447\u0442\u043e \u043e\u0441\u0442\u0430\u0451\u0442\u0441\u044f \u0437\u0430 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u043e\u043c \u0438 \u043a\u0430\u043a \u0432\u0441\u0451 \u044d\u0442\u043e \u0441\u0432\u044f\u0437\u0430\u043d\u043e \u043c\u0435\u0436\u0434\u0443 \u0441\u043e\u0431\u043e\u0439.' },
-      { code: '03', title: 'Ship', command: 'rahmet ship --stage=1', detail: '\u041c\u044b \u0441\u0442\u0440\u043e\u0438\u043c \u044d\u0442\u0430\u043f\u0430\u043c\u0438, \u0438 \u043a\u0430\u0436\u0434\u044b\u0439 \u044d\u0442\u0430\u043f \u2014 \u044d\u0442\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0449\u0435\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043d\u043e\u0435 \u043e\u0431\u0435\u0441\u043f\u0435\u0447\u0435\u043d\u0438\u0435, \u0430 \u043d\u0435 \u0442\u0435\u0445\u0437\u0430\u0434\u0430\u043d\u0438\u0435 \u0432 \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0438 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0441\u0447\u0451\u0442\u0430.' },
-      { code: '04', title: 'Operate', command: 'rahmet operate --watch', detail: '\u041c\u044b \u043e\u0441\u0442\u0430\u0451\u043c\u0441\u044f \u043d\u0430 \u0441\u0432\u044f\u0437\u0438. \u0421\u0438\u0441\u0442\u0435\u043c\u044b \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u044f\u0442\u0441\u044f, \u043d\u0430\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u044e\u0442\u0441\u044f \u0438 \u0440\u0430\u0441\u0448\u0438\u0440\u044f\u044e\u0442\u0441\u044f \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0431\u0438\u0437\u043d\u0435\u0441\u043e\u043c, \u0430 \u043d\u0435 \u0434\u0435\u0433\u0440\u0430\u0434\u0438\u0440\u0443\u044e\u0442 \u043f\u043e\u0441\u043b\u0435 \u043d\u0430\u0448\u0435\u0433\u043e \u0443\u0445\u043e\u0434\u0430.' },
+  comparison: {
+    kicker: 'Вручную vs система',
+    heading: 'Одна почта. Два способа с ней жить.',
+    subheading: 'Иллюстративная модель типичной недели поддержки — что меняется, когда очередью владеет система.',
+    note: 'Иллюстративная модель, не метрика клиента.',
+    seriesManual: 'Руками',
+    seriesAuto: 'С системой',
+    resolutionLabel: 'среднее время ответа',
+    resolutionManual: '~14 ч',
+    resolutionAuto: '~11 мин',
+    beats: [
+      { title: 'Приходит сообщение', manual: 'Лежит в общем ящике, пока кто-то освободится.', auto: 'Классифицировано и маршрутизировано за секунды, 24/7.' },
+      { title: 'Рутинный вопрос', manual: 'Сороковой раз копируется тот же ответ.', auto: 'Мгновенный ответ из вашей же базы знаний.' },
+      { title: 'Нестандартный случай', manual: 'Ходит по троим, дважды.', auto: 'Уходит одному ответственному — с полным контекстом.' },
+      { title: 'Отчётность', manual: 'Цифры собираются в пятницу вечером. Или нет.', auto: 'Живой дашборд, который команда реально открывает в понедельник.' },
     ],
   },
 
-  why: {
-    kicker: '\u041f\u043e\u0447\u0435\u043c\u0443 \u043c\u044b',
-    heading: '\u041f\u043e\u0447\u0435\u043c\u0443 \u0432\u044b\u0431\u0438\u0440\u0430\u044e\u0442 Rahmet Labs',
-    subheading: '\u041d\u0435 \u043f\u043e\u0442\u043e\u043c\u0443, \u0447\u0442\u043e \u043c\u044b \u0441\u0430\u043c\u044b\u0435 \u0431\u043e\u043b\u044c\u0448\u0438\u0435. \u041f\u043e\u0442\u043e\u043c\u0443, \u043a\u0430\u043a \u043c\u044b \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u043c.',
+  process: {
+    kicker: 'Как мы работаем',
+    heading: 'От первого звонка до работающей системы.',
+    subheading: 'Четыре этапа. Каждый заканчивается тем, что можно потрогать, — а не слайдами.',
+    stages: [
+      {
+        code: '01',
+        title: 'Скан',
+        duration: '1–2 недели',
+        description:
+          'Картируем, что реально происходит сегодня: инструменты, ручные шаги, незадокументированные передачи дел — прежде чем что-то предлагать.',
+      },
+      {
+        code: '02',
+        title: 'Проектирование',
+        duration: '1–2 недели',
+        description:
+          'Архитектура системы: что автоматизируем, что строим, что остаётся за людьми и как всё это общается между собой.',
+      },
+      {
+        code: '03',
+        title: 'Сборка и запуск',
+        duration: '2–8 недель',
+        description:
+          'Работающий софт поэтапно. Каждый этап можно тестировать и использовать — недопонимание стоит неделю, а не квартал.',
+      },
+      {
+        code: '04',
+        title: 'Эксплуатация',
+        duration: 'Постоянно',
+        description:
+          'Мы остаёмся. Системы мониторятся, настраиваются и растут вместе с бизнесом, а не деградируют в день передачи.',
+      },
+    ],
+  },
+
+  principles: {
+    kicker: 'Принципы',
+    heading: 'Почему с нами остаются.',
+    subheading: 'Не потому что мы самые большие. А из-за того, как делается работа.',
     points: [
-      { title: '\u041e\u0434\u043d\u0430 \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430', detail: '\u0411\u0435\u0437 \u043f\u0435\u0440\u0435\u0434\u0430\u0447 \u043c\u0435\u0436\u0434\u0443 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u043c \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e\u043c, \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c\u0438 \u0438 ops-\u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u043d\u0442\u043e\u043c. \u0422\u0435, \u043a\u0442\u043e \u043f\u043b\u0430\u043d\u0438\u0440\u0443\u0435\u0442 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u0441\u0442\u0440\u043e\u044f\u0442 \u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u044e\u0442 \u0435\u0451.' },
-      { title: '\u0412\u044b \u0432\u043b\u0430\u0434\u0435\u0435\u0442\u0435 \u0432\u0441\u0435\u043c', detail: '\u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0438, \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u044e\u0442\u0441\u044f \u0432\u0430\u043c \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0434\u043d\u044f. \u041d\u0438\u043a\u0430\u043a\u043e\u0439 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u043e\u0442 \u043d\u0430\u0441.' },
-      { title: '\u042d\u0442\u0430\u043f\u044b, \u0430 \u043d\u0435 \u043e\u0434\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u043e\u0435 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0435', detail: '\u0412\u044b \u0432\u0438\u0434\u0438\u0442\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0449\u0438\u0439 \u043f\u0440\u043e\u0434\u0443\u043a\u0442 \u043d\u0430 \u043a\u0430\u0436\u0434\u043e\u043c \u044d\u0442\u0430\u043f\u0435 Build, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043d\u0435\u0434\u043e\u043f\u043e\u043d\u0438\u043c\u0430\u043d\u0438\u0435 \u0441\u0442\u043e\u0438\u0442 \u043d\u0435\u0434\u0435\u043b\u044e, \u0430 \u043d\u0435 \u0442\u0440\u0438 \u043c\u0435\u0441\u044f\u0446\u0430.' },
-      { title: '\u041c\u044b \u043e\u0441\u0442\u0430\u0451\u043c\u0441\u044f \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430', detail: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0438 ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u044b \u043c\u0435\u043d\u044f\u044e\u0442\u0441\u044f \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0431\u0438\u0437\u043d\u0435\u0441\u043e\u043c. \u041c\u044b \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043c \u0438 \u043d\u0430\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u0435\u043c \u0438\u0445, \u0432\u043c\u0435\u0441\u0442\u043e \u0442\u043e\u0433\u043e \u0447\u0442\u043e\u0431\u044b \u0438\u0441\u0447\u0435\u0437\u043d\u0443\u0442\u044c \u043f\u043e\u0441\u043b\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438.' },
+      { title: 'Одна ответственная команда', detail: 'Без эстафеты между консультантами, подрядчиком по разработке и эксплуатацией. Кто оценивает систему, тот её и строит.' },
+      { title: 'Всё принадлежит вам', detail: 'Репозитории, инфраструктура и документация передаются с первого дня. Исчезнем завтра — ваши системы продолжат работать.' },
+      { title: 'Работающий софт на каждом шаге', detail: 'На каждом этапе вы видите что-то реальное — расхождение в ожиданиях стоит дни, а не квартал.' },
+      { title: 'Остаёмся после запуска', detail: 'Автоматика и ИИ дрейфуют вместе с бизнесом. Мы сопровождаем и настраиваем их, а не исчезаем после сдачи.' },
     ],
   },
 
   about: {
-    kicker: '\u041e \u043d\u0430\u0441',
-    heroHeading: '\u041d\u0435\u0431\u043e\u043b\u044c\u0448\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0441\u0435\u043d\u044c\u043e\u0440\u043e\u0432, \u0430 \u043d\u0435 \u0441\u043b\u043e\u0439 \u0430\u043a\u043a\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u043e\u0432.',
-    heroSubheading:
-      'Rahmet Labs \u2014 full-stack \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0441\u0442\u0443\u0434\u0438\u044f: \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f, ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0432\u0435\u0431 \u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b, Web3-\u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u2014 \u0432\u0441\u0451 \u044d\u0442\u043e \u0434\u0435\u043b\u0430\u044e\u0442 \u043b\u044e\u0434\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u044d\u0442\u043e \u0441\u0442\u0440\u043e\u044f\u0442.',
-    teamHeading: '\u0421 \u043a\u0435\u043c \u0432\u044b \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442\u0435',
-    teamIntro: '\u041c\u044b \u0437\u0430\u0434\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u043c \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u0443\u044e \u0433\u0440\u0443\u043f\u043f\u0443 \u0441\u0435\u043d\u044c\u043e\u0440\u043e\u0432 \u043d\u0430 \u043a\u0430\u0436\u0434\u043e\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0435, \u0430 \u043d\u0435 \u0441\u0442\u0430\u0432\u0438\u043c \u0434\u0436\u0443\u043d\u0438\u043e\u0440\u043e\u0432 \u0438 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0430.',
+    kicker: 'О нас',
+    heading: 'Небольшая senior-команда, а не слой аккаунт-менеджмента.',
+    subheading:
+      'Rahmet Labs — продуктовая технологическая студия: автоматизация, ИИ-системы, веб- и мобильные продукты, Web3-инфраструктура. Делается всё руками тех, кто строит.',
+    teamHeading: 'С кем вы будете работать',
+    teamIntro:
+      'На каждый проект мы ставим небольшую группу senior-людей вместо джунов и проект-менеджера.',
     team: [
-      { name: '\u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0438', role: '\u041f\u0440\u043e\u0434\u0443\u043a\u0442 \u00b7 \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u00b7 Web3', bio: '\u0421\u0442\u0430\u0440\u0448\u0438\u0435 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u0443\u044e\u0442, \u0441\u0442\u0440\u043e\u044f\u0442 \u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u044e\u0442 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u043e\u0442 \u043d\u0430\u0447\u0430\u043b\u0430 \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \u2014 \u043b\u044e\u0434\u0438 \u043d\u0430 \u0432\u0430\u0448\u0435\u043c kickoff-\u0437\u0432\u043e\u043d\u043a\u0435 \u0438 \u0435\u0441\u0442\u044c \u0442\u0435, \u043a\u0442\u043e \u043f\u0438\u0448\u0435\u0442 \u043a\u043e\u0434.' },
-      { name: 'ИИ и \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f', role: 'AI Ops \u00b7 \u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438', bio: '\u0421\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u044b \u043f\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432, \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 LLM \u0438 \u043e\u0440\u043a\u0435\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0441\u0438\u0441\u0442\u0435\u043c, \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u044e\u0442\u0441\u044f \u043a \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438 \u0438 ИИ-\u0447\u0430\u0441\u0442\u0438 \u043f\u0440\u043e\u0435\u043a\u0442\u0430.' },
-      { name: '\u0414\u0438\u0437\u0430\u0439\u043d \u0438 \u0432\u044b\u043f\u0443\u0441\u043a', role: '\u0414\u0438\u0437\u0430\u0439\u043d \u00b7 QA \u00b7 \u0417\u0430\u043f\u0443\u0441\u043a', bio: '\u041b\u044e\u0434\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0441\u043b\u0435\u0434\u044f\u0442, \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u043f\u0443\u0449\u0435\u043d\u043d\u043e\u0435 \u0431\u044b\u043b\u043e \u0443\u0434\u043e\u0431\u043d\u044b\u043c, \u043f\u0440\u043e\u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u043c \u0438 \u0433\u043e\u0442\u043e\u0432\u044b\u043c \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u044b \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0434\u043d\u044f \u2014 \u0430 \u043d\u0435 \u043f\u0440\u043e\u0442\u043e\u0442\u0438\u043f\u043e\u043c \u0434\u043b\u044f \u0434\u0435\u043c\u043e.' },
+      {
+        name: 'Основные разработчики',
+        role: 'Продукт · Автоматизация · Web3',
+        bio: 'Senior-инженеры, которые проектируют, строят и запускают систему целиком: люди на вашем первом звонке — это люди, которые пишут код.',
+      },
+      {
+        name: 'Партнёры по ИИ и автоматике',
+        role: 'AI Ops · Интеграции',
+        bio: 'Специалисты по автоматизации процессов, интеграции LLM и оркестрации систем — подключаются к ИИ-части сборки.',
+      },
+      {
+        name: 'Кольцо дизайна и поставки',
+        role: 'Дизайн · QA · Запуск',
+        bio: 'Люди, которые следят, чтобы результат был удобным, протестированным и готовым к работе вашей команды с первого дня.',
+      },
     ],
-    principlesHeading: '\u041a\u0430\u043a \u043c\u044b \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u043c',
-    principles: [
-      { title: '\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0442\u0435\u043b\u0435\u043c\u0435\u0442\u0440\u0438\u044f', description: '\u041c\u044b \u043d\u0430\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u0435\u043c \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0438 \u043b\u043e\u0433\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0434\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438, \u0447\u0442\u043e\u0431\u044b \u043a\u0430\u0436\u0434\u044b\u0439 \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u043e\u0441\u0442\u0430\u0432\u0430\u043b\u0441\u044f \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u043c.' },
-      { title: '\u0414\u0438\u0437\u0430\u0439\u043d \u0438 \u043a\u043e\u0434 \u0432\u043c\u0435\u0441\u0442\u0435', description: '\u041f\u0440\u043e\u0434\u0443\u043a\u0442, \u0434\u0438\u0437\u0430\u0439\u043d \u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0432 \u043e\u0434\u043d\u043e\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u0435. \u041d\u0438\u043a\u0430\u043a\u0438\u0445 \u043f\u0435\u0440\u0435\u0434\u0430\u0447 \u043c\u0435\u0436\u0434\u0443 \u043e\u0442\u0434\u0435\u043b\u0430\u043c\u0438.' },
-      { title: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0432\u043c\u0435\u0441\u0442\u043e \u0448\u0442\u0430\u0442\u0430', description: '\u0415\u0441\u043b\u0438 \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u043c\u043e\u0436\u0435\u0442 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0441\u0430\u043c, \u043c\u044b \u0441\u0442\u0440\u043e\u0438\u043c \u0435\u0433\u043e \u0442\u0430\u043a, \u0447\u0442\u043e\u0431\u044b \u043e\u043d \u0440\u0430\u0431\u043e\u0442\u0430\u043b \u0441\u0430\u043c \u2014 \u0432\u044b \u0440\u0430\u0441\u0442\u0451\u0442\u0435 \u0431\u0435\u0437 \u043d\u043e\u0432\u043e\u0433\u043e \u0441\u043b\u043e\u044f \u043b\u044e\u0434\u0435\u0439.' },
-      { title: '\u0412\u044b \u0432\u043b\u0430\u0434\u0435\u0435\u0442\u0435 \u0432\u0441\u0435\u043c', description: '\u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0438, \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u044e\u0442\u0441\u044f \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0434\u043d\u044f. \u0415\u0441\u043b\u0438 \u043c\u044b \u0438\u0441\u0447\u0435\u0437\u043d\u0435\u043c \u0437\u0430\u0432\u0442\u0440\u0430, \u0432\u0430\u0448\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0442 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c.' },
-    ],
-    toolkitHeading: '\u0421\u0442\u0435\u043a, \u0441 \u043a\u043e\u0442\u043e\u0440\u044b\u043c \u043c\u044b \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u043c',
+    principlesHeading: 'Как мы работаем',
+    toolkitHeading: 'Наш стек',
     toolkit: ['Next.js', 'React', 'React Native', 'Solidity', 'Hardhat', 'Supabase', 'Postgres', 'n8n', 'LangChain', 'OpenAI', 'Vercel', 'Playwright'],
-    ctaHeading: '\u0413\u043e\u0442\u043e\u0432\u044b \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u043a\u0430\u0440\u0442\u0443 \u0441\u0432\u043e\u0438\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432?',
-    ctaSubheading: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435, \u0447\u0442\u043e \u0441\u0435\u0439\u0447\u0430\u0441 \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e. \u041c\u044b \u0441\u043a\u0430\u0436\u0435\u043c, \u0447\u0442\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043b\u0438 \u0431\u044b \u043f\u0435\u0440\u0432\u044b\u043c.',
-    ctaPrimary: '\u041d\u0410\u0427\u0410\u0422\u042c \u041f\u0420\u041e\u0415\u041a\u0422',
-    ctaSecondary: '\u0421\u041c\u041e\u0422\u0420\u0415\u0422\u042c \u0420\u0410\u0411\u041e\u0422\u042b',
+    ctaHeading: 'Поговорите с теми, кто будет это строить.',
+    ctaSubheading: '15-минутный звонок с senior-специалистами — не с продажником.',
+    ctaPrimary: 'Начать проект',
+    ctaSecondary: 'Смотреть работы',
   },
 
-  contact: {
-    kicker: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b',
-    heading: '\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043a\u0430\u043d\u0430\u043b.',
-    subheading: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435, \u0447\u0442\u043e \u0441\u043b\u043e\u043c\u0430\u043d\u043e \u0438\u043b\u0438 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e. \u041e\u0442\u0432\u0435\u0442\u0438\u0442 \u0436\u0438\u0432\u043e\u0439 \u0447\u0435\u043b\u043e\u0432\u0435\u043a, \u0430 \u043d\u0435 \u043e\u0447\u0435\u0440\u0435\u0434\u044c \u0442\u0438\u043a\u0435\u0442\u043e\u0432.',
-    formHeading: '\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0431\u0440\u0438\u0444',
-    formNameLabel: '\u0418\u041c\u042f',
-    formContactLabel: 'EMAIL \u0418\u041b\u0418 \u0422\u0415\u041b\u0415\u0424\u041e\u041d',
-    formProjectLabel: '\u0427\u0422\u041e \u0412\u0410\u041c \u041d\u0423\u0416\u041d\u041e?',
-    formProjectOptions: ['\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f', 'ИИ-\u0441\u0438\u0441\u0442\u0435\u043c\u0430', '\u0412\u0435\u0431 / \u043f\u0440\u043e\u0434\u0443\u043a\u0442', '\u041c\u043e\u0431\u0438\u043b\u044c\u043d\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435', 'Web3', '\u041f\u043e\u043a\u0430 \u043d\u0435 \u0443\u0432\u0435\u0440\u0435\u043d'],
-    formMessageLabel: '\u0411\u0420\u0418\u0424',
-    formMessagePlaceholder: '\u0427\u0442\u043e \u0441\u0435\u0439\u0447\u0430\u0441 \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e? \u0427\u0442\u043e \u0431\u044b \u0432\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043b\u0438 \u043f\u0435\u0440\u0432\u044b\u043c?',
-    formSubmit: '\u041e\u0422\u041f\u0420\u0410\u0412\u0418\u0422\u042c \u0427\u0415\u0420\u0415\u0417 WHATSAPP',
-    directHeading: '\u0418\u043b\u0438 \u043d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043d\u0430\u043f\u0440\u044f\u043c\u0443\u044e',
-    channels: [
-      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062' },
-      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs' },
-      { id: 'email', label: 'Email', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com' },
+  servicesPage: {
+    kicker: 'Услуги',
+    heading: 'Пять функций. Одна ответственная команда.',
+    subheading: 'Всё ниже — возможности, которые мы крутим в продакшене уже сегодня, а не список желаний.',
+    engagementHeading: 'Форматы работы',
+    engagement: [
+      { title: 'Проектная сборка', detail: 'Определённая система: скоуп, поэтапная поставка, фиксированный ритм показов.' },
+      { title: 'Операционный ретейнер', detail: 'Мы сопровождаем и развиваем построенное: мониторинг, настройки, новые функции по мере роста бизнеса.' },
+      { title: 'Технический советник', detail: 'Senior-взгляд на вашу архитектуру, найм и роадмап — несколько дней в месяц, без ретейнеров ради ретейнеров.' },
     ],
-    responseNote: '\u041c\u044b \u0441\u0430\u043c\u0438 \u0447\u0438\u0442\u0430\u0435\u043c \u043a\u0430\u0436\u0434\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u2014 \u0431\u0435\u0437 \u0442\u0438\u043a\u0435\u0442\u043e\u0432 \u0438 \u0430\u043a\u043a\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u043e\u0432.',
+    faqHeading: 'Частые вопросы',
+    ctaHeading: 'Не уверены, какая функция нужна?',
+    ctaSubheading: 'Опишите ручную работу, которая съедает вашу неделю. Честно скажем, что с ней может сделать система.',
+  },
+
+  faq: [
+    {
+      q: 'Как быстро можно начать?',
+      a: 'Обычно в течение одной-двух недель: короткий звонок, письменный скоуп первого этапа — и стартуем. Трёхмесячных «исследований» у нас нет.',
+    },
+    {
+      q: 'Вы работаете с нашими текущими инструментами?',
+      a: 'Да, в этом и смысл. Сначала соединяем и автоматизируем то, что есть — CRM, ERP, мессенджеры, — и заменяем только то, что правда не спасти.',
+    },
+    {
+      q: 'Сколько обычно стоит проект?',
+      a: 'Зависит от скоупа: точечная автоматизация и полноценный продукт — разные истории. После одного звонка даём письменную оценку первого этапа, которым можно будет пользоваться, — никаких чёрных ящиков.',
+    },
+    {
+      q: 'Кому принадлежит код и инфраструктура?',
+      a: 'Вам, с первого дня. Репозитории, облачные аккаунты и документация передаются вашей команде в рамках поставки.',
+    },
+    {
+      q: 'Что происходит после запуска?',
+      a: 'Большинство клиентов оставляют нас на операционном ретейнере: мониторинг, настройки, доработки. Хотите вести сами — передадим с обучением и инструкциями.',
+    },
+    {
+      q: 'На каких языках можно работать?',
+      a: 'На английском, русском и казахском — звонки, документация и интерфейсы, которые мы поставляем.',
+    },
+  ],
+
+  contact: {
+    kicker: 'Контакты',
+    heading: 'Расскажите, что у вас делается вручную.',
+    subheading: 'Сообщение, звонок или голосовое — как удобнее. Ответит живой человек.',
+    channelsHeading: 'Напрямую',
+    channels: [
+      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062', note: 'Быстрее всего — обычно в течение часа' },
+      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs', note: 'В тот же день' },
+      { id: 'email', label: 'Почта', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com', note: 'В течение 24 часов' },
+    ],
+    guideHeading: 'Что будет дальше',
+    guide: [
+      { code: '01', title: 'Вы описываете ручную работу', detail: 'Достаточно двух предложений. Читаем всё сами — без очередей тикетов и аккаунт-менеджеров.' },
+      { code: '02', title: 'Мы отвечаем с позицией', detail: 'Что автоматизировать в первую очередь, что не трогать и как может выглядеть первый рабочий этап.' },
+      { code: '03', title: '15-минутный звонок с senior-командой', detail: 'Люди, которые будут строить вашу систему, а не отдел продаж. Если мы не подходим — скажем прямо.' },
+    ],
+    socialHeading: 'Ещё мы здесь',
+    socials: [
+      { label: 'GitHub', href: 'https://github.com/rahmetlabs' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/company/rahmetlabs' },
+      { label: 'X', href: 'https://x.com/rahmetlabs' },
+    ],
+  },
+
+  cta: {
+    kicker: 'Начать',
+    heading: 'Начните с ручной работы,',
+    headingAccent: 'которая съедает вашу неделю.',
+    subheading:
+      'Расскажите, что ваша команда до сих пор делает руками. Ответим по существу: что может забрать система, что для этого нужно и что мы бы построили первым.',
+    primary: 'Начать проект',
+    whatsapp: 'Написать в WhatsApp',
   },
 
   footer: {
-    tagline: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f, ИИ \u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430 \u2014 \u043a\u0430\u043a \u043e\u0434\u043d\u0430 \u0441\u0438\u0441\u0442\u0435\u043c\u0430.',
-    quickLinksLabel: '\u041a\u0410\u0420\u0422\u0410',
-    locationNote: '\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d \u00b7 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u043c \u0441 \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u043c\u0438 \u043f\u043e \u0432\u0441\u0435\u043c\u0443 \u043c\u0438\u0440\u0443.',
-    copyrightPrefix: '\u00a9',
-    copyrightSuffix: 'Rahmet Labs.',
+    tagline: 'Автоматизация, ИИ-системы и инженерные продукты — одна ответственная команда от проектирования до эксплуатации.',
+    mapLabel: 'Сайт',
+    contactLabel: 'Контакты',
+    locationNote: 'Казахстан · работаем с командами по всему миру · EN / RU / KZ',
+    copyrightSuffix: 'Rahmet Labs. Сделано с той же тщательностью, что и системы для клиентов.',
   },
 };
 
 const kz = {
   meta: {
     home: {
-      title: 'Rahmet Labs \u2014 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c \u0438\u043d\u0436\u0438\u043d\u0438\u0440\u0438\u043d\u0433\u0456 \u0441\u0442\u0443\u0434\u0438\u044f\u0441\u044b',
+      title: 'Rahmet Labs — автоматтандыру, AI және өнім инженериясы студиясы',
       description:
-        'Rahmet Labs \u049b\u043e\u043b\u043c\u0435\u043d \u04af\u0434\u0435\u0440\u0456\u0441\u0442\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u044b\u043b\u0493\u0430\u043d \u0436\u04af\u0439\u0435\u0433\u0435 \u0430\u0439\u043d\u0430\u043b\u0434\u044b\u0440\u0430\u0434\u044b: \u043f\u0440\u043e\u0446\u0435\u0441\u0442\u0435\u0440\u0434\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ-\u0430\u0433\u0435\u043d\u0442\u0442\u0435\u0440, \u0432\u0435\u0431 \u0436\u04d9\u043d\u0435 \u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u04e9\u043d\u0456\u043c\u0434\u0435\u0440, Web3 \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c\u044b \u2014 \u0431\u0456\u0440 \u0436\u0430\u0443\u0430\u043f\u043a\u0435\u0440\u0448\u0456\u043b\u0456\u043a\u0442\u0456 \u043a\u043e\u043c\u0430\u043d\u0434\u0430.',
-      keywords: ['\u0431\u0438\u0437\u043d\u0435\u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443', 'ИИ \u04d9\u0437\u0456\u0440\u043b\u0435\u0443', 'Next.js \u0441\u0442\u0443\u0434\u0438\u044f\u0441\u044b', 'web3 \u04d9\u0437\u0456\u0440\u043b\u0435\u0443'],
+        'Rahmet Labs қолмен жұмысты автоматикаға, AI жүйелеріне және инженерлік өнімдерге ауыстырады — жобалау, іске қосу және сүйемелдеу бәрі бір жауапты командада.',
+      keywords: ['бизнес автоматтандыру', 'AI әзірлеу', 'AI агенттер', 'веб әзірлеу', 'web3'],
     },
     services: {
-      title: '\u049a\u044b\u0437\u043c\u0435\u0442\u0442\u0435\u0440 \u2014 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ, \u0432\u0435\u0431, \u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u0436\u04d9\u043d\u0435 Web3 | Rahmet Labs',
-      description: '\u0410\u043b\u0442\u044b \u0431\u0430\u0493\u044b\u0442, \u0431\u0456\u0440 \u0436\u0430\u0443\u0430\u043f\u043a\u0435\u0440\u0448\u0456\u043b\u0456\u043a\u0442\u0456 \u043a\u043e\u043c\u0430\u043d\u0434\u0430: \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ-\u0436\u04af\u0439\u0435\u043b\u0435\u0440, \u0432\u0435\u0431 \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c, \u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456, \u0431\u044d\u043a\u0435\u043d\u0434 \u0436\u04d9\u043d\u0435 \u0434\u0435\u0440\u0435\u043a\u0442\u0435\u0440, Web3 \u0436\u04d9\u043d\u0435 \u0431\u043b\u043e\u043a\u0447\u0435\u0439\u043d.',
-      keywords: ['\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u049b\u044b\u0437\u043c\u0435\u0442\u0442\u0435\u0440\u0456', 'ИИ-\u0430\u0433\u0435\u043d\u0442\u0442\u0435\u0440', '\u0441\u0430\u0439\u0442 \u04d9\u0437\u0456\u0440\u043b\u0435\u0443'],
+      title: 'Қызметтер — автоматтандыру, AI, веб, мобайл және Web3 | Rahmet Labs',
+      description: 'Бес функция, бір жауапты команда: автоматтандыру, AI агенттер, веб және мобиль өнімдер, бэкенд пен эксплуатация.',
+      keywords: ['автоматтандыру қызметтері', 'AI агенттер', 'веб қосымшалар', 'мобиль қосымшалар'],
     },
     portfolio: {
-      title: '\u046e\u0448\u0442\u0435\u0440 \u2014 \u0456\u0441\u043a\u0435 \u049b\u043e\u0441\u044b\u043b\u0493\u0430\u043d \u0436\u04af\u0439\u0435\u043b\u0435\u0440 | Rahmet Labs',
-      description: 'Rahmet Labs \u0456\u0441\u043a\u0435 \u049b\u043e\u0441\u049b\u0430\u043d \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ, \u0432\u0435\u0431 \u0436\u04d9\u043d\u0435 Web3 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u043d\u0456\u04a3 \u04af\u043b\u0433\u0456\u0441\u0456 \u2014 \u043c\u04af\u043c\u043a\u0456\u043d \u0431\u043e\u043b\u0493\u0430\u043d\u0434\u0430 \u043d\u0430\u049b\u0442\u044b \u0441\u0456\u043b\u0442\u0435\u043c\u0435\u043b\u0435\u0440\u043c\u0435\u043d.',
-      keywords: ['\u043f\u043e\u0440\u0442\u0444\u043e\u043b\u0438\u043e', '\u0436\u04af\u0439\u0435\u043b\u0435\u0440'],
+      title: 'Жұмыстар — іске қосылған жүйелер | Rahmet Labs',
+      description: 'Rahmet Labs іске қосқан автоматтандыру, AI, веб және Web3 жүйелерінің таңдауы — тірі сілтемелерімен.',
+      keywords: ['портфолио', 'автоматтандыру жобалары', 'AI жобалары'],
     },
     about: {
-      title: 'Rahmet Labs \u0442\u0443\u0440\u0430\u043b\u044b \u2014 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u04a3\u0456\u0437\u0434\u0456 \u043a\u0456\u043c\u0434\u0435\u0440 \u049b\u04b1\u0440\u0430\u0434\u044b',
-      description: 'Rahmet Labs \u2014 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ, \u0432\u0435\u0431/\u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u0436\u04d9\u043d\u0435 Web3 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u043d \u049b\u04b1\u0440\u0430\u0442\u044b\u043d \u0448\u0430\u0493\u044b\u043d \u043c\u0430\u043c\u0430\u043d\u0434\u0430\u0440\u0434\u0430\u0440\u0434\u0430\u043d \u0442\u04b1\u0440\u0430\u0442\u044b\u043d \u0448\u0430\u0493\u044b\u043d \u043a\u0456\u0448\u0456 \u043a\u043e\u043c\u0430\u043d\u0434\u0430.',
-      keywords: ['Rahmet Labs \u0442\u0443\u0440\u0430\u043b\u044b'],
+      title: 'Rahmet Labs туралы — жүйеңізді құратын команда',
+      description: 'Rahmet Labs — шағын senior команда: автоматтандыру, AI, веб/мобайл және Web3. Жобаны бағалағандар оны өздері құрады.',
+      keywords: ['rahmet labs туралы', 'өнім студиясы'],
     },
     contact: {
-      title: 'Rahmet Labs \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0443 \u2014 \u0436\u043e\u0431\u0430\u043d\u044b \u0431\u0430\u0441\u0442\u0430\u0443',
-      description: 'Rahmet Labs-\u049b\u0430 \u0431\u04af\u0433\u0456\u043d\u0433\u0456 \u049b\u043e\u043b\u043c\u0435\u043d \u0436\u0430\u0441\u0430\u043b\u044b\u043f \u0436\u0430\u0442\u049b\u0430\u043d\u0434\u044b \u0436\u0430\u0437\u044b\u04a3\u044b\u0437. WhatsApp, Telegram, email \u0430\u0440\u049b\u044b\u043b\u044b \u0436\u0430\u0437\u044b\u04a3\u044b\u0437.',
-      keywords: ['\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u0441\u0442\u0443\u0434\u0438\u044f\u0441\u044b\u043c\u0435\u043d \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0443'],
+      title: 'Rahmet Labs байланыс — жобаны бастау',
+      description: 'Бүгін не әлі қолмен жасалып жүргенін айтыңыз. WhatsApp, Telegram немесе пошта арқылы жазыңыз.',
+      keywords: ['автоматтандыру студиясымен байланыс', 'жоба бастау'],
     },
   },
 
   facts: {
     whatWeDo:
-      'Rahmet Labs \u2014 \u0431\u0438\u0437\u043d\u0435\u0441 \u043f\u0440\u043e\u0446\u0435\u0441\u0442\u0435\u0440\u0456\u043d \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u043d, \u0432\u0435\u0431 \u0436\u04d9\u043d\u0435 \u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u04e9\u043d\u0456\u043c\u0434\u0435\u0440\u0434\u0456, Web3 \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c\u044b\u043d \u049b\u043e\u043b\u043c\u0435\u043d \u04af\u0434\u0435\u0440\u0456\u0441\u0442\u0456 \u0456\u0441\u043a\u0435 \u0436\u0430\u0441\u0430\u0443\u0448\u044b \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430\u043b\u0430\u0440\u0434\u044b \u0430\u043b\u043c\u0430\u0441\u0442\u044b\u0440\u0430\u0442\u044b\u043d full-stack \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u044f\u043b\u044b\u049b \u0441\u0442\u0443\u0434\u0438\u044f.',
+      'Rahmet Labs — қолмен операцияларды бағдарламамен ауыстырған компанияларға автоматтандыру, AI жүйелері, веб және мобиль өнімдер, Web3 инфрақұрылымын құратын full-stack технология студиясы.',
     whoFor:
-      '\u041d\u0435\u0433\u0456\u0437\u0433\u0435\u0440\u043b\u0435\u0440, \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f\u043b\u044b\u049b \u0436\u0435\u0442\u0435\u043a\u0448\u0456\u043b\u0435\u0440 \u0436\u04d9\u043d\u0435 \u0442\u0435\u0445\u043d\u0438\u043a\u0430\u043b\u044b\u049b \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u043b\u0430\u0440\u0493\u0430 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d, \u043e\u043b\u0430\u0440\u0493\u0430 \u04d9\u0440\u0442\u04af\u0440\u043b\u0456 \u0444\u0440\u0438\u043b\u0430\u043d\u0441\u0435\u0440\u043b\u0435\u0440\u0434\u0456\u04a3 \u043e\u0440\u043d\u044b\u043d\u0430 \u0431\u0456\u0440 \u0436\u0430\u0443\u0430\u043f\u043a\u0435\u0440\u0448\u0456\u043b\u0456\u043a\u0442\u0456 \u04d9\u0440\u0456\u043f\u0442\u0435\u0441 \u043a\u0435\u0440\u0435\u043a.',
-    basedIn: 'Rahmet Labs \u049a\u0430\u0437\u0430\u049b\u0441\u0442\u0430\u043d\u0434\u0430 \u043e\u0440\u043d\u0430\u043b\u0430\u0441\u049b\u0430\u043d \u0436\u04d9\u043d\u0435 \u041e\u0440\u0442\u0430\u043b\u044b\u049b \u0410\u0437\u0438\u044f, \u0415\u0443\u0440\u043e\u043f\u0430 \u0436\u04d9\u043d\u0435 \u0428\u044b\u0493\u044b\u0441 \u0435\u043b\u0434\u0435\u0440\u0456\u043d\u0434\u0435\u0433\u0456 \u043a\u043b\u0438\u0435\u043d\u0442\u0442\u0435\u0440\u043c\u0435\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0434\u0456.',
+      'Стратегия, автоматика және инженерия үшін жеке фрилансерлер тобының орнына бір жауапты серіктес керек негізін қалаушылар, операциялық жетекшілер және техникалық командалар.',
+    basedIn: 'Rahmet Labs Қазақстанда орналасқан және Орталық Азия, Еуропа және Парсы шығанағы бойындағы клиенттермен жұмыс істейді.',
   },
 
   nav: {
     wordmark: 'RAHMET LABS',
-    ticker: 'RHMT',
-    functions: [
-      { key: 'F1', label: '\u049a\u042b\u0417\u041c\u0415\u0422\u0422\u0415\u0420', href: '/services' },
-      { key: 'F2', label: '\u046e\u0428\u0422\u0415\u0420', href: '/portfolio' },
-      { key: 'F3', label: '\u0411\u0406\u0417 \u0422\u0423\u0420\u0410\u041b\u042b', href: '/about' },
-      { key: 'F4', label: '\u0411\u0410\u0419\u041b\u0410\u041d\u042b\u0421', href: '/contact' },
+    closeWordmark: 'RL',
+    links: [
+      { label: 'Жұмыстар', href: '/portfolio' },
+      { label: 'Қызметтер', href: '/services' },
+      { label: 'Біз туралы', href: '/about' },
     ],
-    start: { key: 'F5', label: '\u0416\u041e\u0411\u0410 \u0411\u0410\u0421\u0422\u0410\u0423', href: '/contact' },
-    menuLabel: '\u041c\u0415\u041d\u042e',
-    closeLabel: '\u0416\u0410\u0411\u0423',
+    cta: 'Жоба бастау',
+    menuLabel: 'Мәзір',
+    closeLabel: 'Жабу',
   },
 
   hero: {
-    kicker: '\u0428\u043e\u043b\u0443',
-    statusLabel: 'LIVE',
-    headline: '\u041a\u04e9\u043f\u0442\u0435\u0433\u0435\u043d \u0431\u0438\u0437\u043d\u0435\u0441 \u0436\u04af\u0439\u0435 \u0431\u043e\u043b\u044b\u043f \u043a\u04e9\u0440\u0456\u043d\u0435\u0442\u0456\u043d \u049b\u043e\u043b\u043c\u0435\u043d \u0435\u04a3\u0431\u0435\u043a\u0442\u0435\u043d \u0436\u04af\u0440\u0435\u0434\u0456.',
+    kicker: 'Rahmet Labs — автоматтандыру, AI және өнім инженериясы',
+    line1: 'Бизнесіңіз',
+    line2: 'қол жұмысқа',
+    line2Accent: 'батып жүр.',
+    line3: 'Біз оны тоқтататын',
+    line3Accent: 'жүйелер',
+    line3Tail: 'құрамыз.',
     subheadline:
-      'Rahmet Labs \u043a\u0435\u0441\u0442\u0435\u043b\u0435\u0440\u0434\u0456, \u049b\u043e\u043b\u0434\u0430\u043d \u043a\u04e9\u0448\u0456\u0440\u0443\u0434\u0456 \u0436\u04d9\u043d\u0435 \u0448\u0435\u043a\u0441\u0456\u0437 \u0445\u0430\u0442\u0442\u0430\u0440\u0434\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443\u0493\u0430, ИИ-\u0493\u0430 \u0436\u04d9\u043d\u0435 \u0448\u044b\u043d\u044b\u043d\u0434\u0430 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430\u043b\u044b\u049b \u0436\u04af\u0439\u0435\u0433\u0435 \u0430\u0443\u044b\u0441\u0442\u044b\u0440\u0430\u0434\u044b \u2014 \u0441\u043e\u0434\u0430\u043d \u043e\u043d\u044b \u0436\u04af\u0440\u0433\u0456\u0437\u0443\u0434\u0456 \u0434\u0435 \u0436\u0430\u043b\u0493\u0430\u0441\u0442\u044b\u0440\u0430\u043c\u044b\u0437.',
-    ctaPrimary: '\u0416\u041e\u0411\u0410 \u0411\u0410\u0421\u0422\u0410\u0423',
-    ctaSecondary: '\u046e\u0428\u0422\u0415\u0420\u0414\u0406 \u041a\u04e8\u0420\u0423',
-    comparisonLabel: '\u0411\u0406\u0420\u0414\u0415\u0419 \u0411\u0415\u0421 \u049a\u042b\u0417\u041c\u0415Т \u2014 ДЕЙІНГІ ЖӘНЕ КЕЙІНГІ',
-    manualLabel: '\u049a\u041e\u041b\u0414\u0410\u041d',
-    automatedLabel: '\u0410\u0412\u0422\u041e\u041c\u0410\u0422\u0422\u0410\u041d\u0414\u042b\u0420\u042b\u041b\u0413\u0410\u041d',
-    rows: [
-      { fn: '\u041a\u043b\u0438\u0435\u043d\u0442\u0442\u0435\u0440\u0434\u0456 \u049b\u043e\u043b\u0434\u0430\u0443', manualStatus: '\u041a\u0415\u0417\u0415\u041a\u0422\u0415', manualDetail: '6\u0421 \u041a\u0415\u0428\u0406\u0413\u0423', autoStatus: '\u0428\u0415\u0428\u0406\u041b\u0414\u0406', autoDetail: 'LIVE' },
-      { fn: '\u041b\u0438\u0434\u043f\u0435\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0443', manualStatus: '\u04e8\u0422\u041a\u0406\u0417\u0406\u041f \u041a\u0415\u0422\u0422\u0406', manualDetail: '2 \u041a\u04af\u041d \u0416\u0410\u0423\u0410\u041f \u0416\u041e\u049a', autoStatus: '\u0416\u0406\u0411\u0415\u0420\u0406\u041b\u0414\u0406', autoDetail: '\u0410\u041d\u042b\u049a-\u041c\u04b0\u041d\u0410' },
-      { fn: '\u0428\u043e\u0442\u0442\u0430\u0440\u0443', manualStatus: '\u041a\u04af\u0422\u0423\u0414\u0415', manualDetail: '\u0416\u04b0\u041c\u0410 \u0421\u04b0\u0419\u0421\u0415\u041d\u0406\u0414\u0415', autoStatus: '\u0416\u0410\u0411\u041f\u0410\u041d\u0414\u042b', autoDetail: '\u04a8Н\u0415\u041c\u0406' },
-      { fn: '\u0415\u0441\u0435\u043f \u0431\u0435\u0440\u0443', manualStatus: '\u0415\u0421\u041a\u0406', manualDetail: '3 \u041a\u04af\u041d \u0411\u04b0\u0420\u042b\u041d', autoStatus: '\u0421\u0418\u041d\u0425\u0420\u041e\u041d\u0414\u0410\u041b\u0413\u0410\u041d', autoDetail: '\u041d\u0410\u049a\u0422\u042b \u0423\u0410\u049a\u042b\u0422\u0422\u0410' },
-      { fn: '\u0411\u0435\u0439\u0456\u043c\u0434\u0435\u0443', manualStatus: '\u0422\u041e\u049a\u0422\u0410\u041b\u0414\u042b', manualDetail: '\u0425\u0410\u0422 \u0416\u0410\u0417\u0410\u041b\u0410\u0421\u0423\u0414\u0410', autoStatus: '\u0414\u0410\u0419\u042b\u041d\u0414\u0410\u041b\u0414\u042b', autoDetail: '\u0410\u0412\u0422\u041e\u041c\u0410\u0422\u0422\u042b' },
-    ],
-    mergeLabel: '\u0411\u0406\u0420 \u0416\u04af\u0419\u0415.',
-    mergeDetail: '\u0416\u043e\u0493\u0430\u0440\u044b\u0434\u0430\u0493\u044b \u04d9\u0440\u0431\u0456\u0440 \u0436\u043e\u043b \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u04a3\u044b\u0437 \u043d\u0430\u049b\u0442\u044b \u0430\u0448\u0430\u0442\u044b\u043d \u0431\u0456\u0440 \u043f\u0430\u043d\u0435\u043b\u044c\u0433\u0435 \u0430\u0439\u043d\u0430\u043b\u0430\u0434\u044b.',
+      'Бір senior команда кестелерді, көшірме-қоюды және шексіз хат алмасуды ауыстыратын автоматика мен AI жүйелерін жобалайды, іске қосады және сүйемелдейді. Күнделікті рутинаны софт жасайды — адамдар бизнес жасайды.',
+    ctaPrimary: 'Жоба бастау',
+    ctaSecondary: 'Жұмыстарды көру',
+    supportingLabel: 'Бір жауапты команда · EN / RU / KZ',
+    supportingChannels: 'WhatsApp · Telegram · пошта',
+    scrollLabel: 'Төмен сырғытыңыз',
   },
 
-  services: {
-    kicker: '\u049a\u044b\u0437\u043c\u0435\u0442\u0442\u0435\u0440',
-    heading: '\u0410\u043b\u0442\u044b \u0431\u0430\u0493\u044b\u0442. \u0411\u0456\u0440 \u0436\u0430\u0443\u0430\u043f\u043a\u0435\u0440\u0448\u0456\u043b\u0456\u043a\u0442\u0456 \u043a\u043e\u043c\u0430\u043d\u0434\u0430.',
+  thread: {
+    chapters: [
+      {
+        key: '01',
+        title: 'Жұмыс көрінбейді — бұзылғанша.',
+        lead: 'Біреу сандарды кестеге көшіреді. Біреу шот жіберуді есінде сақтайды. Біреу түн ортасында тендер порталын тексереді. Мұның ешқайсысы жүйеде жоқ — бәрі біреудің есінде.',
+        detail: 'Жаңа адам жалдау хаосты ғана үлкейтеді, қуатын емес.',
+      },
+      {
+        key: '02',
+        title: 'Батырлық керек емес. Жүйе керек.',
+        lead: 'Команда қолмен істейтін нәрселердің көпшілігі — қайталанатын әдіс: көру, салыстыру, көшіру, шешу, жіберу. Ал қайталанатын әдістер — дәл софтың жұмысы.',
+        detail: 'Мәселе ешқашан күште емес — әрқашан архитектурада.',
+      },
+      {
+        key: '03',
+        title: 'Сол жүйені біз құрамыз.',
+        lead: 'Өзі жұмыс істейтін автоматика, оқитын және шешетін AI, клиенттер шынымен қолданатын өнімдер — жобалаудан эксплуатацияға дейін бір жауапты команда.',
+        detail: 'Төмен сырғытыңыз. Барлық ұсыныс осы.',
+      },
+    ],
+  },
+
+  whatWeBuild: {
+    kicker: 'Не құрамыз',
+    heading: 'Бір студия — жүйенің барлық қабаты.',
     subheading:
-      '\u0411\u0456\u0437 \u0442\u0435\u0445\u0437\u0430\u0434\u0430\u043d\u044b \u0442\u0430\u043f\u0441\u044b\u0440\u044b\u043f, \u0436\u043e\u0493\u0430\u043b\u044b\u043f \u043a\u0435\u0442\u043f\u0435\u0439\u043c\u0456\u0437. \u04d8\u0440\u0431\u0456\u0440 \u0431\u0430\u0493\u044b\u0442 \u0431\u0430\u0441\u049b\u0430\u043b\u0430\u0440\u043c\u0435\u043d \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0442\u044b, \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430 \u0440\u0435\u0442\u0456\u043d\u0434\u0435 \u0448\u044b\u0493\u0430\u0434\u044b, \u0456\u0441\u043a\u0435 \u049b\u0430\u0442\u0430\u0440\u0434\u0430\u043d \u043a\u0435\u0439\u0456\u043d \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0442\u0430 \u0431\u043e\u043b\u0430\u043c\u044b\u0437.',
-    ctaLabel: '\u0416\u041e\u0411\u0410\u041d\u042b \u0410\u041d\u042b\u049a\u0422\u0410\u0423',
-    functions: [
+      'Стратегия, автоматика, AI және инженерия бір шатыр астында — консультанттың слайды мен әзірлеушінің бэклогы арасында ештеңе жоғалмайды.',
+    categories: [
       {
-        code: 'FN01',
-        title: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u0436\u04d9\u043d\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f',
-        description: '\u049a\u0430\u0437\u0456\u0440\u0433\u0456 \u049b\u043e\u043b\u0434\u0430\u043d\u044b\u043f \u0436\u04af\u0440\u0433\u0456\u0437\u0456\u043f \u0436\u0430\u0442\u049b\u0430\u043d \u049b\u04b1\u0440\u0430\u043b\u0434\u0430\u0440\u0434\u044b \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0442\u044b\u0440\u0430\u0442\u044b\u043d \u043f\u0440\u043e\u0446\u0435\u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, \u0436\u04b1\u043c\u044b\u0441 \u049b\u043e\u043b\u043c\u0435\u043d \u043a\u04e9\u0448\u0456\u0440\u043c\u0435\u0439-\u0430\u049b \u0436\u04af\u0440\u043c\u0435\u0439\u0434\u0456.',
-        capabilities: ['\u041f\u0440\u043e\u0446\u0435\u0441\u0442\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u0436\u04d9\u043d\u0435 \u043e\u0440\u043a\u0435\u0441\u0442\u0440\u0430\u0446\u0438\u044f', '\u0416\u04af\u0439\u0435\u043b\u0435\u0440 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f\u0441\u044b (CRM, ERP, \u049b\u0430\u0440\u0436\u044b, \u049b\u043e\u043b\u0434\u0430\u0443)', '\u0406\u0448\u043a\u0456 \u049b\u04b1\u0440\u0430\u043b\u0434\u0430\u0440 \u0436\u04d9\u043d\u0435 \u0430\u0434\u043c\u0438\u043d-\u043f\u0430\u043d\u0435\u043b\u044c\u0434\u0435\u0440', '\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433, \u0435\u0441\u043a\u0435\u0440\u0442\u0443, \u0430\u0443\u0434\u0438\u0442'],
+        id: 'automation',
+        title: 'Бизнес автоматтандыруы',
+        tagline: 'Көшірме-қою дәуірінің соңы',
+        description:
+          'Адамсыз жүретін процестер: келісімдер, шоттар, есептілік, тендер мониторингі, CRM↔ERP синхроны.',
+        capabilities: ['Процестерді автоматтандыру (n8n, Make)', 'Жүйелер мен API интеграциясы', 'Операциялық дашбордтар мен алерттер', 'Браузерлік және деректер автоматикасы'],
       },
       {
-        code: 'FN02',
-        title: 'ИИ \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456',
-        description: '\u041a\u04d9\u0441\u0456\u043f\u043e\u0440\u044b\u043d \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u049b\u0430 \u0436\u0430\u0431\u0441\u0430 \u0433\u0430\u043d\u0430 \u0448\u043e\u043c \u0431\u043e\u043b\u0433\u0430\u043d \u0431\u043e\u0442 \u0435\u043c\u0435\u0441, \u0431\u0438\u0437\u043d\u0435\u0441\u0456\u04a3\u0456\u0437\u0434\u0435 \u043d\u0430\u049b\u0442\u044b \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d ИИ-\u0430\u0433\u0435\u043d\u0442\u0442\u0435\u0440 \u043c\u0435\u043d \u0430\u0441\u0441\u0438\u0441\u0442\u0435\u043d\u0442\u0442\u0435\u0440.',
-        capabilities: ['\u049a\u043e\u043b\u0434\u0430\u0443 \u0436\u04d9\u043d\u0435 \u0441\u0430\u0442\u0443 ИИ-\u043a\u043e\u043f\u0438\u043b\u043e\u0442\u0442\u0430\u0440\u044b', '\u049a\u04b1\u0436\u0430\u0442\u0442\u0430\u0440\u0434\u0430\u043d \u0434\u0435\u0440\u0435\u043a \u0430\u043b\u0443', '\u041a\u04e9\u043f \u0441\u0430\u0442\u044b\u043b\u044b ИИ-\u0430\u0433\u0435\u043d\u0442\u0442\u0435\u0440\u0456', '\u041c\u043e\u0434\u0435\u043b\u044c\u0434\u0435\u0440\u0434\u0456 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f\u043b\u0430\u0443 \u0436\u04d9\u043d\u0435 \u0431\u0430\u0493\u0430\u043b\u0430\u0443'],
+        id: 'ai',
+        title: 'AI жүйелері',
+        tagline: 'Оқитын, шешетін, істейтін AI',
+        description:
+          'Нақты операциялық қызметке енген AI: агенттер, деректеріңіз бойынша RAG, контент-пайплайндар — демо-чатбот емес.',
+        capabilities: ['AI агенттер мен ассистенттер', 'Жабық деректер бойынша RAG', 'Контент генерация пайплайндары', 'Мэтчинг, скоринг және маршруттау'],
       },
       {
-        code: 'FN03',
-        title: '\u0412\u0435\u0431 \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c',
-        description: 'Next.js \u0436\u04d9\u043d\u0435 React \u043d\u0435\u0433\u0456\u0437\u0456\u043d\u0434\u0435\u0433\u0456 full-stack \u0432\u0435\u0431-\u04e9\u043d\u0456\u043c\u0434\u0435\u0440 \u2014 \u0436\u0435\u043a\u0435-\u0431\u0435\u0442 \u0431\u0435\u0442\u0442\u0456\u043a \u0431\u0435\u0442\u0442\u0435\u043d \u043a\u04e9\u043f-\u0430\u0440\u0435\u043d\u0434\u0430\u0442\u043e\u0440\u043b\u044b\u049b \u043f\u0430\u043d\u0435\u043b\u044c\u0433\u0435 \u0434\u0435\u0439\u0456\u043d, \u0436\u044b\u043b\u0434\u0430\u043c \u0430\u0440\u0430\u0434\u0430 \u0448\u044b\u0493\u0430\u0440\u044b\u043b\u0430\u0434\u044b.',
-        capabilities: ['Next.js / React \u049b\u043e\u043b\u0434\u0430\u043d\u0431\u0430\u043b\u0430\u0440\u044b', '\u0421\u0430\u0439\u0442\u0442\u0430\u0440 \u0436\u04d9\u043d\u0435 \u043b\u0435\u043d\u0434\u0438\u043d\u0433 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456', 'SaaS-\u043f\u0430\u043d\u0435\u043b\u044c\u0434\u0435\u0440 \u0436\u04d9\u043d\u0435 \u0456\u0448\u043a\u0456 \u049b\u04b1\u0440\u0430\u043b\u0434\u0430\u0440', 'CMS \u0436\u04d9\u043d\u0435 \u043a\u043e\u043d\u0442\u0435\u043d\u0442 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u043b\u0430\u0440\u044b'],
+        id: 'product',
+        title: 'Веб және мобиль өнімдер',
+        tagline: 'Нағыз қолданылатын софт',
+        description:
+          'Көптілді сайт-жүйелерден SaaS платформалар мен мобиль қосымшаларға дейін — толық цикл: дизайн, әзірлеу, іске қосу.',
+        capabilities: ['Веб қосымшалар мен SaaS платформалар', 'Мобиль қосымшалар (React Native)', 'Редакторларға арналған CMS сайттар', 'Брондау және жеке кабинеттер'],
       },
       {
-        code: 'FN04',
-        title: '\u041c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u049b\u043e\u0441\u044b\u043c\u0448\u0430\u043b\u0430\u0440',
-        description: 'React Native \u043d\u0435\u0433\u0456\u0437\u0456\u043d\u0434\u0435 iOS \u0436\u04d9\u043d\u0435 Android-\u049b\u0430 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d, \u0431\u0430\u0441\u049b\u0430 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u043c\u0435\u043d \u0431\u0456\u0440 \u0431\u044d\u043a\u0435\u043d\u0434\u0442\u0456 \u0431\u04e9\u043b\u0456\u0441\u0435\u0442\u0456\u043d \u0442\u0430\u0431\u0438\u0493\u0438 \u049b\u043e\u0441\u044b\u043c\u0448\u0430\u043b\u0430\u0440.',
-        capabilities: ['React Native \u043a\u0440\u043e\u0441\u0441-\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u043b\u044b\u049b \u049b\u043e\u0441\u044b\u043c\u0448\u0430\u043b\u0430\u0440', '\u0414\u04af\u043a\u0435\u043d\u0434\u0435\u0433\u0456 \u0436\u0430\u0440\u0438\u044f\u043b\u0430\u0443 \u0436\u04d9\u043d\u0435 \u049b\u043e\u043b\u0434\u0430\u0443', 'Push, \u043e\u0444\u043b\u0430\u0439\u043d, \u043d\u0430\u0442\u0438\u0432\u0442\u0456\u043a \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f', '\u0412\u0435\u0431-\u04e9\u043d\u0456\u043c\u043c\u0435\u043d \u043e\u0440\u0442\u0430\u049b \u0431\u044d\u043a\u0435\u043d\u0434'],
+        id: 'backend',
+        title: 'Бэкенд және деректер',
+        tagline: 'Ұстайтын іргетас',
+        description:
+          'Жүйені бақыланатын, қауіпсіз және сенімді ететін API, дерекқорлар және инфрақұрылым.',
+        capabilities: ['API жобалау және интеграция', 'Postgres / Supabase дерекқорлары', 'Авторизация, рөлдер және қолжетімділік', 'Мониторинг және логирование'],
       },
       {
-        code: 'FN05',
-        title: '\u0411\u044d\u043a\u0435\u043d\u0434 \u0436\u04d9\u043d\u0435 \u0434\u0435\u0440\u0435\u043a',
-        description: '\u0411\u0430\u0440\u043b\u044b\u049b \u0442\u0430\u0431\u0430\u043d\u044b\u043d\u0434\u0430\u0493\u044b \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c \u2014 API, \u0434\u0435\u0440\u0435\u043a\u0442\u0435\u0440 \u0431\u0430\u0437\u0430\u0441\u044b \u0436\u04d9\u043d\u0435 \u0434\u0435\u0440\u0435\u043a \u0430\u0493\u044b\u043d\u0434\u0430\u0440\u044b \u0430\u0448\u044b\u049b \u049b\u04b1\u0442\u044b \u0431\u043e\u043b\u044b\u043f \u049b\u0430\u043b\u0430\u0434\u044b, \u049b\u0430\u0440\u0430 \u0436\u04d9\u0448\u0456\u043a \u0431\u043e\u043b\u043c\u0430\u0439\u0434\u044b.',
-        capabilities: ['REST / GraphQL API \u0436\u043e\u0431\u0430\u0441\u0442\u0430\u0443', '\u0414\u0435\u0440\u0435\u043a\u0442\u0435\u0440 \u0431\u0430\u0437\u0430\u0441\u044b \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430\u0441\u044b', '\u0414\u0435\u0440\u0435\u043a \u0430\u0493\u044b\u043d\u0434\u0430\u0440\u044b \u0436\u04d9\u043d\u0435 ETL', '\u0411\u04b1\u043b\u0442\u0442\u044b \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c \u0436\u04d9\u043d\u0435 DevOps'],
+        id: 'web3',
+        title: 'Web3 және блокчейн',
+        tagline: 'Он-чейн, драмасыз',
+        description:
+          'Қалған стекпен бірдей инженерлік тәртіппен жасалған смарт-келісімшарттар мен он-чейн автоматикасы.',
+        capabilities: ['Solidity келісімшарттары', 'Мультичейн-деплой (ETH, BSC, Arbitrum)', 'Multi-sig конвейерлер', 'Он-чейн мониторинг'],
       },
-      {
-        code: 'FN06',
-        title: 'Web3 \u0436\u04d9\u043d\u0435 \u0431\u043b\u043e\u043a\u0447\u0435\u0439\u043d',
-        description: '\u0416\u0435\u0442\u043a\u0456\u0437\u0443\u0456\u043d \u0434\u04d9\u043b\u0434\u0456\u043a, \u0442\u0435\u0441\u0442\u0456\u043b\u0435\u043d\u0433\u0435\u043d \u0436\u04d9\u043d\u0435 \u0456\u0441\u043a\u0435 \u049b\u0430\u0434\u0430\u0493\u0430\u043b\u0430\u043d\u0430\u0442\u044b\u043d \u0441\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u0442\u0435\u0440 \u043c\u0435\u043d on-chain \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c.',
-        capabilities: ['\u0421\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442 \u04d9\u0437\u0456\u0440\u043b\u0435\u0443 (Solidity)', 'EVM \u0436\u0435\u043b\u0456\u043b\u0435\u0440\u0456 \u2014 Ethereum, BSC, Arbitrum', '\u0422\u043e\u043a\u0435\u043d \u0436\u04d9\u043d\u0435 \u0440\u0430\u0441\u0442\u0430\u0443 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456', '\u041a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u0442\u0456 \u0442\u0435\u0441\u0442\u0456\u043b\u0435\u0443 \u0436\u04d9\u043d\u0435 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0442\u0435\u0443'],
-      },
-    ],
-    engagementHeading: '\u0411\u0456\u0437 \u049b\u0430\u043b\u0430\u0439 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u043c\u0456\u0437',
-    engagementSubheading: '\u0410\u0448\u044b\u049b \u0431\u0430\u0493\u0430\u043b\u0430\u0440 \u0442\u0456\u0437\u0456\u043c\u0456 \u0436\u043e\u049b \u2014 \u04d9\u0440\u0431\u0456\u0440 \u0436\u043e\u0431\u0430\u043d\u044b\u04a3 \u04e9\u0437 \u043f\u0456\u0448\u0456\u043d\u0434\u0435. \u0411\u0430\u0441\u0442\u0430\u0443\u0434\u044b\u04a3 \u04af\u0448 \u0442\u04d9\u0441\u0456\u043b\u0456:',
-    engagements: [
-      { title: 'Sprint', description: '\u0411\u0456\u0440 \u0431\u0430\u0493\u044b\u0442\u049b\u0430 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d \u0430\u0439\u049b\u044b\u043d \u043c\u0435\u0440\u0437\u0456\u043c\u0434\u0456 \u0436\u043e\u0431\u0430 \u2014 \u0431\u043e\u0442, \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f \u043d\u0435\u043c\u0435\u0441\u0435 \u0436\u0435\u043a\u0435 \u04e9\u043d\u0456\u043c \u0431\u0435\u0442\u0456.', bestFor: '\u0411\u0456\u0440 \u0430\u0439\u049b\u044b\u043d \u043c\u04d9\u0441\u0435\u043b\u0435, \u0431\u0456\u0440 \u0430\u0439\u049b\u044b\u043d \u043c\u0435\u0440\u0437\u0456\u043c.' },
-      { title: 'Build', description: '\u04d8\u0440\u0431\u0456\u0440 \u043a\u0435\u0437\u0435\u04a3\u0456 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430\u043c\u0435\u043d \u043a\u0435\u0437\u0435\u04a3-\u043a\u0435\u0437\u0435\u04a3\u0456\u043c\u0435\u043d \u0448\u044b\u0493\u0430\u0442\u044b\u043d \u0442\u043e\u043b\u044b\u049b \u04e9\u043d\u0456\u043c \u043d\u0435\u043c\u0435\u0441\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u0436\u04af\u0439\u0435\u0441\u0456.', bestFor: '\u0411\u0456\u0440\u043d\u0435\u0448\u0435 \u0431\u0456\u0440\u043d\u0435\u0448\u0435 \u049b\u043e\u043b\u0434\u0430\u043d \u049b\u04b1\u0440\u0430\u043b\u0434\u044b \u0430\u0443\u044b\u0441\u0442\u044b\u0440\u0430\u0442\u044b\u043d \u0436\u0430\u04a3\u0430 \u04e9\u043d\u0456\u043c \u043d\u0435\u043c\u0435\u0441\u0435 \u0436\u04af\u0439\u0435.' },
-      { title: 'Partner', description: '\u04b0\u0437\u0430\u049b \u043c\u0435\u0440\u0437\u0456\u043c\u0434\u0456, \u0442\u04b1\u0440\u0430\u049b\u0442\u044b \u04d9\u0440\u0456\u043f\u0442\u0435\u0441\u0442\u0456\u043a \u2014 \u0431\u0438\u0437\u043d\u0435\u0441\u0456\u04a3\u0456\u0437 \u04e9\u0437\u0433\u0435\u0440\u0433\u0435\u043d \u0441\u0430\u0439\u044b\u043d \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u04a3\u0456\u0437\u0434\u0456 \u0436\u0430\u043a\u0441\u0430\u0440\u0442\u0443\u0434\u044b, \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f\u043b\u0430\u0443\u0434\u044b \u0436\u04d9\u043d\u0435 \u0436\u0435\u0442\u0456\u043b\u0434\u0456\u0440\u0443\u0434\u0456 \u0436\u0430\u043b\u0493\u0430\u0441\u0442\u044b\u0440\u0430\u043c\u044b\u0437.', bestFor: '\u041c\u04b1\u043d\u044b \u04b1\u0437\u0430\u049b \u043c\u0435\u0440\u0437\u0456\u043c\u0434\u0456 \u0436\u04b1\u043c\u044b\u0441 \u0440\u0435\u0442\u0456\u043d\u0434\u0435 \u049b\u0430\u043b\u0434\u044b\u0440\u0433\u044b\u0441\u044b \u043a\u0435\u043b\u0435\u0442\u0456\u043d \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u043b\u0430\u0440\u0493\u0430.' },
-    ],
-    faqHeading: '\u0410\u043b\u0493\u0430\u0448\u049b\u044b \u049b\u043e\u04a3\u044b\u0440\u0430\u0443\u0493\u0430 \u0434\u0435\u0439\u0456\u043d \u0436\u0438\u0456 \u0441\u04b1\u0440\u0430\u0443\u043b\u0430\u0440',
-    faq: [
-      { q: '\u049a\u0430\u043d\u0448\u0430 \u0436\u044b\u043b\u0434\u0430\u043c\u0434\u0430\u043d \u0431\u0430\u0441\u0442\u0430\u0439 \u0430\u043b\u0430\u0441\u044b\u0437?', a: '\u041a\u04e9\u043f\u0448\u0456\u043b\u0456\u043a Sprint \u0436\u04b1\u043c\u044b\u0441\u0442\u0430\u0440\u044b \u049b\u043e\u04a3\u044b\u0440\u0430\u0443 \u0447\u0430\u049b\u044b\u0440\u0443\u0434\u0430\u043d \u043a\u0435\u0439\u0456\u043d \u0431\u0456\u0440 \u0430\u043f\u0442\u0430 \u0456\u0448\u0456\u043d\u0434\u0435 \u0431\u0430\u0441\u0442\u0430\u043b\u0430\u0434\u044b. Build \u0436\u04d9\u043d\u0435 Partner \u0436\u04af\u0439\u0435\u043d\u0456 \u0431\u0456\u0440\u0433\u0435 \u0436\u04af\u0439\u0435\u043d\u0456 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0434\u0456 \u049b\u0430\u0440\u0442\u0430\u043b\u0430\u0433\u0430\u043d \u0441\u043e\u04a3 \u0431\u0430\u0441\u0442\u0430\u043b\u0430\u0434\u044b \u2014 \u04d9\u0434\u0435\u0442\u0442\u0435 \u0431\u0456\u0440-\u0435\u043a\u0456 \u0430\u043f\u0442\u0430.' },
-      { q: '\u0421\u0456\u0437 \u0436\u0430\u0441\u0430\u0493\u0430\u043d \u043d\u04d9\u0440\u0441\u0435 \u043a\u0456\u043c\u0433\u0435 \u0442\u0438\u0435\u0441\u0456\u043b\u0456?', a: '\u0421\u0456\u0437\u0433\u0435. \u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0439\u043b\u0435\u0440, \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c\u0493\u0430 \u049b\u043e\u043b \u0436\u0435\u0442\u043a\u0456\u0437\u0443 \u0436\u04d9\u043d\u0435 \u049b\u04b1\u0436\u0430\u0442\u0442\u0430\u043c\u0430 \u0431\u0456\u0440\u0456\u043d\u0448\u0456 \u043a\u04af\u043d\u043d\u0435\u043d \u04e9\u0437\u0456\u04a3\u0456\u0437\u0433\u0435 \u04e9\u0442\u0435\u0434\u0456. \u0415\u0448\u0442\u0435\u04a3\u0435 \u0431\u0456\u0437\u0434\u0456\u04a3 \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0442\u0430\u0440\u044b\u043c\u044b\u0437\u0434\u0430 \u049b\u0430\u043b\u043c\u0430\u0439\u0434\u044b.' },
-      { q: '\u0422\u0435\u043a \u0431\u0456\u0440 \u0448\u0430\u0493\u044b\u043d \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u043a\u0435\u0440\u0435\u043a \u0431\u043e\u043b\u0441\u0430 \u0448\u0435?', a: '\u0414\u04d9\u043b \u043e\u0441\u044b \u0436\u0430\u0493\u0434\u0430\u0439\u0434\u0430 Sprint \u043a\u0435\u0440\u0435\u043a \u2014 \u0448\u0430\u0493\u044b\u043d, \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0436\u04d9\u043d\u0435 \u0436\u044b\u043b\u0434\u0430\u043c \u0436\u0435\u0442\u043a\u0456\u0437\u0456\u043b\u0435\u0442\u0456\u043d. \u04b0\u043b\u043a\u0435\u043d \u0436\u0430\u04a3\u0430 Build \u0430\u043b\u0434\u044b\u043d\u0434\u0430 \u049b\u0430\u0440\u044b\u043c-\u049b\u0430\u0442\u044b\u043d\u0430\u0441\u0442\u044b \u0442\u0435\u043a\u0441\u0435\u0440\u0443\u0434\u0456\u04a3 \u0436\u0430\u049b\u0441\u044b \u0436\u043e\u043b\u044b.' },
     ],
   },
 
   work: {
-    kicker: '\u0416\u04b1\u043c\u044b\u0441\u0442\u0430\u0440',
-    heading: '\u0416\u0430\u0431\u044b\u043b\u0493\u0430\u043d \u043f\u043e\u0437\u0438\u0446\u0438\u044f\u043b\u0430\u0440.',
-    subheading: '\u0411\u0456\u0437 \u0436\u0435\u0442\u043a\u0456\u0437\u0433\u0435\u043d \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0434\u0456\u04a3 \u04af\u043b\u0433\u0456\u0441\u0456. \u0410\u049b\u0442\u0438\u0432\u0442\u0456 \u0441\u0456\u043b\u0442\u0435\u043c\u0435\u043b\u0435\u0440 \u0448\u044b\u043d \u2014 \u04e9\u0442\u0456\u043f \u043a\u04e9\u0440\u0456\u04a3\u0456\u0437.',
-    statusLive: 'LIVE',
-    statusShipped: '\u0416\u0415\u0422\u041a\u0406\u0417\u0406\u041b\u0414\u0406',
-    viewLabel: '\u0410\u0428\u0423',
+    kicker: 'Таңдаулы жұмыстар',
+    heading: 'Іске қосылған жүйелер.',
+    subheading: 'Нақты, тексерілетін жобалар — тірі сілтемелерімен, бар жерлерінде.',
+    archiveLink: 'Барлық жұмыстар',
+    statusLive: 'Жұмыс істеп тұр',
+    statusShipped: 'Тапсырылды',
+    viewLabel: 'Ашу',
     positions: [
       {
-        code: 'POS-01',
-        title: '\u0411\u0456\u043b\u0456\u043c \u0431\u0435\u0440\u0443 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u043b\u0430\u0440 \u0436\u0438\u044b\u043d\u0442\u044b\u0493\u044b',
-        type: '\u0412\u0435\u0431 \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c',
-        description: '\u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0442\u0435\u0440 \u043c\u0435\u043d \u0431\u0456\u043b\u0456\u043c \u0431\u0435\u0440\u0443 \u043c\u0435\u043a\u0435\u043c\u0435\u043b\u0435\u0440\u0456\u043d\u0435 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d \u04af\u0448 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0441\u0430\u0439\u0442 \u2014 \u049b\u0430\u0431\u044b\u043b\u0434\u0430\u0443, \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430 \u0431\u0435\u0442\u0442\u0435\u0440\u0456 \u0436\u04d9\u043d\u0435 \u0434\u0430\u043c\u0443\u0448\u044b\u0448\u044b \u0435\u043c\u0435\u0441 \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440\u043b\u0430\u0440\u0493\u0430 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d CMS \u043a\u043e\u043d\u0442\u0435\u043d\u0442.',
+        code: '01',
+        title: 'Білім беру платформасы',
+        type: 'Веб және өнім',
+        description:
+          'Университет пен білім беру клиенттеріне арналған үш өндірістік сайт: қабылдау кампаниясы, бағдарлама беттері және редакторларға арналған CMS контент.',
         tech: ['Next.js', 'React', 'CMS'],
         status: 'live',
         links: [
@@ -753,146 +1003,256 @@ const kz = {
         ],
       },
       {
-        code: 'POS-02',
+        code: '02',
         title: 'Beyond Lines',
-        type: 'ИИ \u0436\u04d9\u043d\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443',
-        description: '\u041a\u0440\u0438\u043f\u0442\u043e, \u049b\u0430\u0443\u0456\u043f\u0441\u0456\u0437\u0434\u0456\u043a \u0436\u04d9\u043d\u0435 ИИ \u0431\u043e\u0439\u044b\u043d\u0448\u0430 60+ \u0434\u0435\u0440\u0435\u043a\u043a\u04e9\u0437\u0456\u043d \u0442\u0430\u0440\u0430\u0439\u0442\u044b\u043d, \u0441\u043e\u0434\u0430\u043d \u043e\u043d\u044b \u0456\u0440\u0456\u043a\u0442\u0435\u043f Telegram-\u0431\u043e\u0442 \u043f\u0435\u043d \u0432\u0435\u0431-\u043f\u0430\u043d\u0435\u043b\u044c \u0430\u0440\u049b\u044b\u043b\u044b \u0436\u0430\u0440\u0438\u044f\u043b\u0430\u0439\u0442\u044b\u043d \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u0434\u044b \u043a\u043e\u043d\u0442\u0435\u043d\u0442 \u0436\u04af\u0439\u0435\u0441\u0456.',
-        tech: ['Next.js', 'ИИ \u0456\u0440\u0456\u043a\u0442\u0435\u0443', 'Telegram Bot'],
+        type: 'AI және автоматтандыру',
+        description:
+          'Автономды контент-конвейер: крипта, қауіпсіздік және AI бойынша 60+ дереккөзді сканерлеп, Telegram-бот пен веб-дашборд арқылы жариялайды.',
+        tech: ['Next.js', 'AI курациясы', 'Telegram-бот'],
         status: 'live',
         links: [{ label: 'beyondlines-web.vercel.app', url: 'https://beyondlines-web.vercel.app' }],
       },
       {
-        code: 'POS-03',
+        code: '03',
         title: 'Unhireable',
-        type: 'ИИ \u0436\u04d9\u043d\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443',
-        description: 'hh.kz, Wellfound \u0436\u04d9\u043d\u0435 LinkedIn-\u0434\u0435\u043d \u0434\u0435\u0440\u0435\u043a \u0436\u0438\u043d\u0430\u0439\u0442\u044b\u043d, \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f\u043b\u0430\u0440\u0434\u044b ИИ \u0430\u0440\u049b\u044b\u043b\u044b \u0441\u04d9\u0439\u043a\u0435\u0441\u0442\u0435\u043d\u0434\u0456\u0440\u0435\u0442\u0456\u043d \u0436\u04d9\u043d\u0435 \u0442\u04af\u0439\u0456\u043d\u0434\u0456 \u0442\u04af\u0440\u0434\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u044b \u0442\u04af\u0440\u0434\u0435 \u0436\u0430\u0441\u0430\u0439\u0442\u044b\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0437\u0434\u0435\u0443 \u0436\u04af\u0439\u0435\u0441\u0456.',
-        tech: ['Desktop App', 'ИИ \u0441\u04d9\u0439\u043a\u0435\u0441\u0442\u0435\u043d\u0434\u0456\u0440\u0443', '\u041a\u04e9\u043f\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u043b\u044b \u0441\u043a\u0440\u0430\u043f\u0438\u043d\u0433'],
+        type: 'AI және автоматтандыру',
+        description:
+          'Жұмыс іздеудің десктоп жүйесі: hh.kz, Wellfound және LinkedIn-ді парсит, вакансияларды AI арқылы сәйкестендіріп, резюмені автоматты дайындайды.',
+        tech: ['Десктоп қосымша', 'AI мэтчинг', 'Мультиплатформалық парсинг'],
         status: 'live',
         links: [{ label: 'unhireable-website.vercel.app', url: 'https://unhireable-website.vercel.app' }],
       },
       {
-        code: 'POS-04',
-        title: '\u041a\u04e9\u043f\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u043b\u044b \u0431\u043e\u0442 \u0436\u0438\u044b\u043d\u0442\u044b\u0493\u044b',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443',
-        description: 'WhatsApp, Telegram \u0436\u04d9\u043d\u0435 Twitter \u0430\u0440\u0442\u044b\u043d\u0434\u0430\u0493\u044b \u043e\u0440\u0442\u0430\u049b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u049b\u0430\u0431\u0430\u0442\u044b \u2014 \u0431\u0456\u0440 \u0431\u0430\u0493\u044b\u0442\u0442\u0430\u0443 \u043c\u0438\u044b, \u04af\u0448 \u0430\u0440\u043d\u0430, \u049b\u0430\u0439\u0442\u0430\u043b\u0430\u043d\u0430\u0442\u044b\u043d \u043b\u043e\u0433\u0438\u043a\u0430 \u0436\u043e\u049b.',
-        tech: ['Bot API', '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443', 'ИИ \u0431\u0430\u0493\u044b\u0442\u0442\u0430\u0443'],
+        code: '04',
+        title: 'Мультиплатформалық боттар',
+        type: 'Автоматтандыру',
+        description:
+          'WhatsApp, Telegram және Twitter артындағы ортақ автоматика қабаты: бір маршруттайтын ми, үш арна, қайталанатын логика жоқ.',
+        tech: ['Bot API', 'Автоматтандыру', 'AI маршруттау'],
         status: 'shipped',
       },
       {
-        code: 'POS-05',
-        title: '\u0421\u043c\u0430\u0440\u0442-\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u0436\u04af\u0439\u0435\u0441\u0456',
+        code: '05',
+        title: 'Смарт-келісімшарт автоматикасы',
         type: 'Web3',
-        description: 'BSC, Ethereum \u0436\u04d9\u043d\u0435 Arbitrum \u0436\u0435\u043b\u0456\u043b\u0435\u0440\u0456\u043d\u0434\u0435\u0433\u0456 Solidity \u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u0442\u0435\u0440\u0456, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u044b \u0442\u0435\u0441\u0442\u0442\u0435\u0440 \u043c\u0435\u043d multi-sig \u0434\u0435\u043f\u043b\u043e\u0439 \u0436\u04d9\u043d\u0435 \u043e\u043d\u043b\u0430\u0439\u043d \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433.',
+        description:
+          'BSC, Ethereum және Arbitrum желілеріндегі Solidity келісімшарттары: автотест қамтуы, multi-sig деплой, тірі он-чейн мониторинг.',
         tech: ['Solidity', 'Hardhat', 'Multi-sig'],
         status: 'shipped',
       },
       {
-        code: 'POS-06',
-        title: '\u0422\u0435\u043d\u0434\u0435\u0440 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430\u0441\u044b',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443',
-        description: '\u0410\u0448\u044b\u049b \u0442\u0435\u043d\u0434\u0435\u0440\u043b\u0435\u0440\u0434\u0456 \u0431\u0430\u049b\u044b\u043b\u0430\u0439\u0442\u044b\u043d, \u0436\u0430\u0443\u0430\u043f\u0442\u0430\u0440\u0434\u044b \u0434\u0430\u0439\u044b\u043d\u0434\u0430\u0439\u0442\u044b\u043d \u0436\u04d9\u043d\u0435 \u0430\u0442\u049b\u0430\u0440\u0443\u0434\u044b \u049b\u043e\u043b\u043c\u0435\u043d \u049b\u0430\u0434\u0430\u0493\u0430\u043b\u0430\u0443\u0441\u044b\u0437 \u0442\u0430\u043f\u0441\u044b\u0440\u0430\u0442\u044b\u043d \u0430\u0434\u043c\u0438\u043d-\u043f\u0430\u043d\u0435\u043b\u044c \u043c\u0435\u043d \u0431\u0440\u0430\u0443\u0437\u0435\u0440 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443\u044b.',
-        tech: ['Playwright', 'ИИ-\u0430\u0433\u0435\u043d\u0442\u0442\u0435\u0440', '\u0410\u0434\u043c\u0438\u043d-\u043f\u0430\u043d\u0435\u043b\u044c'],
+        code: '06',
+        title: 'Тендер платформасы',
+        type: 'Автоматтандыру',
+        description:
+          'Әкімші панелі + браузерлік автоматика: мемлекеттік сатып алуларды бақылап, жауап жобalarын дайындап, қолмен бақылаусыз орындауға береді.',
+        tech: ['Playwright', 'AI агенттер', 'Әкімші панелі'],
         status: 'shipped',
       },
       {
-        code: 'POS-07',
-        title: 'CRM \u2194 ERP \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u043a\u04e9\u043f\u0456\u0440\u0456',
-        type: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443',
-        description: '\u0411\u04b1\u0440\u044b\u043d \u0434\u0430 \u0436\u04af\u0439\u0435\u043b\u0435\u0440 \u0430\u0440\u0430\u0441\u044b\u043d\u0434\u0430 \u049b\u043e\u043b\u043c\u0435\u043d \u0434\u0435\u0440\u0435\u043a \u0435\u043d\u0433\u0456\u0437\u0456\u043d\u0434\u0456 \u049b\u0430\u0436\u0435\u0442 \u0435\u0442\u0435\u0442\u0456\u043d \u049b\u0430\u0440\u0436\u044b, CRM \u0436\u04d9\u043d\u0435 \u049b\u043e\u043b\u0434\u0430\u0443 \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u043d \u0431\u0430\u0439\u043b\u0430\u043d\u044b\u0441\u0442\u044b\u0440\u0430\u0442\u044b\u043d \u0441\u0438\u043d\u0445\u0440\u043e\u043d\u0434\u0430\u0443 \u049b\u0430\u0431\u0430\u0442\u044b.',
+        code: '07',
+        title: 'CRM ↔ ERP көпірі',
+        type: 'Автоматтандыру',
+        description:
+          'Қаржы, CRM және қолдау арасын байланыстыратын синхрондау қабаты — бұрын деректер жүйелер арасында қолмен көшірілетін жерге.',
         tech: ['n8n', 'Postgres', 'REST API'],
         status: 'shipped',
       },
       {
-        code: 'POS-08',
-        title: '\u041a\u04e9\u043f\u0442\u0456\u043b\u0434\u0456 \u043b\u0435\u043d\u0434\u0438\u043d\u0433 \u0436\u04af\u0439\u0435\u0441\u0456',
-        type: '\u0412\u0435\u0431 \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c',
-        description: '\u0421\u0442\u0430\u0440\u0442\u0430\u043f\u0442\u0430\u0440 \u043c\u0435\u043d \u043c\u0435\u043c\u043b\u0435\u043a\u0435\u0442\u0442\u0456\u043a \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430\u043b\u0430\u0440 \u04af\u0448\u0456\u043d \u043e\u043d\u0434\u0430\u0493\u0430\u043d \u0430\u0439\u043c\u0430\u049b\u0442\u0430\u0493\u0430\u043d \u0431\u0435\u0442\u0442\u0435\u0433\u0435\u043d \u043b\u043e\u043a\u0430\u043b\u0434\u0430\u043d\u0434\u044b\u0440\u044b\u043b\u0493\u0430\u043d \u0431\u0435\u0442\u0442\u0435\u0440\u0434\u0456 \u0456\u0441\u043a\u0435 \u049b\u0430\u0442\u0430\u0440 \u0448\u044b\u0493\u0430\u0440\u0443\u0493\u0430 \u0430\u0440\u043d\u0430\u043b\u0493\u0430\u043d, \u0436\u0430\u043b\u043f\u044b \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u043c\u0435\u043d CRM-\u0433\u0435 \u049b\u043e\u0441\u044b\u043b\u0493\u0430\u043d \u0448\u0435\u04a3\u0431\u0435\u0440.',
-        tech: ['Next.js', 'Vercel', 'Analytics'],
+        code: '08',
+        title: 'Көптілді лендингтер жүйесі',
+        type: 'Веб және өнім',
+        description:
+          'Стартаптар мен мемлекеттік бағдарламalarға арналған ондаған локализацияланған беттер іске қосылған қайталанатын лендинг фреймворкі — ортақ аналитикамен және CRM-ммен.',
+        tech: ['Next.js', 'Vercel', 'Аналитика'],
         status: 'shipped',
       },
     ],
-    contactPrompt: '\u0421\u0456\u0437\u0434\u0435 \u0434\u0435 \u0441\u043e\u043d\u0434\u0430\u0439 \u0436\u0443\u044b\u0431\u0430 \u0431\u0430\u0440 \u043c\u0430?',
-    contactCta: '\u0416\u041e\u0411\u0410 \u0411\u0410\u0421\u0422\u0410\u0423',
+    contactPrompt: 'Осындай жүйе ойыңызда бар ма?',
+    contactCta: 'Жоба бастау',
   },
 
-  process: {
-    kicker: '\u041f\u0440\u043e\u0446\u0435\u0441\u0441',
-    heading: '\u0416\u043e\u0431\u0430 \u0456\u0441\u0442\u0435\u0433 \u043d\u0430\u049b\u0442\u044b \u049b\u0430\u043b\u0430\u0439 \u0436\u04af\u0440\u0435\u0434\u0456',
-    subheading: '\u0422\u04e9\u0440\u0442 \u043a\u0435\u0437\u0435\u04a3. \u04d8\u0440\u0431\u0456\u0440 \u043a\u0435\u0437\u0435\u04a3 \u0441\u043b\u0430\u0439\u0434 \u0435\u043c\u0435\u0441, \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u043d\u04d9\u0440\u0441\u0435 \u043c\u0435\u043d \u0430\u044f\u049b\u0442\u0430\u043b\u0430\u0434\u044b.',
-    steps: [
-      { code: '01', title: 'Scan', command: 'rahmet scan --target=ops', detail: '\u0415\u0448 \u043d\u04d9\u0440\u0441\u0435\u043d\u0456 \u04b1\u0441\u044b\u043d\u0431\u0430\u0439 \u0436\u04d9\u043d\u0435 \u049b\u043e\u043b\u0434\u0430\u043d \u049b\u0430\u0434\u0430\u043c\u0434\u0430\u0440\u044b\u043d \u0430\u043d\u044b\u049b\u0442\u0430\u043c\u0430\u0439 \u0442\u04b1\u0440\u0443\u0434\u0430\u043d \u0431\u04b1\u0440\u044b\u043d, \u0430\u0442\u0430\u043b\u0430\u0442\u044b\u043d \u043a\u04af\u043d\u0433\u0456 \u0431\u043e\u043b\u044b\u043f \u0436\u0430\u0442\u049b\u0430\u043d\u0434\u044b \u2014 \u049b\u04b1\u0440\u0430\u043b\u0434\u0430\u0440, \u049b\u043e\u043b\u0434\u0430\u043d \u049b\u0430\u0434\u0430\u043c\u0434\u0430\u0440, \u0442\u0456\u0440\u043a\u0435\u043b\u043c\u0435\u0433\u0435\u043d \u0442\u0430\u0431\u044b\u0441\u0442\u0430\u0443\u043b\u0430\u0440.' },
-      { code: '02', title: 'Design', command: 'rahmet design --output=architecture', detail: '\u0416\u04af\u0439\u0435\u043d\u0456 \u0436\u043e\u0431\u0430\u043b\u0430\u0439\u043c\u044b\u0437: \u043d\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0430\u0434\u044b, \u043d\u0435 \u049b\u04b1\u0440\u044b\u043b\u0430\u0434\u044b, \u043d\u0435 \u0430\u0434\u0430\u043c\u0434\u0430 \u049b\u0430\u043b\u0430\u0434\u044b \u0436\u04d9\u043d\u0435 \u0431\u04b1\u043b\u0430\u0440 \u0431\u0456\u0440-\u0431\u0456\u0440\u0456\u043c\u0435\u043d \u049b\u0430\u043b\u0430\u0439 \u0441\u04e9\u0439\u043b\u0435\u0441\u0435\u0434\u0456.' },
-      { code: '03', title: 'Ship', command: 'rahmet ship --stage=1', detail: '\u041a\u0435\u0437\u0435\u04a3\u0434\u0435\u0440\u043c\u0435\u043d \u049b\u04b1\u0440\u0430\u043c\u044b\u0437, \u04d9\u0440\u0431\u0456\u0440 \u043a\u0435\u0437\u0435\u04a3 \u2014 \u0441\u0456\u0437 \u043f\u0430\u0439\u0434\u0430\u043b\u0430\u043d\u0430 \u0430\u043b\u0430\u0442\u044b\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0431\u04e9\u043b\u0456\u043a, \u043a\u0435\u043b\u0435\u0441\u0456 \u0448\u043e\u0442\u0442\u044b \u043a\u04af\u0442\u0435\u0442\u0456\u043d \u0442\u0435\u0445\u0437\u0430\u0434\u0430 \u0435\u043c\u0435\u0441.' },
-      { code: '04', title: 'Operate', command: 'rahmet operate --watch', detail: '\u0411\u0456\u0437 \u0441\u0430\u0439\u043b\u044b\u049b\u0442\u0430 \u049b\u0430\u043b\u0430\u043c\u044b\u0437. \u0416\u04af\u0439\u0435\u043b\u0435\u0440 \u0431\u0438\u0437\u043d\u0435\u0441\u0456\u04a3\u0456\u0437 \u04e9\u0437\u0433\u0435\u0440\u0433\u0435\u043d \u0441\u0430\u0439\u044b\u043d \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0442\u0435\u043b\u0435\u0434\u0456, \u0431\u0435\u0439\u0456\u043c\u0434\u0435\u043b\u0435\u0434\u0456 \u0436\u04d9\u043d\u0435 \u043a\u0435\u04a3\u0435\u0439\u0456\u043f \u043e\u0442\u044b\u0440\u0434\u044b, \u043a\u0435\u0442\u043a\u0435\u043d \u043a\u04af\u043d\u0456 \u043d\u0430\u0448\u0430\u0440\u043b\u0430\u043d\u0431\u0430\u0439\u0434\u044b.' },
+  comparison: {
+    kicker: 'Қолмен vs жүйемен',
+    heading: 'Бір пошта. Екі түрлі тәсіл.',
+    subheading: 'Қолдау қызметінің типтік аптасының иллюстративті моделі — кезекті жүйе иеленгенде не өзгереді.',
+    note: 'Иллюстративті модель, клиент метрикасы емес.',
+    seriesManual: 'Қолмен',
+    seriesAuto: 'Жүйемен',
+    resolutionLabel: 'орташа жауап уақыты',
+    resolutionManual: '~14 сағ',
+    resolutionAuto: '~11 мин',
+    beats: [
+      { title: 'Хабарлама келеді', manual: 'Біреу босағанша ортақ жәшікте жатады.', auto: 'Секундтар ішінде сыныпталды және бағытталды, 24/7.' },
+      { title: 'Қарапайым сұрақ', manual: 'Сол жауап қырықыншы рет көшіріледі.', auto: 'Өз білім қорыңыздан лезде жауап.' },
+      { title: 'Стандартты емес жағдай', manual: 'Үш адам арасында екі рет айналып өтеді.', auto: 'Толық контекспен бір жауаптыға түседі.' },
+      { title: 'Есептілік', manual: 'Сандар жұма кешінде жиналады. Немесе жиналмайды.', auto: 'Команда дүйсенбіде шынымен ашатын тірі көрініс.' },
     ],
   },
 
-  why: {
-    kicker: '\u041d\u0435\u043b\u0456\u043a\u0442\u0435\u043d \u0431\u0456\u0437',
-    heading: '\u041d\u0435\u043b\u0456\u043a\u0442\u0435\u043d Rahmet Labs-\u0442\u044b \u0442\u0430\u04a3\u0434\u0430\u0439\u0434\u044b',
-    subheading: '\u0415\u04a3 \u04af\u043b\u043a\u0435\u043d \u0431\u043e\u043b\u0493\u0430\u043d\u0434\u044b\u049b\u0442\u0430\u043d \u0435\u043c\u0435\u0441. \u049a\u0430\u043b\u0430\u0439 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d\u0456\u043c\u0456\u0437\u0434\u0435\u043d.',
+  process: {
+    kicker: 'Қалай жұмыс істейміз',
+    heading: 'Алғашқы қоңыраудан жұмыс істейтін жүйеге дейін.',
+    subheading: 'Төрт кезең. Әр кезең көрінетін нәтижемен аяқталады — слайдтармен емес.',
+    stages: [
+      {
+        code: '01',
+        title: 'Скан',
+        duration: '1–2 апта',
+        description:
+          'Бүгін нақты не болып жатқанын карталаймыз: құралдар, қолмен қадамдар, ешкім жазбаған тапсырыстар — бірдеңе ұсынар алдында.',
+      },
+      {
+        code: '02',
+        title: 'Жобалау',
+        duration: '1–2 апта',
+        description:
+          'Жүйе архитектурасы: не автоматтандырылады, не құрылады, не адамда қалады және бәрі бір-бірімен қалай сөйлеседі.',
+      },
+      {
+        code: '03',
+        title: 'Құрастыру және іске қосу',
+        duration: '2–8 апта',
+        description:
+          'Кезең-кезеңмен жұмыс істейтін софт. Әр кезеңді тестілеуге және қолдануға болады — түсінбеушілік квартал емес, бір апта тұрады.',
+      },
+      {
+        code: '04',
+        title: 'Эксплуатация',
+        duration: 'Үздіксіз',
+        description:
+          'Біз қаламыз. Жүйелер бақыланады, бапталады және бизнеспен бірге өседі — тапсырылған күні тозғанша емес.',
+      },
+    ],
+  },
+
+  principles: {
+    kicker: 'Қағидаттар',
+    heading: 'Неге бізбен қалады.',
+    subheading: 'Ең үлкеніміз үшін емес. Жұмыстың қалай жасалатыны үшін.',
     points: [
-      { title: '\u0411\u0456\u0440 \u0436\u0430\u0443\u0430\u043f\u043a\u0435\u0440\u0448\u0456\u043b\u0456\u043a\u0442\u0456 \u043a\u043e\u043c\u0430\u043d\u0434\u0430', detail: '\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f, \u04d9\u0437\u0456\u0440\u043b\u0435\u0443 \u0436\u04d9\u043d\u0435 ops-\u043a\u0435\u04a3\u0435\u0441\u0448\u0456 \u0430\u0440\u0430\u0441\u044b\u043d\u0434\u0430 \u0431\u0435\u0440\u0443-\u0431\u0435\u0440\u0443 \u0436\u043e\u049b. \u0416\u04af\u0439\u0435\u043d\u0456 \u0436\u043e\u0441\u043f\u0430\u0440\u043b\u0430\u0439\u0442\u044b\u043d\u0434\u0430\u0440 \u043e\u043d\u044b \u049b\u04b1\u0440\u0430\u0434\u044b \u0436\u04d9\u043d\u0435 \u049b\u043e\u043b\u0434\u0430\u0439\u0434\u044b.' },
-      { title: '\u0411\u04d9\u0440\u0456 \u0441\u0456\u0437\u0434\u0456\u043a\u0456', detail: '\u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0439\u043b\u0435\u0440, \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c \u0436\u04d9\u043d\u0435 \u049b\u04b1\u0436\u0430\u0442 \u0431\u0456\u0440\u0456\u043d\u0448\u0456 \u043a\u04af\u043d\u043d\u0435\u043d \u0441\u0456\u0437\u0433\u0435 \u04e9\u0442\u0435\u0434\u0456. \u0411\u0456\u0437\u0433\u0435 \u0442\u04d9\u0443\u0435\u043b\u0434\u0456\u043b\u0456\u043a \u0436\u043e\u049b.' },
-      { title: '\u0411\u0456\u0440 \u04af\u043b\u043a\u0435\u043d \u0430\u0448\u0443 \u0435\u043c\u0435\u0441, \u043a\u0435\u0437\u0435\u04a3\u0434\u0435\u0440\u043c\u0435\u043d', detail: 'Build \u04d9\u0440\u0431\u0456\u0440 \u043a\u0435\u0437\u0435\u04a3\u0456\u043d\u0434\u0435 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0431\u0430\u0493\u0434\u0430\u0440\u043b\u0430\u043c\u0430\u043d\u044b \u043a\u04e9\u0440\u0435\u0441\u0456\u0437, \u0441\u043e\u043b\u0430\u0439\u0434\u0430 \u0442\u04af\u0441\u0456\u043d\u0431\u0435\u0443\u0448\u0456\u043b\u0456\u043a \u0431\u0456\u0440 \u0430\u043f\u0442\u0430\u0493\u0430 \u0442\u04af\u0441\u0435\u0434\u0456, \u04af\u0448 \u0430\u0439\u0493\u0430 \u0435\u043c\u0435\u0441.' },
-      { title: '\u0416\u0435\u0442\u043a\u0456\u0437\u0433\u0435\u043d\u043d\u0435\u043d \u043a\u0435\u0439\u0456\u043d \u0434\u0435 \u049b\u0430\u043b\u0430\u043c\u044b\u0437', detail: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u043c\u0435\u043d ИИ \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456 \u0431\u0438\u0437\u043d\u0435\u0441\u043f\u0435\u043d \u0431\u0456\u0440\u0433\u0435 \u04e9\u0437\u0433\u0435\u0440\u0435\u0434\u0456. \u0411\u0456\u0437 \u043e\u043b\u0430\u0440\u0434\u044b \u049b\u043e\u043b\u0434\u0430\u0443 \u0436\u04d9\u043d\u0435 \u0431\u0435\u0439\u0456\u043c\u0434\u0435\u0443\u0434\u0456 \u0436\u0430\u043b\u0493\u0430\u0441\u0442\u044b\u0440\u0430\u043c\u044b\u0437.' },
+      { title: 'Бір жауапты команда', detail: 'Консультант, әзірлеу мердігері және эксплуатация арасындағы эстафета жоқ. Жүйені бағалағандар оны өздері құрады.' },
+      { title: 'Бәрі сіздің меншік', detail: 'Репозиторийлер, инфрақұрылым және құжаттама бірінші күні-өзі беріледі. Ертең жоғалып кетсек те, жүйелеріңіз жұмысын жалғастырады.' },
+      { title: 'Әр қадамда жұмыс істейтін софт', detail: 'Әр кезеңде нақты нәтиже көресіз — күтуден ауытқу квартал емес, күндер тұрады.' },
+      { title: 'Іске қосқаннан кейін де қаламыз', detail: 'Автоматика мен AI бизнеспен бірге дрейфтейді. Тапсырғаннан кейін жоғалмай, сүйемелдеп, баптап отырамыз.' },
     ],
   },
 
   about: {
-    kicker: '\u0411\u0456\u0437 \u0442\u0443\u0440\u0430\u043b\u044b',
-    heroHeading: '\u0410\u0446\u0446\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u043b\u0435\u0440 \u049b\u0430\u0431\u0430\u0442\u044b \u0435\u043c\u0435\u0441, \u0448\u0430\u0493\u044b\u043d \u0441\u0435\u043d\u044c\u043e\u0440\u043b\u0430\u0440 \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u0441\u044b.',
-    heroSubheading:
-      'Rahmet Labs \u2014 full-stack \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u044f\u043b\u044b\u049b \u0441\u0442\u0443\u0434\u0438\u044f: \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456, \u0432\u0435\u0431 \u0436\u04d9\u043d\u0435 \u043c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u04e9\u043d\u0456\u043c\u0434\u0435\u0440, Web3 \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c\u044b\u043d \u043e\u043d\u044b \u043d\u0430\u049b\u0442\u044b \u049b\u04b1\u0440\u0430\u0442\u044b\u043d \u0430\u0434\u0430\u043c\u0434\u0430\u0440 \u0436\u0435\u0442\u043a\u0456\u0437\u0435\u0434\u0456.',
-    teamHeading: '\u0421\u0456\u0437\u0431\u0435\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d\u0434\u0435\u0440',
-    teamIntro: '\u0411\u0456\u0437 \u04d9\u0440\u0431\u0456\u0440 \u0436\u043e\u0431\u0430\u0493\u0430 \u0448\u0430\u0493\u044b\u043d \u0441\u0435\u043d\u044c\u043e\u0440\u043b\u0430\u0440\u0434\u044b\u04a3 \u0448\u0430\u0493\u044b\u043d \u0442\u043e\u0431\u044b\u043d \u049b\u043e\u0441\u0430\u043c\u044b\u0437, \u0436\u0430\u0441\u0442\u0430\u0440\u0434\u044b \u0436\u04d9\u043d\u0435 \u0436\u043e\u0431\u0430 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0456\u043d \u049b\u043e\u0439\u043c\u0430\u0439\u043c\u044b\u0437.',
+    kicker: 'Біз туралы',
+    heading: 'Шағын senior команда — аккаунт-менеджмент қабаты емес.',
+    subheading:
+      'Rahmet Labs — full-stack технология студиясы: автоматтандыру, AI жүйелері, веб және мобиль өнімдер, Web3 инфрақұрылымы. Бәрін нақты құратын адамдар жасайды.',
+    teamHeading: 'Кіммен жұмыс істейсіз',
+    teamIntro: 'Әр жобаға джундар мен жоба менеджері орнына шағын senior топты қоямыз.',
     team: [
-      { name: '\u041d\u0435\u0433\u0456\u0437\u0433\u0456 \u04d9\u0437\u0456\u0440\u043b\u0435\u0443\u0448\u0456\u043b\u0435\u0440', role: '\u04e8\u043d\u0456\u043c \u00b7 \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u00b7 Web3', bio: '\u0416\u04af\u0439\u0435\u043d\u0456 \u0431\u0430\u0441\u044b\u043d\u0430\u043d \u0430\u044f\u049b\u0442\u0430\u0443\u0448\u044b, \u049b\u04b1\u0440\u0430\u0443\u0448\u044b \u0436\u04d9\u043d\u0435 \u0448\u044b\u0493\u0430\u0440\u0443\u0448\u044b \u0430\u0493\u0430 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043b\u0435\u0440 \u2014 kickoff \u049b\u043e\u04a3\u044b\u0440\u0430\u0443\u044b\u04a3\u044b\u0437\u0434\u0430\u0493\u044b \u0430\u0434\u0430\u043c\u0434\u0430\u0440 \u043a\u043e\u0434 \u0436\u0430\u0437\u0430\u0442\u044b\u043d \u0430\u0434\u0430\u043c\u0434\u0430\u0440.' },
-      { name: 'ИИ \u0436\u04d9\u043d\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443 \u04d9\u0440\u0456\u043f\u0442\u0435\u0441\u0442\u0435\u0440\u0456', role: 'AI Ops \u00b7 \u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f', bio: '\u041f\u0440\u043e\u0446\u0435\u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, LLM \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f\u0441\u044b \u0436\u04d9\u043d\u0435 \u0436\u04af\u0439\u0435 \u043e\u0440\u043a\u0435\u0441\u0442\u0440\u0430\u0446\u0438\u044f\u0441\u044b \u0431\u043e\u0439\u044b\u043d\u0448\u0430 \u043c\u0430\u043c\u0430\u043d\u0434\u0430\u0440.' },
-      { name: '\u0414\u0438\u0437\u0430\u0439\u043d \u0436\u04d9\u043d\u0435 \u0436\u0435\u0442\u043a\u0456\u0437\u0443 \u0441\u0430\u049b\u0438\u044b', role: '\u0414\u0438\u0437\u0430\u0439\u043d \u00b7 QA \u00b7 \u0416\u0435\u0442\u043a\u0456\u0437\u0443', bio: '\u0428\u044b\u0493\u049b\u0430\u043d \u04e9\u043d\u0456\u043c\u043d\u0456\u04a3 \u049b\u043e\u043b\u0434\u0430\u043d\u0443\u0493\u0430 \u0430\u04a3\u0493\u0430, \u0442\u0435\u0441\u0442\u0442\u0435\u043b\u0433\u0435\u043d \u0436\u04d9\u043d\u0435 \u0431\u0456\u0440\u0456\u043d\u0448\u0456 \u043a\u04af\u043d\u043d\u0435\u043d \u0434\u0430\u0439\u044b\u043d \u0431\u043e\u043b\u0443\u044b\u043d \u049b\u0430\u043c\u0442\u0430\u043c\u0430\u0441\u044b\u0437 \u0435\u0442\u0435\u0442\u0456\u043d \u0430\u0434\u0430\u043c\u0434\u0430\u0440.' },
+      {
+        name: 'Негізгі әзірлеушілер',
+        role: 'Өнім · Автоматтандыру · Web3',
+        bio: 'Жүйені басынан аяғына дейін жобалайтын, құратын және іске қосатын senior инженерлер: алғашқы қоңыраудағылар — код жазатындар.',
+      },
+      {
+        name: 'AI және автоматика серіктестері',
+        role: 'AI Ops · Интеграциялар',
+        bio: 'Процесстерді автоматтандыру, LLM интеграциясы және жүйелік оркестрация мамандары — құрастырудың AI бөлігіне қосылады.',
+      },
+      {
+        name: 'Дизайн және жеткізу сақинасы',
+        role: 'Дизайн · QA · Іске қосу',
+        bio: 'Жеткізілген нәрсе ыңғайлы, тестіленген және командаңызға бірінші күні-ақ дайын болуын қадағалайтын адамдар.',
+      },
     ],
-    principlesHeading: '\u0411\u0456\u0437 \u049b\u0430\u043b\u0430\u0439 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u043c\u0456\u0437',
-    principles: [
-      { title: '\u0410\u043b\u0434\u044b\u043c\u0435\u043d \u0442\u0435\u043b\u0435\u043c\u0435\u0442\u0440\u0438\u044f', description: '\u04d8\u0440\u043d\u0435\u043d\u0435\u0431\u0456\u0440 \u043d\u04d9\u0440\u0441\u0435\u043d\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443\u0434\u0430\u043d \u0431\u04b1\u0440\u044b\u043d \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043f\u0435\u043d \u0436\u0443\u0440\u043d\u0430\u043b\u0434\u0430\u0443\u0434\u044b \u049b\u043e\u0441\u0430\u043c\u044b\u0437, \u04d9\u0440\u0431\u0456\u0440 \u043f\u0440\u043e\u0446\u0435\u0441 \u0430\u0448\u044b\u049b \u0431\u043e\u043b\u044b\u043f \u049b\u0430\u043b\u0430\u0434\u044b.' },
-      { title: '\u0414\u0438\u0437\u0430\u0439\u043d \u043c\u0435\u043d \u043a\u043e\u0434 \u0431\u0456\u0440\u0433\u0435', description: '\u04e8\u043d\u0456\u043c, \u0434\u0438\u0437\u0430\u0439\u043d \u0436\u04d9\u043d\u0435 \u04d9\u0437\u0456\u0440\u043b\u0435\u0443 \u0431\u0456\u0440 \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u0434\u0430. \u0411\u04e9\u043b\u0456\u043c\u0434\u0435\u0440 \u0430\u0440\u0430\u0441\u044b\u043d\u0434\u0430 \u0431\u0435\u0440\u0443-\u0431\u0435\u0440\u0443 \u0436\u043e\u049b.' },
-      { title: '\u0428\u0442\u0430\u0442 \u043e\u0440\u043d\u044b\u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443', description: '\u041f\u0440\u043e\u0446\u0435\u0441 \u04e9\u0437\u0456-\u04e9\u0437\u0456 \u0436\u04af\u0440\u0435 \u0430\u043b\u0441\u0430, \u043e\u043d\u044b \u04e9\u0437\u0456-\u04e9\u0437\u0456 \u0436\u04af\u0440\u0435\u0442\u0456\u043d\u0434\u0435\u0439 \u0435\u0442\u0456\u043f \u049b\u04b1\u0440\u0430\u043c\u044b\u0437 \u2014 \u0441\u043e\u043d\u044b\u043c\u0435\u043d \u0430\u0434\u0430\u043c \u049b\u043e\u0441\u043f\u0430\u0439-\u0430\u049b \u04e9\u0441\u0456\u043f \u04e9\u0441\u0435\u0441\u0456\u0437.' },
-      { title: '\u0411\u04d9\u0440\u0456 \u0441\u0456\u0437\u0434\u0456\u043a\u0456', description: '\u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0439, \u0438\u043d\u0444\u0440\u0430\u049b\u04b1\u0440\u044b\u043b\u044b\u043c \u0436\u04d9\u043d\u0435 \u043d\u04b1\u0441\u049b\u0430\u0443\u043b\u0430\u0440 \u0431\u0456\u0440\u0456\u043d\u0448\u0456 \u043a\u04af\u043d\u043d\u0435\u043d \u0431\u0435\u0440\u0456\u043b\u0435\u0434\u0456. \u0415\u0440\u0442\u0435\u04a3 \u0436\u043e\u0439\u044b\u043b\u044b\u043f \u043a\u0435\u0442\u0441\u0435\u043a, \u0436\u04af\u0439\u0435\u043b\u0435\u0440\u0456\u04a3\u0456\u0437 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439 \u0431\u0435\u0440\u0435\u0434\u0456.' },
-    ],
-    toolkitHeading: '\u0411\u0456\u0437 \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u0442\u0456\u043d \u0441\u0442\u0435\u043a',
+    principlesHeading: 'Қалай жұмыс істейміз',
+    toolkitHeading: 'Біздің стек',
     toolkit: ['Next.js', 'React', 'React Native', 'Solidity', 'Hardhat', 'Supabase', 'Postgres', 'n8n', 'LangChain', 'OpenAI', 'Vercel', 'Playwright'],
-    ctaHeading: '\u04e8\u0437 \u0443\u0430\u049b\u044b\u0442\u044b\u04a3\u044b\u0437\u0434\u044b\u04a3 \u043a\u0430\u0440\u0442\u0430\u0441\u044b\u043d \u043a\u04e9\u0440\u0433\u0456\u04a3\u0456\u0437 \u043a\u0435\u043b\u0435 \u043c\u0435?',
-    ctaSubheading: '\u049a\u0430\u0437\u0456\u0440 \u049b\u043e\u043b\u043c\u0435\u043d \u0436\u0430\u0441\u0430\u043b\u0430\u0442\u044b\u043d\u0434\u044b \u0430\u0439\u0442\u044b\u04a3\u044b\u0437. \u0411\u0456\u0437 \u043d\u0435\u043d\u0456 \u0431\u0456\u0440\u0456\u043d\u0448\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0430\u0442\u044b\u043d\u044b\u043c\u044b\u0437\u0434\u044b \u0430\u0439\u0442\u0430\u043c\u044b\u0437.',
-    ctaPrimary: '\u0416\u041e\u0411\u0410 \u0411\u0410\u0421\u0422\u0410\u0423',
-    ctaSecondary: '\u046e\u0428\u0422\u0415\u0420\u0414\u0406 \u041a\u04e8\u0420\u0423',
+    ctaHeading: 'Құратын адамдармен сөйлесіңіз.',
+    ctaSubheading: 'Senior мамандармен 15 минуттық қоңырау — сатушы емес.',
+    ctaPrimary: 'Жоба бастау',
+    ctaSecondary: 'Жұмыстарды көру',
   },
 
-  contact: {
-    kicker: '\u0411\u0430\u0439\u043b\u0430\u043d\u044b\u0441',
-    heading: '\u0410\u0440\u043d\u0430 \u0430\u0448.',
-    subheading: '\u041d\u0435 \u0431\u04b1\u0437\u044b\u043b\u0493\u0430\u043d\u044b\u043d \u043d\u0435\u043c\u0435\u0441\u0435 \u0431\u0430\u044f\u0443 \u0435\u043a\u0435\u043d\u0456\u043d \u0430\u0439\u0442\u044b\u04a3\u044b\u0437. \u0416\u0430\u0443\u0430\u043f \u0431\u0435\u0440\u0435\u0442\u0456\u043d \u0442\u0456\u043a\u0435\u0442 \u043a\u0435\u0437\u0435\u0433\u0456 \u0435\u043c\u0435\u0441, \u043d\u0430\u049b\u0442\u044b \u0430\u0434\u0430\u043c \u0431\u0435\u0440\u0435\u0434\u0456.',
-    formHeading: '\u0411\u0440\u0438\u0444 \u0436\u0456\u0431\u0435\u0440\u0443',
-    formNameLabel: '\u0410\u0422\u042b',
-    formContactLabel: 'EMAIL \u041d\u0415\u041c\u0415\u0421\u0415 \u0422\u0415\u041b\u0415\u0424\u041e\u041d',
-    formProjectLabel: '\u0421\u0406\u0417\u0413\u0415 \u041d\u0415 \u041a\u0415\u0420\u0415\u041a?',
-    formProjectOptions: ['\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443', 'ИИ \u0436\u04af\u0439\u0435\u0441\u0456', '\u0412\u0435\u0431 / \u04e9\u043d\u0456\u043c', '\u041c\u043e\u0431\u0438\u043b\u044c\u0434\u0456 \u049b\u043e\u0441\u044b\u043c\u0448\u0430', 'Web3', '\u04d8\u043b\u0456 \u0448\u0435\u0448\u0456\u043b\u043c\u0435\u0433\u0435\u043d'],
-    formMessageLabel: '\u0411\u0420\u0418\u0424',
-    formMessagePlaceholder: '\u049a\u0430\u0437\u0456\u0440 \u049b\u043e\u043b\u043c\u0435\u043d \u0436\u0430\u0441\u0430\u043b\u0430\u0442\u044b\u043d \u043d\u0435? \u0410\u043b\u0434\u044b\u043c\u0435\u043d \u043d\u0435\u043d\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0430\u0440 \u0435\u0434\u0456\u04a3\u0456\u0437?',
-    formSubmit: 'WHATSAPP \u0410\u0420\u049a\u042b\u041b\u042b \u0416\u0406\u0411\u0415\u0420\u0423',
-    directHeading: '\u041d\u0435\u043c\u0435\u0441\u0435 \u0442\u0456\u043a\u0435\u043b\u0435\u0439 \u0445\u0430\u0431\u0430\u0440\u043b\u0430\u0441\u044b\u04a3\u044b\u0437',
-    channels: [
-      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062' },
-      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs' },
-      { id: 'email', label: 'Email', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com' },
+  servicesPage: {
+    kicker: 'Қызметтер',
+    heading: 'Бес функция. Бір жауапты команда.',
+    subheading: 'Төмендегілердің бәрі — бүгінгі продакшеде жұмыс істеп тұрған мүмкіндіктер, тілек тізімі емес.',
+    engagementHeading: 'Жұмыс форматтары',
+    engagement: [
+      { title: 'Жобалық құрастыру', detail: 'Нақты жүйе: скоуп, кезеңдік жеткізу, тұрақты көрсету ырғағы.' },
+      { title: 'Операциялық ретейнер', detail: 'Құрылғанды сүйемелдеп, дамытамыз: мониторинг, баптаулар, бизнес өскен сайын жаңа функциялар.' },
+      { title: 'Техникалық кеңесші', detail: 'Архитектураңызға, жұмысқа алуыңыз бен жол картасыңызға senior көзқарас — айына бірнеше күн.' },
     ],
-    responseNote: '\u04d8\u0440\u0431\u0456\u0440 \u0445\u0430\u0442\u0442\u044b \u04e9\u0437\u0456\u043c\u0456\u0437 \u043e\u049b\u0438\u043c\u0430\u0439\u043c\u044b\u0437 \u2014 \u0442\u0456\u043a\u0435\u0442 \u043a\u0435\u0437\u0435\u0433\u0456 \u0434\u0435, \u0430\u043a\u043a\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u0434\u0435 \u0436\u043e\u049b.',
+    faqHeading: 'Жиі сұрақтар',
+    ctaHeading: 'Қай функция керегін бilmейсіз бе?',
+    ctaSubheading: 'Аптаңызды жеп жүрген қол жұмысты сипаттаңыз. Жүйе онымен не істей алатынын ашық айтамыз.',
+  },
+
+  faq: [
+    {
+      q: 'Қаншалықты тез бастауға болады?',
+      a: 'Әдетте бір-екі аптаның ішінде: қысқа қоңырау, алғашқы кезеңнің жазбаша скоупы — бастаймыз. Үш айлық «зерттеулер» бізде жоқ.',
+    },
+    {
+      q: 'Қазіргі құралдарымызбен жұмыс істейсіздер ме?',
+      a: 'Иә, мәні де сонда. Алдымен бар нәрсені — CRM, ERP, мессенджерлерді — байланыстырып автоматтандырамыз, ал ау layk тек шынымен құтқарылмайтынды ауыстырамыз.',
+    },
+    {
+      q: 'Жоба әдетте қанша тұрады?',
+      a: 'Скоупқа байланысты: нүктелік автоматика мен толық өнім — басқа тарих. Бір қоңыраудан кейін нақты қолдануға болатын алғашқы кезеңге жазбаша баға береміз — қара жәшік жоқ.',
+    },
+    {
+      q: 'Код пен инфрақұрылым кімдікі?',
+      a: 'Сіздікі, бірінші күннен бастап. Репозиторийлер, бұлт аккаунттары мен құжаттама жеткізу барысында командаңызға беріледі.',
+    },
+    {
+      q: 'Іске қосқаннан кейін не болады?',
+      a: 'Көптеген клиенттер бізді операциялық ретейнерде қалдырады: мониторинг, баптаулар, кеңейтулер. Өзіңіз жүргізгіңіз келсе — оқыту мен нұсқаулықтармен тапсырамыз.',
+    },
+    {
+      q: 'Қай тілдерде жұмыс істеуге болады?',
+      a: 'Ағылшын, орыс және қазақ тілдерінде — қоңыраулар, құжаттама және жеткізетін интерфейстер.',
+    },
+  ],
+
+  contact: {
+    kicker: 'Байланыс',
+    heading: 'Бүгін не қолмен жасалып жүргенін айтып беріңіз.',
+    subheading: 'Хабарлама, қоңырау немесе дауыстық хабар — қайсысы жылдам болса. Нақты адам жауап береді.',
+    channelsHeading: 'Тікелей байланыс',
+    channels: [
+      { id: 'whatsapp', label: 'WhatsApp', value: '+7 708 841 3062', href: 'https://wa.me/77088413062', note: 'Ең жылдам — әдетте бір сағат ішінде' },
+      { id: 'telegram', label: 'Telegram', value: '@RahmetLabs', href: 'https://t.me/RahmetLabs', note: 'Сол күні' },
+      { id: 'email', label: 'Пошта', value: 'rahmetlabs@gmail.com', href: 'mailto:rahmetlabs@gmail.com', note: '24 сағат ішінде' },
+    ],
+    guideHeading: 'Бұдан кейін не болады',
+    guide: [
+      { code: '01', title: 'Қол жұмысты сипаттайсыз', detail: 'Екі сөйлем жеткілікті. Бәрін өзіміз оқимыз — тикет кезегі мен аккаунт-менеджер жоқ.' },
+      { code: '02', title: 'Біз ұстаныммен жауап береміз', detail: 'Алдымен нені автоматтандырған жөн, нені тиіспеген дұрыс және алғашқы жұмыс кезеңі қандай болуы мүмкін.' },
+      { code: '03', title: 'Senior командамен 15 минуттық қоңырау', detail: 'Жүйеңізді құратын адамдар — сату бөлімі емес. Сәйкес келмесек, ашық айтамыз.' },
+    ],
+    socialHeading: 'Тағы қайдамыз',
+    socials: [
+      { label: 'GitHub', href: 'https://github.com/rahmetlabs' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/company/rahmetlabs' },
+      { label: 'X', href: 'https://x.com/rahmetlabs' },
+    ],
+  },
+
+  cta: {
+    kicker: 'Бастау',
+    heading: 'Аптаңызды жеп жүрген',
+    headingAccent: 'қол жұмыстан бастаңыз.',
+    subheading:
+      'Командаңыз әлі қолмен істейтінін айтыңыз. Нақты жауап береміз: жүйе нені алуы мүмкін, оған не керек және алдымен не құрар едік.',
+    primary: 'Жоба бастау',
+    whatsapp: 'WhatsApp-қа жазу',
   },
 
   footer: {
-    tagline: '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0442\u0430\u043d\u0434\u044b\u0440\u0443, ИИ \u0436\u04d9\u043d\u0435 \u04e9\u043d\u0456\u043c \u0438\u043d\u0436\u0438\u043d\u0438\u0440\u0438\u043d\u0433\u0456 \u2014 \u0431\u0456\u0440 \u0436\u04af\u0439\u0435 \u0440\u0435\u0442\u0456\u043d\u0434\u0435.',
-    quickLinksLabel: '\u041a\u0410\u0420\u0422\u0410',
-    locationNote: '\u049a\u0430\u0437\u0430\u049b\u0441\u0442\u0430\u043d \u00b7 \u04d9\u043b\u0435\u043c \u0431\u043e\u0439\u044b\u043d\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430\u043b\u0430\u0440\u043c\u0435\u043d \u0436\u04b1\u043c\u044b\u0441 \u0456\u0441\u0442\u0435\u0439\u043c\u0456\u0437.',
-    copyrightPrefix: '\u00a9',
-    copyrightSuffix: 'Rahmet Labs.',
+    tagline: 'Автоматтандыру, AI жүйелері және инженерлік өнімдер — жобалаудан эксплуатацияға дейін бір жауапты команда.',
+    mapLabel: 'Сайт',
+    contactLabel: 'Байланыс',
+    locationNote: 'Қазақстан · әлем бойынша командалармен · EN / RU / KZ',
+    copyrightSuffix: 'Rahmet Labs. Клиенттер жүйелерімен бірдей мұқияттықпен жасалған.',
   },
 };
 

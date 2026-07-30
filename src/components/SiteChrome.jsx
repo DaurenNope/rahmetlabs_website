@@ -1,9 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+/**
+ * SiteChrome — floating island nav (pill), full-screen overlay menu.
+ * Top bar: wordmark left, nav links center (desktop), locale switcher + CTA right.
+ * Mobile: hamburger morphs to X; menu opens as full-screen overlay with
+ * staggered mask reveal.
+ */
+
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { locales, localeNames } from '../lib/locales';
+import Button from './Button';
 
 function stripLocale(pathname, locale) {
   if (pathname === `/${locale}`) return '/';
@@ -15,53 +23,88 @@ export default function SiteChrome({ locale, nav }) {
   const pathname = usePathname();
   const restPath = stripLocale(pathname, locale);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
     document.documentElement.style.overflow = menuOpen ? 'hidden' : '';
-    return () => {
-      document.documentElement.style.overflow = '';
-    };
+    return () => { document.documentElement.style.overflow = ''; };
   }, [menuOpen]);
 
-  const isActive = (href) => (href === '/' ? restPath === '/' : restPath.startsWith(href));
+  const isActive = useCallback(
+    (href) => (href === '/' ? restPath === '/' : restPath.startsWith(href)),
+    [restPath]
+  );
+
+  const localePath = (loc) => `/${loc}${restPath === '/' ? '' : restPath}`;
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 h-[68px] border-b border-hairline bg-void">
-        <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 lg:px-10">
-          <Link href={`/${locale}`} className="flex items-center gap-2.5">
-            <span className="h-2 w-2 rounded-full bg-amber" />
-            <span className="text-sm font-semibold tracking-wide text-ink">{nav.wordmark}</span>
+      {/* ------------------------- top bar ------------------------- */}
+      <header
+        className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ease-settle ${
+          scrolled ? 'py-3' : 'py-5'
+        }`}
+      >
+        <div className="mx-auto flex max-w-content items-center justify-between px-5 md:px-10">
+          {/* wordmark */}
+          <Link href={`/${locale}`} className="group flex items-center gap-3">
+            <span className="relative flex h-8 w-8 items-center justify-center">
+              <span className="absolute inset-0 rounded-[10px] border border-hairline bg-panel transition-colors duration-500 group-hover:border-amber/50" />
+              <span className="relative font-mono text-[0.6rem] font-semibold tracking-[0.18em] text-amber">RL</span>
+            </span>
+            <span className="hidden font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-ink sm:block">
+              {nav.wordmark}
+            </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-            {nav.functions.map((fn) => {
-              const active = isActive(fn.href);
+          {/* center nav — desktop */}
+          <nav
+            aria-label="Primary"
+            className={`hidden items-center gap-1 rounded-full border px-2 py-1.5 transition-all duration-700 ease-settle md:flex ${
+              scrolled
+                ? 'border-hairline bg-panel/80 backdrop-blur-xl'
+                : 'border-transparent bg-transparent'
+            }`}
+          >
+            {nav.links.map((l) => {
+              const active = isActive(l.href);
               return (
                 <Link
-                  key={fn.href}
-                  href={`/${locale}${fn.href}`}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
+                  key={l.href}
+                  href={`/${locale}${l.href}`}
+                  className={`relative rounded-full px-4 py-1.5 text-[0.8125rem] font-medium transition-colors duration-400 ${
                     active ? 'text-amber' : 'text-ink-muted hover:text-ink'
                   }`}
                 >
-                  {fn.label}
+                  {l.label}
+                  {active && (
+                    <span className="absolute inset-x-3 -bottom-px h-px bg-amber" />
+                  )}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="flex items-center gap-3 sm:gap-5">
-            <div className="hidden items-center border border-hairline sm:flex">
+          {/* right cluster */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* locale switcher */}
+            <div className="hidden items-center rounded-full border border-hairline bg-panel/60 p-0.5 backdrop-blur-md sm:flex">
               {locales.map((loc) => (
                 <Link
                   key={loc}
-                  href={`/${loc}${restPath === '/' ? '' : restPath}`}
-                  className={`px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                  href={localePath(loc)}
+                  className={`rounded-full px-2.5 py-1 font-mono text-[0.6rem] font-medium tracking-[0.1em] transition-colors duration-300 ${
                     loc === locale ? 'bg-amber text-void' : 'text-ink-muted hover:text-ink'
                   }`}
                 >
@@ -69,58 +112,99 @@ export default function SiteChrome({ locale, nav }) {
                 </Link>
               ))}
             </div>
-            <Link
-              href={`/${locale}${nav.start.href}`}
-              className="hidden bg-amber px-5 py-2.5 text-sm font-semibold text-void transition-colors hover:bg-ink sm:block"
-            >
-              {nav.start.label}
-            </Link>
+
+            {/* CTA — desktop */}
+            <div className="hidden md:block">
+              <Button href={`/${locale}/contact`} variant="primary" withArrow={false} className="px-5 py-2 text-[0.75rem]">
+                {nav.cta}
+              </Button>
+            </div>
+
+            {/* hamburger — mobile */}
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 border border-hairline md:hidden"
               aria-expanded={menuOpen}
               aria-label={menuOpen ? nav.closeLabel : nav.menuLabel}
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-panel/70 backdrop-blur-md md:hidden"
             >
-              <span className={`h-px w-4 bg-ink transition-transform ${menuOpen ? 'translate-y-[3.5px] rotate-45' : ''}`} />
-              <span className={`h-px w-4 bg-ink transition-transform ${menuOpen ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+              <span
+                className={`absolute h-px w-4 bg-ink transition-all duration-500 ease-settle ${
+                  menuOpen ? 'rotate-45 translate-y-0' : '-translate-y-[3px]'
+                }`}
+              />
+              <span
+                className={`absolute h-px w-4 bg-ink transition-all duration-500 ease-settle ${
+                  menuOpen ? '-rotate-45 translate-y-0' : 'translate-y-[3px]'
+                }`}
+              />
             </button>
           </div>
         </div>
       </header>
 
+      {/* -------------------- full-screen overlay menu -------------------- */}
       <div
-        className={`fixed inset-0 z-30 bg-void transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-30 flex flex-col justify-end transition-all duration-700 ease-settle md:hidden ${
           menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
+        style={{ background: 'rgba(8,9,10,0.88)', backdropFilter: 'blur(24px)' }}
+        aria-hidden={!menuOpen}
       >
-        <div className="flex h-full flex-col justify-center gap-1 px-6">
-          {nav.functions.map((fn) => {
-            const active = isActive(fn.href);
+        <div className="flex flex-col px-6 pb-16 pt-28">
+          {nav.links.map((l, i) => {
+            const active = isActive(l.href);
             return (
-              <Link
-                key={fn.href}
-                href={`/${locale}${fn.href}`}
-                className={`border-b border-hairline py-4 text-2xl font-semibold tracking-tight ${
-                  active ? 'text-amber' : 'text-ink'
-                }`}
-              >
-                {fn.label}
-              </Link>
+              <div key={l.href} className="overflow-hidden">
+                <Link
+                  href={`/${locale}${l.href}`}
+                  className={`block border-b border-hairline/60 py-5 font-sans text-3xl font-semibold tracking-tight transition-transform duration-700 ease-reveal ${
+                    active ? 'text-amber' : 'text-ink'
+                  }`}
+                  style={{
+                    transform: menuOpen ? 'translateY(0)' : 'translateY(110%)',
+                    transitionDelay: menuOpen ? `${120 + i * 80}ms` : '0ms',
+                  }}
+                  tabIndex={menuOpen ? 0 : -1}
+                >
+                  {l.label}
+                </Link>
+              </div>
             );
           })}
-          <Link
-            href={`/${locale}${nav.start.href}`}
-            className="mt-6 flex items-center justify-center bg-amber py-4 text-sm font-semibold text-void"
+
+          <div
+            className="mt-8 overflow-hidden"
           >
-            {nav.start.label}
-          </Link>
-          <div className="mt-6 flex items-center justify-center gap-2">
+            <div
+              className="transition-transform duration-700 ease-reveal"
+              style={{
+                transform: menuOpen ? 'translateY(0)' : 'translateY(110%)',
+                transitionDelay: menuOpen ? `${120 + nav.links.length * 80}ms` : '0ms',
+              }}
+            >
+              <Button href={`/${locale}/contact`} variant="primary" className="w-full" withArrow tabIndex={menuOpen ? 0 : -1}>
+                {nav.cta}
+              </Button>
+            </div>
+          </div>
+
+          {/* locale row */}
+          <div
+            className="mt-8 flex items-center justify-center gap-2"
+            style={{
+              opacity: menuOpen ? 1 : 0,
+              transition: `opacity 0.5s ease ${menuOpen ? '400ms' : '0ms'}`,
+            }}
+          >
             {locales.map((loc) => (
               <Link
                 key={loc}
-                href={`/${loc}${restPath === '/' ? '' : restPath}`}
-                className={`px-3 py-1.5 text-xs font-medium ${loc === locale ? 'bg-amber text-void' : 'border border-hairline text-ink-muted'}`}
+                href={localePath(loc)}
+                className={`rounded-full px-4 py-2 font-mono text-[0.65rem] font-medium tracking-[0.12em] ${
+                  loc === locale ? 'bg-amber text-void' : 'border border-hairline text-ink-muted'
+                }`}
+                tabIndex={menuOpen ? 0 : -1}
               >
                 {localeNames[loc]}
               </Link>

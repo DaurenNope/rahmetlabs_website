@@ -8,59 +8,49 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Light "ledger" surface
-        void: '#FAFAF8',
-        panel: '#F1F0E9',
-        'panel-raised': '#E9E7DD',
-        hairline: '#DEDCD2',
-        ink: '#17181C',
-        'ink-muted': '#5E5F63',
-        'ink-faint': '#9B9C98',
-        // Primary accent — warm amber (automated / live / CTA)
+        // "The Thread" — dark editorial system
+        void: '#08090A',
+        panel: '#0D0F10',
+        raised: '#131517',
+        hairline: '#202326',
+        ink: '#F4F1EA',
+        'ink-muted': '#99978B',
+        'ink-faint': '#5F5E56',
+        // Signature amber — the thread, live state, primary actions
         amber: {
-          DEFAULT: '#D97706',
-          dim: '#92400E',
-          soft: 'rgba(217,119,6,0.08)',
+          DEFAULT: '#E8A33D',
+          deep: '#B97A24',
+          soft: 'rgba(232,163,61,0.09)',
         },
-        // Secondary — muted red (manual / stale, semantic only)
-        manual: {
-          DEFAULT: '#B4513A',
-          dim: '#6E2E20',
-          soft: 'rgba(180,81,58,0.08)',
+        // Terminal red — ONLY opposite amber in manual-vs-system context
+        terminal: {
+          DEFAULT: '#C1503B',
+          soft: 'rgba(193,80,59,0.09)',
         },
-        // Dark inset "viewport" — the one place glow/dark/WebGL lives
-        viewport: '#0A0B0E',
-        'viewport-raised': '#16181E',
-        'viewport-hairline': '#2B2D35',
-        'viewport-ink': '#F5F4EE',
-        'viewport-ink-muted': '#9C9DA6',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       fontSize: {
-        display: ['clamp(2.5rem, 6vw, 5.25rem)', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
-        headline: ['clamp(1.75rem, 3.2vw, 2.5rem)', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
+        display: ['clamp(2.75rem, 7vw, 6rem)', { lineHeight: '1.02', letterSpacing: '-0.02em' }],
+        headline: ['clamp(2rem, 4.2vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.015em' }],
+        subhead: ['clamp(1.25rem, 2.2vw, 1.75rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
       },
-      borderRadius: {
-        none: '0px',
-        sm: '3px',
-        DEFAULT: '3px',
-      },
-      boxShadow: {
-        none: 'none',
-      },
-      spacing: {
-        row: '0.875rem',
-        panel: '1.5rem',
+      letterSpacing: {
+        kicker: '0.22em',
       },
       maxWidth: {
-        content: '1400px',
+        content: '1320px',
         prose: '720px',
       },
+      borderRadius: {
+        panel: '10px',
+      },
       transitionTimingFunction: {
-        terminal: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        reveal: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        settle: 'cubic-bezier(0.7, 0, 0, 1)',
       },
     },
   },

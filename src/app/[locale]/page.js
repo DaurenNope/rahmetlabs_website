@@ -2,13 +2,13 @@ import { isValidLocale } from '../../lib/locales';
 import { getDictionary } from '../../lib/content';
 import { notFound } from 'next/navigation';
 import Hero from '../../components/Hero';
-import ChaosToSystem from '../../components/ChaosToSystem';
+import ThreadChapters from '../../components/ThreadChapters';
 import Services from '../../components/Services';
-import Work from '../../components/Work';
+import ManualVsSystem from '../../components/ManualVsSystem';
+import WorkList from '../../components/WorkList';
 import Process from '../../components/Process';
-import Why from '../../components/Why';
-import TerminalPanel from '../../components/TerminalPanel';
-import Button from '../../components/Button';
+import Principles from '../../components/Principles';
+import FinalCta from '../../components/FinalCta';
 import JsonLd from '../../components/JsonLd';
 
 export async function generateMetadata({ params }) {
@@ -30,36 +30,34 @@ export default async function Home({ params }) {
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: dict.services.faq.map((item) => ({
+    mainEntity: dict.faq.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: { '@type': 'Answer', text: item.a },
     })),
   };
 
+  const pageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: dict.meta.home.title,
+    description: dict.meta.home.description,
+    url: `https://rahmetlabs.com/${locale}`,
+    about: { '@type': 'Organization', name: 'Rahmet Labs', url: 'https://rahmetlabs.com' },
+  };
+
   return (
     <>
+      <JsonLd data={pageJsonLd} />
       <JsonLd data={faqJsonLd} />
       <Hero locale={locale} hero={dict.hero} />
-      <ChaosToSystem hero={dict.hero} />
-      <Services locale={locale} services={dict.services} />
-      <Work locale={locale} work={dict.work} items={dict.work.positions.slice(0, 4)} />
+      <ThreadChapters chapters={dict.thread.chapters} />
+      <Services services={dict.whatWeBuild} locale={locale} />
+      <ManualVsSystem comparison={dict.comparison} />
+      <WorkList work={dict.work} locale={locale} limit={4} />
       <Process process={dict.process} />
-      <Why why={dict.why} />
-      <TerminalPanel>
-        <div className="flex flex-col gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-24">
-          <div className="max-w-xl">
-            <h2 className="text-headline text-ink">{dict.about.ctaHeading}</h2>
-            <p className="mt-4 text-ink-muted">{dict.about.ctaSubheading}</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button href={`/${locale}/contact`}>{dict.about.ctaPrimary}</Button>
-            <Button href={`/${locale}/portfolio`} variant="ghost" arrow={false}>
-              {dict.about.ctaSecondary}
-            </Button>
-          </div>
-        </div>
-      </TerminalPanel>
+      <Principles principles={dict.principles} />
+      <FinalCta cta={dict.cta} locale={locale} />
     </>
   );
 }

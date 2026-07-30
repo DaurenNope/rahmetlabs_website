@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="rough"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.06 0 0 0 0 0.055 0 0 0 0 0.05 0 0 0 0.025 0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="#F5F3EE"/>
+  <rect width="1200" height="630" filter="url(#rough)" opacity="0.5"/>
+
+  <!-- hairline frame -->
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#C9C3B4" stroke-width="1"/>
+
+  <!-- top rule label -->
+  <text x="76" y="92" font-family="ui-monospace, monospace" font-size="15" letter-spacing="5" fill="#8A867A">RAHMET LABS — AUTOMATION · AI · PRODUCT ENGINEERING</text>
+  <circle cx="1128" cy="84" r="6" fill="#C2851F"/>
+
+  <!-- headline -->
+  <text x="76" y="288" font-family="Georgia, serif" font-size="92" font-style="italic" font-weight="500" fill="#1C1A16">Manual work,</text>
+  <text x="76" y="398" font-family="Helvetica Neue, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-2" fill="#1C1A16">engineered away.</text>
+
+  <!-- thread -->
+  <path d="M76 470c130 0 150-108 268-108 96 0 104 48 196 48 56 0 96-14 118-44" fill="none" stroke="#C2851F" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="76" cy="470" r="11" fill="#C2851F"/>
+
+  <!-- bottom row -->
+  <text x="76" y="556" font-family="ui-monospace, monospace" font-size="17" letter-spacing="1.5" fill="#6B665A">rahmetlabs.com   ·   EN / RU / KZ   ·   WhatsApp · Telegram · Email</text>
+</svg>
