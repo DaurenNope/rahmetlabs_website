@@ -1,5 +1,5 @@
 import '../globals.css';
-import { Onest, IBM_Plex_Mono, Fraunces } from 'next/font/google';
+import { Geologica, JetBrains_Mono, Spectral } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { locales, htmlLang, isValidLocale } from '../../lib/locales';
 import { getDictionary } from '../../lib/content';
@@ -8,22 +8,22 @@ import SiteChrome from '../../components/SiteChrome';
 import Footer from '../../components/Footer';
 import JsonLd from '../../components/JsonLd';
 
-const onest = Onest({
+const geologica = Geologica({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const plexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
   weight: ['400', '500', '600'],
-  variable: '--font-plex-mono',
+  variable: '--font-mono',
   display: 'swap',
 });
 
-const fraunces = Fraunces({
-  subsets: ['latin', 'latin-ext'],
+const spectral = Spectral({
+  subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
   weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
@@ -112,8 +112,8 @@ export default async function LocaleLayout({ children, params }) {
   };
 
   return (
-    <html lang={htmlLang[locale]} className={`${onest.variable} ${plexMono.variable} ${fraunces.variable}`}>
-      <body className="bg-void font-sans text-ink antialiased">
+    <html lang={htmlLang[locale]} className={`${geologica.variable} ${jetbrainsMono.variable} ${spectral.variable}`}>
+      <body className="bg-paper font-sans text-ink antialiased">
         <JsonLd data={organizationJsonLd} />
         <SmoothScroll>
           <SiteChrome locale={locale} nav={dict.nav} />

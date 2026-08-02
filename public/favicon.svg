@@ -1,16 +1,15 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="0" fill="#F5F3EE"/>
-  <!-- the thread: a hand-drawn line resolving from scribble into one clean stroke -->
-  <g fill="none" stroke="#1C1A16" stroke-linecap="round" stroke-linejoin="round">
-    <!-- scribble phase -->
-    <path d="M96 320c14-46 8-84 24-96s30 30 8 44 28 42 40 4 22-50 34-14 34 62 44 18" stroke-width="10" opacity="0.28"/>
-    <!-- clean resolving thread -->
-    <path d="M96 384c80 0 96-136 172-136 60 0 66 60 122 60 34 0 62-18 66-48" stroke-width="14"/>
-    <!-- amber knot at origin -->
-    <circle cx="100" cy="384" r="16" fill="#C2851F" stroke="none"/>
-    <!-- terminal arrowhead -->
-    <path d="M436 236l22-24 4 32-32-4 6-4z" fill="#1C1A16" stroke="none"/>
+  <rect width="512" height="512" rx="96" fill="#F6F4EE"/>
+  <!-- graph-paper grid -->
+  <g stroke="#DDD9CE" stroke-width="1">
+    <path d="M0 128h512M0 256h512M0 384h512M128 0v512M256 0v512M384 0v512"/>
   </g>
-  <!-- monogram -->
-  <text x="256" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="104" fill="#1C1A16" letter-spacing="2">RL</text>
+  <!-- scribble residue: the manual state being resolved -->
+  <g fill="none" stroke="#1B1914" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M72 292c22-70 -4-116 30-132s44 48 8 70 40 62 60 6 32-74 54-12" stroke-width="10" opacity="0.22"/>
+    <!-- thread: resolves into one clean engineered line -->
+    <path d="M72 404c108 0 122-158 212-158 64 0 70 58 128 58 30 0 48-8 60-24" stroke="#2B4BD7" stroke-width="15"/>
+    <circle cx="76" cy="404" r="17" fill="#2B4BD7" stroke="none"/>
+    <circle cx="472" cy="280" r="7" fill="#1B1914" stroke="none" opacity="0.5"/>
+  </g>
 </svg>

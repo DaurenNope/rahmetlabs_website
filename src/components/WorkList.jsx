@@ -31,7 +31,7 @@ export default function WorkList({ work, locale, limit = null, headingId = 'work
               <div className="grid grid-cols-12 items-start gap-x-6 gap-y-4 py-7 md:py-9">
                 {/* number + framing line */}
                 <div className="col-span-2 md:col-span-1">
-                  <span className="font-serif text-2xl italic leading-none text-ink-faint transition-colors duration-500 group-hover:text-amber md:text-3xl">
+                  <span className="font-mono text-[0.78rem] font-semibold tracking-[0.14em] text-ink-faint transition-colors duration-500 group-hover:text-signal">
                     {item.code}
                   </span>
                 </div>
@@ -65,10 +65,10 @@ export default function WorkList({ work, locale, limit = null, headingId = 'work
                 <div className="col-span-10 col-start-3 flex flex-col items-start gap-2 md:col-span-1 md:col-start-12 md:items-end">
                   <span className="flex items-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.14em]">
                     <span
-                      className={`h-1.5 w-1.5 rounded-full ${item.status === 'live' ? 'status-dot bg-amber' : 'bg-ink-faint'}`}
+                      className={`h-1.5 w-1.5 rounded-full ${item.status === 'live' ? 'status-dot bg-signal' : 'bg-ink-faint'}`}
                       aria-hidden="true"
                     />
-                    <span className={item.status === 'live' ? 'text-amber' : 'text-ink-faint'}>
+                    <span className={item.status === 'live' ? 'text-signal' : 'text-ink-faint'}>
                       {item.status === 'live' ? work.statusLive : work.statusShipped}
                     </span>
                   </span>
@@ -78,7 +78,7 @@ export default function WorkList({ work, locale, limit = null, headingId = 'work
                       href={l.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link flex items-center gap-1.5 font-mono text-[0.66rem] tracking-[0.06em] text-ink transition-colors hover:text-amber"
+                      className="group/link flex items-center gap-1.5 font-mono text-[0.66rem] tracking-[0.06em] text-ink transition-colors hover:text-signal"
                     >
                       {l.label}
                       <svg width="10" height="10" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">

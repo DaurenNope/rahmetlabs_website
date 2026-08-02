@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --paper: #F6F4EE;
+  --card: #FCFBF7;
+  --well: #EDEAE1;
+  --hairline: #DDD9CE;
+  --ink: #1B1914;
+  --ink-muted: #5E5A50;
+  --ink-faint: #8A857A;
+  --signal: #2B4BD7;
+  --signal-deep: #1D36A8;
+  --manual: #BF4632;
 }
 
 * {
@@ -12,7 +22,7 @@
 }
 
 html {
-  background: #08090A;
+  background: #F6F4EE;
 }
 
 html.lenis,
@@ -28,8 +38,8 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: #F4F1EA;
-  background-color: #08090A;
+  color: #1B1914;
+  background-color: #F6F4EE;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -39,17 +49,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #F4F1EA;
+  color: #1B1914;
 }
 
 ::selection {
-  background: #E8A33D;
-  color: #08090A;
+  background: #2B4BD7;
+  color: #FCFBF7;
 }
 
-/* Focus visibility — amber ring, always visible on dark ground */
+/* Focus visibility — signal ring, always visible on paper */
 :focus-visible {
-  outline: 2px solid #E8A33D;
+  outline: 2px solid #2B4BD7;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -60,41 +70,41 @@ h1, h2, h3, h4, h5, h6 {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090A;
+  background: #F6F4EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2D30;
-  border: 3px solid #08090A;
+  background: #CFCABD;
+  border: 3px solid #F6F4EE;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3A3D40;
+  background: #B4AFA1;
 }
 
 /* ------------------------------------------------------------------ */
-/* Kicker — eyebrow label above section headings                       */
+/* Kicker — figure label above section headings                        */
 /* ------------------------------------------------------------------ */
 .kicker {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
-  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #99978B;
+  color: #5E5A50;
 }
 .kicker::before {
   content: '';
   width: 1.5rem;
   height: 1px;
-  background: #E8A33D;
+  background: #2B4BD7;
   flex-shrink: 0;
 }
 
 /* ------------------------------------------------------------------ */
-/* Editorial italic accent — Fraunces between sans CJK blocks          */
+/* Margin annotation — Spectral italic accent between sans blocks      */
 /* ------------------------------------------------------------------ */
 .serif-accent {
   font-family: var(--font-serif), Georgia, serif;
@@ -182,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2.5rem 0;
   }
   .chapter-frame + .chapter-frame {
-    border-top: 1px solid #202326;
+    border-top: 1px solid #DDD9CE;
   }
 }
 
@@ -270,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ------------------------------------------------------------------ */
 .thread-path {
   fill: none;
-  stroke: #E8A33D;
+  stroke: #2B4BD7;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -282,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
   stroke-dashoffset: 0;
 }
 .thread-dot {
-  fill: #E8A33D;
+  fill: #2B4BD7;
   opacity: 0;
   transition: opacity 0.4s ease 2.4s;
 }
@@ -315,13 +325,13 @@ h1, h2, h3, h4, h5, h6 {
   stroke-linejoin: round;
 }
 .chart-line-manual {
-  stroke: #C1503B;
+  stroke: #BF4632;
   stroke-dasharray: 1400;
   stroke-dashoffset: 1400;
   transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
 }
 .chart-line-auto {
-  stroke: #E8A33D;
+  stroke: #2B4BD7;
   stroke-dasharray: 1400;
   stroke-dashoffset: 1400;
   transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.9s;
@@ -349,7 +359,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1);
 }
 .chart-grid {
-  stroke: #1C1F22;
+  stroke: #E3DFD3;
   stroke-width: 1;
   stroke-dasharray: 2 4;
 }
@@ -380,15 +390,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ------------------------------------------------------------------ */
-/* Grain overlay — fixed, pointer-events none                          */
+/* Paper grain — fixed, pointer-events none, barely-there fibre        */
 /* ------------------------------------------------------------------ */
 .grain-overlay {
   position: fixed;
   inset: 0;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.028;
-  mix-blend-mode: overlay;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
 }

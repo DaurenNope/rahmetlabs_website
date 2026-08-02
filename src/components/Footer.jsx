@@ -18,8 +18,8 @@ export default function Footer({ footer, locale, nav }) {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="mb-4 flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-hairline bg-panel">
-                <span className="font-mono text-[0.6rem] font-semibold tracking-[0.18em] text-amber">RL</span>
+              <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-[9px] border border-hairline bg-card">
+                <img src="/favicon.svg" alt="" width="32" height="32" className="h-full w-full object-cover" />
               </span>
               <span className="font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-ink">RAHMET LABS</span>
             </p>
@@ -33,14 +33,14 @@ export default function Footer({ footer, locale, nav }) {
                 <li key={l.href}>
                   <Link
                     href={`/${locale}${l.href}`}
-                    className="text-[0.92rem] text-ink-muted transition-colors hover:text-amber"
+                    className="text-[0.92rem] text-ink-muted transition-colors hover:text-signal"
                   >
                     {l.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href={`/${locale}/contact`} className="text-[0.92rem] text-ink-muted transition-colors hover:text-amber">
+                <Link href={`/${locale}/contact`} className="text-[0.92rem] text-ink-muted transition-colors hover:text-signal">
                   {nav.cta}
                 </Link>
               </li>
@@ -51,17 +51,17 @@ export default function Footer({ footer, locale, nav }) {
             <p className="mb-5 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-ink-faint">{footer.contactLabel}</p>
             <ul className="space-y-2.5">
               <li>
-                <a href="https://wa.me/77088413062" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-colors hover:text-amber">
+                <a href="https://wa.me/77088413062" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-colors hover:text-signal">
                   WhatsApp — +7 708 841 3062
                 </a>
               </li>
               <li>
-                <a href="https://t.me/RahmetLabs" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-colors hover:text-amber">
+                <a href="https://t.me/RahmetLabs" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-colors hover:text-signal">
                   Telegram — @RahmetLabs
                 </a>
               </li>
               <li>
-                <a href="mailto:rahmetlabs@gmail.com" className="text-[0.92rem] text-ink-muted transition-colors hover:text-amber">
+                <a href="mailto:rahmetlabs@gmail.com" className="text-[0.92rem] text-ink-muted transition-colors hover:text-signal">
                   rahmetlabs@gmail.com
                 </a>
               </li>
@@ -80,8 +80,8 @@ export default function Footer({ footer, locale, nav }) {
                 fontSize: 'clamp(4.5rem, 14.5vw, 13rem)',
                 fontWeight: 500,
                 transform: 'translateY(18%)',
-                color: '#15171A',
-                WebkitTextStroke: '1px #26292D',
+                color: 'transparent',
+                WebkitTextStroke: '1px #CFC8B6',
               }}
             >
               Rahmet Labs

@@ -1,18 +1,18 @@
 'use client';
 
 /**
- * Hero — "The Thread"
- * Pinned 250vh chapter. A canvas thread draws through three states as the user
- * scrolls: chaotic scribble (manual) → searching waves → one clean rising line
- * (system). Headlines swap per phase. Single canvas, rAF-gated on visibility.
+ * Hero — "The Thread", Field Notebook edition.
+ * Pinned 250vh chapter on graph paper. A canvas thread draws through three
+ * states as the user scrolls: ink scribble (manual) → searching waves → one
+ * clean rising signal-blue line (system). Single canvas, rAF-gated.
  */
 
 import { useEffect, useRef, useState } from 'react';
 import Button from './Button';
 
-const AMBER = [232, 163, 61];
-const INK = [244, 241, 234];
-const FAINT = [95, 94, 86];
+const SIGNAL = [43, 75, 215];
+const INK = [27, 25, 20];
+const GRID = [27, 25, 20];
 
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -93,14 +93,24 @@ export default function Hero({ locale, hero }) {
 
       ctx.clearRect(0, 0, W, H);
 
-      /* faint dot grid — atmospheric depth layer */
+      /* graph-paper grid — the notebook sheet the drawing lives on */
       const gridGap = Math.max(34, W / 44);
-      const gridFade = lerp(0.05, 0.018, smooth(Math.min(1, p * 2)));
-      ctx.fillStyle = `rgba(${INK[0]},${INK[1]},${INK[2]},${gridFade})`;
+      const gridFade = lerp(0.055, 0.02, smooth(Math.min(1, p * 2)));
+      ctx.fillStyle = `rgba(${GRID[0]},${GRID[1]},${GRID[2]},${gridFade})`;
       for (let gx = gridGap / 2; gx < W; gx += gridGap) {
         for (let gy = gridGap / 2; gy < H; gy += gridGap * 0.9) {
-          ctx.fillRect(gx, gy, 1, 1);
+          ctx.fillRect(gx, gy, 1.2, 1.2);
         }
+      }
+      /* bolder ledger rule every fifth line */
+      const ruleAlpha = lerp(0.06, 0.025, smooth(Math.min(1, p * 2)));
+      ctx.strokeStyle = `rgba(${GRID[0]},${GRID[1]},${GRID[2]},${ruleAlpha})`;
+      ctx.lineWidth = 1;
+      for (let gx = gridGap * 2.5; gx < W; gx += gridGap * 5) {
+        ctx.beginPath();
+        ctx.moveTo(gx, 0);
+        ctx.lineTo(gx, H);
+        ctx.stroke();
       }
 
       /* ---- phase weights ---- */
@@ -139,19 +149,25 @@ export default function Hero({ locale, hero }) {
         pts.push([x, y, u]);
       }
 
-      /* thread shadow pass — wide, faint amber */
+      /* thread color: dark ink while chaotic, crossing into signal blue */
+      const inkW = Math.max(0, 1 - e2 * 1.4);
+      const rC = Math.round(lerp(SIGNAL[0], INK[0], inkW));
+      const gC = Math.round(lerp(SIGNAL[1], INK[1], inkW));
+      const bC = Math.round(lerp(SIGNAL[2], INK[2], inkW));
+
+      /* soft under-stroke — graphite scribble, then signal halo */
       ctx.beginPath();
       pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
-      ctx.strokeStyle = `rgba(${AMBER[0]},${AMBER[1]},${AMBER[2]},${0.05 + e2 * 0.10})`;
+      ctx.strokeStyle = `rgba(${rC},${gC},${bC},${0.06 + e2 * 0.10})`;
       ctx.lineWidth = 7 + e2 * 5;
       ctx.lineJoin = 'round';
       ctx.stroke();
 
-      /* main thread */
+      /* main thread — ink scribble resolving into the blue engineered line */
       ctx.beginPath();
       pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
-      ctx.strokeStyle = `rgba(${AMBER[0]},${AMBER[1]},${AMBER[2]},${0.5 + e2 * 0.5})`;
-      ctx.lineWidth = 1.6 + e2 * 0.9;
+      ctx.strokeStyle = `rgba(${rC},${gC},${bC},${0.72 + e2 * 0.28})`;
+      ctx.lineWidth = 1.7 + e2 * 0.9;
       ctx.stroke();
 
       /* hanging nodes in chaos phase — detach as order arrives */
@@ -168,12 +184,12 @@ export default function Hero({ locale, hero }) {
           ctx.beginPath();
           ctx.moveTo(x, y);
           ctx.lineTo(x + Math.sin(t + n) * 8 * (1 - e1), yy);
-          ctx.strokeStyle = `rgba(${INK[0]},${INK[1]},${INK[2]},${0.08 * (1 - e1)})`;
+          ctx.strokeStyle = `rgba(${INK[0]},${INK[1]},${INK[2]},${0.14 * (1 - e1)})`;
           ctx.lineWidth = 1;
           ctx.stroke();
           ctx.beginPath();
           ctx.arc(x + Math.sin(t + n) * 8 * (1 - e1), yy, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${INK[0]},${INK[1]},${INK[2]},${0.16 * (1 - e1)})`;
+          ctx.fillStyle = `rgba(${INK[0]},${INK[1]},${INK[2]},${0.24 * (1 - e1)})`;
           ctx.fill();
         }
       }
@@ -184,13 +200,13 @@ export default function Hero({ locale, hero }) {
         const idx = Math.max(0, Math.min(N, Math.floor(pu * N)));
         const [px, py] = pts[idx];
         const grad = ctx.createRadialGradient(px, py, 0, px, py, 60);
-        grad.addColorStop(0, `rgba(${AMBER[0]},${AMBER[1]},${AMBER[2]},${0.35 * e2})`);
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
+        grad.addColorStop(0, `rgba(${SIGNAL[0]},${SIGNAL[1]},${SIGNAL[2]},${0.22 * e2})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = grad;
         ctx.fillRect(px - 60, py - 60, 120, 120);
         ctx.beginPath();
-        ctx.arc(px, py, 3.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,236,200,${0.9 * e2})`;
+        ctx.arc(px, py, 3.4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(29,54,168,${0.95 * e2})`;
         ctx.fill();
       }
     };
@@ -219,7 +235,7 @@ export default function Hero({ locale, hero }) {
           {renderLine(
             <>
               {hero.line2}{' '}
-              <span className="serif-accent font-normal text-terminal">{hero.line2Accent}</span>
+              <span className="serif-accent font-normal text-manual">{hero.line2Accent}</span>
             </>,
             'b'
           )}
@@ -231,7 +247,7 @@ export default function Hero({ locale, hero }) {
         {renderLine(hero.line3, 'c')}
         {renderLine(
           <>
-            <span className="serif-accent font-normal text-amber">{hero.line3Accent}</span>{' '}
+            <span className="serif-accent font-normal text-signal">{hero.line3Accent}</span>{' '}
             {hero.line3Tail}
           </>,
           'd'
@@ -297,7 +313,7 @@ export default function Hero({ locale, hero }) {
             </span>
             <div className="relative h-10 w-px overflow-hidden bg-hairline">
               <div
-                className="absolute inset-x-0 h-4 bg-amber"
+                className="absolute inset-x-0 h-4 bg-signal"
                 style={{ animation: 'hero-scroll-pulse 1.8s ease-in-out infinite' }}
               />
             </div>

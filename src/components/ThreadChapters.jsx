@@ -2,8 +2,8 @@
 
 /**
  * ThreadChapters — pinned publisher. Three story chapters scrub past as the
- * user scrolls 300vh; each chapter is a huge editorial statement with an
- * amber rule that grows across it. Falls back to stacked sections on mobile
+ * user scrolls 300vh; each chapter is a huge editorial statement with a
+ * signal-blue rule that grows across it like a drawn stroke. Falls back to stacked sections on mobile
  * and reduced-motion.
  */
 
@@ -50,11 +50,11 @@ export default function ThreadChapters({ chapters }) {
         {chapters.map((ch, i) => (
           <article key={ch.key} className="mx-auto max-w-content px-5 py-16 md:px-10">
             <div className="flex items-start gap-6">
-              <span className="mt-2 font-serif text-6xl italic leading-none text-amber/90">{ch.key}</span>
+              <span className="mt-2 font-mono text-sm font-semibold tracking-[0.2em] text-signal">FIG. {ch.key}</span>
               <div>
                 <h2 className="mb-5 text-subhead font-bold text-ink md:text-headline">{ch.title}</h2>
                 <p className="mb-3 max-w-[58ch] text-[1.02rem] leading-relaxed text-ink-muted">{ch.lead}</p>
-                <p className="serif-accent text-[1.02rem] text-amber">{ch.detail}</p>
+                <p className="serif-accent text-[1.02rem] text-signal">{ch.detail}</p>
               </div>
             </div>
             {i < chapters.length - 1 && <div className="mt-14 h-px w-full bg-hairline/60" aria-hidden="true" />}
@@ -83,8 +83,8 @@ export default function ThreadChapters({ chapters }) {
                 {/* oversized index numeral */}
                 <div className="col-span-12 md:col-span-3">
                   <span
-                    className="block font-serif italic leading-[0.85] text-amber"
-                    style={{ fontSize: 'clamp(6rem, 16vw, 13rem)', fontWeight: 500 }}
+                    className="block font-mono font-semibold uppercase leading-[0.85] text-signal"
+                    style={{ fontSize: 'clamp(4.5rem, 10vw, 8.5rem)', letterSpacing: '0.04em' }}
                     aria-hidden="true"
                   >
                     {ch.key}
@@ -92,9 +92,9 @@ export default function ThreadChapters({ chapters }) {
                 </div>
 
                 <div className="col-span-12 md:col-span-8 md:col-start-5">
-                  {/* amber rule growing across */}
+                  {/* pen stroke growing across */}
                   <div
-                    className="mb-8 h-[3px] bg-amber transition-all duration-1000 ease-reveal"
+                    className="mb-8 h-[3px] bg-signal transition-all duration-1000 ease-reveal"
                     style={{ width: i === active ? '7rem' : '2rem' }}
                     aria-hidden="true"
                   />
@@ -104,7 +104,7 @@ export default function ThreadChapters({ chapters }) {
                   <p className="mb-4 max-w-[58ch] text-[1.08rem] leading-[1.75] text-ink-muted">
                     {ch.lead}
                   </p>
-                  <p className="serif-accent text-[1.1rem] text-amber">{ch.detail}</p>
+                  <p className="serif-accent text-[1.1rem] text-signal">{ch.detail}</p>
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function ThreadChapters({ chapters }) {
             <span
               key={ch.key}
               className={`font-mono text-[0.62rem] tracking-[0.2em] transition-colors duration-500 ${
-                i === active ? 'text-amber' : 'text-ink-faint'
+                i === active ? 'text-signal' : 'text-ink-faint'
               }`}
             >
               {ch.key}

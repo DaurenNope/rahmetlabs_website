@@ -20,15 +20,18 @@ const arrow = (
 );
 
 const variants = {
-  primary: `${base} bg-amber text-void hover:bg-ink`,
-  ghost: `${base} border border-hairline text-ink hover:border-amber/60 hover:bg-white/[0.03]`,
-  dark: `${base} border border-white/15 bg-transparent text-ink hover:border-amber`,
+  primary: `${base} bg-signal text-card hover:bg-signal-deep`,
+  ghost: `${base} border border-hairline bg-card text-ink hover:border-signal/60 hover:text-signal`,
+  dark: `${base} border border-white/25 bg-transparent text-white hover:border-white/60`,
+  // `ink` — primary action inverted onto dark-blue blueprint sheets (FinalCta)
+  ink: `${base} bg-card text-ink hover:bg-paper`,
 };
 
 const iconVariants = {
-  primary: `${iconWrap} bg-black/15 text-void group-hover:bg-amber group-hover:text-void`,
-  ghost: `${iconWrap} bg-white/[0.06] text-amber`,
-  dark: `${iconWrap} bg-white/[0.06] text-amber`,
+  primary: `${iconWrap} bg-white/15 text-card group-hover:bg-white/25`,
+  ghost: `${iconWrap} bg-signal-soft text-signal`,
+  dark: `${iconWrap} bg-white/15 text-white`,
+  ink: `${iconWrap} bg-signal-soft text-signal`,
 };
 
 export default function Button({

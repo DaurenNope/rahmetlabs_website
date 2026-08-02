@@ -25,11 +25,11 @@ export default function Principles({ principles }) {
               as="article"
               key={p.title}
               variant="fade"
-              className="group relative bg-void p-8 transition-colors duration-700 hover:bg-panel md:p-10"
+              className="group relative bg-paper p-8 transition-colors duration-700 hover:bg-card md:p-10"
             >
               <span
                 aria-hidden="true"
-                className="mb-6 block font-mono text-[0.62rem] tracking-[0.2em] text-ink-faint transition-colors duration-500 group-hover:text-amber"
+                className="mb-6 block font-mono text-[0.62rem] tracking-[0.2em] text-ink-faint transition-colors duration-500 group-hover:text-signal"
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -39,7 +39,7 @@ export default function Principles({ principles }) {
               <p className="max-w-[46ch] text-[0.95rem] leading-[1.7] text-ink-muted">{p.detail}</p>
               <span
                 aria-hidden="true"
-                className="absolute bottom-0 left-0 h-[2px] w-0 bg-amber transition-all duration-700 ease-reveal group-hover:w-full"
+                className="absolute bottom-0 left-0 h-[2px] w-0 bg-signal transition-all duration-700 ease-reveal group-hover:w-full"
               />
             </Reveal>
           ))}

@@ -60,7 +60,7 @@ export default function KineticHeadline({
             style={{ verticalAlign: 'baseline' }}
           >
             <span
-              className={`inline-block will-change-transform ${isAccent ? 'serif-accent text-amber' : ''}`}
+              className={`inline-block will-change-transform ${isAccent ? 'serif-accent text-signal' : ''}`}
               style={{
                 transform: inView ? 'translateY(0) rotate(0deg)' : 'translateY(115%) rotate(1.5deg)',
                 opacity: inView ? 1 : 0,

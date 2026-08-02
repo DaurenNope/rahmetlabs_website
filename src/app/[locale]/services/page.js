@@ -66,13 +66,13 @@ export default async function ServicesPage({ params }) {
           </Reveal>
           <div className="ltr-stagger grid gap-px overflow-hidden rounded-panel bg-hairline/60 md:grid-cols-3">
             {sp.engagement.map((e, i) => (
-              <Reveal as="article" key={e.title} variant="fade" className="group relative bg-void p-8 transition-colors duration-700 hover:bg-panel md:p-10">
-                <span aria-hidden="true" className="mb-6 block font-serif text-4xl italic leading-none text-amber/80">
-                  {String(i + 1).padStart(2, '0')}
+              <Reveal as="article" key={e.title} variant="fade" className="group relative bg-paper p-8 transition-colors duration-700 hover:bg-card md:p-10">
+                <span aria-hidden="true" className="mb-6 block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-signal/90">
+                  ENG. {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mb-3 font-sans text-[1.25rem] font-bold tracking-tight text-ink">{e.title}</h3>
                 <p className="text-[0.95rem] leading-[1.7] text-ink-muted">{e.detail}</p>
-                <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-amber transition-all duration-700 ease-reveal group-hover:w-full" />
+                <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-signal transition-all duration-700 ease-reveal group-hover:w-full" />
               </Reveal>
             ))}
           </div>

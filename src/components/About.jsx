@@ -26,14 +26,14 @@ export default function About({ locale, about, principles }) {
           </Reveal>
           <div className="ltr-stagger grid gap-px overflow-hidden rounded-panel bg-hairline/60 md:grid-cols-3">
             {about.team.map((m, i) => (
-              <Reveal as="article" key={m.name} variant="fade" className="group relative bg-void p-8 transition-colors duration-700 hover:bg-panel md:p-10">
-                <span aria-hidden="true" className="mb-8 block font-serif text-4xl italic leading-none text-amber/80">
-                  {String(i + 1).padStart(2, '0')}
+              <Reveal as="article" key={m.name} variant="fade" className="group relative bg-paper p-8 transition-colors duration-700 hover:bg-card md:p-10">
+                <span aria-hidden="true" className="mb-8 block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-signal/90">
+                  PROFILE {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mb-1.5 font-sans text-[1.25rem] font-bold tracking-tight text-ink">{m.name}</h3>
-                <p className="mb-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-amber/90">{m.role}</p>
+                <p className="mb-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-signal/90">{m.role}</p>
                 <p className="text-[0.95rem] leading-[1.7] text-ink-muted">{m.bio}</p>
-                <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-amber transition-all duration-700 ease-reveal group-hover:w-full" />
+                <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-signal transition-all duration-700 ease-reveal group-hover:w-full" />
               </Reveal>
             ))}
           </div>
@@ -52,14 +52,14 @@ export default function About({ locale, about, principles }) {
             {[...about.toolkit, ...about.toolkit].map((t, i) => (
               <span
                 key={i}
-                className="flex-shrink-0 rounded-full border border-hairline bg-panel px-5 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-muted"
+                className="flex-shrink-0 rounded-full border border-hairline bg-card px-5 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-muted"
               >
                 {t}
               </span>
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-void [mask-image:linear-gradient(to_right,black,transparent)]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-void [mask-image:linear-gradient(to_left,black,transparent)]" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-paper [mask-image:linear-gradient(to_right,black,transparent)]" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-paper [mask-image:linear-gradient(to_left,black,transparent)]" />
         </div>
       </section>
 

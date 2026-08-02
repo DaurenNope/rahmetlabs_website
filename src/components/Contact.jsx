@@ -51,11 +51,11 @@ export default function Contact({ contact, locale }) {
                     href={ch.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-5 border-t border-hairline/70 py-6 transition-colors duration-500 hover:bg-panel md:gap-8 md:py-8 ${
+                    className={`group flex items-center gap-5 border-t border-hairline/70 py-6 transition-colors duration-500 hover:bg-card md:gap-8 md:py-8 ${
                       i === contact.channels.length - 1 ? 'border-b' : ''
                     }`}
                   >
-                    <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-hairline text-ink-muted transition-all duration-500 group-hover:border-amber group-hover:text-amber">
+                    <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-hairline text-ink-muted transition-all duration-500 group-hover:border-signal group-hover:text-signal">
                       {channelIcons[ch.id]}
                     </span>
                     <span className="flex-1">
@@ -67,7 +67,7 @@ export default function Contact({ contact, locale }) {
                     <span className="hidden font-mono text-[0.62rem] uppercase tracking-[0.12em] text-ink-faint sm:block">
                       {ch.note}
                     </span>
-                    <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="flex-shrink-0 text-ink-faint transition-all duration-500 group-hover:rotate-45 group-hover:text-amber">
+                    <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="flex-shrink-0 text-ink-faint transition-all duration-500 group-hover:rotate-45 group-hover:text-signal">
                       <path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
@@ -84,7 +84,7 @@ export default function Contact({ contact, locale }) {
             <div className="ltr-stagger flex flex-col gap-8">
               {contact.guide.map((g) => (
                 <Reveal as="div" key={g.code} variant="fade" className="flex gap-6 border-l border-hairline pl-6">
-                  <span aria-hidden="true" className="font-serif text-3xl italic leading-none text-amber/90">{g.code}</span>
+                  <span aria-hidden="true" className="mt-0.5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-signal">{g.code}</span>
                   <div>
                     <h3 className="mb-1.5 font-sans text-[1.05rem] font-bold tracking-tight text-ink">{g.title}</h3>
                     <p className="text-[0.94rem] leading-[1.7] text-ink-muted">{g.detail}</p>

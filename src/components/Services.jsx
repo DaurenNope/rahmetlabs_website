@@ -38,12 +38,12 @@ export default function Services({ services, locale, sectionId = 'services' }) {
                   className="flex w-full items-baseline gap-5 py-6 text-left transition-colors duration-500 md:gap-10 md:py-8"
                 >
                   <span
-                    className={`font-serif text-2xl italic leading-none transition-colors duration-500 md:text-4xl ${
-                      open ? 'text-amber' : 'text-ink-faint group-hover:text-ink-muted'
+                    className={`whitespace-nowrap font-mono text-[0.72rem] font-semibold uppercase tracking-[0.24em] transition-colors duration-500 ${
+                      open ? 'text-signal' : 'text-ink-faint group-hover:text-ink-muted'
                     }`}
                     aria-hidden="true"
                   >
-                    {String(idx + 1).padStart(2, '0')}
+                    FIG. {String(idx + 1).padStart(2, '0')}
                   </span>
 
                   <span className="flex-1">
@@ -61,7 +61,7 @@ export default function Services({ services, locale, sectionId = 'services' }) {
 
                   <span
                     className={`relative flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
-                      open ? 'rotate-45 border-amber text-amber' : 'border-hairline text-ink-muted group-hover:border-ink-muted'
+                      open ? 'rotate-45 border-signal text-signal' : 'border-hairline text-ink-muted group-hover:border-ink-muted'
                     }`}
                     aria-hidden="true"
                   >
@@ -78,15 +78,15 @@ export default function Services({ services, locale, sectionId = 'services' }) {
                 >
                   <div className="overflow-hidden">
                     <div className="pb-8 md:pb-10 md:pl-[4.5rem] lg:pl-[5.5rem]">
-                      <div className="rounded-[1.25rem] border border-white/[0.06] bg-white/[0.03] p-1.5">
-                        <div className="rounded-[calc(1.25rem-0.375rem)] border border-hairline bg-raised p-6 md:p-8">
+                      <div className="rounded-[1.25rem] border border-hairline bg-well p-1.5">
+                        <div className="rounded-[calc(1.25rem-0.375rem)] border border-hairline bg-card p-6 shadow-[0_1px_2px_rgba(27,25,20,0.04),0_10px_28px_-16px_rgba(27,25,20,0.10)] md:p-8">
                           <p className="mb-6 max-w-[62ch] text-[1rem] leading-relaxed text-ink-muted">
                             {cat.description}
                           </p>
                           <ul className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
                             {cat.capabilities.map((cap) => (
                               <li key={cap} className="flex items-start gap-3 text-[0.92rem] text-ink">
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mt-1 flex-shrink-0 text-amber" aria-hidden="true">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mt-1 flex-shrink-0 text-signal" aria-hidden="true">
                                   <path d="M2 7h10M7 2v10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                                 </svg>
                                 {cap}

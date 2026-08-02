@@ -25,13 +25,13 @@ export default function Accordion({ items }) {
               onClick={() => setOpen(isOpen ? -1 : i)}
               className="group flex w-full items-center justify-between gap-6 py-5 text-left md:py-6"
             >
-              <span className={`font-sans text-[1.05rem] font-semibold tracking-tight transition-colors duration-400 md:text-[1.15rem] ${isOpen ? 'text-amber' : 'text-ink group-hover:text-amber'}`}>
+              <span className={`font-sans text-[1.05rem] font-semibold tracking-tight transition-colors duration-400 md:text-[1.15rem] ${isOpen ? 'text-signal' : 'text-ink group-hover:text-signal'}`}>
                 {item.q}
               </span>
               <span
                 aria-hidden="true"
                 className={`relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
-                  isOpen ? 'rotate-45 border-amber text-amber' : 'border-hairline text-ink-muted group-hover:border-ink-muted'
+                  isOpen ? 'rotate-45 border-signal text-signal' : 'border-hairline text-ink-muted group-hover:border-ink-muted'
                 }`}
               >
                 <span className="absolute h-3 w-px bg-current" />

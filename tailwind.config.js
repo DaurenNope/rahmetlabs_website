@@ -8,30 +8,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // "The Thread" — dark editorial system
-        void: '#08090A',
-        panel: '#0D0F10',
-        raised: '#131517',
-        hairline: '#202326',
-        ink: '#F4F1EA',
-        'ink-muted': '#99978B',
-        'ink-faint': '#5F5E56',
-        // Signature amber — the thread, live state, primary actions
-        amber: {
-          DEFAULT: '#E8A33D',
-          deep: '#B97A24',
-          soft: 'rgba(232,163,61,0.09)',
+        // "Field Notebook" — warm paper + inks
+        paper: '#F6F4EE',
+        card: '#FCFBF7',
+        well: '#EDEAE1',
+        hairline: '#DDD9CE',
+        ink: {
+          DEFAULT: '#1B1914',
+          muted: '#5E5A50',
+          faint: '#8A857A',
         },
-        // Terminal red — ONLY opposite amber in manual-vs-system context
-        terminal: {
-          DEFAULT: '#C1503B',
-          soft: 'rgba(193,80,59,0.09)',
+        // Signal blue — the system: CTAs, live states, the resolved line
+        signal: {
+          DEFAULT: '#2B4BD7',
+          deep: '#1D36A8',
+          soft: 'rgba(43,75,215,0.08)',
+        },
+        // Manual red — ONLY opposite signal in manual-vs-system context
+        manual: {
+          DEFAULT: '#BF4632',
+          soft: 'rgba(191,70,50,0.08)',
         },
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        mono: ['var(--font-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       fontSize: {
         display: ['clamp(2.75rem, 7vw, 6rem)', { lineHeight: '1.02', letterSpacing: '-0.02em' }],
@@ -46,7 +48,7 @@ module.exports = {
         prose: '720px',
       },
       borderRadius: {
-        panel: '10px',
+        panel: '12px',
       },
       transitionTimingFunction: {
         reveal: 'cubic-bezier(0.16, 1, 0.3, 1)',
