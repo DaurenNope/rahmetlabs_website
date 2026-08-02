@@ -20,9 +20,9 @@ module.exports = {
         },
         // Signal blue — the system: CTAs, live states, the resolved line
         signal: {
-          DEFAULT: '#2B4BD7',
-          deep: '#1D36A8',
-          soft: 'rgba(43,75,215,0.08)',
+          DEFAULT: '#1F4EA8',
+          deep: '#15326E',
+          soft: 'rgba(31,78,168,0.08)',
         },
         // Manual red — ONLY opposite signal in manual-vs-system context
         manual: {

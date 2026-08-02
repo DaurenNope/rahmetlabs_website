@@ -353,28 +353,28 @@ const en = {
 
   faq: [
     {
-      q: 'How quickly can we start?',
-      a: 'Usually within one to two weeks. A short call, a written scope of the first stage, and we begin. We don’t do three-month discovery phases.',
+      q: 'How fast can an automation project start?',
+      a: 'Usually within one to two weeks. A short call, a written scope of the first stage, and we begin. We don’t run three-month discovery phases.',
     },
     {
-      q: 'Do you work with our existing tools?',
-      a: 'Yes — that’s the point. We connect and automate around your CRM, ERP, and messengers first, and only replace what genuinely can’t be salvaged.',
+      q: 'Will you integrate with our existing CRM, ERP, and messengers?',
+      a: 'Yes — that’s the point. We connect and automate around your CRM, ERP, and the messengers your team already uses, and only replace what genuinely can’t be salvaged.',
     },
     {
-      q: 'What does a project typically cost?',
+      q: 'How much does business automation cost?',
       a: 'It depends on scope — a focused automation is a very different build from a full product. After one call we give a written estimate for a first stage you can actually use, so you never commit to a black box.',
     },
     {
-      q: 'Who owns the code and infrastructure?',
-      a: 'You do, from day one. Repos, cloud accounts, and documentation transfer to your team as part of delivery.',
+      q: 'Who owns the code, data and infrastructure after delivery?',
+      a: 'You do, from day one. Repos, cloud accounts, and documentation transfer to your team as part of delivery — no hostage holding.',
     },
     {
-      q: 'What happens after launch?',
-      a: 'Most clients keep us on an operational retainer: monitoring, adjustments, and extensions as the business changes. If you prefer to run it yourself, we hand over with training and runbooks.',
+      q: 'What happens after the system is live?',
+      a: 'Most clients keep us on an operational retainer for monitoring, adjustments, and extensions as the business changes. If you prefer to run it in-house, we hand over with training and runbooks.',
     },
     {
-      q: 'Which languages can we work in?',
-      a: 'English, Russian, and Kazakh — calls, documentation, and the interfaces we ship.',
+      q: 'Do you work in English, Russian and Kazakh?',
+      a: 'Yes — all three, in calls, documentation, and the interfaces we ship.',
     },
   ],
 
@@ -771,15 +771,15 @@ const ru = {
 
   faq: [
     {
-      q: 'Как быстро можно начать?',
+      q: 'Как быстро можно начать проект по автоматизации?',
       a: 'Обычно в течение одной-двух недель: короткий звонок, письменный скоуп первого этапа — и стартуем. Трёхмесячных «исследований» у нас нет.',
     },
     {
-      q: 'Вы работаете с нашими текущими инструментами?',
+      q: 'Вы интегрируете с нашей текущей CRM, ERP и мессенджерами?',
       a: 'Да, в этом и смысл. Сначала соединяем и автоматизируем то, что есть — CRM, ERP, мессенджеры, — и заменяем только то, что правда не спасти.',
     },
     {
-      q: 'Сколько обычно стоит проект?',
+      q: 'Сколько стоит автоматизация бизнеса?',
       a: 'Зависит от скоупа: точечная автоматизация и полноценный продукт — разные истории. После одного звонка даём письменную оценку первого этапа, которым можно будет пользоваться, — никаких чёрных ящиков.',
     },
     {
@@ -1188,15 +1188,15 @@ const kz = {
 
   faq: [
     {
-      q: 'Қаншалықты тез бастауға болады?',
+      q: 'Автоматтандыру жобасын қаншалықты тез бастауға болады?',
       a: 'Әдетте бір-екі аптаның ішінде: қысқа қоңырау, алғашқы кезеңнің жазбаша скоупы — бастаймыз. Үш айлық «зерттеулер» бізде жоқ.',
     },
     {
-      q: 'Қазіргі құралдарымызбен жұмыс істейсіздер ме?',
-      a: 'Иә, мәні де сонда. Алдымен бар нәрсені — CRM, ERP, мессенджерлерді — байланыстырып автоматтандырамыз, ал ау layk тек шынымен құтқарылмайтынды ауыстырамыз.',
+      q: 'Біздің қазіргі CRM, ERP және мессенджерлерімізге интеграциялайсыздар ма?',
+      a: 'Иә, мәні де сонда. Алдымен бар нәрсені — CRM, ERP, мессенджерлерді — байланыстырып автоматтандырамыз, ал тек шынымен құтқарылмайтынды ауыстырамыз.',
     },
     {
-      q: 'Жоба әдетте қанша тұрады?',
+      q: 'Бизнесті автоматтандыру қанша тұрады?',
       a: 'Скоупқа байланысты: нүктелік автоматика мен толық өнім — басқа тарих. Бір қоңыраудан кейін нақты қолдануға болатын алғашқы кезеңге жазбаша баға береміз — қара жәшік жоқ.',
     },
     {

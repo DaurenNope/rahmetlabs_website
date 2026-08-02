@@ -30,7 +30,7 @@ function ResolveGlyph({ engaged }) {
       />
       <path
         d="M36 15h33"
-        stroke="#2B4BD7"
+        stroke="#1F4EA8"
         strokeWidth="1.5"
         strokeLinecap="round"
         pathLength="1"
@@ -40,7 +40,7 @@ function ResolveGlyph({ engaged }) {
       />
       <circle
         cx="69" cy="15" r="2.4"
-        fill="#2B4BD7"
+        fill="#1F4EA8"
         style={{ transition: 'opacity 0.4s ease 1.1s', opacity: engaged ? 1 : 0.2 }}
       />
     </svg>
@@ -283,7 +283,7 @@ export default function Process({ process }) {
             <path
               ref={threadRef}
               fill="none"
-              stroke="#2B4BD7"
+              stroke="#1F4EA8"
               strokeWidth="1.6"
               strokeLinecap="round"
               opacity="0.85"

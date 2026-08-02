@@ -12,8 +12,8 @@
   --ink: #1B1914;
   --ink-muted: #5E5A50;
   --ink-faint: #8A857A;
-  --signal: #2B4BD7;
-  --signal-deep: #1D36A8;
+  --signal: #1F4EA8;
+  --signal-deep: #15326E;
   --manual: #BF4632;
 }
 
@@ -53,13 +53,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: #2B4BD7;
+  background: #1F4EA8;
   color: #FCFBF7;
 }
 
 /* Focus visibility — signal ring, always visible on paper */
 :focus-visible {
-  outline: 2px solid #2B4BD7;
+  outline: 2px solid #1F4EA8;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   width: 1.5rem;
   height: 1px;
-  background: #2B4BD7;
+  background: #1F4EA8;
   flex-shrink: 0;
 }
 
@@ -280,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ------------------------------------------------------------------ */
 .thread-path {
   fill: none;
-  stroke: #2B4BD7;
+  stroke: #1F4EA8;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -292,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
   stroke-dashoffset: 0;
 }
 .thread-dot {
-  fill: #2B4BD7;
+  fill: #1F4EA8;
   opacity: 0;
   transition: opacity 0.4s ease 2.4s;
 }
@@ -331,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
 }
 .chart-line-auto {
-  stroke: #2B4BD7;
+  stroke: #1F4EA8;
   stroke-dasharray: 1400;
   stroke-dashoffset: 1400;
   transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.9s;

@@ -1,0 +1,49 @@
+# Rahmet Labs
+
+> Rahmet Labs is a full-stack technology studio in Almaty, Kazakhstan. We replace
+> manual business operations with engineered systems: business automation, AI
+> agents wired into real workflows, web and mobile products, backend/data
+> infrastructure, and production Web3 systems. One accountable team scopes,
+> builds, and operates what ships — in English, Russian, and Kazakh.
+
+## What we do
+
+- **Business automation** — workflows that run without a human in the loop:
+  approvals, invoicing, reporting, tender monitoring, CRM/ERP synchronization.
+- **AI systems** — agents, RAG over private company data, content pipelines,
+  matching and scoring; integrated into operations, not demo chatbots.
+- **Web & mobile products** — marketing systems, SaaS platforms, consumer apps;
+  designed, built, and shipped end to end.
+- **Backend & data** — APIs, Postgres/Supabase data layers, auth, monitoring.
+- **Web3 & blockchain** — Solidity contracts, multi-chain deployment (ETH, BSC,
+  Arbitrum), multi-sig pipelines, on-chain monitoring.
+
+## How engagements work
+
+- Fixed-cost pilot (roughly 2–4 weeks). If the first sprint does not deliver a
+  usable artifact, the engagement stops — no lock-in, no retainer required.
+- Typical timeline: 1–2 weeks to first milestone; full systems 3–8 weeks
+  depending on scope.
+- Repositories, infrastructure, and documentation are handed over to the client
+  on delivery — no hostage holding.
+- Direct communication with the engineers building the system; no account
+  manager relay.
+
+## Who we work with
+
+Founders and operators running manual operations — SMEs and startups in
+Kazakhstan, Central Asia, Europe, and the Gulf. Optimal first evidence of fit:
+an existing revenue or product and a manual process someone does daily.
+
+## Work and evidence
+
+- Systems for education, retail, logistics, and public-sector adjacent clients.
+- Live portfolio and technical walkthroughs: https://rahmetlabs.com/en/portfolio
+- Multilingual: English, Russian, and Kazakh versions of all pages and
+  deliverables.
+
+## Contact
+
+- WhatsApp: +7 708 841 3062 — https://wa.me/77088413062
+- Telegram: @RahmetLabs — https://t.me/RahmetLabs
+- Email: rahmetlabs@gmail.com

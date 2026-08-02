@@ -4,6 +4,7 @@ import { getDictionary } from '../../../lib/content';
 import Contact from '../../../components/Contact';
 import FinalCta from '../../../components/FinalCta';
 import JsonLd from '../../../components/JsonLd';
+import { breadcrumbJsonLd } from '../../../lib/schema';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -34,10 +35,15 @@ export default async function ContactPage({ params }) {
       telephone: '+77088413062',
     },
   };
+  const bc = breadcrumbJsonLd([
+    { name: 'Rahmet Labs', url: `https://rahmetlabs.com/${locale}` },
+    { name: dict.nav.cta, url: `https://rahmetlabs.com/${locale}/contact` },
+  ]);
 
   return (
     <>
       <JsonLd data={jsonLd} />
+      <JsonLd data={bc} />
       <Contact contact={dict.contact} locale={locale} />
     </>
   );

@@ -44,6 +44,8 @@ export async function generateMetadata({ params }) {
 
   const languages = Object.fromEntries(locales.map((loc) => [htmlLang[loc], `${siteUrl}/${loc}`]));
 
+  const absoluteOg = `${siteUrl}/og-image.png`;
+
   return {
     metadataBase: new URL(siteUrl),
     title: { default: meta.title, template: '%s | Rahmet Labs' },
@@ -51,14 +53,14 @@ export async function generateMetadata({ params }) {
     keywords: meta.keywords,
     alternates: {
       canonical: `${siteUrl}/${locale}`,
-      languages,
+      languages: { 'x-default': siteUrl, ...languages },
     },
     openGraph: {
       title: meta.title,
       description: meta.description,
       url: `${siteUrl}/${locale}`,
       siteName: 'Rahmet Labs',
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Rahmet Labs' }],
+      images: [{ url: absoluteOg, secureUrl: absoluteOg, width: 1200, height: 630, alt: 'Rahmet Labs — engineered systems studio', type: 'image/png' }],
       locale: htmlLang[locale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => htmlLang[l]),
       type: 'website',
@@ -67,7 +69,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
-      images: ['/og-image.png'],
+      images: [absoluteOg],
     },
     icons: {
       icon: '/favicon.svg',
@@ -81,6 +83,11 @@ export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
   if (!isValidLocale(locale)) notFound();
   const dict = getDictionary(locale);
+
+  const alternateLinks = [
+    { hrefLang: 'x-default', href: siteUrl },
+    ...locales.map((loc) => ({ hrefLang: htmlLang[loc], href: `${siteUrl}/${loc}` })),
+  ];
 
   const organizationJsonLd = {
     '@context': 'https://schema.org',
@@ -113,6 +120,11 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <html lang={htmlLang[locale]} className={`${geologica.variable} ${jetbrainsMono.variable} ${spectral.variable}`}>
+      <head>
+        {alternateLinks.map((l) => (
+          <link key={l.hrefLang} rel="alternate" hrefLang={l.hrefLang} href={l.href} />
+        ))}
+      </head>
       <body className="bg-paper font-sans text-ink antialiased">
         <JsonLd data={organizationJsonLd} />
         <SmoothScroll>

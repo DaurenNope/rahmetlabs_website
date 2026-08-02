@@ -93,7 +93,7 @@ export default function ManualVsSystem({ comparison }) {
                 {/* soft fill under auto line */}
                 <path
                   d={`${autoPath} L ${W - PAD},${H - PAD} L ${PAD},${H - PAD} Z`}
-                  fill="rgba(43,75,215,0.055)"
+                  fill="rgba(31,78,168,0.055)"
                   className="chart-fill"
                 />
 
@@ -103,7 +103,7 @@ export default function ManualVsSystem({ comparison }) {
 
                 {/* end dots */}
                 <circle cx={W - PAD} cy={H - PAD - (M[M.length - 1] / 50) * (H - PAD * 2)} r="5" fill="#BF4632" className="chart-dot" style={{ transitionDelay: '2.1s' }} />
-                <circle cx={W - PAD} cy={H - PAD - (A[A.length - 1] / 50) * (H - PAD * 2)} r="5" fill="#2B4BD7" className="chart-dot" style={{ transitionDelay: '2.4s' }} />
+                <circle cx={W - PAD} cy={H - PAD - (A[A.length - 1] / 50) * (H - PAD * 2)} r="5" fill="#1F4EA8" className="chart-dot" style={{ transitionDelay: '2.4s' }} />
               </svg>
 
               {/* terminal annotations */}

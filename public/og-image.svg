@@ -7,14 +7,14 @@
   <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#C9C4B5" stroke-width="1.5"/>
 
   <text x="76" y="96" font-family="ui-monospace, monospace" font-size="15" letter-spacing="5" fill="#8A857A">RAHMET LABS — AUTOMATION · AI · PRODUCT ENGINEERING</text>
-  <circle cx="1122" cy="88" r="7" fill="#2B4BD7"/>
+  <circle cx="1122" cy="88" r="7" fill="#1F4EA8"/>
 
   <text x="76" y="276" font-family="Georgia, serif" font-size="88" font-style="italic" font-weight="500" fill="#1B1914">Manual work,</text>
   <text x="76" y="388" font-family="Helvetica Neue, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-2" fill="#1B1914">engineered away.</text>
 
   <!-- thread -->
-  <path d="M76 468c128 0 148-106 264-106 94 0 102 48 192 48 54 0 94-14 116-44" fill="none" stroke="#2B4BD7" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="76" cy="468" r="12" fill="#2B4BD7"/>
+  <path d="M76 468c128 0 148-106 264-106 94 0 102 48 192 48 54 0 94-14 116-44" fill="none" stroke="#1F4EA8" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="76" cy="468" r="12" fill="#1F4EA8"/>
 
   <text x="76" y="562" font-family="ui-monospace, monospace" font-size="16" letter-spacing="1" fill="#6B665A">RAHMETLABS.COM / AUTOMATION / AI / WEB / MOBILE / WEB3</text>
 </svg>

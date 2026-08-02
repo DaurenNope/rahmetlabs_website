@@ -7,6 +7,7 @@ import FinalCta from '../../../components/FinalCta';
 import Reveal from '../../../components/Reveal';
 import Accordion from '../../../components/Accordion';
 import JsonLd from '../../../components/JsonLd';
+import { breadcrumbJsonLd, localeHomeUrl } from '../../../lib/schema';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -35,9 +36,17 @@ export default async function ServicesPage({ params }) {
     })),
   };
 
+  const homeLabel = 'Rahmet Labs';
+  const servicesLabel = dict.nav.links.find((l) => l.href === '/services')?.label || 'Services';
+  const bc = breadcrumbJsonLd([
+    { name: homeLabel, url: localeHomeUrl(locale) },
+    { name: servicesLabel, url: `${localeHomeUrl(locale)}/services` },
+  ]);
+
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={bc} />
 
       {/* page header */}
       <section className="border-b border-hairline/70 pb-20 pt-40 md:pb-28 md:pt-52">

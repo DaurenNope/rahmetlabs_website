@@ -24,3 +24,7 @@ User-agent: anthropic-ai
 Allow: /
 
 Sitemap: https://rahmetlabs.com/sitemap.xml
+
+# LLM citation file — canonical facts about Rahmet Labs for answer engines
+# https://llmstxt.org
+Llmstxt: https://rahmetlabs.com/llms.txt

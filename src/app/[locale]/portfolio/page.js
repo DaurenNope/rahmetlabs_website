@@ -5,6 +5,7 @@ import WorkList from '../../../components/WorkList';
 import FinalCta from '../../../components/FinalCta';
 import Reveal from '../../../components/Reveal';
 import JsonLd from '../../../components/JsonLd';
+import { breadcrumbJsonLd, workItemListJsonLd } from '../../../lib/schema';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -29,10 +30,18 @@ export default async function PortfolioPage({ params }) {
     description: dict.meta.portfolio.description,
     url: `https://rahmetlabs.com/${locale}/portfolio`,
   };
+  const itemsLd = workItemListJsonLd({ locale, work: dict.work });
+  const portfolioLabel = dict.nav.links.find((l) => l.href === '/portfolio')?.label || 'Portfolio';
+  const bc = breadcrumbJsonLd([
+    { name: 'Rahmet Labs', url: `https://rahmetlabs.com/${locale}` },
+    { name: portfolioLabel, url: `https://rahmetlabs.com/${locale}/portfolio` },
+  ]);
 
   return (
     <>
       <JsonLd data={jsonLd} />
+      <JsonLd data={itemsLd} />
+      <JsonLd data={bc} />
       <section className="border-b border-hairline/70 pb-16 pt-40 md:pb-20 md:pt-52">
         <div className="mx-auto max-w-content px-5 md:px-10 lg:px-16">
           <Reveal variant="fade" className="max-w-[820px]">

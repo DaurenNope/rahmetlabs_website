@@ -7,7 +7,7 @@ export default function FinalCta({ cta, locale }) {
   return (
     <section
       className="relative overflow-hidden py-28 text-card md:py-44"
-      style={{ background: 'linear-gradient(160deg, #1D36A8 0%, #16277D 60%, #101B55 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #1A3C86 0%, #12285A 60%, #0B1A3D 100%)' }}
       aria-labelledby="final-cta-heading"
     >
       {/* blueprint grid — the working sheet, drawn in faint white ink */}
