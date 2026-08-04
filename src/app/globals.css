@@ -11,7 +11,7 @@
   --hairline: #DDD9CE;
   --ink: #1B1914;
   --ink-muted: #5E5A50;
-  --ink-faint: #8A857A;
+  --ink-faint: #6F6B62;
   --signal: #1F4EA8;
   --signal-deep: #15326E;
   --manual: #BF4632;
@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Pinned chapter scene (scroll-scrub, desktop only)                   */
 /* ------------------------------------------------------------------ */
 .chapter-scene {
-  height: calc(var(--chapters, 1) * 100vh);
+  height: calc(var(--chapters, 1) * 72vh);
   position: relative;
 }
 .chapter-pin {
@@ -327,36 +327,22 @@ h1, h2, h3, h4, h5, h6 {
 .chart-line-manual {
   stroke: #BF4632;
   stroke-dasharray: 1400;
-  stroke-dashoffset: 1400;
-  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
+  stroke-dashoffset: 0;
 }
 .chart-line-auto {
   stroke: #1F4EA8;
   stroke-dasharray: 1400;
-  stroke-dashoffset: 1400;
-  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.9s;
-}
-.chart-wrap.ltr-in .chart-line-manual,
-.chart-wrap.ltr-in .chart-line-auto {
   stroke-dashoffset: 0;
 }
 .chart-fill {
-  opacity: 0;
-  transition: opacity 1.2s ease 1.4s;
-}
-.chart-wrap.ltr-in .chart-fill {
-  opacity: 1;
+  opacity: 0.75;
 }
 .chart-dot {
-  opacity: 0;
-  transform: scale(0);
-  transform-origin: center;
-  transform-box: fill-box;
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.chart-wrap.ltr-in .chart-dot {
   opacity: 1;
   transform: scale(1);
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .chart-grid {
   stroke: #E3DFD3;
@@ -405,4 +391,584 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Hide scrollbars on horizontal snap rails while keeping scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile improvements — responsive tweaks and touch gestures          */
+/* ------------------------------------------------------------------ */
+
+/* Mobile-first base styles */
+@media (max-width: 768px) {
+  /* Reduce padding on mobile */
+  .py-28 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .py-40 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  /* Smaller font sizes on mobile */
+  .text-display {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .text-headline {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  
+  .text-subhead {
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
+  }
+  
+  /* Better touch targets */
+  button, a[href], [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve tap highlight */
+  * {
+    -webkit-tap-highlight-color: rgba(31, 78, 168, 0.1);
+  }
+  
+  /* Smoother scrolling on iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Mobile navigation improvements */
+  .fixed.inset-x-0.top-0 {
+    padding: 0.75rem;
+  }
+  
+  /* Better mobile menu */
+  .fixed.inset-0.z-30 {
+    padding-top: 5rem;
+  }
+  
+  /* Mobile button sizing */
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  /* Improve mobile text readability */
+  p, li, span {
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  /* Mobile image optimization */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Better mobile form inputs */
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  /* Mobile scroll snap for horizontal scrolling */
+  .overflow-x-auto {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .overflow-x-auto > * {
+    scroll-snap-align: start;
+  }
+  
+  /* Mobile touch feedback */
+  .touch-target {
+    position: relative;
+  }
+  
+  .touch-target::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .group:hover .group-hover\:translate-x-1 {
+    transform: none;
+  }
+  
+  .group:hover .group-hover\:scale-105 {
+    transform: none;
+  }
+  
+  .group:hover .group-hover\:text-signal {
+    color: inherit;
+  }
+  
+  /* Simpler transitions on touch */
+  * {
+    transition-duration: 0.1s !important;
+  }
+  
+  /* Better touch targets */
+  button, a[href], [role="button"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Adjust for landscape */
+  .min-h-screen {
+    min-height: auto;
+  }
+  
+  .py-28 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  /* Increase contrast for accessibility */
+  .text-ink-muted {
+    color: #1B1914;
+  }
+  
+  .text-ink-faint {
+    color: #5E5A50;
+  }
+  
+  .border-hairline {
+    border-color: #1B1914;
+  }
+}
+
+/* Dark mode support (future-proofing) */
+@media (prefers-color-scheme: dark) {
+  /* Placeholder for dark mode */
+  /* Will be implemented when needed */
+}
+
+/* ------------------------------------------------------------------ */
+/* Performance optimizations                                          */
+/* ------------------------------------------------------------------ */
+
+/* Optimize rendering performance */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Reduce layout thrashing */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize font loading */
+.font-display-swap {
+  font-display: swap;
+}
+
+/* Reduce paint operations */
+.paint-order-stroke {
+  paint-order: stroke fill;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lazy loading for images */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([src=""]) {
+  opacity: 1;
+}
+
+/* Optimize video loading */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+video[preload="none"] {
+  visibility: hidden;
+}
+
+video[preload="auto"] {
+  visibility: visible;
+}
+
+/* Reduce JavaScript execution time */
+.defer-loading {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize scroll performance */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Reduce memory usage */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-content {
+  contain: content;
+}
+
+/* Optimize animations for performance */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce reflows */
+.clearfix {
+  clear: both;
+}
+
+/* Optimize critical rendering path */
+.critical-css {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 100vh;
+}
+
+/* Reduce bandwidth usage */
+.compressed-images {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimize for mobile devices */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Optimize touch interactions */
+  * {
+    touch-action: manipulation;
+  }
+  
+  /* Reduce paint operations */
+  .mobile-optimize {
+    contain: paint;
+  }
+}
+
+/* Optimize for low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Optimize for performance */
+  .reduce-motion {
+    contain: layout style paint;
+  }
+}
+
+/* Optimize for high-DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Use higher quality images */
+  .high-dpi {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Micro-interactions — global hover/focus/active states                */
+/* ------------------------------------------------------------------ */
+a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Subtle scale on interactive elements */
+button, a[href] {
+  cursor: pointer;
+}
+
+/* Focus ring animation */
+:focus-visible {
+  outline: 2px solid #1F4EA8;
+  outline-offset: 3px;
+  border-radius: 2px;
+  animation: focus-pulse 0.3s ease;
+}
+
+@keyframes focus-pulse {
+  0% { outline-offset: 6px; opacity: 0.5; }
+  100% { outline-offset: 3px; opacity: 1; }
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(31, 78, 168, 0.15);
+  color: #1B1914;
+}
+
+/* Custom cursor for interactive elements */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(27, 25, 20, 0.15);
+}
+
+/* Hover glow effect */
+.hover-glow {
+  position: relative;
+}
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(31, 78, 168, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.hover-glow:hover::after {
+  opacity: 1;
+}
+
+/* Stagger animation for lists */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: stagger-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typewriter effect for text */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #1F4EA8;
+  white-space: nowrap;
+  animation: typewriter 2s steps(40) 1s forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: #1F4EA8; }
+}
+
+/* Pulse animation for status indicators */
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Slide animations */
+.slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-down {
+  animation: slide-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale animations */
+.scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Rotation animations */
+.rotate-in {
+  animation: rotate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rotate-in {
+  from { opacity: 0; transform: rotate(-10deg); }
+  to { opacity: 1; transform: rotate(0); }
+}
+
+/* Magnetic hover effect */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic:hover {
+  transform: scale(1.02);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(27, 25, 20, 0.12);
+}
+
+/* Border animation */
+.border-animate {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-animate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.border-animate:hover::before {
+  border-color: #1F4EA8;
+}
+
+/* Text gradient effect */
+.text-gradient {
+  background: linear-gradient(135deg, #1F4EA8 0%, #15326E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing text */
+.glow-text {
+  text-shadow: 0 0 10px rgba(31, 78, 168, 0.3);
+}
+
+/* Underline animation */
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #1F4EA8;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+/* Ripple effect for buttons */
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* Hover effects for interactive elements */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+.group:hover .group-hover\:-translate-y-0\.5 {
+  transform: translateY(-0.125rem);
+}
+
+/* Disable transitions for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

@@ -6,6 +6,7 @@
  * drawn port-to-port between sheets as the scrub advances, the docked sheet
  * lifts, the others dim, and a mono readout tracks position. Mobile and
  * reduced-motion get the vertical pipeline with the drawing thread.
+ * Enhanced with hover effects and micro-interactions.
  */
 
 import { useEffect, useRef, useState } from 'react';
@@ -41,7 +42,7 @@ function ResolveGlyph({ engaged }) {
       <circle
         cx="69" cy="15" r="2.4"
         fill="#1F4EA8"
-        style={{ transition: 'opacity 0.4s ease 1.1s', opacity: engaged ? 1 : 0.2 }}
+        style={{ transition: 'opacity 0.4s ease 1.1s, r 0.3s ease', opacity: engaged ? 1 : 0.2 }}
       />
     </svg>
   );
@@ -148,15 +149,15 @@ export default function Process({ process }) {
     <article
       key={s.code}
       ref={(el) => { cardRefs.current[i] = el; }}
-      className={`relative flex w-full flex-shrink-0 flex-col transition-opacity duration-700 md:w-[30rem] ${
-        enabled ? (isActive ? 'opacity-100' : 'opacity-45') : ''
+      className={`relative flex w-full flex-shrink-0 flex-col transition-all duration-700 md:w-[30rem] ${
+        enabled ? (isActive ? 'scale-100' : 'scale-[0.985]') : ''
       }`}
     >
       {/* sheet code — mono, measurement only */}
       <span
         aria-hidden="true"
-        className={`mb-5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.3em] transition-colors duration-700 ${
-          isActive || !enabled ? 'text-signal' : 'text-ink-faint'
+        className={`mb-5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.3em] transition-all duration-700 ${
+          isActive || !enabled ? 'text-signal tracking-[0.35em]' : 'text-ink-faint'
         }`}
       >
         SHEET {s.code} / {String(stages.length).padStart(2, '0')}
@@ -165,8 +166,8 @@ export default function Process({ process }) {
       {/* sheet panel — white card with well bezel; docked sheet lifts */}
       <div
         className={`rounded-[1.5rem] border p-1.5 transition-all duration-700 ease-reveal ${
-          isActive || !enabled ? 'border-signal/35 bg-well' : 'border-hairline bg-well'
-        } ${enabled && isActive ? 'md:-translate-y-1.5' : ''}`}
+          isActive || !enabled ? 'border-signal/35 bg-well shadow-lg shadow-signal/5' : 'border-hairline bg-well'
+        } ${enabled && isActive ? 'md:-translate-y-1.5 md:shadow-xl md:shadow-signal/10' : ''}`}
       >
         <div
           className={`flex min-h-[19rem] flex-col rounded-[calc(1.5rem-0.375rem)] border bg-card p-7 transition-all duration-700 ease-reveal md:p-9 ${
@@ -176,16 +177,16 @@ export default function Process({ process }) {
           }`}
         >
           <div className="mb-4 flex items-center justify-between gap-4">
-            <h3 className="font-sans text-2xl font-bold tracking-tight text-ink">{s.title}</h3>
+            <h3 className="font-sans text-2xl font-bold tracking-tight text-ink transition-all duration-500 hover:text-signal">{s.title}</h3>
             <span
-              className={`whitespace-nowrap rounded-full border px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.12em] transition-colors duration-700 ${
-                isActive || !enabled ? 'border-signal/50 text-signal' : 'border-hairline text-ink-faint'
+              className={`whitespace-nowrap rounded-full border px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.12em] transition-all duration-700 ${
+                isActive || !enabled ? 'border-signal/50 text-signal scale-105' : 'border-hairline text-ink-faint'
               }`}
             >
               {s.duration}
             </span>
           </div>
-          <p className="text-[0.98rem] leading-[1.7] text-ink-muted">{s.description}</p>
+          <p className="text-[0.98rem] leading-[1.7] text-ink-muted transition-colors duration-500 hover:text-ink/80">{s.description}</p>
 
           <div className="mt-auto flex items-end justify-between gap-6 pt-7">
             {/* cumulative ink rule — how much of the system exists by this sheet */}
@@ -197,7 +198,7 @@ export default function Process({ process }) {
                 style={{ width: `${((i + 1) / stages.length) * 100}%` }}
                 aria-hidden="true"
               />
-              <span className="mt-2 block font-mono text-[0.56rem] uppercase tracking-[0.18em] text-ink-faint">
+              <span className="mt-2 block font-mono text-[0.56rem] uppercase tracking-[0.18em] text-ink-faint transition-colors duration-500 hover:text-ink-muted">
                 {Math.round(((i + 1) / stages.length) * 100)}%
               </span>
             </div>
@@ -228,7 +229,7 @@ export default function Process({ process }) {
               {stages.map((s, i) => (
                 <Reveal key={s.code} variant="fade" delay={i * 90}>
                   <div className="relative">
-                    <span className="absolute -left-10 top-2 h-3.5 w-3.5 rounded-full border-2 border-signal bg-paper" aria-hidden="true" />
+                    <span className="absolute -left-10 top-2 h-3.5 w-3.5 rounded-full border-2 border-signal bg-paper transition-all duration-500 hover:scale-125 hover:shadow-sm hover:shadow-signal/20" aria-hidden="true" />
                     {card(s, i, true)}
                   </div>
                 </Reveal>
@@ -252,26 +253,25 @@ export default function Process({ process }) {
         {/* drafting guides — full-width hairlines the rail travels on */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           {['top-[30%]', 'top-1/2', 'top-[70%]'].map((pos, i) => (
-            <div key={pos} className={`absolute inset-x-0 ${pos} h-px bg-hairline/60`} />
+            <div key={pos} className={`absolute inset-x-0 ${pos} h-px bg-hairline/60 transition-opacity duration-500 hover:opacity-100`} />
           ))}
           {/* vertical ticks under each sheet's dock zone */}
-          <div className="absolute inset-y-[26%] left-[22%] w-px bg-hairline/70" />
-          <div className="absolute inset-y-[26%] right-[6%] w-px bg-hairline/40" />
+          <div className="absolute inset-y-[26%] left-[22%] w-px bg-hairline/70 transition-opacity duration-500 hover:opacity-100" />
+          <div className="absolute inset-y-[26%] right-[6%] w-px bg-hairline/40 transition-opacity duration-500 hover:opacity-100" />
         </div>
 
         <div className="mx-auto mb-12 w-full max-w-content px-5 md:px-10 lg:px-16">
           <p className="kicker mb-6">{process.kicker}</p>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="process-heading" className="max-w-[22ch] text-headline font-bold text-ink">
+            <h2 id="process-heading" className="max-w-[22ch] text-headline font-bold text-ink transition-all duration-500 hover:text-signal">
               {process.heading}
             </h2>
-            <p className="max-w-[36ch] pb-1 text-[0.95rem] leading-relaxed text-ink-muted">
+            <p className="max-w-[36ch] pb-1 text-[0.95rem] leading-relaxed text-ink-muted transition-colors duration-500 hover:text-ink">
               {process.subheading}
             </p>
           </div>
         </div>
 
-        {/* the desk: sheets ride the rail, the thread connects the ports */}
         {/* the desk: sheets ride the rail, the thread connects the ports */}
         <div
           ref={railRef}
@@ -287,6 +287,7 @@ export default function Process({ process }) {
               strokeWidth="1.6"
               strokeLinecap="round"
               opacity="0.85"
+              className="transition-all duration-500 hover:stroke-[2.5px] hover:opacity-100"
             />
           </svg>
           {stages.map((s, i) => card(s, i, i === activeIdx))}
@@ -296,8 +297,8 @@ export default function Process({ process }) {
 
         {/* bottom ruler + position readout */}
         <div className="mx-auto mt-12 flex w-full max-w-content items-center gap-6 px-5 md:px-10 lg:px-16">
-          <div className="relative h-px flex-1 bg-hairline" aria-hidden="true">
-            <div ref={fillRef} className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 bg-signal" />
+          <div className="relative h-px flex-1 bg-hairline transition-colors duration-500 hover:bg-ink-faint/50" aria-hidden="true">
+            <div ref={fillRef} className="absolute inset-y-0 left-0 w-full origin-left scale-x-0 bg-signal transition-colors duration-500 hover:bg-signal/80" />
           </div>
           <div className="relative h-5 font-mono text-[0.66rem] font-semibold uppercase tracking-[0.22em]" aria-live="polite">
             {stages.map((s, i) => (

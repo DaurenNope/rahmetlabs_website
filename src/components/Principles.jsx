@@ -3,6 +3,7 @@
 /**
  * Principles — quiet editorial 4-up. Numbered statements in a two-column
  * hairline grid; no cards, no icons.
+ * Enhanced with hover effects and micro-interactions.
  */
 
 import Reveal from './Reveal';
@@ -25,18 +26,18 @@ export default function Principles({ principles }) {
               as="article"
               key={p.title}
               variant="fade"
-              className="group relative bg-paper p-8 transition-colors duration-700 hover:bg-card md:p-10"
+              className="group relative bg-paper p-8 transition-all duration-500 hover:bg-card hover:shadow-inner md:p-10"
             >
               <span
                 aria-hidden="true"
-                className="mb-6 block font-mono text-[0.62rem] tracking-[0.2em] text-ink-faint transition-colors duration-500 group-hover:text-signal"
+                className="mb-6 block font-mono text-[0.62rem] tracking-[0.2em] text-ink-faint transition-all duration-500 group-hover:text-signal group-hover:tracking-[0.25em]"
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 className="mb-3 max-w-[24ch] font-sans text-[1.2rem] font-bold tracking-tight text-ink md:text-[1.35rem]">
+              <h3 className="mb-3 max-w-[24ch] font-sans text-[1.2rem] font-bold tracking-tight text-ink transition-all duration-500 group-hover:translate-x-1 md:text-[1.35rem]">
                 {p.title}
               </h3>
-              <p className="max-w-[46ch] text-[0.95rem] leading-[1.7] text-ink-muted">{p.detail}</p>
+              <p className="max-w-[46ch] text-[0.95rem] leading-[1.7] text-ink-muted transition-colors duration-500 group-hover:text-ink/80">{p.detail}</p>
               <span
                 aria-hidden="true"
                 className="absolute bottom-0 left-0 h-[2px] w-0 bg-signal transition-all duration-700 ease-reveal group-hover:w-full"

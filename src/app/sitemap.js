@@ -1,4 +1,4 @@
-import { locales } from '../lib/locales';
+import { locales, htmlLang } from '../lib/locales';
 
 const baseUrl = 'https://rahmetlabs.com';
 const routes = ['', '/services', '/portfolio', '/about', '/contact'];
@@ -13,7 +13,7 @@ export default function sitemap() {
       changeFrequency: route === '' ? 'weekly' : 'monthly',
       priority: route === '' ? 1 : 0.8,
       alternates: {
-        languages: Object.fromEntries(locales.map((loc) => [loc, `${baseUrl}/${loc}${route}`])),
+        languages: { 'x-default': `${baseUrl}${route}`, ...Object.fromEntries(locales.map((loc) => [htmlLang[loc], `${baseUrl}/${loc}${route}`])) },
       },
     }))
   );

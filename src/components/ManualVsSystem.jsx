@@ -49,10 +49,14 @@ export default function ManualVsSystem({ comparison }) {
   const manualPath = toPath(M, W, H, PAD);
   const autoPath = toPath(A, W, H, PAD);
 
+  /* endpoint screen coords for pinned annotations */
+  const mEnd = { x: W - PAD, y: H - PAD - (M[M.length - 1] / 50) * (H - PAD * 2) };
+  const aEnd = { x: W - PAD, y: H - PAD - (A[A.length - 1] / 50) * (H - PAD * 2) };
+
   return (
-    <section className="relative border-t border-hairline/70 py-28 md:py-40" aria-labelledby="comparison-heading">
+    <section className="relative border-t border-hairline/70 py-24 md:py-32" aria-labelledby="comparison-heading">
       <div className="mx-auto max-w-content px-5 md:px-10 lg:px-16">
-        <Reveal variant="fade" className="mb-14 max-w-[720px]">
+        <Reveal variant="fade" className="mb-12 max-w-[720px]">
           <p className="kicker mb-6">{comparison.kicker}</p>
           <h2 id="comparison-heading" className="mb-5 text-headline font-bold text-ink">
             {comparison.heading}
@@ -60,11 +64,12 @@ export default function ManualVsSystem({ comparison }) {
           <p className="text-[1.05rem] leading-relaxed text-ink-muted">{comparison.subheading}</p>
         </Reveal>
 
-        {/* ------------------------------- chart panel ------------------------------- */}
-        <Reveal variant="rise" className="ltr chart-wrap thread-wrap" stagger={0}>
-          <div className="rounded-panel border border-hairline bg-card p-5 md:p-9">
+        {/* one cohesive card: chart + beats */}
+        <Reveal variant="rise" className="ltr chart-wrap thread-wrap overflow-hidden rounded-panel border border-hairline" stagger={0}>
+          {/* chart panel */}
+          <div className="bg-card p-5 md:p-7">
             {/* legend */}
-            <div className="mb-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="mb-6 flex flex-wrap items-center gap-x-8 gap-y-3">
               <span className="flex items-center gap-2.5 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-muted">
                 <span className="h-[3px] w-6 bg-manual" aria-hidden="true" />
                 {comparison.seriesManual}
@@ -73,7 +78,7 @@ export default function ManualVsSystem({ comparison }) {
                 <span className="h-[3px] w-6 bg-signal" aria-hidden="true" />
                 {comparison.seriesAuto}
               </span>
-              <span className="ml-auto font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-faint">
+              <span className="ml-auto hidden font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-faint sm:inline">
                 {comparison.note}
               </span>
             </div>
@@ -102,57 +107,49 @@ export default function ManualVsSystem({ comparison }) {
                 <path d={autoPath} className="chart-line chart-line-auto" />
 
                 {/* end dots */}
-                <circle cx={W - PAD} cy={H - PAD - (M[M.length - 1] / 50) * (H - PAD * 2)} r="5" fill="#BF4632" className="chart-dot" style={{ transitionDelay: '2.1s' }} />
-                <circle cx={W - PAD} cy={H - PAD - (A[A.length - 1] / 50) * (H - PAD * 2)} r="5" fill="#1F4EA8" className="chart-dot" style={{ transitionDelay: '2.4s' }} />
-              </svg>
+                <circle cx={mEnd.x} cy={mEnd.y} r="5" fill="#BF4632" className="chart-dot" style={{ transitionDelay: '2.1s' }} />
+                <circle cx={aEnd.x} cy={aEnd.y} r="5" fill="#1F4EA8" className="chart-dot" style={{ transitionDelay: '2.4s' }} />
 
-              {/* terminal annotations */}
-              <div className="pointer-events-none absolute right-1 top-2 text-right md:right-4 md:top-6">
-                <div className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-manual">
-                  {comparison.resolutionManual}
-                </div>
-                <div className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-ink-faint">
-                  {comparison.resolutionLabel}
-                </div>
-              </div>
-              <div className="pointer-events-none absolute bottom-6 right-1 text-right md:bottom-10 md:right-4">
-                <div className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-signal">
-                  {comparison.resolutionAuto}
-                </div>
-                <div className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-ink-faint">
-                  {comparison.resolutionLabel}
-                </div>
-              </div>
+                {/* pinned annotations — live in SVG, can't drift onto lines */}
+                <g className="font-mono" style={{ fontFamily: 'var(--font-mono), ui-monospace, monospace' }}>
+                  <text x={W - PAD - 6} y={mEnd.y - 16} textAnchor="end" fill="#BF4632" fontSize="13" letterSpacing="0.12em" className="uppercase">
+                    {comparison.resolutionManual}
+                  </text>
+                  <text x={W - PAD - 6} y={aEnd.y - 16} textAnchor="end" fill="#1F4EA8" fontSize="13" fontWeight="700" letterSpacing="0.12em" className="uppercase">
+                    {comparison.resolutionAuto}
+                  </text>
+                </g>
+              </svg>
             </div>
           </div>
-        </Reveal>
 
-        {/* ------------------------------- beats table ------------------------------- */}
-        <Reveal variant="fade" className="mt-10 overflow-hidden rounded-panel border border-hairline">
-          <div className="hidden grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] border-b border-hairline bg-card px-6 py-3.5 md:grid">
-            <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint" />
-            <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-manual">{comparison.seriesManual}</span>
-            <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-signal">{comparison.seriesAuto}</span>
-          </div>
-          <div className="ltr-stagger">
-            {comparison.beats.map((b) => (
-              <div
-                key={b.title}
-                className="grid grid-cols-1 gap-2 border-b border-hairline/60 bg-paper px-6 py-5 last:border-b-0 transition-colors duration-500 hover:bg-card md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-6 md:py-6"
-              >
-                <div className="font-sans text-[0.95rem] font-semibold text-ink md:text-[1.02rem]">
-                  {b.title}
+          {/* beats table */}
+          <div className="border-t border-hairline bg-paper">
+            <div className="hidden grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] border-b border-hairline px-6 py-3.5 md:grid">
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">{comparison.resolutionLabel}</span>
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-manual">{comparison.seriesManual}</span>
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-signal">{comparison.seriesAuto}</span>
+            </div>
+            <div>
+              {comparison.beats.map((b) => (
+                <div
+                  key={b.title}
+                  className="grid grid-cols-1 gap-2 border-b border-hairline/60 px-6 py-5 last:border-b-0 transition-colors duration-500 hover:bg-card md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-6 md:py-5"
+                >
+                  <div className="font-sans text-[0.95rem] font-semibold text-ink md:text-[1rem]">
+                    {b.title}
+                  </div>
+                  <div className="text-[0.9rem] leading-relaxed text-ink-muted md:border-l md:border-manual/20 md:pl-5">
+                    <span className="mr-2 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-manual md:hidden">{comparison.seriesManual} —</span>
+                    {b.manual}
+                  </div>
+                  <div className="text-[0.9rem] leading-relaxed text-ink md:border-l md:border-signal/25 md:pl-5">
+                    <span className="mr-2 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-signal md:hidden">{comparison.seriesAuto} —</span>
+                    {b.auto}
+                  </div>
                 </div>
-                <div className="text-[0.92rem] leading-relaxed text-ink-muted md:border-l md:border-manual/20 md:pl-5">
-                  <span className="mr-2 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-manual md:hidden">{comparison.seriesManual} —</span>
-                  {b.manual}
-                </div>
-                <div className="text-[0.92rem] leading-relaxed text-ink md:border-l md:border-signal/25 md:pl-5">
-                  <span className="mr-2 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-signal md:hidden">{comparison.seriesAuto} —</span>
-                  {b.auto}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

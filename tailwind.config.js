@@ -16,7 +16,7 @@ module.exports = {
         ink: {
           DEFAULT: '#1B1914',
           muted: '#5E5A50',
-          faint: '#8A857A',
+          faint: '#6F6B62',
         },
         // Signal blue — the system: CTAs, live states, the resolved line
         signal: {

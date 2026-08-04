@@ -9,6 +9,7 @@ import WorkList from '../../components/WorkList';
 import Process from '../../components/Process';
 import Principles from '../../components/Principles';
 import FinalCta from '../../components/FinalCta';
+import Newsletter from '../../components/Newsletter';
 import JsonLd from '../../components/JsonLd';
 
 export async function generateMetadata({ params }) {
@@ -58,6 +59,7 @@ export default async function Home({ params }) {
       <Process process={dict.process} />
       <Principles principles={dict.principles} />
       <FinalCta cta={dict.cta} locale={locale} />
+      <Newsletter locale={locale} />
     </>
   );
 }

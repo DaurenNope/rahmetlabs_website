@@ -5,6 +5,7 @@
  * Top bar: wordmark left, nav links center (desktop), locale switcher + CTA right.
  * Mobile: hamburger morphs to X; menu opens as full-screen overlay with
  * staggered mask reveal.
+ * Enhanced with hover effects and micro-interactions.
  */
 
 import { useEffect, useState, useCallback } from 'react';
@@ -50,6 +51,13 @@ export default function SiteChrome({ locale, nav }) {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-50 -translate-y-24 rounded-full bg-ink px-5 py-2.5 text-[0.8125rem] font-medium text-paper transition-all duration-500 focus:translate-y-0 focus:scale-105"
+      >
+        Skip to content
+      </a>
+
       {/* ------------------------- top bar ------------------------- */}
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ease-settle ${
@@ -58,13 +66,14 @@ export default function SiteChrome({ locale, nav }) {
       >
         <div className="mx-auto flex max-w-content items-center justify-between px-5 md:px-10">
         {/* wordmark */}
-          <Link href={`/${locale}`} className="group flex items-center gap-3">
-            <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[9px] border border-hairline bg-card transition-colors duration-500 group-hover:border-signal/50">
-              <img src="/favicon.svg" alt="" width="32" height="32" className="h-full w-full object-cover" />
-            </span>
-            <span className="hidden font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-ink sm:block">
-              {nav.wordmark}
-            </span>
+          <Link href={`/${locale}`} aria-label="Rahmet Labs" className="group flex items-center">
+            <img
+              src="/brand/logo.png"
+              alt="Rahmet Labs"
+              width="46"
+              height="32"
+              className="h-8 w-auto object-contain transition-opacity duration-500 group-hover:opacity-80"
+            />
           </Link>
 
           {/* center nav — desktop */}
@@ -72,7 +81,7 @@ export default function SiteChrome({ locale, nav }) {
             aria-label="Primary"
             className={`hidden items-center gap-1 rounded-full border px-2 py-1.5 transition-all duration-700 ease-settle md:flex ${
               scrolled
-                ? 'border-hairline bg-card/80 backdrop-blur-xl'
+                ? 'border-hairline bg-card/80 backdrop-blur-xl shadow-sm shadow-ink/5'
                 : 'border-transparent bg-transparent'
             }`}
           >
@@ -82,13 +91,13 @@ export default function SiteChrome({ locale, nav }) {
                 <Link
                   key={l.href}
                   href={`/${locale}${l.href}`}
-                  className={`relative rounded-full px-4 py-1.5 text-[0.8125rem] font-medium transition-colors duration-400 ${
-                    active ? 'text-signal' : 'text-ink-muted hover:text-ink'
+                  className={`relative rounded-full px-4 py-1.5 text-[0.8125rem] font-medium transition-all duration-500 ${
+                    active ? 'text-signal' : 'text-ink-muted hover:text-ink hover:bg-card/50'
                   }`}
                 >
                   {l.label}
                   {active && (
-                    <span className="absolute inset-x-3 -bottom-px h-px bg-signal" />
+                    <span className="absolute inset-x-3 -bottom-px h-px bg-signal transition-all duration-500" />
                   )}
                 </Link>
               );
@@ -98,13 +107,13 @@ export default function SiteChrome({ locale, nav }) {
           {/* right cluster */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* locale switcher */}
-            <div className="hidden items-center rounded-full border border-hairline bg-card/60 p-0.5 backdrop-blur-md sm:flex">
+            <div className="hidden items-center rounded-full border border-hairline bg-card/60 p-0.5 backdrop-blur-md sm:flex transition-all duration-500 hover:border-signal/30 hover:shadow-sm hover:shadow-signal/5">
               {locales.map((loc) => (
                 <Link
                   key={loc}
                   href={localePath(loc)}
-                  className={`rounded-full px-2.5 py-1 font-mono text-[0.6rem] font-medium tracking-[0.1em] transition-colors duration-300 ${
-                    loc === locale ? 'bg-signal text-paper' : 'text-ink-muted hover:text-ink'
+                  className={`rounded-full px-2.5 py-1 font-mono text-[0.6rem] font-medium tracking-[0.1em] transition-all duration-500 ${
+                    loc === locale ? 'bg-signal text-paper scale-105' : 'text-ink-muted hover:text-ink hover:bg-card/50'
                   }`}
                 >
                   {localeNames[loc]}
@@ -125,7 +134,7 @@ export default function SiteChrome({ locale, nav }) {
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-label={menuOpen ? nav.closeLabel : nav.menuLabel}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-card/70 backdrop-blur-md md:hidden"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-card/70 backdrop-blur-md transition-all duration-500 hover:border-signal/50 hover:shadow-sm hover:shadow-signal/10 md:hidden"
             >
               <span
                 className={`absolute h-px w-4 bg-ink transition-all duration-500 ease-settle ${
@@ -157,8 +166,8 @@ export default function SiteChrome({ locale, nav }) {
               <div key={l.href} className="overflow-hidden">
                 <Link
                   href={`/${locale}${l.href}`}
-                  className={`block border-b border-hairline/60 py-5 font-sans text-3xl font-semibold tracking-tight transition-transform duration-700 ease-reveal ${
-                    active ? 'text-signal' : 'text-ink'
+                  className={`block border-b border-hairline/60 py-5 font-sans text-3xl font-semibold tracking-tight transition-all duration-700 ease-reveal ${
+                    active ? 'text-signal' : 'text-ink hover:text-signal hover:translate-x-2'
                   }`}
                   style={{
                     transform: menuOpen ? 'translateY(0)' : 'translateY(110%)',
@@ -200,8 +209,8 @@ export default function SiteChrome({ locale, nav }) {
               <Link
                 key={loc}
                 href={localePath(loc)}
-                className={`rounded-full px-4 py-2 font-mono text-[0.65rem] font-medium tracking-[0.12em] ${
-                  loc === locale ? 'bg-signal text-paper' : 'border border-hairline text-ink-muted'
+                className={`rounded-full px-4 py-2 font-mono text-[0.65rem] font-medium tracking-[0.12em] transition-all duration-500 ${
+                  loc === locale ? 'bg-signal text-paper scale-105' : 'border border-hairline text-ink-muted hover:border-signal/50 hover:text-signal hover:scale-105'
                 }`}
                 tabIndex={menuOpen ? 0 : -1}
               >

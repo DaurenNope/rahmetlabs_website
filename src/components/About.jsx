@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * About — team profiles, toolkit marquee, and CTA.
+ * Enhanced with hover effects and micro-interactions.
+ */
+
 import Reveal from './Reveal';
 import Button from './Button';
 
@@ -26,13 +31,13 @@ export default function About({ locale, about, principles }) {
           </Reveal>
           <div className="ltr-stagger grid gap-px overflow-hidden rounded-panel bg-hairline/60 md:grid-cols-3">
             {about.team.map((m, i) => (
-              <Reveal as="article" key={m.name} variant="fade" className="group relative bg-paper p-8 transition-colors duration-700 hover:bg-card md:p-10">
-                <span aria-hidden="true" className="mb-8 block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-signal/90">
+              <Reveal as="article" key={m.name} variant="fade" className="group relative bg-paper p-8 transition-all duration-500 hover:bg-card hover:shadow-inner md:p-10">
+                <span aria-hidden="true" className="mb-8 block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-signal/90 transition-all duration-500 group-hover:tracking-[0.32em]">
                   PROFILE {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mb-1.5 font-sans text-[1.25rem] font-bold tracking-tight text-ink">{m.name}</h3>
-                <p className="mb-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-signal/90">{m.role}</p>
-                <p className="text-[0.95rem] leading-[1.7] text-ink-muted">{m.bio}</p>
+                <h3 className="mb-1.5 font-sans text-[1.25rem] font-bold tracking-tight text-ink transition-all duration-500 group-hover:translate-x-1">{m.name}</h3>
+                <p className="mb-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-signal/90 transition-colors duration-500 group-hover:text-signal">{m.role}</p>
+                <p className="text-[0.95rem] leading-[1.7] text-ink-muted transition-colors duration-500 group-hover:text-ink/80">{m.bio}</p>
                 <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-signal transition-all duration-700 ease-reveal group-hover:w-full" />
               </Reveal>
             ))}
@@ -52,7 +57,7 @@ export default function About({ locale, about, principles }) {
             {[...about.toolkit, ...about.toolkit].map((t, i) => (
               <span
                 key={i}
-                className="flex-shrink-0 rounded-full border border-hairline bg-card px-5 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-muted"
+                className="flex-shrink-0 rounded-full border border-hairline bg-card px-5 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-muted transition-all duration-500 hover:border-signal/50 hover:text-signal hover:scale-105 hover:shadow-sm hover:shadow-signal/10"
               >
                 {t}
               </span>

@@ -1,5 +1,5 @@
 import '../globals.css';
-import { Geologica, JetBrains_Mono, Spectral } from 'next/font/google';
+import { Geologica, Noto_Sans_Mono, Spectral } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { locales, htmlLang, isValidLocale } from '../../lib/locales';
 import { getDictionary } from '../../lib/content';
@@ -7,6 +7,7 @@ import SmoothScroll from '../../components/SmoothScroll';
 import SiteChrome from '../../components/SiteChrome';
 import Footer from '../../components/Footer';
 import JsonLd from '../../components/JsonLd';
+import Analytics from '../../components/Analytics';
 
 const geologica = Geologica({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
@@ -15,9 +16,9 @@ const geologica = Geologica({
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const notoSansMono = Noto_Sans_Mono({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '700'],
   variable: '--font-mono',
   display: 'swap',
 });
@@ -112,6 +113,9 @@ export default async function LocaleLayout({ children, params }) {
     knowsAbout: [
       'Business process automation',
       'AI agents and LLM integration',
+      'Custom AI agents',
+      'Search engine optimization (SEO/AEO/GEO)',
+      'Content systems and management',
       'Web application development',
       'Mobile application development',
       'Blockchain and smart contract development',
@@ -119,18 +123,19 @@ export default async function LocaleLayout({ children, params }) {
   };
 
   return (
-    <html lang={htmlLang[locale]} className={`${geologica.variable} ${jetbrainsMono.variable} ${spectral.variable}`}>
+    <html lang={htmlLang[locale]} className={`${geologica.variable} ${notoSansMono.variable} ${spectral.variable}`}>
       <head>
         {alternateLinks.map((l) => (
           <link key={l.hrefLang} rel="alternate" hrefLang={l.hrefLang} href={l.href} />
         ))}
       </head>
       <body className="bg-paper font-sans text-ink antialiased">
+        <Analytics />
         <JsonLd data={organizationJsonLd} />
         <SmoothScroll>
           <SiteChrome locale={locale} nav={dict.nav} />
-          <main>{children}</main>
-          <Footer locale={locale} footer={dict.footer} nav={dict.nav} />
+          <main id="main-content">{children}</main>
+          <Footer locale={locale} footer={dict.footer} nav={dict.nav} thesis={dict.facts.thesis} />
         </SmoothScroll>
         <div className="grain-overlay" aria-hidden="true" />
       </body>

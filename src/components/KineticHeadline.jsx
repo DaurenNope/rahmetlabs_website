@@ -3,6 +3,7 @@
 /**
  * KineticHeadline — splits children (string) into words, each masked-rising
  * into place with a stagger when scrolled into view.
+ * Enhanced with hover effects and micro-interactions.
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -56,11 +57,11 @@ export default function KineticHeadline({
           <span
             key={i}
             aria-hidden="true"
-            className="inline-block overflow-hidden pb-[0.08em] align-bottom"
+            className="inline-block overflow-hidden pb-[0.08em] align-bottom transition-all duration-300 hover:scale-105"
             style={{ verticalAlign: 'baseline' }}
           >
             <span
-              className={`inline-block will-change-transform ${isAccent ? 'serif-accent text-signal' : ''}`}
+              className={`inline-block will-change-transform transition-all duration-300 hover:text-signal ${isAccent ? 'serif-accent text-signal' : ''}`}
               style={{
                 transform: inView ? 'translateY(0) rotate(0deg)' : 'translateY(115%) rotate(1.5deg)',
                 opacity: inView ? 1 : 0,

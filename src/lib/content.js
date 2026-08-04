@@ -11,12 +11,12 @@ const en = {
       keywords: ['automation studio', 'AI development', 'business automation', 'Next.js agency', 'web3 development', 'full-stack development'],
     },
     services: {
-      title: 'Services — Automation, AI, Web, Mobile & Web3 | Rahmet Labs',
+      title: 'Services — Automation, AI, Web, Mobile & Web3',
       description: 'Five functions, one accountable team: business automation, AI agents, web & mobile products, backend & data, and delivery & operations.',
       keywords: ['automation services', 'AI agents', 'web development services', 'mobile app development'],
     },
     portfolio: {
-      title: 'Work — Systems We Have Shipped | Rahmet Labs',
+      title: 'Work — Systems We Have Shipped',
       description: 'A sample of automation, AI, web, and Web3 systems Rahmet Labs has shipped — with live links where they exist.',
       keywords: ['portfolio', 'automation projects', 'AI projects', 'web3 projects'],
     },
@@ -33,8 +33,9 @@ const en = {
   },
 
   facts: {
+    thesis: 'Your operations stop living in somebody’s head.',
     whatWeDo:
-      'Rahmet Labs is a full-stack technology studio that builds business automation, AI systems, web and mobile products, and Web3 infrastructure for companies replacing manual operations with software.',
+      'Rahmet Labs is a full-stack technology studio that builds business automation, AI systems, custom AI agents, web and mobile products, search-optimized content systems, and Web3 infrastructure for companies replacing manual operations with software.',
     whoFor:
       'Founders, operations leaders, and technical teams who need one accountable partner instead of separate freelancers for strategy, automation, and engineering.',
     basedIn: 'Rahmet Labs is based in Kazakhstan and works with clients across Central Asia, Europe, and the Gulf.',
@@ -62,7 +63,7 @@ const en = {
     line3Accent: 'the systems',
     line3Tail: 'that end it.',
     subheadline:
-      'One senior team designs, ships, and operates the automation and AI that replace your spreadsheets, copy-paste routines, and follow-up threads — software that runs the busywork so your people run the business.',
+      'One senior team designs, ships, and runs the automation and AI that replace your spreadsheets, copy-paste, and follow-up threads. Software handles the busywork; your people run the business.',
     ctaPrimary: 'Start a project',
     ctaSecondary: 'See the work',
     supportingLabel: 'One accountable team · EN / RU / KZ',
@@ -94,50 +95,75 @@ const en = {
   },
 
   whatWeBuild: {
-    kicker: 'What we build',
-    heading: 'One studio, every layer of the system.',
+    kicker: 'What we fix',
+    heading: 'The work that stops moving your business forward.',
     subheading:
-      'Strategy, automation, AI, and engineering under one roof — so nothing gets lost between a consultant’s deck and a developer’s backlog.',
+      'Five failure patterns we see again and again in Kazakhstani and regional companies — and the systems we build so they stop happening.',
     categories: [
       {
         id: 'automation',
-        title: 'Business Automation',
-        tagline: 'Kill the copy-paste',
-        description:
-          'Workflows that run without a human in the loop: approvals, invoicing, reporting, tender monitoring, CRM↔ERP sync.',
-        capabilities: ['Workflow automation (n8n, Make)', 'System & API integration', 'Ops dashboards & alerting', 'Browser & data automation'],
+        title: '“Someone still does this by hand.”',
+        problem:
+          'Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.',
+        problemTag: 'Manual ops',
+        solution:
+          'Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human — and only when.',
+        solutionLabel: 'The system',
+        outcome:
+          'The same day\u2019s operations run without a person on duty. Approvals, invoicing, reporting, and tender notifications fire on their own schedule.',
+        outcomeLabel: 'What goes away',
       },
       {
         id: 'ai',
-        title: 'AI Systems',
-        tagline: 'AI that reads, decides, acts',
-        description:
-          'AI wired into real operations — agents, RAG over your own data, content pipelines — not a demo chatbot.',
-        capabilities: ['AI agents & assistants', 'RAG over private data', 'Content generation pipelines', 'Matching, scoring & routing'],
+        title: '“Tickets wait. Leads stall. Nobody answers fast enough.”',
+        problem:
+          'The support queue grows faster than the team can read it. Inbound leads sit in a messenger until a manager remembers. Decisions live in someone\u2019s head.',
+        problemTag: 'Slow judgment',
+        solution:
+          'AI agents that read, classify, route, and draft — retrieval over your own documents and past answers, scoring of leads and tickets, matching, escalation to a human at the right moment. Custom agents and search-optimized content systems (SEO/AEO/GEO) built to win customers and get cited.',
+        solutionLabel: 'The system',
+        outcome:
+          'Every ticket and message is triaged the moment it arrives. The queue stops growing faster than it drains.',
+        outcomeLabel: 'What goes away',
       },
       {
         id: 'product',
-        title: 'Web & Mobile Products',
-        tagline: 'Software clients actually use',
-        description:
-          'From multilingual marketing systems to full SaaS platforms and mobile apps — designed, built, and shipped end to end.',
-        capabilities: ['Web apps & SaaS platforms', 'Mobile apps (React Native)', 'CMS-driven sites & editors', 'Booking & member areas'],
+        title: '“Our site doesn\u2019t actually do anything.”',
+        problem:
+          'The current web presence is a brochure. Clients can\u2019t apply, book, pay, or check status without calling a person. The admin\u2019s email inbox is the only workflow.',
+        problemTag: 'Dead-end web',
+        solution:
+          'Web and mobile products where the client does the thing: applications, bookings, dashboards, CMS-driven sites your editors run without a developer.',
+        solutionLabel: 'The product',
+        outcome:
+          'Clients finish business with you on the site at 2 a.m. Staff stop being the telephone switchboard for the internet.',
+        outcomeLabel: 'What goes away',
       },
       {
         id: 'backend',
-        title: 'Backend & Data',
-        tagline: 'The plumbing that holds',
-        description:
-          'APIs, databases, and infrastructure that keep the system observable, secure, and boringly reliable.',
-        capabilities: ['API design & integration', 'Postgres / Supabase data layers', 'Auth, roles & permissions', 'Monitoring & logging'],
+        title: '“Nobody knows which number is the right one.”',
+        problem:
+          'Sales, finance, and operations all show different figures. Data lives in three systems and a group chat. Leadership waits for the weekly reconciliation.',
+        problemTag: 'Fragmented data',
+        solution:
+          'One data layer: Postgres or Supabase, APIs that sync the systems, auth and roles, monitoring, one dashboard the whole team actually trusts.',
+        solutionLabel: 'The system',
+        outcome:
+          'Any figure leadership needs is one query away, not a weekly spreadsheet project.',
+        outcomeLabel: 'What goes away',
       },
       {
         id: 'web3',
-        title: 'Web3 & Blockchain',
-        tagline: 'On-chain, without drama',
-        description:
-          'Smart contracts and on-chain automation with the same engineering discipline as the rest of the stack.',
-        capabilities: ['Solidity contracts', 'Multi-chain deployment (ETH, BSC, Arbitrum)', 'Multi-sig pipelines', 'On-chain monitoring'],
+        title: '“The contract we need on-chain isn\u2019t built, and we can\u2019t afford a mistake.”',
+        problem:
+          'Tokens need minting, airdrops need distributing, multi-sig needs to not get the treasury drained. None of it can go wrong, and Solidity talent in Almaty is scarce.',
+        problemTag: 'Risky on-chain ops',
+        solution:
+          'Smart contracts designed, tested, and multi-chain deployed (ETH, BSC, Arbitrum) with multi-sig pipelines and on-chain monitoring by default.',
+        solutionLabel: 'The system',
+        outcome:
+          'The system goes to mainnet once, with audit discipline and bug-bounty coverage from the start — not after an incident.',
+        outcomeLabel: 'What goes away',
       },
     ],
   },
@@ -295,7 +321,7 @@ const en = {
     heading: 'Why teams stay with us.',
     subheading: 'Not because we’re the biggest. Because of how the work gets done.',
     points: [
-      { title: 'One accountable team', detail: 'No relay between a strategy shop, a dev shop, and an ops consultant. The people who scope your system are the people who build and run it.' },
+      { title: 'One owner, end to end', detail: 'No relay between a strategy shop, a dev shop, and an ops consultant. The people who scope your system are the people who build and run it.' },
       { title: 'You own everything', detail: 'Repositories, infrastructure, and documentation transfer from day one. If we disappeared tomorrow, your systems would keep running.' },
       { title: 'Working software at every step', detail: 'You see something real at each stage of a build — so drift in expectations costs days, not a quarter.' },
       { title: 'We stay after launch', detail: 'Automation and AI drift as your business changes. We operate and adjust them instead of vanishing after handover.' },
@@ -408,8 +434,20 @@ const en = {
     headingAccent: 'that eats your week.',
     subheading:
       'Tell us what your team still does by hand. We’ll reply with a plain answer: what a system could take over, what it would take, and what we’d build first.',
+    offer: {
+      kicker: 'Free diagnostic',
+      title: 'We map your manual work into a scored system plan in your first week. You keep the plan whether or not we build — and if we do, the first stage is fixed-price.',
+    },
     primary: 'Start a project',
     whatsapp: 'WhatsApp us',
+  },
+
+  notFound: {
+    code: '404',
+    heading: 'This page didn’t make it into the system.',
+    body: 'The URL you followed doesn’t exist here — it may have moved, or never shipped. The rest of the site is very much live.',
+    primary: 'Back to home',
+    secondary: 'Start a project',
   },
 
   footer: {
@@ -426,16 +464,16 @@ const ru = {
     home: {
       title: 'Rahmet Labs — студия автоматизации, ИИ и продуктовой разработки',
       description:
-        'Rahmet Labs заменяет ручные операции автоматикой, ИИ-системами и инженерными продуктами — проектирует, запускает и сопровождает одна ответственная команда.',
+        'Rahmet Labs заменяет ручные операции автоматикой, ИИ-системами и инженерными продуктами — проектирует, запускает и сопровождает одна ответственная команда, из Алматы до Персидского залива.',
       keywords: ['автоматизация бизнеса', 'разработка ИИ', 'ИИ-агенты', 'веб-разработка', 'web3 разработка'],
     },
     services: {
-      title: 'Услуги — автоматизация, ИИ, веб, мобайл и Web3 | Rahmet Labs',
+      title: 'Услуги — автоматизация, ИИ, веб, мобайл и Web3',
       description: 'Пять функций, одна ответственная команда: автоматизация бизнеса, ИИ-агенты, веб- и мобильные продукты, бэкенд и сопровождение.',
       keywords: ['автоматизация процессов', 'ИИ-агенты', 'разработка веб-приложений', 'мобильные приложения'],
     },
     portfolio: {
-      title: 'Работы — запущенные системы | Rahmet Labs',
+      title: 'Работы — запущенные системы',
       description: 'Примеры систем автоматизации, ИИ, веба и Web3, которые запустила Rahmet Labs, — с живыми ссылками, где они есть.',
       keywords: ['портфолио', 'проекты автоматизации', 'ИИ-проекты'],
     },
@@ -452,8 +490,9 @@ const ru = {
   },
 
   facts: {
+    thesis: 'Ваши операции перестают жить в чьей-то голове.',
     whatWeDo:
-      'Rahmet Labs — продуктовая технологическая студия: автоматизация бизнеса, ИИ-системы, веб- и мобильные продукты и Web3-инфраструктура для компаний, которые заменяют ручные операции софтом.',
+      'Rahmet Labs — продуктовая технологическая студия: автоматизация бизнеса, ИИ-системы, кастомные ИИ-агенты, веб- и мобильные продукты, поисково-оптимизированные контент-системы (SEO/AEO/GEO) и Web3-инфраструктура для компаний, которые заменяют ручные операции софтом.',
     whoFor:
       'Основатели, операционные директора и технические команды, которым нужен один ответственный партнёр вместо россыпи фрилансеров для стратегии, автоматики и разработки.',
     basedIn: 'Rahmet Labs находится в Казахстане и работает с клиентами по Центральной Азии, Европе и Персидскому заливу.',
@@ -479,7 +518,7 @@ const ru = {
     line2Accent: 'ручной работе.',
     line3: 'Мы строим',
     line3Accent: 'системы',
-    line3Tail: 'которые это меняют.',
+    line3Tail: 'которые этому кладут конец.',
     subheadline:
       'Одна senior-команда проектирует, запускает и сопровождает автоматику и ИИ, которые заменяют ваши таблицы, копипаст и бесконечные переписки. Софт делает рутину — люди делают бизнес.',
     ctaPrimary: 'Начать проект',
@@ -513,50 +552,75 @@ const ru = {
   },
 
   whatWeBuild: {
-    kicker: 'Что мы делаем',
-    heading: 'Одна студия — все слои системы.',
+    kicker: 'Что мы исправляем',
+    heading: 'То, что останавливает ваш бизнес.',
     subheading:
-      'Стратегия, автоматика, ИИ и разработка под одной крышей — ничего не теряется между презентацией консультанта и бэклогом разработчика.',
+      'Пять паттернов, которые мы снова и снова видим в компаниях Казахстана и региона — и системы, которые мы строим, чтобы они перестали случаться.',
     categories: [
       {
         id: 'automation',
-        title: 'Автоматизация бизнеса',
-        tagline: 'Конец эпохи копипаста',
-        description:
-          'Процессы, которые идут без человека в цикле: согласования, счета, отчётность, мониторинг тендеров, синхронизация CRM↔ERP.',
-        capabilities: ['Автоматизация процессов (n8n, Make)', 'Интеграция систем и API', 'Дашборды и алерты для операционки', 'Браузерная и дата-автоматизация'],
+        title: '«Кто-то до сих пор делает это руками»',
+        problem:
+          'Счета перепечатываются между Excel и бухгалтерией. Тендерные порталы обновляются ночью. Отчёты склеиваются в групповом чате.',
+        problemTag: 'Ручная операционка',
+        solution:
+          'Сквозные пайплайны: n8n/Make, браузерная автоматизация, синхронизация систем, алерты только там, где нужен человек.',
+        solutionLabel: 'Система',
+        outcome:
+          'День проходит без дежурного. Согласования, счета, отчётность и тендерные уведомления идут по своему расписанию, а не по чьему-то настроению.',
+        outcomeLabel: 'Что исчезает',
       },
       {
         id: 'ai',
-        title: 'ИИ-системы',
-        tagline: 'ИИ, который читает, решает, действует',
-        description:
-          'ИИ, встроенный в реальную операционку: агенты, RAG по вашим данным, контент-пайплайны — а не демо-чатбот.',
-        capabilities: ['ИИ-агенты и ассистенты', 'RAG по закрытым данным', 'Пайплайны генерации контента', 'Мэтчинг, скоринг и маршрутизация'],
+        title: '«Тикеты висят. Лиды остывают. Никто не отвечает достаточно быстро»',
+        problem:
+          'Очередь поддержки растёт быстрее, чем команда успевает читать. Входящие лиды лежат в мессенджере, пока менеджер не вспомнит. Решения живут в чьей-то голове.',
+        problemTag: 'Медленное решение',
+        solution:
+          'ИИ-агенты, которые читают, классифицируют, маршрутизируют и черновят: RAG по вашим документам и прошлым ответам, скоринг лидов и тикетов, сопоставление, эскалация человеку в нужный момент. Кастомные агенты и поисково-оптимизированные контент-системы (SEO/AEO/GEO), которые привлекают клиентов и цитируются.',
+        solutionLabel: 'Система',
+        outcome:
+          'Каждый тикет и каждое сообщение разбирается в момент появления. Очередь перестаёт расти быстрее, чем она осушается.',
+        outcomeLabel: 'Что исчезает',
       },
       {
         id: 'product',
-        title: 'Веб- и мобильные продукты',
-        tagline: 'Софт, которым пользуются',
-        description:
-          'От мультиязычных сайт-систем до SaaS-платформ и мобильных приложений — полный цикл: дизайн, разработка, запуск.',
-        capabilities: ['Веб-приложения и SaaS-платформы', 'Мобильные приложения (React Native)', 'Сайты на CMS для редакторов', 'Бронирование и личные кабинеты'],
+        title: '«Наш сайт на самом деле ничего не делает»',
+        problem:
+          'Текущее веб-присутствие — брошюра. Клиенты не могут оформить, забронировать, оплатить или проверить статус без звонка. Единственный workflow — почта админа.',
+        problemTag: 'Веб-тупик',
+        solution:
+          'Веб- и мобильные продукты, где клиент делает дело: заявки, бронирования, дашборды, сайты на CMS, которыми ваши редакторы управляют без разработчика.',
+        solutionLabel: 'Продукт',
+        outcome:
+          'Клиенты закрывают сделку с вами онлайн в два часа ночи. Персонал перестаёт быть телефонным коммутатором для интернета.',
+        outcomeLabel: 'Что исчезает',
       },
       {
         id: 'backend',
-        title: 'Бэкенд и данные',
-        tagline: 'Фундамент, который держит',
-        description:
-          'API, базы данных и инфраструктура, которые делают систему наблюдаемой, безопасной и скучно надёжной.',
-        capabilities: ['Проектирование API и интеграции', 'Данные на Postgres / Supabase', 'Авторизация, роли и доступы', 'Мониторинг и логирование'],
+        title: '«Никто не знает, какая цифра — правильная»',
+        problem:
+          'Продажи, финансы и операционка показывают разные цифры. Данные живут в трёх системах и групповом чате. Руководство ждёт еженедельной сверки.',
+        problemTag: 'Фрагментированные данные',
+        solution:
+          'Один слой данных: Postgres или Supabase, API, которые связывают системы, авторизация и роли, мониторинг, один дашборд, которому реально доверяют.',
+        solutionLabel: 'Система',
+        outcome:
+          'Любая цифра руководству — один запрос сейчас, а не недельный проект в Excel.',
+        outcomeLabel: 'Что исчезает',
       },
       {
         id: 'web3',
-        title: 'Web3 и блокчейн',
-        tagline: 'Он-чейн без драмы',
-        description:
-          'Смарт-контракты и он-чейн автоматизация с той же инженерной дисциплиной, что и остальной стек.',
-        capabilities: ['Контракты на Solidity', 'Мультичейн-деплой (ETH, BSC, Arbitrum)', 'Multi-sig конвейеры', 'Он-чейн мониторинг'],
+        title: '«Контракт на цепи не построен — и ошибиться мы себе не можем позволить»',
+        problem:
+          'Токены нужно эмитировать, airdrop — раздать, multi-sig не должен сжечь treasury. В Алматы мало Solidity-инженеров, и никто не должен ошибиться.',
+        problemTag: 'Рискованные он-чейн операции',
+        solution:
+          'Смарт-контракты, спроектированные, протестированные и задеплоенные multi-chain (ETH, BSC, Arbitrum) с multi-sig-конвейерами и он-чейн мониторингом по умолчанию.',
+        solutionLabel: 'Система',
+        outcome:
+          'Система уходит в mainnet один раз — с аудит-дисциплиной и bug-bounty со старта, а не после инцидента.',
+        outcomeLabel: 'Что исчезает',
       },
     ],
   },
@@ -650,7 +714,7 @@ const ru = {
         status: 'shipped',
       },
     ],
-    contactPrompt: 'Похожая система у вас в голове?',
+    contactPrompt: 'Задумали похожую систему?',
     contactCta: 'Начать проект',
   },
 
@@ -659,7 +723,7 @@ const ru = {
     heading: 'Одна почта. Два способа с ней жить.',
     subheading: 'Иллюстративная модель типичной недели поддержки — что меняется, когда очередью владеет система.',
     note: 'Иллюстративная модель, не метрика клиента.',
-    seriesManual: 'Руками',
+    seriesManual: 'Вручную',
     seriesAuto: 'С системой',
     resolutionLabel: 'среднее время ответа',
     resolutionManual: '~14 ч',
@@ -713,7 +777,7 @@ const ru = {
     heading: 'Почему с нами остаются.',
     subheading: 'Не потому что мы самые большие. А из-за того, как делается работа.',
     points: [
-      { title: 'Одна ответственная команда', detail: 'Без эстафеты между консультантами, подрядчиком по разработке и эксплуатацией. Кто оценивает систему, тот её и строит.' },
+      { title: 'Один владелец от начала до конца', detail: 'Без эстафеты между консультантами, подрядчиком по разработке и эксплуатацией. Кто оценивает систему, тот её и строит.' },
       { title: 'Всё принадлежит вам', detail: 'Репозитории, инфраструктура и документация передаются с первого дня. Исчезнем завтра — ваши системы продолжат работать.' },
       { title: 'Работающий софт на каждом шаге', detail: 'На каждом этапе вы видите что-то реальное — расхождение в ожиданиях стоит дни, а не квартал.' },
       { title: 'Остаёмся после запуска', detail: 'Автоматика и ИИ дрейфуют вместе с бизнесом. Мы сопровождаем и настраиваем их, а не исчезаем после сдачи.' },
@@ -724,7 +788,7 @@ const ru = {
     kicker: 'О нас',
     heading: 'Небольшая senior-команда, а не слой аккаунт-менеджмента.',
     subheading:
-      'Rahmet Labs — продуктовая технологическая студия: автоматизация, ИИ-системы, веб- и мобильные продукты, Web3-инфраструктура. Делается всё руками тех, кто строит.',
+      'Rahmet Labs — продуктовая технологическая студия: автоматизация, ИИ-системы, веб- и мобильные продукты, Web3-инфраструктура — и всё делает та же команда, которая реально строит.',
     teamHeading: 'С кем вы будете работать',
     teamIntro:
       'На каждый проект мы ставим небольшую группу senior-людей вместо джунов и проект-менеджера.',
@@ -737,12 +801,12 @@ const ru = {
       {
         name: 'Партнёры по ИИ и автоматике',
         role: 'AI Ops · Интеграции',
-        bio: 'Специалисты по автоматизации процессов, интеграции LLM и оркестрации систем — подключаются к ИИ-части сборки.',
+        bio: 'Специалисты по автоматизации процессов, интеграции LLM и оркестрации систем — подключаются к частям по автоматизации и ИИ внутри сборки.',
       },
       {
         name: 'Кольцо дизайна и поставки',
         role: 'Дизайн · QA · Запуск',
-        bio: 'Люди, которые следят, чтобы результат был удобным, протестированным и готовым к работе вашей команды с первого дня.',
+        bio: 'Люди, которые следят, чтобы результат был удобным, протестированным и готовым к работе вашей команды с первого дня, — а не прототип, приукрашенный под демо.',
       },
     ],
     principlesHeading: 'Как мы работаем',
@@ -783,8 +847,8 @@ const ru = {
       a: 'Зависит от скоупа: точечная автоматизация и полноценный продукт — разные истории. После одного звонка даём письменную оценку первого этапа, которым можно будет пользоваться, — никаких чёрных ящиков.',
     },
     {
-      q: 'Кому принадлежит код и инфраструктура?',
-      a: 'Вам, с первого дня. Репозитории, облачные аккаунты и документация передаются вашей команде в рамках поставки.',
+      q: 'Кому после сдачи принадлежат код, данные и инфраструктура?',
+      a: 'Вам, с первого дня. Репозитории, облачные аккаунты и документация передаются вашей команде в рамках поставки — ничего не держим в заложниках.',
     },
     {
       q: 'Что происходит после запуска?',
@@ -826,8 +890,20 @@ const ru = {
     headingAccent: 'которая съедает вашу неделю.',
     subheading:
       'Расскажите, что ваша команда до сих пор делает руками. Ответим по существу: что может забрать система, что для этого нужно и что мы бы построили первым.',
+    offer: {
+      kicker: 'Бесплатная диагностика',
+      title: 'На первой неделе разберём вашу ручную работу и составим скоринговый план системы. План остаётся у вас, даже если мы ничего не строим. Если строим — первый этап по фиксированной цене.',
+    },
     primary: 'Начать проект',
     whatsapp: 'Написать в WhatsApp',
+  },
+
+  notFound: {
+    code: '404',
+    heading: 'Эта страница не попала в систему.',
+    body: 'По этому адресу ничего нет — страница могла переехать или так и не появиться. Остальной сайт работает как надо.',
+    primary: 'На главную',
+    secondary: 'Начать проект',
   },
 
   footer: {
@@ -844,16 +920,16 @@ const kz = {
     home: {
       title: 'Rahmet Labs — автоматтандыру, AI және өнім инженериясы студиясы',
       description:
-        'Rahmet Labs қолмен жұмысты автоматикаға, AI жүйелеріне және инженерлік өнімдерге ауыстырады — жобалау, іске қосу және сүйемелдеу бәрі бір жауапты командада.',
+        'Rahmet Labs қолмен жұмысты автоматикаға, AI жүйелеріне және инженерлік өнімдерге ауыстырады — жобалау, іске қосу және сүйемелдеу бәрі бір жауапты командада, Алматыдан Парсы шығанағына дейін.',
       keywords: ['бизнес автоматтандыру', 'AI әзірлеу', 'AI агенттер', 'веб әзірлеу', 'web3'],
     },
     services: {
-      title: 'Қызметтер — автоматтандыру, AI, веб, мобайл және Web3 | Rahmet Labs',
+      title: 'Қызметтер — автоматтандыру, AI, веб, мобайл және Web3',
       description: 'Бес функция, бір жауапты команда: автоматтандыру, AI агенттер, веб және мобиль өнімдер, бэкенд пен эксплуатация.',
       keywords: ['автоматтандыру қызметтері', 'AI агенттер', 'веб қосымшалар', 'мобиль қосымшалар'],
     },
     portfolio: {
-      title: 'Жұмыстар — іске қосылған жүйелер | Rahmet Labs',
+      title: 'Жұмыстар — іске қосылған жүйелер',
       description: 'Rahmet Labs іске қосқан автоматтандыру, AI, веб және Web3 жүйелерінің таңдауы — тірі сілтемелерімен.',
       keywords: ['портфолио', 'автоматтандыру жобалары', 'AI жобалары'],
     },
@@ -870,8 +946,9 @@ const kz = {
   },
 
   facts: {
+    thesis: 'Операцияларыңыз біреудің есінде өмір сүруін тоқтатады.',
     whatWeDo:
-      'Rahmet Labs — қолмен операцияларды бағдарламамен ауыстырған компанияларға автоматтандыру, AI жүйелері, веб және мобиль өнімдер, Web3 инфрақұрылымын құратын full-stack технология студиясы.',
+      'Rahmet Labs — қолмен операцияларды бағдарламамен ауыстырған компанияларға автоматтандыру, AI жүйелері, арнайы AI агенттер, веб және мобиль өнімдер, іздеуге оңтайландырылған контент жүйелері және Web3 инфрақұрылымын құратын full-stack технология студиясы.',
     whoFor:
       'Стратегия, автоматика және инженерия үшін жеке фрилансерлер тобының орнына бір жауапты серіктес керек негізін қалаушылар, операциялық жетекшілер және техникалық командалар.',
     basedIn: 'Rahmet Labs Қазақстанда орналасқан және Орталық Азия, Еуропа және Парсы шығанағы бойындағы клиенттермен жұмыс істейді.',
@@ -931,50 +1008,75 @@ const kz = {
   },
 
   whatWeBuild: {
-    kicker: 'Не құрамыз',
-    heading: 'Бір студия — жүйенің барлық қабаты.',
+    kicker: 'Не түзетеміз',
+    heading: 'Бизнесіңізді тоқтататын жұмыс.',
     subheading:
-      'Стратегия, автоматика, AI және инженерия бір шатыр астында — консультанттың слайды мен әзірлеушінің бэклогы арасында ештеңе жоғалмайды.',
+      'Қазақстандық және аймақтық компанияларда қайта-қайта кездесетін бес сәтсіздік үлгісі — және олар тоқтауы үшін құратын жүйелер.',
     categories: [
       {
         id: 'automation',
-        title: 'Бизнес автоматтандыруы',
-        tagline: 'Көшірме-қою дәуірінің соңы',
-        description:
-          'Адамсыз жүретін процестер: келісімдер, шоттар, есептілік, тендер мониторингі, CRM↔ERP синхроны.',
-        capabilities: ['Процестерді автоматтандыру (n8n, Make)', 'Жүйелер мен API интеграциясы', 'Операциялық дашбордтар мен алерттер', 'Браузерлік және деректер автоматикасы'],
+        title: '«Мұны әлі біреу қолмен істейді»',
+        problem:
+          'Шоттар Excel мен бухгалтерия жүйесінің арасында көшіріліп жүр. Тендер порталдары түн ортасында жаңартылады. Есептер топтық чатта құрастырылады.',
+        problemTag: 'Қолмен істелетін операция',
+        solution:
+          'Аяқ-аяғына дейін жүретін пайплайндар: n8n/Make, браузерлік автоматика, жүйе синхроны, тек адам керек жерде ғана хабарламалар.',
+        solutionLabel: 'Жүйе',
+        outcome:
+          'Күн кезекші жұмысшысыз өтеді. Келісімдер, шоттар, есептілік және тендер хабарламалары өз кестесімен жүреді.',
+        outcomeLabel: 'Не жойылады',
       },
       {
         id: 'ai',
-        title: 'AI жүйелері',
-        tagline: 'Оқитын, шешетін, істейтін AI',
-        description:
-          'Нақты операциялық қызметке енген AI: агенттер, деректеріңіз бойынша RAG, контент-пайплайндар — демо-чатбот емес.',
-        capabilities: ['AI агенттер мен ассистенттер', 'Жабық деректер бойынша RAG', 'Контент генерация пайплайндары', 'Мэтчинг, скоринг және маршруттау'],
+        title: '«Тикеттер күтеді. Лидтер тоңайды. Ешкім жеткілікті тез жауап бермейді»',
+        problem:
+          'Қолдау кезегі команда оқитынан тез өседі. Кіріс лидтер жеткізбейтін мессенджерде кешке дейін жатады. Шешімдер біреудің басында қалады.',
+        problemTag: 'Баяу шешім',
+        solution:
+          'Оқитын, жіктейтін, маршруттайтын және жоба дайындайтын AI агенттер: құжаттарыңыз бен өткен жауаптар бойынша RAG, лидтер мен тикеттер скорингі, дұрыс сәтте адамға эскалация. Клиенттерді тартатын және дәйексөз алатын арнайы агенттер мен іздеуге оңтайландырылған контент жүйелері (SEO/AEO/GEO).',
+        solutionLabel: 'Жүйе',
+        outcome:
+          'Әр тикет пен хабарлама пайда болған сәтте сұрыпталады. Кезек босағанынан тез өспейді.',
+        outcomeLabel: 'Не жойылады',
       },
       {
         id: 'product',
-        title: 'Веб және мобиль өнімдер',
-        tagline: 'Нағыз қолданылатын софт',
-        description:
-          'Көптілді сайт-жүйелерден SaaS платформалар мен мобиль қосымшаларға дейін — толық цикл: дизайн, әзірлеу, іске қосу.',
-        capabilities: ['Веб қосымшалар мен SaaS платформалар', 'Мобиль қосымшалар (React Native)', 'Редакторларға арналған CMS сайттар', 'Брондау және жеке кабинеттер'],
+        title: '«Біздің сайт іс жүзінде ештеңе істемейді»',
+        problem:
+          'Қазіргі веб-қатысымыз — жай брошюра. Клиенттер адамға қоңырау шалмай-ақ өтініш бере, брондай, төлей немесе мәртебені тексере алмайды. Жалғыз жұмыс барысы — әкімшінің поштасы.',
+        problemTag: 'Веб-тоқырау',
+        solution:
+          'Клиенттің істі өзі бітіретін веб және мобиль өнімдер: өтініштер, брондау, дашбордтар, редакторларыңыз әзірлеушісіз басқаратын CMS сайттар.',
+        solutionLabel: 'Өнім',
+        outcome:
+          'Клиенттер түнгі екіде сізбен онлайн істі бітіреді. Қызметкерлер интернет үшін телефон коммутаторы болуды доғарады.',
+        outcomeLabel: 'Не жойылады',
       },
       {
         id: 'backend',
-        title: 'Бэкенд және деректер',
-        tagline: 'Ұстайтын іргетас',
-        description:
-          'Жүйені бақыланатын, қауіпсіз және сенімді ететін API, дерекқорлар және инфрақұрылым.',
-        capabilities: ['API жобалау және интеграция', 'Postgres / Supabase дерекқорлары', 'Авторизация, рөлдер және қолжетімділік', 'Мониторинг және логирование'],
+        title: '«Қай сан дұрыс — ешкім білмейді»',
+        problem:
+          'Сату, қаржы және операциялық әртүрлі сандарды көрсетеді. Деректер үш жүйеде және топтық чатта тұрады. Басшылық апталық түзетуді күтеді.',
+        problemTag: 'Бытыраңқы деректер',
+        solution:
+          'Бір деректер қабаты: Postgres немесе Supabase, жүйелерді синхрондайтын API, авторизация мен рөлдер, мониторинг, бүкіл команда нағыз сенетін бір дашборд.',
+        solutionLabel: 'Жүйе',
+        outcome:
+          'Басшылыққа керек кез келген сан — апталық Excel жобасы емес, бір сұраныс қашықтықта.',
+        outcomeLabel: 'Не жойылады',
       },
       {
         id: 'web3',
-        title: 'Web3 және блокчейн',
-        tagline: 'Он-чейн, драмасыз',
-        description:
-          'Қалған стекпен бірдей инженерлік тәртіппен жасалған смарт-келісімшарттар мен он-чейн автоматикасы.',
-        capabilities: ['Solidity келісімшарттары', 'Мультичейн-деплой (ETH, BSC, Arbitrum)', 'Multi-sig конвейерлер', 'Он-чейн мониторинг'],
+        title: '«Он-чейнде керек келісімшарт әлі құрылмаған — және қатеге жол жоқ»',
+        problem:
+          'Токендер эмитталуы керек, airdrop таратылуы керек, multi-sig treasury-ні жағбау керек. Алматыда Solidity инженерлері сирек, және ешкім қателесе алмайды.',
+        problemTag: 'Қауіпті он-чейн',
+        solution:
+          'Жобаланған, тесттен өткен және multi-chain деплой (ETH, BSC, Arbitrum) смарт-келісімшарттар — multi-sig конвейерлері мен он-чейн мониторингі үнсіз келісім бойынша.',
+        solutionLabel: 'Жүйе',
+        outcome:
+          'Жүйе mainnet-ке бір рет шығады — аудит тәртібі мен bug-bounty басынан бастап, инциденттен кейін емес.',
+        outcomeLabel: 'Не жойылады',
       },
     ],
   },
@@ -1045,7 +1147,7 @@ const kz = {
         title: 'Тендер платформасы',
         type: 'Автоматтандыру',
         description:
-          'Әкімші панелі + браузерлік автоматика: мемлекеттік сатып алуларды бақылап, жауап жобalarын дайындап, қолмен бақылаусыз орындауға береді.',
+          'Әкімші панелі + браузерлік автоматика: мемлекеттік сатып алуларды бақылап, жауап жобаларын дайындап, қолмен бақылаусыз орындауға береді.',
         tech: ['Playwright', 'AI агенттер', 'Әкімші панелі'],
         status: 'shipped',
       },
@@ -1063,7 +1165,7 @@ const kz = {
         title: 'Көптілді лендингтер жүйесі',
         type: 'Веб және өнім',
         description:
-          'Стартаптар мен мемлекеттік бағдарламalarға арналған ондаған локализацияланған беттер іске қосылған қайталанатын лендинг фреймворкі — ортақ аналитикамен және CRM-ммен.',
+          'Стартаптар мен мемлекеттік бағдарламаларға арналған ондаған локализацияланған беттер іске қосылған қайталанатын лендинг фреймворкі — ортақ аналитикамен және CRM-ммен.',
         tech: ['Next.js', 'Vercel', 'Аналитика'],
         status: 'shipped',
       },
@@ -1084,7 +1186,7 @@ const kz = {
     resolutionAuto: '~11 мин',
     beats: [
       { title: 'Хабарлама келеді', manual: 'Біреу босағанша ортақ жәшікте жатады.', auto: 'Секундтар ішінде сыныпталды және бағытталды, 24/7.' },
-      { title: 'Қарапайым сұрақ', manual: 'Сол жауап қырықыншы рет көшіріледі.', auto: 'Өз білім қорыңыздан лезде жауап.' },
+      { title: 'Қарапайым сұрақ', manual: 'Сол жауап қырқыншы рет көшіріледі.', auto: 'Өз білім қорыңыздан лезде жауап.' },
       { title: 'Стандартты емес жағдай', manual: 'Үш адам арасында екі рет айналып өтеді.', auto: 'Толық контекспен бір жауаптыға түседі.' },
       { title: 'Есептілік', manual: 'Сандар жұма кешінде жиналады. Немесе жиналмайды.', auto: 'Команда дүйсенбіде шынымен ашатын тірі көрініс.' },
     ],
@@ -1100,7 +1202,7 @@ const kz = {
         title: 'Скан',
         duration: '1–2 апта',
         description:
-          'Бүгін нақты не болып жатқанын карталаймыз: құралдар, қолмен қадамдар, ешкім жазбаған тапсырыстар — бірдеңе ұсынар алдында.',
+          'Бүгін нақты не болып жатқанын карталаймыз: құралдар, қолмен қадамдар, ешкім жазбаған тапсыру-қолдан-қолға берілістер — бірдеңе ұсынар алдында.',
       },
       {
         code: '02',
@@ -1131,7 +1233,7 @@ const kz = {
     heading: 'Неге бізбен қалады.',
     subheading: 'Ең үлкеніміз үшін емес. Жұмыстың қалай жасалатыны үшін.',
     points: [
-      { title: 'Бір жауапты команда', detail: 'Консультант, әзірлеу мердігері және эксплуатация арасындағы эстафета жоқ. Жүйені бағалағандар оны өздері құрады.' },
+      { title: 'Басынан аяғына дейін бір ие', detail: 'Консультант, әзірлеу мердігері және эксплуатация арасындағы эстафета жоқ. Жүйені бағалағандар оны өздері құрады.' },
       { title: 'Бәрі сіздің меншік', detail: 'Репозиторийлер, инфрақұрылым және құжаттама бірінші күні-өзі беріледі. Ертең жоғалып кетсек те, жүйелеріңіз жұмысын жалғастырады.' },
       { title: 'Әр қадамда жұмыс істейтін софт', detail: 'Әр кезеңде нақты нәтиже көресіз — күтуден ауытқу квартал емес, күндер тұрады.' },
       { title: 'Іске қосқаннан кейін де қаламыз', detail: 'Автоматика мен AI бизнеспен бірге дрейфтейді. Тапсырғаннан кейін жоғалмай, сүйемелдеп, баптап отырамыз.' },
@@ -1182,7 +1284,7 @@ const kz = {
       { title: 'Техникалық кеңесші', detail: 'Архитектураңызға, жұмысқа алуыңыз бен жол картасыңызға senior көзқарас — айына бірнеше күн.' },
     ],
     faqHeading: 'Жиі сұрақтар',
-    ctaHeading: 'Қай функция керегін бilmейсіз бе?',
+    ctaHeading: 'Қай функция керегін білмейсіз бе?',
     ctaSubheading: 'Аптаңызды жеп жүрген қол жұмысты сипаттаңыз. Жүйе онымен не істей алатынын ашық айтамыз.',
   },
 
@@ -1243,8 +1345,20 @@ const kz = {
     headingAccent: 'қол жұмыстан бастаңыз.',
     subheading:
       'Командаңыз әлі қолмен істейтінін айтыңыз. Нақты жауап береміз: жүйе нені алуы мүмкін, оған не керек және алдымен не құрар едік.',
+    offer: {
+      kicker: 'Тегін диагностика',
+      title: 'Бірінші аптада қол жұмысыңызды бағалау жүйесі жоспарына айналдырамыз. Жоспар сізде қалады — біз құрасақ та, құрмасақ та. Құрсақ — бірінші кезең бекітілген бағамен.',
+    },
     primary: 'Жоба бастау',
     whatsapp: 'WhatsApp-қа жазу',
+  },
+
+  notFound: {
+    code: '404',
+    heading: 'Бұл бет жүйеге кірмеген.',
+    body: 'Бұл мекенжайда ештеңе жоқ — бет ауысқан немесе мүлде шықпаған болуы мүмкін. Сайттың қалғаны жұмыс істеп тұр.',
+    primary: 'Басты бетке',
+    secondary: 'Жоба бастау',
   },
 
   footer: {
