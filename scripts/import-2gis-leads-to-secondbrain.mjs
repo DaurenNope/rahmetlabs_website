@@ -24,29 +24,10 @@ const canUpsert = have('source') && have('source_id');
 const canIgnore = have('source_id');
 
 let upsert, colsUsed;
-if (canUpsert) {
-  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
-  const cs = Object.keys(fields);
-  upsert = db.prepare(`
-    INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')})
-    VALUES (${cs.map(()=>'?').join(',')})
-    ON CONFLICT(source,source_id) DO UPDATE SET
-      name=excluded.name, url=excluded.url, address=excluded.address,
-      city=excluded.city, phone=excluded.phone, updated_at=excluded.updated_at
-  `);
-} else if (canIgnore) {
-  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
-  const cs = Object.keys(fields);
-  upsert = db.prepare(`
-    INSERT OR IGNORE INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})
-  `);
-} else {
-  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
-  const cs = Object.keys(fields);
-  upsert = db.prepare(`INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
-}
+const baseFields = () => pick({ name:'', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
 
-const cs = Object.keys(fields);
+if (canUpsert) {
+  const cs = Object.keys(baseFields());
   colsUsed = cs;
   upsert = db.prepare(`
     INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')})
@@ -56,16 +37,15 @@ const cs = Object.keys(fields);
       city=excluded.city, phone=excluded.phone, updated_at=excluded.updated_at
   `);
 } else if (canIgnore) {
-  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
-  const cs = Object.keys(fields);
+  const cs = Object.keys(baseFields());
   colsUsed = cs;
   upsert = db.prepare(`INSERT OR IGNORE INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
 } else {
-  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
-  const cs = Object.keys(fields);
+  const cs = Object.keys(baseFields());
   colsUsed = cs;
   upsert = db.prepare(`INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
 }
+
 
 let n = 0, skipped = 0, dup = 0;
 const tx = db.transaction((rows) => {

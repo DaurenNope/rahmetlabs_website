@@ -179,7 +179,7 @@ export default function Process({ process }) {
           <div className="mb-4 flex items-center justify-between gap-4">
             <h3 className="font-sans text-2xl font-bold tracking-tight text-ink transition-all duration-500 hover:text-signal">{s.title}</h3>
             <span
-              className={`whitespace-nowrap rounded-full border px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.12em] transition-all duration-700 ${
+              className={`whitespace-nowrap rounded-full border px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.12em] transition-all duration-700 ${
                 isActive || !enabled ? 'border-signal/50 text-signal scale-105' : 'border-hairline text-ink-faint'
               }`}
             >

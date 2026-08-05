@@ -58,7 +58,7 @@ export default function WorkList({ work, locale, limit = null, headingId = 'work
                     {item.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-hairline px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-ink-muted transition-all duration-500 group-hover:border-signal/30 group-hover:text-ink group-hover:scale-105"
+                        className="rounded-full border border-hairline px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-[0.1em] text-ink-muted transition-all duration-500 group-hover:border-signal/30 group-hover:text-ink group-hover:scale-105"
                       >
                         {t}
                       </span>

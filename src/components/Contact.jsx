@@ -32,7 +32,7 @@ export default function Contact({ contact, locale }) {
   return (
     <>
       {/* header */}
-      <section className="border-b border-hairline/70 pb-16 pt-40 md:pb-24 md:pt-52">
+      <section className="border-b border-hairline/70 pb-16 pt-24 md:pb-24 md:pt-52">
         <div className="mx-auto max-w-content px-5 md:px-10 lg:px-16">
           <Reveal variant="fade" className="max-w-[860px]">
             <p className="kicker mb-8">{contact.kicker}</p>

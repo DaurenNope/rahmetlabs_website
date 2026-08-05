@@ -98,7 +98,7 @@ export default function Services({ services, locale, sectionId = 'services' }) {
                     FIG {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <span className="whitespace-nowrap rounded-full border border-manual/25 px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-manual">
+                <span className="whitespace-nowrap rounded-full border border-manual/25 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-manual">
                   {cat.problemTag}
                 </span>
               </div>
@@ -117,7 +117,7 @@ export default function Services({ services, locale, sectionId = 'services' }) {
               <div className="mt-auto flex items-start gap-3 border-t border-hairline pt-4">
                 <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" />
                 <div>
-                  <span className="mb-1 block font-mono text-[0.58rem] uppercase tracking-[0.2em] text-signal">
+                  <span className="mb-1 block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-signal">
                     {cat.solutionLabel}
                   </span>
                   <p className="line-clamp-3 text-[0.9rem] leading-[1.55] text-ink">{cat.solution}</p>

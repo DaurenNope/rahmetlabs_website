@@ -271,7 +271,7 @@ export default function Hero({ locale, hero }) {
         {/* left hairline — margin rule */}
         <div className="pointer-events-none absolute inset-y-0 left-5 hidden w-px bg-hairline/50 md:left-10 md:block" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto w-full max-w-content px-5 py-32 md:px-10 lg:px-16">
+        <div className="relative z-10 mx-auto w-full max-w-content px-5 py-20 md:px-10 md:py-32 lg:px-16">
           <div className="max-w-[760px]">
             <p className="kicker mb-8">{hero.kicker}</p>
 
@@ -309,7 +309,7 @@ export default function Hero({ locale, hero }) {
             style={{ opacity: phase === 0 ? 1 : 0 }}
             aria-hidden="true"
           >
-            <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-ink-faint">
+            <span className="font-mono text-[0.75rem] uppercase tracking-[0.28em] text-ink-faint">
               {hero.scrollLabel}
             </span>
             <div className="relative h-10 w-px overflow-hidden bg-hairline">

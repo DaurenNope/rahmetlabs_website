@@ -406,19 +406,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile improvements — responsive tweaks and touch gestures          */
 /* ------------------------------------------------------------------ */
 
-/* Mobile-first base styles */
 @media (max-width: 768px) {
-  /* Reduce padding on mobile */
-  .py-28 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-  
-  .py-40 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-  
   /* Smaller font sizes on mobile */
   .text-display {
     font-size: clamp(2rem, 8vw, 3rem);
@@ -430,12 +418,6 @@ h1, h2, h3, h4, h5, h6 {
   
   .text-subhead {
     font-size: clamp(1.125rem, 4vw, 1.5rem);
-  }
-  
-  /* Better touch targets */
-  button, a[href], [role="button"] {
-    min-height: 44px;
-    min-width: 44px;
   }
   
   /* Improve tap highlight */
@@ -453,25 +435,9 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: hidden;
   }
   
-  /* Mobile navigation improvements */
-  .fixed.inset-x-0.top-0 {
-    padding: 0.75rem;
-  }
-  
-  /* Better mobile menu */
-  .fixed.inset-0.z-30 {
-    padding-top: 5rem;
-  }
-  
-  /* Mobile button sizing */
-  .rounded-full {
-    border-radius: 9999px;
-  }
-  
   /* Improve mobile text readability */
-  p, li, span {
+  p, li {
     word-break: break-word;
-    hyphens: auto;
   }
   
   /* Mobile image optimization */
@@ -480,70 +446,16 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
   }
   
-  /* Better mobile form inputs */
+  /* Better mobile form inputs — prevent zoom on iOS */
   input, textarea, select {
-    font-size: 16px; /* Prevent zoom on iOS */
-  }
-  
-  /* Mobile scroll snap for horizontal scrolling */
-  .overflow-x-auto {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .overflow-x-auto > * {
-    scroll-snap-align: start;
-  }
-  
-  /* Mobile touch feedback */
-  .touch-target {
-    position: relative;
-  }
-  
-  .touch-target::after {
-    content: '';
-    position: absolute;
-    inset: -8px;
-  }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  /* Remove hover effects on touch devices */
-  .group:hover .group-hover\:translate-x-1 {
-    transform: none;
-  }
-  
-  .group:hover .group-hover\:scale-105 {
-    transform: none;
-  }
-  
-  .group:hover .group-hover\:text-signal {
-    color: inherit;
-  }
-  
-  /* Simpler transitions on touch */
-  * {
-    transition-duration: 0.1s !important;
-  }
-  
-  /* Better touch targets */
-  button, a[href], [role="button"] {
-    min-height: 48px;
-    min-width: 48px;
+    font-size: 16px;
   }
 }
 
 /* Landscape mobile */
 @media (max-width: 768px) and (orientation: landscape) {
-  /* Adjust for landscape */
   .min-h-screen {
     min-height: auto;
-  }
-  
-  .py-28 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
   }
 }
 
@@ -679,34 +591,14 @@ video[preload="auto"] {
 
 /* Optimize for mobile devices */
 @media (max-width: 768px) {
-  /* Optimize touch interactions */
-  * {
-    touch-action: manipulation;
-  }
-  
   /* Reduce paint operations */
   .mobile-optimize {
     contain: paint;
   }
 }
 
-/* Optimize for low-end devices */
-@media (prefers-reduced-motion: reduce) {
-  /* Disable all animations */
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-  
-  /* Optimize for performance */
-  .reduce-motion {
-    contain: layout style paint;
-  }
-}
-
 /* Optimize for high-DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Use higher quality images */
   .high-dpi {
     image-rendering: -webkit-optimize-contrast;
   }
@@ -737,16 +629,8 @@ button, a[href] {
   100% { outline-offset: 3px; opacity: 1; }
 }
 
-/* Smooth scroll for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection color */
-::selection {
-  background: rgba(31, 78, 168, 0.15);
-  color: #1B1914;
-}
+/* Smooth scroll for anchor links — handled by Lenis */
+/* Selection color — defined at top of file */
 
 /* Custom cursor for interactive elements */
 .cursor-pointer {
@@ -956,12 +840,4 @@ html {
 
 .group:hover .group-hover\:-translate-y-0\.5 {
   transform: translateY(-0.125rem);
-}
-
-/* Disable transitions for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
 }

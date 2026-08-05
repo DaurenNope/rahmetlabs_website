@@ -134,7 +134,7 @@ export default function SiteChrome({ locale, nav }) {
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-label={menuOpen ? nav.closeLabel : nav.menuLabel}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-card/70 backdrop-blur-md transition-all duration-500 hover:border-signal/50 hover:shadow-sm hover:shadow-signal/10 md:hidden"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-card/70 backdrop-blur-md transition-all duration-500 hover:border-signal/50 hover:shadow-sm hover:shadow-signal/10 md:hidden"
             >
               <span
                 className={`absolute h-px w-4 bg-ink transition-all duration-500 ease-settle ${
