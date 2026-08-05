@@ -72,7 +72,7 @@ export default function SiteChrome({ locale, nav }) {
               alt="Rahmet Labs"
               width="46"
               height="32"
-              className="h-8 w-auto object-contain transition-opacity duration-500 group-hover:opacity-80"
+              className="h-8 w-auto object-contain opacity-100 transition-opacity duration-500 group-hover:opacity-80"
             />
           </Link>
 

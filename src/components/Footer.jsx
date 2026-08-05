@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Reveal from './Reveal';
 
 export default function Footer({ footer, thesis, locale, nav }) {
-  const year = new Date().getFullYear();
+  const year = 2024;
 
   return (
     <footer className="relative border-t border-hairline/70" aria-label="Site footer">
