@@ -1,5 +1,5 @@
 export const locales = ['en', 'ru', 'kz'];
-export const defaultLocale = 'en';
+export const defaultLocale = 'ru';
 
 export const localeNames = {
   en: 'EN',
