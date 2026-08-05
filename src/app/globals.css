@@ -448,8 +448,8 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Prevent horizontal scroll */
-  html, body {
+  /* Prevent horizontal scroll — keep only on body; html breaks sticky in Safari */
+  body {
     overflow-x: hidden;
   }
   

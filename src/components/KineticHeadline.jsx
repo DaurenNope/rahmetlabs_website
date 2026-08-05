@@ -61,7 +61,7 @@ export default function KineticHeadline({
             style={{ verticalAlign: 'baseline' }}
           >
             <span
-              className={`inline-block will-change-transform transition-all duration-300 hover:text-signal ${isAccent ? 'serif-accent text-signal' : ''}`}
+              className={`inline-block transition-all duration-300 hover:text-signal ${isAccent ? 'serif-accent text-signal' : ''}`}
               style={{
                 transform: inView ? 'translateY(0) rotate(0deg)' : 'translateY(115%) rotate(1.5deg)',
                 opacity: inView ? 1 : 0,

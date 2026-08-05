@@ -264,7 +264,7 @@ export default function Hero({ locale, hero }) {
       className="relative"
       style={{ height: reduced ? 'auto' : '250vh' }}
     >
-      <div className={`${reduced ? 'relative' : 'sticky top-0'} flex min-h-[100dvh] items-center overflow-hidden`}>
+      <div className={`${reduced ? 'relative' : 'sticky top-0'} flex min-h-[100vh] min-h-[100dvh] items-center overflow-hidden`}>
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
 
         {/* left hairline — margin rule */}
@@ -276,7 +276,7 @@ export default function Hero({ locale, hero }) {
 
             <h1
               id="hero-title"
-              className="mb-9 text-display font-bold text-ink will-change-contents"
+              className="mb-9 text-display font-bold text-ink"
             >
               {headline}
             </h1>

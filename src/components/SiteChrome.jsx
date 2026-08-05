@@ -156,7 +156,7 @@ export default function SiteChrome({ locale, nav }) {
         className={`fixed inset-0 z-30 flex flex-col justify-end transition-all duration-700 ease-settle md:hidden ${
           menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
-        style={{ background: 'rgba(246,244,238,0.92)', backdropFilter: 'blur(24px)' }}
+        style={{ background: 'rgba(246,244,238,0.92)', WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
         aria-hidden={!menuOpen}
       >
         <div className="flex flex-col px-6 pb-16 pt-28">

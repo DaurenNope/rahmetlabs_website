@@ -249,7 +249,7 @@ export default function Process({ process }) {
       className="relative border-t border-hairline/70"
       style={{ height: '340vh' }}
     >
-      <div ref={stickyRef} className="sticky top-0 flex h-[100dvh] flex-col justify-center overflow-hidden">
+      <div ref={stickyRef} className="sticky top-0 flex h-[100vh] h-[100dvh] flex-col justify-center overflow-hidden">
         {/* drafting guides — full-width hairlines the rail travels on */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           {['top-[30%]', 'top-1/2', 'top-[70%]'].map((pos, i) => (

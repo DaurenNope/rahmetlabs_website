@@ -63,8 +63,8 @@ export default function About({ locale, about, principles }) {
               </span>
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-paper [mask-image:linear-gradient(to_right,black,transparent)]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-paper [mask-image:linear-gradient(to_left,black,transparent)]" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-paper" style={{ WebkitMaskImage: 'linear-gradient(to_right,black,transparent)', maskImage: 'linear-gradient(to_right,black,transparent)' }} />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-paper" style={{ WebkitMaskImage: 'linear-gradient(to_left,black,transparent)', maskImage: 'linear-gradient(to_left,black,transparent)' }} />
         </div>
       </section>
 
