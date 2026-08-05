@@ -1,13 +1,11 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <rect width="512" height="512" rx="96" fill="#F6F4EE"/>
-  <g fill="#011B52">
-    <!-- 4-pointed star -->
-    <path d="M96 256c0-40 36-72 80-72s80 32 80 72-36 72-80 72-80-32-80-72zm80-48c-22 0-40 21-40 48s18 48 40 48 40-21 40-48-18-48-40-48z"/>
-    <!-- R vertical stroke -->
-    <path d="M248 120h64v280h-64z"/>
-    <!-- R top bar + bowl -->
-    <path d="M312 120h120c40 0 72 32 72 72v8c0 36-26 66-60 72l68 108h-76l-60-100h-32v100h-64V120h40zm64 64h56c20 0 36-16 36-36v-4c0-20-16-36-36-36h-56v76z"/>
+  <g fill="none" stroke="#011B52" stroke-linecap="round" stroke-linejoin="round">
+    <!-- R vertical stem -->
+    <path d="M160 112v288" stroke-width="48"/>
+    <!-- R top bar -->
+    <path d="M160 112h160c56 0 100 44 100 100s-44 100-100 100H160" stroke-width="48"/>
     <!-- R diagonal leg -->
-    <path d="M312 312l80 128h-72l-56-92-24 28v64h-64V120h64v188l68-88h12l-44 56 36 56z"/>
+    <path d="M280 312l144 188" stroke-width="48"/>
   </g>
 </svg>

@@ -28,8 +28,9 @@ export default function Hero({ locale, hero }) {
   /* ---------------- scroll progress (scrub) ---------------- */
   useEffect(() => {
     const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setReduced(isReduced);
-    if (isReduced) return;
+    const isMobile = window.innerWidth < 768;
+    setReduced(isReduced || isMobile);
+    if (isReduced || isMobile) return;
 
     let ticking = false;
     const onScroll = () => {

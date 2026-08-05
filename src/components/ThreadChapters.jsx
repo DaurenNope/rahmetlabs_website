@@ -51,7 +51,7 @@ export default function ThreadChapters({ chapters }) {
         {chapters.map((ch, i) => (
           <article key={ch.key} className="mx-auto max-w-content px-5 py-16 md:px-10 transition-all duration-500 hover:bg-card/30 hover:py-20">
             <div className="flex items-start gap-6">
-              <span className="mt-2 font-mono text-sm font-semibold tracking-[0.2em] text-signal transition-all duration-500 hover:tracking-[0.25em] hover:text-signal/80">FIG. {ch.key}</span>
+              <span className="mt-2 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink-faint">{ch.key}</span>
               <div>
                 <h2 className="mb-5 text-subhead font-bold text-ink transition-all duration-500 hover:text-signal md:text-headline">{ch.title}</h2>
                 <p className="mb-3 max-w-[58ch] text-[1.02rem] leading-relaxed text-ink-muted transition-colors duration-500 hover:text-ink/80">{ch.lead}</p>

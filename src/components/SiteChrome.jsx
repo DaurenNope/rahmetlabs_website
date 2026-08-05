@@ -107,13 +107,13 @@ export default function SiteChrome({ locale, nav }) {
           {/* right cluster */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* locale switcher */}
-            <div className="hidden items-center rounded-full border border-hairline bg-card/60 p-0.5 backdrop-blur-md sm:flex transition-all duration-500 hover:border-signal/30 hover:shadow-sm hover:shadow-signal/5">
+            <div className="hidden items-center gap-1 sm:flex">
               {locales.map((loc) => (
                 <Link
                   key={loc}
                   href={localePath(loc)}
-                  className={`rounded-full px-2.5 py-1 font-mono text-[0.6rem] font-medium tracking-[0.1em] transition-all duration-500 ${
-                    loc === locale ? 'bg-signal text-paper scale-105' : 'text-ink-muted hover:text-ink hover:bg-card/50'
+                  className={`rounded-full px-3 py-1.5 font-mono text-[0.65rem] font-semibold tracking-[0.08em] transition-all duration-300 ${
+                    loc === locale ? 'bg-ink text-paper' : 'text-ink-faint hover:text-ink'
                   }`}
                 >
                   {localeNames[loc]}
@@ -199,7 +199,7 @@ export default function SiteChrome({ locale, nav }) {
 
           {/* locale row */}
           <div
-            className="mt-8 flex items-center justify-center gap-2"
+            className="mt-8 flex items-center justify-center gap-3"
             style={{
               opacity: menuOpen ? 1 : 0,
               transition: `opacity 0.5s ease ${menuOpen ? '400ms' : '0ms'}`,
@@ -209,8 +209,8 @@ export default function SiteChrome({ locale, nav }) {
               <Link
                 key={loc}
                 href={localePath(loc)}
-                className={`rounded-full px-4 py-2 font-mono text-[0.65rem] font-medium tracking-[0.12em] transition-all duration-500 ${
-                  loc === locale ? 'bg-signal text-paper scale-105' : 'border border-hairline text-ink-muted hover:border-signal/50 hover:text-signal hover:scale-105'
+                className={`rounded-full px-5 py-2.5 font-mono text-[0.7rem] font-semibold tracking-[0.1em] transition-all duration-300 ${
+                  loc === locale ? 'bg-ink text-paper' : 'text-ink-faint hover:text-ink'
                 }`}
                 tabIndex={menuOpen ? 0 : -1}
               >

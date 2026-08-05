@@ -23,7 +23,7 @@ const pick = fields => Object.fromEntries(Object.entries(fields).filter(([k]) =>
 const canUpsert = have('source') && have('source_id');
 const canIgnore = have('source_id');
 
-let upsert;
+let upsert, colsUsed;
 if (canUpsert) {
   const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
   const cs = Object.keys(fields);
@@ -46,31 +46,47 @@ if (canUpsert) {
   upsert = db.prepare(`INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
 }
 
-const colsUsed = Object.keys(upsert.reader ? [] : []);
+const cs = Object.keys(fields);
+  colsUsed = cs;
+  upsert = db.prepare(`
+    INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')})
+    VALUES (${cs.map(()=>'?').join(',')})
+    ON CONFLICT(source,source_id) DO UPDATE SET
+      name=excluded.name, url=excluded.url, address=excluded.address,
+      city=excluded.city, phone=excluded.phone, updated_at=excluded.updated_at
+  `);
+} else if (canIgnore) {
+  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
+  const cs = Object.keys(fields);
+  colsUsed = cs;
+  upsert = db.prepare(`INSERT OR IGNORE INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
+} else {
+  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
+  const cs = Object.keys(fields);
+  colsUsed = cs;
+  upsert = db.prepare(`INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
+}
+
 let n = 0, skipped = 0, dup = 0;
 const tx = db.transaction((rows) => {
   for (const r of rows) {
     const row = pick({
-      name: r.name || '',
-      source: '2gis',
-      source_id: String(r.firm_id || ''),
-      url: r.url || '',
-      address: r.address || '',
-      city: r.city || '',
+      name: r.name || '', source: '2gis', source_id: String(r.firm_id || ''),
+      url: r.url || '', address: r.address || '', city: r.city || '',
       phone: Array.isArray(r.phone) ? r.phone.join(',') : (r.phone || ''),
       updated_at: new Date().toISOString(),
     });
     if (!row.source_id) { skipped++; continue; }
     try { upsert.run(Object.values(row)); n++; }
-    catch (e) { if (String(e.message).includes('UNIQUE')) dup++; else { console.error('insert err:', e.message, JSON.stringify(row)); } }
+    catch (e) { if (String(e.message).includes('UNIQUE')) dup++; else console.error('insert err:', e.message, JSON.stringify(row)); }
   }
 });
 
 const rows = [];
 for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
   const t = line.trim(); if (!t) continue;
-  try { rows.push(JSON.parse(t)); } catch (e) { skipped++; }
+  try { rows.push(JSON.parse(t)); } catch { skipped++; }
 }
 tx(rows);
-console.log(`2GIS leads -> second_brain.db: ${n} written, ${dup} duplicate-skipped, ${skipped} skipped-no-id. companies columns used: [${Object.keys(pick({ name:'x', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:'x' })).join(', ')}]`);
+console.log(`2GIS leads -> second_brain.db: ${n} written, ${dup} duplicate-skipped, ${skipped} skipped-no-id. columns used: [${colsUsed.join(', ')}]`);
 db.close();
