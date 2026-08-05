@@ -1,50 +1,76 @@
 #!/usr/bin/env node
-// Lightweight bridge: 2GIS leads (JSONL output from any 2GIS scrape) -> acedia second_brain.db `companies`.
-// Runs on the VPS after a nightly 2GIS crawl. Schema-adaptive: introspects `companies` columns so it
-// survives schema drift in second_brain.db (inserts only columns that exist).
-// Usage: SECOND_BRAIN_DB=/root/.hermes/data/second_brain.db node scripts/import-2gis-leads-to-secondbrain.mjs data/kz-leads-almaty-2026-08-06.jsonl
+// Lightweight bridge: 2GIS leads (JSONL) -> acedia `second_brain.db`.companies
+// Schema-adaptive: introspects `companies` columns so it won't break on schema drift,
+// and adapts the upsert strategy to whatever columns actually exist.
+// Usage:
+//   SECOND_BRAIN_DB=/root/.hermes/data/second_brain.db \
+//     node scripts/import-2gis-leads-to-secondbrain.mjs data/kz-leads-almaty-2026-08-06.jsonl
 import Database from 'better-sqlite3';
 import fs from 'fs';
-import path from 'path';
 
 const dbPath = process.env.SECOND_BRAIN_DB || '/root/.hermes/data/second_brain.db';
 const file = process.argv[2];
-if (!file) { console.error('usage: IMPORT_2GIS_LEADS ... <leads.jsonl>'); process.exit(2); }
+if (!file) { console.error('usage: node import-2gis-leads-to-secondbrain.mjs <leads.jsonl>'); process.exit(2); }
+if (!fs.existsSync(file)) { console.error(`not found: ${file}`); process.exit(2); }
+if (!fs.existsSync(dbPath)) { console.error(`not found: ${dbPath}`); process.exit(2); }
 
 const db = new Database(dbPath);
-const cols = db.prepare(`PRAGMA table_info(companies)`).all().map(c => c.name);
+const cols = db.prepare('PRAGMA table_info(companies)').all().map(c => c.name);
+const have = c => cols.includes(c);
+const pick = fields => Object.fromEntries(Object.entries(fields).filter(([k]) => have(k)));
 
-const have = (c) => cols.includes(c);
-const colList = (cs) => cs.map(c => `"${c}"`).join(', ');
-const ph = (cs) => cs.map(() => '?').join(', ');
+// Determine upsert capability: prefer (source,source_id) conflict; else insert-or-ignore on source_id; else plain insert.
+const canUpsert = have('source') && have('source_id');
+const canIgnore = have('source_id');
 
-const upsertCols = ['name','source','source_id','url','address','city','phone','updated_at']
-  .filter(have);
-const insertCols = upsertCols;
-const conflict = have('source_id') && have('source') ? 'ON CONFLICT(source,source_id) DO UPDATE SET name=excluded.name,url=excluded.url,address=excluded.address,city=excluded.city,phone=excluded.phone,updated_at=excluded.updated_at' : '';
+let upsert;
+if (canUpsert) {
+  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
+  const cs = Object.keys(fields);
+  upsert = db.prepare(`
+    INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')})
+    VALUES (${cs.map(()=>'?').join(',')})
+    ON CONFLICT(source,source_id) DO UPDATE SET
+      name=excluded.name, url=excluded.url, address=excluded.address,
+      city=excluded.city, phone=excluded.phone, updated_at=excluded.updated_at
+  `);
+} else if (canIgnore) {
+  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
+  const cs = Object.keys(fields);
+  upsert = db.prepare(`
+    INSERT OR IGNORE INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})
+  `);
+} else {
+  const fields = pick({ name:'name', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:new Date().toISOString() });
+  const cs = Object.keys(fields);
+  upsert = db.prepare(`INSERT INTO companies (${cs.map(c=>`"${c}"`).join(',')}) VALUES (${cs.map(()=>'?').join(',')})`);
+}
 
-const upsert = db.prepare(`
-  INSERT INTO companies (${colList(insertCols)}) VALUES (${ph(insertCols)})
-  ${conflict}
-`);
+const colsUsed = Object.keys(upsert.reader ? [] : []);
+let n = 0, skipped = 0, dup = 0;
+const tx = db.transaction((rows) => {
+  for (const r of rows) {
+    const row = pick({
+      name: r.name || '',
+      source: '2gis',
+      source_id: String(r.firm_id || ''),
+      url: r.url || '',
+      address: r.address || '',
+      city: r.city || '',
+      phone: Array.isArray(r.phone) ? r.phone.join(',') : (r.phone || ''),
+      updated_at: new Date().toISOString(),
+    });
+    if (!row.source_id) { skipped++; continue; }
+    try { upsert.run(Object.values(row)); n++; }
+    catch (e) { if (String(e.message).includes('UNIQUE')) dup++; else { console.error('insert err:', e.message, JSON.stringify(row)); } }
+  }
+});
 
-let n = 0, skipped = 0;
+const rows = [];
 for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
   const t = line.trim(); if (!t) continue;
-  const r = JSON.parse(t);
-  const row = {
-    name: r.name || '',
-    source: '2gis',
-    source_id: String(r.firm_id || ''),
-    url: r.url || '',
-    address: r.address || '',
-    city: r.city || '',
-    phone: (r.phone || []).join(','),
-    updated_at: new Date().toISOString(),
-  };
-  if (!row.source_id) { skipped++; continue; }
-  db.prepare('INSERT OR IGNORE INTO companies (' + colList(insertCols.filter(c=>c!=='updated_at')) + ') VALUES (' + ph(insertCols.filter(c=>c!=='updated_at')) + ')').run(...insertCols.filter(c=>c!=='updated_at').map(c=>row[c]));
-  n++;
+  try { rows.push(JSON.parse(t)); } catch (e) { skipped++; }
 }
-console.log(`import 2gis -> second_brain.db: ${n} upserted, ${skipped} skipped (no source_id). companies columns used: ${insertCols.join(',')}`);
+tx(rows);
+console.log(`2GIS leads -> second_brain.db: ${n} written, ${dup} duplicate-skipped, ${skipped} skipped-no-id. companies columns used: [${Object.keys(pick({ name:'x', source:'2gis', source_id:'', url:'', address:'', city:'', phone:'', updated_at:'x' })).join(', ')}]`);
 db.close();
