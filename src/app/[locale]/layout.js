@@ -125,6 +125,7 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={htmlLang[locale]} className={`${geologica.variable} ${notoSansMono.variable} ${spectral.variable}`}>
       <head>
+        <meta name="google-site-verification" content="95B2b45I25wY0LXAmb73mZ07fcFC1ItNWhb9LNPj8Jg" />
         {alternateLinks.map((l) => (
           <link key={l.hrefLang} rel="alternate" hrefLang={l.hrefLang} href={l.href} />
         ))}
