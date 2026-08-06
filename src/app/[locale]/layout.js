@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
     keywords: meta.keywords,
     alternates: {
       canonical: `${siteUrl}/${locale}`,
-      languages: { 'x-default': siteUrl, ...languages },
+      languages: { 'x-default': `${siteUrl}/ru`, ...languages },
     },
     openGraph: {
       title: meta.title,
@@ -86,7 +86,7 @@ export default async function LocaleLayout({ children, params }) {
   const dict = getDictionary(locale);
 
   const alternateLinks = [
-    { hrefLang: 'x-default', href: siteUrl },
+    { hrefLang: 'x-default', href: `${siteUrl}/ru` },
     ...locales.map((loc) => ({ hrefLang: htmlLang[loc], href: `${siteUrl}/${loc}` })),
   ];
 

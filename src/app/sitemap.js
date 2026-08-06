@@ -13,7 +13,7 @@ export default function sitemap() {
       changeFrequency: route === '' ? 'weekly' : 'monthly',
       priority: route === '' ? 1 : 0.8,
       alternates: {
-        languages: { 'x-default': `${baseUrl}${route}`, ...Object.fromEntries(locales.map((loc) => [htmlLang[loc], `${baseUrl}/${loc}${route}`])) },
+        languages: { 'x-default': `${baseUrl}/ru`, ...Object.fromEntries(locales.map((loc) => [htmlLang[loc], `${baseUrl}/${loc}${route}`])) },
       },
     }))
   );
