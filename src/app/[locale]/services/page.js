@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { isValidLocale } from '../../../lib/locales';
 import { getDictionary } from '../../../lib/content';
 import Services from '../../../components/Services';
+import ServicesDetail from '../../../components/ServicesDetail';
 import Process from '../../../components/Process';
 import FinalCta from '../../../components/FinalCta';
 import Reveal from '../../../components/Reveal';
@@ -64,6 +65,8 @@ export default async function ServicesPage({ params }) {
       </section>
 
       <Services services={dict.whatWeBuild} locale={locale} sectionId="capabilities" />
+
+      <ServicesDetail servicesPage={sp} />
 
       {/* engagement models */}
       <section className="border-t border-hairline/70 py-28 md:py-36" aria-labelledby="engagement-heading">
