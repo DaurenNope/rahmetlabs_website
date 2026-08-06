@@ -12,6 +12,7 @@ import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { locales, localeNames } from '../lib/locales';
+import { trackCTA, trackLocaleSwitch } from '../lib/track';
 import Button from './Button';
 
 function stripLocale(pathname, locale) {
@@ -112,6 +113,7 @@ export default function SiteChrome({ locale, nav }) {
                 <Link
                   key={loc}
                   href={localePath(loc)}
+                  onClick={() => { if (loc !== locale) trackLocaleSwitch(locale, loc); }}
                   className={`rounded-full px-3 py-1.5 font-mono text-[0.65rem] font-semibold tracking-[0.08em] transition-all duration-300 ${
                     loc === locale ? 'bg-ink text-paper' : 'text-ink-faint hover:text-ink'
                   }`}

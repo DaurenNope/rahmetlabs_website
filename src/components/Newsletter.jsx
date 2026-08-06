@@ -8,6 +8,7 @@
 
 import { useState } from 'react';
 import Reveal from './Reveal';
+import { trackNewsletter } from '../lib/track';
 
 const COPY = {
   en: {
@@ -58,6 +59,7 @@ export default function Newsletter({ locale = 'en' }) {
 
     setStatus('loading');
     setMessage('');
+    trackNewsletter('submit');
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -69,14 +71,17 @@ export default function Newsletter({ locale = 'en' }) {
       if (!res.ok || !data.ok) {
         setStatus('error');
         setMessage(data?.message || c.network);
+        trackNewsletter('error');
         return;
       }
       setStatus('success');
       setMessage(data?.message || 'Subscribed!');
       setEmail('');
+      trackNewsletter('success', email);
     } catch {
       setStatus('error');
       setMessage(c.network);
+      trackNewsletter('error');
     }
   }
 

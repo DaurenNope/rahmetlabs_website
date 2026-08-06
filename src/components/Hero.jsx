@@ -9,6 +9,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Button from './Button';
+import { trackCTA } from '../lib/track';
 
 const SIGNAL = [43, 75, 215];
 const INK = [27, 25, 20];
@@ -287,8 +288,8 @@ export default function Hero({ locale, hero }) {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button href={`/${locale}/contact`} variant="primary">{hero.ctaPrimary}</Button>
-              <Button href={`/${locale}/portfolio`} variant="ghost">{hero.ctaSecondary}</Button>
+              <Button href={`/${locale}/contact`} variant="primary" onClick={() => trackCTA({ location: 'hero', label: hero.ctaPrimary, href: `/${locale}/contact` })}>{hero.ctaPrimary}</Button>
+              <Button href={`/${locale}/portfolio`} variant="ghost" onClick={() => trackCTA({ location: 'hero', label: hero.ctaSecondary, href: `/${locale}/portfolio` })}>{hero.ctaSecondary}</Button>
             </div>
 
             <div className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-hairline/60 pt-5">

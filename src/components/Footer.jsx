@@ -8,6 +8,7 @@
 
 import Link from 'next/link';
 import Reveal from './Reveal';
+import { trackContact } from '../lib/track';
 
 export default function Footer({ footer, thesis, locale, nav }) {
   const year = 2024;
@@ -58,17 +59,17 @@ export default function Footer({ footer, thesis, locale, nav }) {
             <p className="mb-5 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-ink-faint">{footer.contactLabel}</p>
             <ul className="space-y-2.5">
               <li>
-                <a href="https://wa.me/77088413062" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
+                <a href="https://wa.me/77088413062" target="_blank" rel="noopener noreferrer" onClick={() => trackContact({ channel: 'whatsapp', label: 'footer' })} className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
                   WhatsApp — +7 708 841 3062
                 </a>
               </li>
               <li>
-                <a href="https://t.me/RahmetLabs" target="_blank" rel="noopener noreferrer" className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
+                <a href="https://t.me/RahmetLabs" target="_blank" rel="noopener noreferrer" onClick={() => trackContact({ channel: 'telegram', label: 'footer' })} className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
                   Telegram — @RahmetLabs
                 </a>
               </li>
               <li>
-                <a href="mailto:rahmetlabs@gmail.com" className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
+                <a href="mailto:rahmetlabs@gmail.com" onClick={() => trackContact({ channel: 'email', label: 'footer' })} className="text-[0.92rem] text-ink-muted transition-all duration-500 hover:text-signal hover:translate-x-1 inline-block">
                   rahmetlabs@gmail.com
                 </a>
               </li>

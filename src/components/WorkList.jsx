@@ -7,6 +7,7 @@
  */
 
 import Reveal from './Reveal';
+import { trackWorkClick } from '../lib/track';
 
 // Captured live-site screenshots (projects we could reach headless).
 const IMG = {
@@ -101,6 +102,7 @@ export default function WorkList({ work, locale, limit = null, headingId = 'work
                       href={l.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackWorkClick({ project: item.title, location: 'work_list' })}
                       className="group/link flex items-center gap-1.5 font-mono text-[0.66rem] tracking-[0.06em] text-ink transition-all duration-500 hover:text-signal hover:translate-x-1"
                     >
                       {l.label}
