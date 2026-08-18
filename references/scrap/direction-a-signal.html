@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmet Labs · Direction A: Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090D;
+    --panel: #0C1016;
+    --core: #10151D;
+    --ink: #E9EDF3;
+    --muted: #8B95A5;
+    --faint: #5A6474;
+    --signal: #4C8DFF;
+    --signal-deep: #2B4BD7;
+    --manual: #C14A36;
+    --hairline: rgba(233, 237, 243, 0.09);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Onest', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--signal); color: var(--bg); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  h1, h2, h3, .logo { font-family: 'Wix Madefor Display', 'Onest', sans-serif; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: linear-gradient(rgba(7, 9, 13, 0.82), rgba(7, 9, 13, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .logo { font-weight: 700; letter-spacing: -0.01em; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+  .logo sup { color: var(--signal); font-size: 0.55em; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    color: var(--bg) !important; background: var(--signal); border-radius: 999px; padding: 10px 18px;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav-cta:hover { background: #6FA3FF; transform: translateY(-1px); }
+
+  /* ---------- hero ---------- */
+  header {
+    position: relative; min-height: 100dvh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 40px 64px;
+  }
+  #thread-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-inner { position: relative; z-index: 2; max-width: 1200px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 28px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--signal); }
+  h1 {
+    display: grid;
+    font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+    font-weight: 600; letter-spacing: -0.02em; line-height: 1.04;
+    max-width: 18ch; margin-bottom: 30px;
+  }
+  h1 .state { grid-area: 1 / 1; align-self: start; }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: baseline; padding-bottom: 0.09em; margin-bottom: -0.09em; }
+  h1 .w > span { display: inline-block; transform: translateY(115%); will-change: transform; }
+  h1 .a-manual { color: var(--manual); }
+  h1 .a-system { color: var(--signal); }
+  .sub {
+    max-width: 52ch; color: var(--muted); font-size: 1.06rem; line-height: 1.65; margin-bottom: 42px;
+    opacity: 0; transform: translateY(18px);
+  }
+  .cta-row { display: flex; gap: 16px; align-items: center; opacity: 0; transform: translateY(18px); flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--signal); color: #06101F; text-decoration: none;
+    font-weight: 600; font-size: 0.86rem; letter-spacing: 0.01em;
+    padding: 8px 8px 8px 24px; border-radius: 999px;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #6FA3FF; box-shadow: 0 16px 34px -16px rgba(0, 0, 0, 0.65); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary .orb {
+    width: 36px; height: 36px; border-radius: 999px; background: rgba(6, 16, 31, 0.14);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover .orb { transform: translate(2px, -2px); background: rgba(6, 16, 31, 0.24); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ink); text-decoration: none; font-size: 0.86rem; font-weight: 500;
+    padding: 14px 22px; border-radius: 999px; border: 1px solid var(--hairline);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-ghost:hover { border-color: rgba(233, 237, 243, 0.35); background: rgba(233, 237, 243, 0.04); }
+
+  /* ---------- the travelling line ---------- */
+  .divider { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+  .divider .track { height: 1px; background: var(--hairline); position: relative; }
+  .divider .seg {
+    position: absolute; left: 0; top: 0; height: 1px; width: 140px;
+    background: var(--signal); transform: scaleX(0); transform-origin: left;
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 110px 40px; max-width: 1440px; margin: 0 auto; }
+  .sec-head { max-width: 780px; margin-bottom: 64px; }
+  .sec-kicker {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--signal); margin-bottom: 22px; display: block;
+  }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.06; }
+  .sec-sub { margin-top: 20px; color: var(--muted); font-size: 1rem; line-height: 1.65; max-width: 56ch; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .bezel {
+    background: rgba(233, 237, 243, 0.035); border: 1px solid var(--hairline);
+    border-radius: 26px; padding: 7px;
+    transition: border-color 0.5s var(--ease), transform 0.6s var(--ease);
+  }
+  .bezel:hover { border-color: rgba(76, 141, 255, 0.35); transform: translateY(-4px); }
+  .bezel-core {
+    background: var(--core); border-radius: 20px; padding: 34px 32px 30px;
+    height: 100%; display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(233, 237, 243, 0.05);
+    position: relative; overflow: hidden;
+  }
+  .bezel-core::after {
+    content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: var(--signal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.7s var(--ease);
+  }
+  .bezel:hover .bezel-core::after { transform: scaleX(1); }
+  .card-tag {
+    align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--manual);
+    border: 1px solid rgba(193, 74, 54, 0.35); border-radius: 999px; padding: 6px 12px; margin-bottom: 26px;
+  }
+  .card-quote { font-family: 'Wix Madefor Display', sans-serif; font-size: 1.38rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.28; margin-bottom: 16px; }
+  .card-problem { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 28px; }
+  .card-sys { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--hairline); }
+  .card-sys .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--signal); display: block; margin-bottom: 8px; }
+  .card-sys p { font-size: 0.88rem; line-height: 1.55; color: var(--ink); }
+
+  /* ---------- work ledger ---------- */
+  .ledger { border-top: 1px solid var(--hairline); }
+  .row {
+    display: grid; grid-template-columns: 1.4fr auto auto; gap: 28px; align-items: center;
+    padding: 34px 10px; border-bottom: 1px solid var(--hairline); text-decoration: none; color: inherit;
+    transition: background 0.5s var(--ease);
+  }
+  .row:hover { background: rgba(233, 237, 243, 0.025); }
+  .row h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.015em; transition: transform 0.5s var(--ease); }
+  .row:hover h3 { transform: translateX(8px); }
+  .row .type { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+  .live { color: var(--signal); display: inline-flex; align-items: center; gap: 7px; }
+  .live i {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--signal);
+    animation: pulse 2.2s var(--ease) infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .row .thumb {
+    width: 190px; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--hairline); background: var(--panel); justify-self: end;
+  }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.8s var(--ease); }
+  .row:hover .thumb img { transform: scale(1.05); }
+  .row .arrow {
+    width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center; color: var(--muted);
+    transition: all 0.5s var(--ease);
+  }
+  .row:hover .arrow { background: var(--signal); border-color: var(--signal); color: #06101F; transform: rotate(45deg); }
+
+  /* ---------- cta band ---------- */
+  .cta-band {
+    margin: 40px; border-radius: 32px; background: linear-gradient(135deg, #0E1830 0%, #0A1020 60%, #0A0E18 100%);
+    border: 1px solid rgba(76, 141, 255, 0.22);
+    padding: 100px 60px; text-align: left; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; width: 700px; height: 700px; right: -200px; top: -300px;
+    background: radial-gradient(circle, rgba(76, 141, 255, 0.16) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-band .pulse-line { display: block; margin-bottom: 36px; }
+  .cta-band .pulse-line path { stroke: var(--signal); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .cta-band h2 { font-size: clamp(2.2rem, 5vw, 4.2rem); max-width: 18ch; position: relative; }
+  .cta-band .offer {
+    margin: 30px 0 44px; max-width: 58ch; color: var(--muted); font-size: 1rem; line-height: 1.7;
+    padding-left: 22px; border-left: 2px solid var(--signal); position: relative;
+  }
+  .cta-band .btn-primary { position: relative; }
+
+  footer {
+    padding: 44px 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .reveal { opacity: 0; transform: translateY(34px); }
+
+  body.reduced h1 .state { grid-area: auto; }
+  body.reduced h1 .state + .state { margin-top: 0.2em; }
+  body.reduced .reveal, body.reduced .sub, body.reduced .cta-row { opacity: 1 !important; transform: none !important; }
+  body.reduced h1 .w > span { transform: none !important; }
+  body.reduced .divider .seg { transform: scaleX(1) !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    header { padding: 0 20px 48px; }
+    section { padding: 80px 20px; }
+    .divider { padding: 0 20px; }
+    .cards { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; gap: 14px; }
+    .row .thumb { width: 100%; justify-self: start; }
+    .cta-band { margin: 20px; padding: 70px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .sub, .cta-row { opacity: 1 !important; transform: none !important; }
+    h1 .w > span { transform: none !important; }
+    .live i { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">RAHMET<sup>®</sup></a>
+  <div class="nav-links">
+    <a href="#systems">Systems</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Tell us what's manual</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <canvas id="thread-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <span class="eyebrow">Rahmet Labs: Automation, AI &amp; Product Engineering</span>
+    <h1 id="headline">
+      <span class="state state-a">Your business is drowning in <span class="a-manual">manual work.</span></span>
+      <span class="state state-b">We build <span class="a-system">the systems</span> that end it.</span>
+    </h1>
+    <p class="sub" id="sub">One senior team builds automation and AI that replace your spreadsheets, copy-paste, and follow-up threads, then stays to run them.</p>
+    <div class="cta-row" id="ctas">
+      <a class="btn-primary" href="#contact">
+        Tell us what's manual
+        <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+</header>
+
+<div class="divider" aria-hidden="true"><div class="track"><div class="seg"></div></div></div>
+
+<section id="systems">
+  <div class="sec-head reveal">
+    <span class="sec-kicker">What we fix</span>
+    <h2>Four ways work breaks down, and the systems we build instead.</h2>
+    <p class="sec-sub">Four failure patterns we see again and again in Kazakhstani and regional companies. And the systems we build so they stop happening.</p>
+  </div>
+  <div class="cards">
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Manual ops</span>
+      <p class="card-quote">"Someone still does this by hand."</p>
+      <p class="card-problem">Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human, and only when.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">AI agents</span>
+      <p class="card-quote">"Tickets wait. Leads stall. Nobody answers fast enough."</p>
+      <p class="card-problem">Support queues grow while the team sleeps. Leads from the website wait hours for a first reply that should take seconds.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>AI agents that answer, qualify, and route in seconds, in your tone of voice, with a human handoff when the conversation needs one.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Web &amp; product</span>
+      <p class="card-quote">"Our site doesn't actually do anything."</p>
+      <p class="card-problem">A brochure that collects dust. No intake, no booking, no dashboard. Every enquiry still lands in a personal WhatsApp.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Web products that transact: intake forms, client portals, dashboards, and booking flows wired straight into your operations.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Data &amp; backend</span>
+      <p class="card-quote">"Nobody knows which number is the right one."</p>
+      <p class="card-problem">Sales has one figure, accounting has another, the warehouse a third. Meetings start with arguing about whose spreadsheet is current.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>One backend of record: synced data, clean APIs, and dashboards everyone trusts because they all read from the same source.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><div class="track"><div class="seg"></div></div></div>
+
+<section id="work">
+  <div class="sec-head reveal">
+    <h2>Systems we've shipped.</h2>
+  </div>
+  <div class="ledger">
+    <a class="row reveal" href="#">
+      <span><h3>Education Platform Suite</h3><span class="type">Web &amp; Product <span class="live"><i></i>Live</span></span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Beyond Lines</h3><span class="type">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/beyond-lines.png" alt="Beyond Lines live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Unhireable</h3><span class="type">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/unhireable.png" alt="Unhireable live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Multi-Platform Bot Suite</h3><span class="type">Automation · Shipped</span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band reveal" id="contact">
+  <svg class="pulse-line" width="160" height="22" viewBox="0 0 160 22" aria-hidden="true">
+    <path id="pulse-path" d="M2 14 H52 L60 14 L67 3 L76 21 L83 14 H158"/>
+  </svg>
+  <h2>Start with the manual work that eats your week.</h2>
+  <p class="offer">In the first week, we map your manual work into a scored system plan. The plan is yours whether or not we build. If we do build, the first stage is fixed-price.</p>
+  <a class="btn-primary" href="#">
+    Tell us what's manual
+    <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a>
+</div>
+
+<footer>
+  <span>© 2026 Rahmet Labs</span>
+  <span>Almaty, Kazakhstan</span>
+  <span>EN / RU / KZ</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 900px)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  if (reduced) document.body.classList.add('reduced');
+
+  /* word masking, preserving accent spans */
+  function splitWords(el) {
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = '';
+    nodes.forEach(function (n) {
+      var cls = n.nodeType === 1 ? n.className : '';
+      n.textContent.split(/(\s+)/).forEach(function (tok) {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(' ')); return; }
+        var mask = document.createElement('span');
+        mask.className = 'w';
+        var inner = document.createElement('span');
+        inner.textContent = tok;
+        if (cls) inner.className = cls;
+        mask.appendChild(inner);
+        el.appendChild(mask);
+      });
+    });
+  }
+  var stateA = document.querySelector('.state-a');
+  var stateB = document.querySelector('.state-b');
+  splitWords(stateA); splitWords(stateB);
+
+  /* ---------- canvas: red noise tuned into one blue line ---------- */
+  var canvas = document.getElementById('thread-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+  var start = performance.now();
+  var visible = true, running = true;
+  var prog = { p: reduced ? 1 : 0 };
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(canvas);
+  document.addEventListener('visibilitychange', function () { running = document.visibilityState === 'visible'; });
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function smooth(v) { return v * v * (3 - 2 * v); }
+  function easeOut(v) { return 1 - Math.pow(1 - v, 3); }
+  function noise(x, t) {
+    return Math.sin(x * 7.3 + t * 1.7) * Math.cos(x * 3.1 - t * 1.1) + Math.sin(x * 13.7 + t * 0.7) * 0.5;
+  }
+
+  function draw(now) {
+    requestAnimationFrame(draw);
+    if (!visible || !running) return;
+    var t = reduced ? 0 : (now - start) / 1000;
+    var p = prog.p;
+    ctx.clearRect(0, 0, W, H);
+
+    ctx.strokeStyle = 'rgba(233,237,243,0.045)';
+    ctx.lineWidth = 1;
+    for (var gx = 0; gx <= W; gx += 64) { ctx.beginPath(); ctx.moveTo(gx + 0.5, 0); ctx.lineTo(gx + 0.5, H); ctx.stroke(); }
+    for (var gy = 0; gy <= H; gy += 64) { ctx.beginPath(); ctx.moveTo(0, gy + 0.5); ctx.lineTo(W, gy + 0.5); ctx.stroke(); }
+
+    var baseY = H * 0.62;
+
+    /* red manual noise, absorbed left to right as you scroll */
+    ctx.lineWidth = 1.4;
+    for (var s = 0; s < 3; s++) {
+      ctx.strokeStyle = 'rgba(193,74,54,' + ((0.34 - s * 0.09) * (1 - 0.45 * p)).toFixed(3) + ')';
+      ctx.beginPath();
+      for (var x = 0; x <= W * 0.6; x += 5) {
+        var u = x / W;
+        var env = Math.max(0, 1 - u / 0.55);
+        var absorb = smooth(clamp((p * 1.25 - u * 0.9) / 0.35, 0, 1));
+        var amp = 46 * env * (1 - absorb);
+        var y = baseY + noise(u * 4 + s * 2.7, t) * amp + Math.sin(u * 40 + s * 5 + t * 2) * 12 * env * (1 - absorb);
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    /* the blue system line: draws in, rises, then levels to running */
+    if (p > 0.06) {
+      var bp = clamp((p - 0.06) / 0.94, 0, 1);
+      var x0 = W * 0.10, x1 = W * 0.92;
+      var ex = x0 + (x1 - x0) * easeOut(bp);
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = '#4C8DFF';
+      ctx.shadowColor = 'rgba(76,141,255,0.55)';
+      ctx.shadowBlur = 14;
+      ctx.beginPath();
+      for (var sx = x0; sx <= ex; sx += 4) {
+        var su = sx / W;
+        var rise = smooth(clamp((su - 0.18) / 0.34, 0, 1));
+        var settle = Math.max(0, 1 - (su - 0.10) / 0.30); settle *= settle;
+        var wob = noise(su * 4, t * 0.6) * 26 * settle * (1 - bp * 0.7);
+        var sy = baseY - rise * H * 0.20 + wob;
+        sx === x0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      if (bp >= 1 && !reduced) {
+        var pu = 0.55 + ((t * 0.10) % 0.37);
+        var py = baseY - smooth(clamp((pu - 0.18) / 0.34, 0, 1)) * H * 0.20;
+        ctx.fillStyle = '#9DBFFF';
+        ctx.shadowColor = '#4C8DFF'; ctx.shadowBlur = 18;
+        ctx.beginPath(); ctx.arc(pu * W, py, 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+  }
+  requestAnimationFrame(draw);
+
+  /* ---------- motion ---------- */
+  var aSpans = '.state-a .w > span';
+  var bSpans = '.state-b .w > span';
+
+  if (reduced) {
+    gsap.set([aSpans, bSpans], { y: 0 });
+    gsap.set(['#sub', '#ctas', '.reveal'], { opacity: 1, y: 0 });
+    gsap.set('.divider .seg', { scaleX: 1 });
+    return;
+  }
+
+  /* entrance */
+  gsap.to(aSpans, { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.055, delay: 0.25 });
+  gsap.to('#sub', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.9 });
+  gsap.to('#ctas', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 1.05 });
+
+  /* section reveals */
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
+  });
+  document.querySelectorAll('.divider .seg').forEach(function (el) {
+    gsap.to(el, { scaleX: 1, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+  });
+
+  /* pulse line in CTA */
+  var pulsePath = document.getElementById('pulse-path');
+  var plen = pulsePath.getTotalLength();
+  gsap.set(pulsePath, { strokeDasharray: plen, strokeDashoffset: plen });
+  gsap.to(pulsePath, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut', scrollTrigger: { trigger: '.cta-band', start: 'top 75%' } });
+
+  if (isDesktop) {
+    /* the one pinned sequence: scroll tunes the signal and flips the headline */
+    var tl = gsap.timeline({
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=180%', pin: true, scrub: 0.6 }
+    });
+    tl.to(prog, { p: 1, duration: 1, ease: 'none' }, 0);
+    tl.to(aSpans, { y: '-115%', duration: 0.12, stagger: 0.012, ease: 'power2.in' }, 0.52);
+    tl.fromTo(bSpans, { y: '115%' }, { y: '0%', duration: 0.16, stagger: 0.016, ease: 'expo.out' }, 0.62);
+  } else {
+    /* touch: same story on a timer, no pin */
+    gsap.to(prog, { p: 1, duration: 2.4, ease: 'power2.inOut', delay: 0.8 });
+    gsap.to(aSpans, { y: '-115%', duration: 0.5, stagger: 0.03, ease: 'power2.in', delay: 1.6 });
+    gsap.fromTo(bSpans, { y: '115%' }, { y: '0%', duration: 0.7, stagger: 0.04, ease: 'expo.out', delay: 2.0 });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmet Labs · The Ornament Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #06181F;
+    --panel: #0A222C;
+    --well: #041117;
+    --ivory: #F4EEE0;
+    --mist: #8FA3A8;
+    --faint: #5B6E72;
+    --gold: #D9A441;
+    --gold-bright: #E9BC5F;
+    --turq: #3FB3A7;
+    --turq-deep: #2E8C82;
+    --lapis: #2B4E86;
+    --hairline: rgba(244, 238, 224, 0.10);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: 'Onest', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--gold); color: var(--bg); }
+  h1, h2, .card-quote, .logo, .sec-num { font-family: 'Oranienbaum', serif; font-weight: 400; }
+  h3 { font-family: 'Onest', sans-serif; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: linear-gradient(rgba(6, 24, 31, 0.85), rgba(6, 24, 31, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .logo { font-size: 1.4rem; letter-spacing: 0.01em; color: var(--ivory); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .logo svg { width: 15px; height: 15px; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--mist); text-decoration: none;
+    transition: color 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--ivory); }
+  .nav-cta {
+    color: var(--bg) !important; background: var(--gold); border-radius: 999px; padding: 10px 18px;
+    font-weight: 500;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+
+  /* ---------- hero: the monument ---------- */
+  header {
+    position: relative; min-height: 100dvh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .stage {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 128vmin; height: 128vmin; z-index: 1; pointer-events: none;
+  }
+  .stage svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .hero-text {
+    position: relative; z-index: 3; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 64px 76px;
+    max-width: 860px;
+    background: rgba(6, 24, 31, 0.55);
+    border: 1px solid var(--hairline);
+    border-radius: 44px;
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--mist); margin-bottom: 34px;
+  }
+  .eyebrow svg { width: 9px; height: 9px; }
+  h1 {
+    display: grid;
+    font-size: clamp(2.9rem, 6.6vw, 6.2rem);
+    line-height: 1.04; letter-spacing: -0.005em;
+    max-width: 15ch; margin-bottom: 34px;
+  }
+  h1 .state { grid-area: 1 / 1; align-self: start; }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: baseline; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  h1 .w > span { display: inline-block; transform: translateY(115%); will-change: transform; }
+  h1 .a-manual { color: var(--mist); }
+  h1 .a-system { color: var(--gold-bright); }
+  .sub {
+    max-width: 46ch; color: var(--mist); font-size: 1.05rem; line-height: 1.7; margin-bottom: 44px;
+    opacity: 0; transform: translateY(18px);
+  }
+  .cta-row { display: flex; gap: 16px; align-items: center; justify-content: center; opacity: 0; transform: translateY(18px); flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--gold); color: var(--bg); text-decoration: none;
+    font-weight: 600; font-size: 0.88rem;
+    padding: 8px 8px 8px 26px; border-radius: 999px;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--gold-bright); box-shadow: 0 18px 36px -16px rgba(0, 0, 0, 0.65); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary .orb {
+    width: 38px; height: 38px; border-radius: 999px; background: rgba(6, 24, 31, 0.14);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover .orb { transform: translate(2px, -2px); background: rgba(6, 24, 31, 0.26); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ivory); text-decoration: none; font-size: 0.88rem; font-weight: 500;
+    padding: 15px 24px; border-radius: 999px; border: 1px solid var(--hairline);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-ghost:hover { border-color: rgba(244, 238, 224, 0.35); background: rgba(244, 238, 224, 0.04); }
+  .scroll-cue {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .scroll-cue i { width: 1px; height: 44px; background: linear-gradient(var(--gold), transparent); display: block; animation: cue 2.4s var(--ease) infinite; transform-origin: top; }
+  @keyframes cue { 0% { transform: scaleY(0); } 45% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* rosette materials */
+  .band-gold { fill: none; stroke: var(--gold); stroke-width: 3; }
+  .band-ivory { fill: none; stroke: rgba(244, 238, 224, 0.55); stroke-width: 1.2; }
+  .tick { stroke: rgba(217, 164, 65, 0.6); stroke-width: 1.5; }
+  .star-tile { fill: var(--turq-deep); stroke: var(--gold); stroke-width: 2.5; stroke-linejoin: round; }
+  .arc-band { fill: none; stroke: rgba(244, 238, 224, 0.7); stroke-width: 2; }
+  .gap-dmnd { fill: var(--gold); }
+  .hook { fill: none; stroke: var(--gold); stroke-width: 3.5; stroke-linecap: round; }
+  .petal { stroke: var(--gold); stroke-width: 1.5; stroke-linejoin: round; }
+  .petal.t { fill: var(--turq-deep); }
+  .petal.l { fill: var(--lapis); }
+  .inner-gold { fill: none; stroke: var(--gold); stroke-width: 2; }
+  .inner-ivory { fill: none; stroke: rgba(244, 238, 224, 0.5); stroke-width: 1; }
+  .eye-ring { fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-dasharray: 2 10; }
+  #flash { fill: none; stroke: var(--gold-bright); stroke-width: 14; opacity: 0; filter: blur(10px); }
+  #centerMark .cs { fill: var(--gold); }
+  #centerMark .cd { fill: var(--ivory); }
+
+  /* ---------- dividers ---------- */
+  .divider { display: flex; align-items: center; gap: 16px; max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+  .divider .rule { flex: 1; height: 1px; background: var(--hairline); }
+  .divider svg { width: 11px; height: 11px; transform: scale(0); }
+
+  /* ---------- sections ---------- */
+  section { padding: 120px 40px; max-width: 1440px; margin: 0 auto; position: relative; }
+  .sec-num {
+    position: absolute; top: 60px; right: 40px; font-size: 12rem; line-height: 1;
+    color: rgba(244, 238, 224, 0.045); pointer-events: none; user-select: none;
+  }
+  .sec-head { max-width: 820px; margin-bottom: 70px; position: relative; }
+  .sec-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+  }
+  .sec-kicker svg { width: 9px; height: 9px; }
+  h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.06; }
+  .sec-sub { margin-top: 22px; color: var(--mist); font-size: 1rem; line-height: 1.65; max-width: 56ch; }
+
+  .cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .card {
+    position: relative; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--hairline); border-radius: 18px;
+    padding: 36px 34px 32px; display: flex; flex-direction: column;
+    transition: border-color 0.5s var(--ease), transform 0.6s var(--ease);
+  }
+  .card:hover { border-color: rgba(217, 164, 65, 0.5); transform: translateY(-4px); }
+  .card.c1, .card.c4 { grid-column: span 3; }
+  .card.c2, .card.c3 { grid-column: span 2; }
+  .card .corner { position: absolute; top: 12px; right: 12px; width: 62px; height: 62px; opacity: 0.22; }
+  .card .corner path { fill: none; stroke: var(--gold); stroke-width: 3.2; stroke-linecap: round; }
+  .card-tag {
+    align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist);
+    border: 1px solid var(--hairline); border-radius: 999px; padding: 6px 12px; margin-bottom: 28px;
+  }
+  .card-quote { font-size: 1.7rem; line-height: 1.22; margin-bottom: 18px; max-width: 22ch; }
+  .card-problem { color: var(--mist); font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; max-width: 52ch; }
+  .card-sys { margin-top: auto; padding-top: 22px; border-top: 1px solid var(--hairline); }
+  .card-sys .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 9px; }
+  .card-sys p { font-size: 0.88rem; line-height: 1.55; }
+
+  /* ---------- work ledger ---------- */
+  .ledger { border-top: 1px solid var(--hairline); }
+  .row {
+    display: grid; grid-template-columns: 1.4fr auto auto; gap: 28px; align-items: center;
+    padding: 36px 10px; border-bottom: 1px solid var(--hairline); text-decoration: none; color: inherit;
+    transition: background 0.5s var(--ease);
+  }
+  .row:hover { background: rgba(244, 238, 224, 0.025); }
+  .row h3 { font-size: 1.55rem; font-weight: 600; letter-spacing: -0.015em; transition: transform 0.5s var(--ease); }
+  .row:hover h3 { transform: translateX(8px); }
+  .row .type { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); margin-top: 9px; display: flex; align-items: center; gap: 9px; }
+  .row .type svg { width: 7px; height: 7px; opacity: 0.5; }
+  .live { color: var(--gold); display: inline-flex; align-items: center; gap: 7px; }
+  .live i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2.2s var(--ease) infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .row .thumb {
+    width: 200px; aspect-ratio: 4/3; border-radius: 12px; padding: 6px;
+    background: var(--well); border: 1px solid var(--hairline); justify-self: end;
+  }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px; transition: transform 0.8s var(--ease); }
+  .row:hover .thumb img { transform: scale(1.05); }
+  .row .arrow {
+    width: 46px; height: 46px; border-radius: 999px; border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center; color: var(--mist);
+    transition: all 0.5s var(--ease);
+  }
+  .row:hover .arrow { background: var(--gold); border-color: var(--gold); color: var(--bg); transform: rotate(45deg); }
+
+  /* ---------- cta band: the committed ivory field ---------- */
+  .cta-band {
+    margin: 40px; border-radius: 28px; background: var(--ivory); color: var(--bg);
+    padding: 110px 60px; text-align: left; position: relative; overflow: hidden;
+  }
+  .cta-band .ghost-rosette {
+    position: absolute; right: -150px; top: -150px; width: 640px; height: 640px; opacity: 0.08;
+    animation: slowspin 160s linear infinite;
+  }
+  .cta-band .ghost-rosette * { stroke: var(--bg); fill: none; }
+  @keyframes slowspin { to { transform: rotate(360deg); } }
+  .cta-band .mark { display: block; margin-bottom: 36px; width: 44px; height: 44px; }
+  .cta-band h2 { font-size: clamp(2.4rem, 5.2vw, 4.4rem); max-width: 16ch; position: relative; }
+  .cta-band .offer {
+    margin: 32px 0 46px; max-width: 58ch; color: #3D4F55; font-size: 1rem; line-height: 1.7;
+    padding-left: 24px; border-left: 2px solid var(--gold); position: relative;
+  }
+  .cta-band .btn-primary { background: var(--bg); color: var(--ivory); position: relative; }
+  .cta-band .btn-primary:hover { background: #10262F; box-shadow: 0 18px 36px -18px rgba(6, 24, 31, 0.5); }
+  .cta-band .btn-primary .orb { background: rgba(244, 238, 224, 0.12); }
+  .cta-band .btn-primary:hover .orb { background: rgba(244, 238, 224, 0.22); }
+
+  footer {
+    padding: 44px 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .reveal { opacity: 0; transform: translateY(34px); }
+
+  body.reduced h1 .state { grid-area: auto; }
+  body.reduced h1 .state + .state { margin-top: 0.15em; }
+  body.reduced .reveal, body.reduced .sub, body.reduced .cta-row { opacity: 1 !important; transform: none !important; }
+  body.reduced h1 .w > span { transform: none !important; }
+  body.reduced .divider svg { transform: scale(1) !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .stage { width: 175vmin; height: 175vmin; }
+    .hero-text { padding: 52px 28px; border-radius: 30px; margin: 0 16px; }
+    section { padding: 84px 20px; }
+    .sec-num { font-size: 6rem; top: 44px; right: 20px; }
+    .divider { padding: 0 20px; }
+    .cards { grid-template-columns: 1fr; }
+    .card.c1, .card.c2, .card.c3, .card.c4 { grid-column: span 1; }
+    .row { grid-template-columns: 1fr; gap: 14px; }
+    .row .thumb { width: 100%; justify-self: start; }
+    .cta-band { margin: 20px; padding: 72px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .sub, .cta-row { opacity: 1 !important; transform: none !important; }
+    h1 .w > span { transform: none !important; }
+    .live i, .cta-band .ghost-rosette, .scroll-cue i { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="star8" d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z"/>
+  </defs>
+</svg>
+
+<nav>
+  <a class="logo" href="#">Rahmet<svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg></a>
+  <div class="nav-links">
+    <a href="#systems">Systems</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Tell us what's manual</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="stage" aria-hidden="true">
+    <svg id="rosette" viewBox="0 0 1000 1000">
+      <g id="spinSlow">
+        <g id="bandOuter"></g>
+        <g id="stars"></g>
+        <g id="arcs"></g>
+      </g>
+      <g id="spinCounter">
+        <g id="hooks"></g>
+        <g id="petals"></g>
+      </g>
+      <g id="bandInner"></g>
+      <circle id="flash" cx="500" cy="500" r="470"/>
+      <g id="centerMark"></g>
+    </svg>
+  </div>
+
+  <div class="hero-text">
+    <span class="eyebrow"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg>Rahmet Labs: Automation, AI &amp; Product Engineering</span>
+    <h1 id="headline">
+      <span class="state state-a">Your business is drowning in <span class="a-manual">manual work.</span></span>
+      <span class="state state-b">We build <span class="a-system">the systems</span> that end it.</span>
+    </h1>
+    <p class="sub" id="sub">One senior team builds automation and AI that replace your spreadsheets, copy-paste, and follow-up threads, then stays to run them.</p>
+    <div class="cta-row" id="ctas">
+      <a class="btn-primary" href="#contact">
+        Tell us what's manual
+        <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+</header>
+
+<div class="divider" aria-hidden="true"><span class="rule"></span><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg><span class="rule"></span></div>
+
+<section id="systems">
+  <span class="sec-num" aria-hidden="true">01</span>
+  <div class="sec-head reveal">
+    <span class="sec-kicker"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg>What we fix</span>
+    <h2>Four ways work breaks down, and the systems we build instead.</h2>
+    <p class="sec-sub">Four failure patterns we see again and again in Kazakhstani and regional companies. And the systems we build so they stop happening.</p>
+  </div>
+  <div class="cards">
+    <div class="card c1 reveal">
+      <svg class="corner" viewBox="0 0 60 60"><path d="M6 54 A48 48 0 0 1 54 6"/></svg>
+      <span class="card-tag">Manual ops</span>
+      <p class="card-quote">"Someone still does this by hand."</p>
+      <p class="card-problem">Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human, and only when.</p></div>
+    </div>
+    <div class="card c2 reveal">
+      <svg class="corner" viewBox="0 0 60 60"><path d="M6 54 A48 48 0 0 1 54 6"/></svg>
+      <span class="card-tag">AI agents</span>
+      <p class="card-quote">"Tickets wait. Leads stall."</p>
+      <p class="card-problem">Support queues grow while the team sleeps. Leads from the website wait hours for a first reply that should take seconds.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>AI agents that answer, qualify, and route in seconds, in your tone of voice, with a human handoff when the conversation needs one.</p></div>
+    </div>
+    <div class="card c3 reveal">
+      <svg class="corner" viewBox="0 0 60 60"><path d="M6 54 A48 48 0 0 1 54 6"/></svg>
+      <span class="card-tag">Web &amp; product</span>
+      <p class="card-quote">"Our site doesn't actually do anything."</p>
+      <p class="card-problem">A brochure that collects dust. No intake, no booking, no dashboard. Every enquiry still lands in a personal WhatsApp.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Web products that transact: intake forms, client portals, dashboards, and booking flows wired straight into your operations.</p></div>
+    </div>
+    <div class="card c4 reveal">
+      <svg class="corner" viewBox="0 0 60 60"><path d="M6 54 A48 48 0 0 1 54 6"/></svg>
+      <span class="card-tag">Data &amp; backend</span>
+      <p class="card-quote">"Nobody knows which number is the right one."</p>
+      <p class="card-problem">Sales has one figure, accounting has another, the warehouse a third. Meetings start with arguing about whose spreadsheet is current.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>One backend of record: synced data, clean APIs, and dashboards everyone trusts because they all read from the same source.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span class="rule"></span><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg><span class="rule"></span></div>
+
+<section id="work">
+  <span class="sec-num" aria-hidden="true">02</span>
+  <div class="sec-head reveal">
+    <span class="sec-kicker"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#D9A441"/></svg>Selected work</span>
+    <h2>Systems we've shipped.</h2>
+  </div>
+  <div class="ledger">
+    <a class="row reveal" href="#">
+      <span><h3>Education Platform Suite</h3><span class="type"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#F4EEE0"/></svg>Web &amp; Product <span class="live"><i></i>Live</span></span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Beyond Lines</h3><span class="type"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#F4EEE0"/></svg>AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/beyond-lines.png" alt="Beyond Lines live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Unhireable</h3><span class="type"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#F4EEE0"/></svg>AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/unhireable.png" alt="Unhireable live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Multi-Platform Bot Suite</h3><span class="type"><svg viewBox="-10 -10 20 20"><use href="#star8" fill="#F4EEE0"/></svg>Automation · Shipped</span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band reveal" id="contact">
+  <svg class="ghost-rosette" viewBox="0 0 1000 1000" aria-hidden="true">
+    <circle cx="500" cy="500" r="470" stroke-width="4"/>
+    <circle cx="500" cy="500" r="330" stroke-width="3"/>
+    <circle cx="500" cy="500" r="190" stroke-width="3"/>
+    <path d="M500 30 L970 500 L500 970 L30 500 Z" stroke-width="3"/>
+    <path d="M500 170 L830 500 L500 830 L170 500 Z" stroke-width="3"/>
+  </svg>
+  <svg class="mark" viewBox="-10 -10 20 20" aria-hidden="true"><use href="#star8" fill="#D9A441"/></svg>
+  <h2>Start with the manual work that eats your week.</h2>
+  <p class="offer">In the first week, we map your manual work into a scored system plan. The plan is yours whether or not we build. If we do build, the first stage is fixed-price.</p>
+  <a class="btn-primary" href="#">
+    Tell us what's manual
+    <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a>
+</div>
+
+<footer>
+  <span>© 2026 Rahmet Labs</span>
+  <span>Almaty, Kazakhstan</span>
+  <span>EN / RU / KZ</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 900px)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  if (reduced) document.body.classList.add('reduced');
+
+  var NS = 'http://www.w3.org/2000/svg';
+  function P(r, deg) {
+    var a = (deg - 90) * Math.PI / 180;
+    return (500 + r * Math.cos(a)).toFixed(2) + ' ' + (500 + r * Math.sin(a)).toFixed(2);
+  }
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  /* outer band: gold ring, ivory ring, 48 ticks */
+  var bandOuter = document.getElementById('bandOuter');
+  el('circle', { 'class': 'band-gold', cx: 500, cy: 500, r: 470 }, bandOuter);
+  el('circle', { 'class': 'band-ivory', cx: 500, cy: 500, r: 446 }, bandOuter);
+  for (var t = 0; t < 48; t++) {
+    el('path', { 'class': 'tick', d: 'M' + P(452, t * 7.5) + ' L' + P(464, t * 7.5) }, bandOuter);
+  }
+
+  /* 8 tile stars, each two overlapping squares */
+  var stars = document.getElementById('stars');
+  for (var i = 0; i < 8; i++) {
+    var a = i * 45;
+    var c = P(388, a).split(' ');
+    var g = el('g', { 'class': 'frag star' }, stars);
+    [0, 45].forEach(function (rot) {
+      el('rect', {
+        'class': 'star-tile',
+        x: c[0] - 46, y: c[1] - 46, width: 92, height: 92,
+        transform: 'rotate(' + (a + rot) + ' ' + c[0] + ' ' + c[1] + ')'
+      }, g);
+    });
+  }
+
+  /* interlace arcs + gold gap diamonds */
+  var arcs = document.getElementById('arcs');
+  [12, 102, 192, 282].forEach(function (a0) {
+    el('path', { 'class': 'frag arc-band', d: 'M' + P(322, a0) + ' A322 322 0 0 1 ' + P(322, a0 + 66) }, arcs);
+  });
+  [67.5, 157.5, 247.5, 337.5].forEach(function (a) {
+    var c = P(322, a).split(' ');
+    el('rect', { 'class': 'frag gap-dmnd', x: c[0] - 7, y: c[1] - 7, width: 14, height: 14, transform: 'rotate(' + a + ' ' + c[0] + ' ' + c[1] + ')' }, arcs);
+  });
+
+  /* 8 bold horn hooks */
+  var hooks = document.getElementById('hooks');
+  for (var h = 0; h < 8; h++) {
+    var ah = h * 45 + 22.5;
+    el('path', {
+      'class': 'frag hook',
+      d: 'M' + P(272, ah - 13) + ' A272 272 0 0 1 ' + P(272, ah + 9) + ' A26 26 0 1 1 ' + P(240, ah + 20)
+    }, hooks);
+  }
+
+  /* 8 enamel petals, alternating turquoise and lapis */
+  var petals = document.getElementById('petals');
+  for (var p = 0; p < 8; p++) {
+    var ap = p * 45;
+    el('path', {
+      'class': 'frag petal ' + (p % 2 ? 'l' : 't'),
+      d: 'M' + P(148, ap) + ' Q' + P(205, ap - 9.5) + ' ' + P(258, ap) + ' Q' + P(205, ap + 9.5) + ' ' + P(148, ap) + ' Z'
+    }, petals);
+  }
+
+  /* inner rings + dashed eye */
+  var bandInner = document.getElementById('bandInner');
+  el('circle', { 'class': 'inner-gold', cx: 500, cy: 500, r: 128 }, bandInner);
+  el('circle', { 'class': 'inner-ivory', cx: 500, cy: 500, r: 112 }, bandInner);
+  el('circle', { 'class': 'eye-ring', cx: 500, cy: 500, r: 96 }, bandInner);
+
+  /* center mark */
+  var center = document.getElementById('centerMark');
+  el('path', { 'class': 'cs', d: 'M500 464 L509 491 L536 500 L509 509 L500 536 L491 509 L464 500 L491 491 Z' }, center);
+  el('circle', { 'class': 'cd', cx: 500, cy: 500, r: 6 }, center);
+
+  /* deterministic scatter */
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  var rand = mulberry32(20260817);
+  document.querySelectorAll('.frag').forEach(function (f) {
+    gsap.set(f, reduced ? { opacity: 1 } : {
+      x: (rand() - 0.5) * 900,
+      y: (rand() - 0.5) * 900,
+      rotation: (rand() - 0.5) * 300,
+      svgOrigin: '500 500',
+      opacity: 0.2
+    });
+  });
+  gsap.set(['#bandOuter', '#bandInner'], reduced ? { opacity: 1 } : { opacity: 0, scale: 0.94, svgOrigin: '500 500' });
+  gsap.set('#centerMark', { scale: reduced ? 1 : 0, svgOrigin: '500 500' });
+
+  /* word masking */
+  function splitWords(elm) {
+    var nodes = Array.from(elm.childNodes);
+    elm.innerHTML = '';
+    nodes.forEach(function (n) {
+      var cls = n.nodeType === 1 ? n.className : '';
+      n.textContent.split(/(\s+)/).forEach(function (tok) {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) { elm.appendChild(document.createTextNode(' ')); return; }
+        var mask = document.createElement('span');
+        mask.className = 'w';
+        var inner = document.createElement('span');
+        inner.textContent = tok;
+        if (cls) inner.className = cls;
+        mask.appendChild(inner);
+        elm.appendChild(mask);
+      });
+    });
+  }
+  splitWords(document.querySelector('.state-a'));
+  splitWords(document.querySelector('.state-b'));
+  var aSpans = '.state-a .w > span';
+  var bSpans = '.state-b .w > span';
+
+  if (reduced) {
+    gsap.set([aSpans, bSpans], { y: 0 });
+    gsap.set(['#sub', '#ctas', '.reveal'], { opacity: 1, y: 0 });
+    gsap.set('.divider svg', { scale: 1 });
+    return;
+  }
+
+  /* idle counter-rotation of the two material layers */
+  gsap.to('#spinSlow', { rotation: 360, svgOrigin: '500 500', duration: 300, repeat: -1, ease: 'none' });
+  gsap.to('#spinCounter', { rotation: -360, svgOrigin: '500 500', duration: 380, repeat: -1, ease: 'none' });
+
+  /* entrance */
+  gsap.to(aSpans, { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.055, delay: 0.25 });
+  gsap.to('#sub', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.9 });
+  gsap.to('#ctas', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 1.05 });
+
+  /* reveals */
+  document.querySelectorAll('.reveal').forEach(function (elm) {
+    gsap.to(elm, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: elm, start: 'top 86%' } });
+  });
+  document.querySelectorAll('.divider svg').forEach(function (elm) {
+    gsap.to(elm, { scale: 1, duration: 0.8, ease: 'back.out(2)', scrollTrigger: { trigger: elm, start: 'top 92%' } });
+  });
+
+  /* the assembly: jewels fly home, bands materialize, gold flash, headline flips */
+  var tl = gsap.timeline({ paused: true });
+  tl.to('.frag', { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.5, stagger: 0.011, ease: 'power2.inOut' }, 0);
+  tl.to('#bandOuter', { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, 0.3);
+  tl.to('#bandInner', { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out' }, 0.5);
+  tl.to('#centerMark', { scale: 1, duration: 0.08, ease: 'back.out(2.2)' }, 0.66);
+  tl.to('#flash', { opacity: 0.5, duration: 0.03 }, 0.72);
+  tl.to('#rosette', { scale: 1.02, svgOrigin: '500 500', duration: 0.04, ease: 'power1.in' }, 0.72);
+  tl.to('#flash', { opacity: 0, duration: 0.2 }, 0.75);
+  tl.to('#rosette', { scale: 1, duration: 0.14, ease: 'power2.out' }, 0.76);
+  tl.to(aSpans, { y: '-115%', duration: 0.1, stagger: 0.012, ease: 'power2.in' }, 0.82);
+  tl.fromTo(bSpans, { y: '115%' }, { y: '0%', duration: 0.14, stagger: 0.014, ease: 'expo.out' }, 0.87);
+
+  if (isDesktop) {
+    gsap.to(tl, {
+      progress: 1, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=180%', pin: true, scrub: 0.6 }
+    });
+  } else {
+    gsap.delayedCall(1.0, function () { tl.play(); });
+    tl.timeScale(1.5);
+  }
+})();
+</script>
+</body>
+</html>

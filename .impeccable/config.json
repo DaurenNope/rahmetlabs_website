@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "codex-grid-background"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "cta-grid-bg",
+        "createdAt": "2026-08-18T08:41:51.811Z"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "linear-gradient(rgba(242, 237, 226, 0.05) 1px, transparent 1px)",
+        "createdAt": "2026-08-18T08:42:37.612Z"
+      }
+    ]
+  }
+}

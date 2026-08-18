@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmet Labs · Direction B: Control Surface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EEF0F0;
+    --plate: #F7F8F8;
+    --well: #E4E7E7;
+    --hairline: #D6DADA;
+    --ink: #15181B;
+    --muted: #5C646C;
+    --faint: #868D94;
+    --signal: #2B4BD7;
+    --deep: #1D36A8;
+    --manual: #BF4632;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Onest', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--signal); color: #fff; }
+  h1, h2, h3, .logo { font-family: 'Geologica', 'Onest', sans-serif; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: linear-gradient(rgba(238, 240, 240, 0.88), rgba(238, 240, 240, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .logo { font-weight: 800; letter-spacing: 0.01em; font-size: 1.0rem; color: var(--ink); text-decoration: none; }
+  .logo sup { color: var(--signal); font-size: 0.55em; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    color: #fff !important; background: var(--signal); border-radius: 999px; padding: 10px 18px;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav-cta:hover { background: var(--deep); transform: translateY(-1px); }
+
+  /* ---------- hero ---------- */
+  header {
+    position: relative; min-height: 100dvh;
+    display: flex; align-items: center;
+    padding: 118px 40px 64px;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 60px; align-items: center; width: 100%; max-width: 1440px; margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 28px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--signal); }
+  h1 {
+    display: grid;
+    font-size: clamp(2.4rem, 4.9vw, 4.4rem);
+    font-weight: 700; letter-spacing: -0.02em; line-height: 1.06;
+    max-width: 17ch; margin-bottom: 28px;
+  }
+  h1 .state { grid-area: 1 / 1; align-self: start; }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: baseline; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+  h1 .w > span { display: inline-block; transform: translateY(115%); will-change: transform; }
+  h1 .a-manual { color: var(--manual); }
+  h1 .a-system { color: var(--signal); }
+  .sub {
+    max-width: 50ch; color: var(--muted); font-size: 1.04rem; line-height: 1.65; margin-bottom: 40px;
+    opacity: 0; transform: translateY(18px);
+  }
+  .cta-row { display: flex; gap: 16px; align-items: center; opacity: 0; transform: translateY(18px); flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--signal); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 0.86rem;
+    padding: 8px 8px 8px 24px; border-radius: 999px;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--deep); box-shadow: 0 16px 34px -18px rgba(21, 24, 27, 0.45); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary .orb {
+    width: 36px; height: 36px; border-radius: 999px; background: rgba(255, 255, 255, 0.16);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover .orb { transform: translate(2px, -2px); background: rgba(255, 255, 255, 0.28); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ink); text-decoration: none; font-size: 0.86rem; font-weight: 500;
+    padding: 14px 22px; border-radius: 999px; border: 1px solid var(--hairline);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-ghost:hover { border-color: var(--faint); background: rgba(21, 24, 27, 0.03); }
+
+  /* ---------- the panel ---------- */
+  .stage { position: relative; width: 100%; max-width: 560px; aspect-ratio: 1 / 1.02; margin-left: auto; }
+  .plate {
+    position: absolute; inset: 0; background: var(--plate);
+    border: 1px solid var(--hairline); border-radius: 22px; overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 24px 48px -32px rgba(21, 24, 27, 0.18);
+  }
+  .plate::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 71px, rgba(21, 24, 27, 0.045) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, rgba(21, 24, 27, 0.045) 71px 72px);
+  }
+  .wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .lead { fill: none; stroke: #B4BBBB; stroke-width: 1.25; vector-effect: non-scaling-stroke; opacity: 0; }
+  .bus-glow { fill: none; stroke: rgba(43, 75, 215, 0.22); stroke-width: 9; vector-effect: non-scaling-stroke; opacity: 0; }
+  .bus-line { fill: none; stroke: var(--signal); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+  .instr { position: absolute; display: block; will-change: transform; }
+  .instr i { display: block; position: absolute; pointer-events: none; }
+
+  .lamp { width: 14px; height: 14px; border-radius: 50%; background: var(--well); border: 1px solid var(--hairline); box-shadow: inset 0 1px 2px rgba(21, 24, 27, 0.12); }
+  .lamp .dot { inset: 3.5px; border-radius: 50%; }
+  .lamp .dot.red { background: var(--manual); }
+  .lamp .dot.blue { background: var(--signal); opacity: 0; }
+  .lamp .glow { inset: -8px; border-radius: 50%; }
+  .lamp .glow.red { background: radial-gradient(circle, rgba(191, 70, 50, 0.5) 0%, rgba(191, 70, 50, 0.16) 45%, transparent 70%); }
+  .lamp .glow.blue { background: radial-gradient(circle, rgba(43, 75, 215, 0.5) 0%, rgba(43, 75, 215, 0.15) 45%, transparent 70%); opacity: 0; }
+
+  .switch { width: 46px; height: 26px; border-radius: 999px; background: var(--well); border: 1px solid var(--hairline); box-shadow: inset 0 1px 3px rgba(21, 24, 27, 0.1); }
+  .switch .fill { inset: -1px; border-radius: inherit; background: var(--signal); opacity: 0; }
+  .switch .nub { left: 3px; top: 2.5px; width: 20px; height: 20px; border-radius: 50%; background: #FDFDFD; box-shadow: 0 1px 3px rgba(21, 24, 27, 0.28); }
+  .switch.master { width: 68px; height: 38px; }
+  .switch.master .nub { width: 31px; height: 31px; left: 4px; top: 3px; }
+  .switch.master .glow.blue { inset: -12px; border-radius: 999px; background: radial-gradient(closest-side, rgba(43, 75, 215, 0.35), transparent); opacity: 0; }
+
+  /* ---------- the travelling bus ---------- */
+  .divider { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+  .divider .track { height: 1px; background: var(--hairline); position: relative; }
+  .divider .seg {
+    position: absolute; left: 0; top: 0; height: 1px; width: 140px;
+    background: var(--signal); transform: scaleX(0); transform-origin: left;
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 110px 40px; max-width: 1440px; margin: 0 auto; }
+  .sec-head { max-width: 780px; margin-bottom: 64px; }
+  .sec-kicker {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--signal); margin-bottom: 22px; display: block;
+  }
+  h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; }
+  .sec-sub { margin-top: 20px; color: var(--muted); font-size: 1rem; line-height: 1.65; max-width: 56ch; }
+
+  /* rack modules */
+  .rack { display: flex; flex-direction: column; gap: 16px; }
+  .module {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    background: var(--plate); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden;
+    transition: border-color 0.5s var(--ease), transform 0.6s var(--ease);
+  }
+  .module:hover { border-color: rgba(43, 75, 215, 0.4); transform: translateY(-3px); }
+  .m-problem { padding: 30px 32px; }
+  .m-sys { padding: 30px 32px; border-left: 1px solid var(--hairline); background: rgba(43, 75, 215, 0.03); display: flex; flex-direction: column; justify-content: center; }
+  .card-tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--manual);
+    border: 1px solid rgba(191, 70, 50, 0.4); border-radius: 999px; padding: 6px 12px; margin-bottom: 20px;
+  }
+  .card-quote { font-family: 'Geologica', sans-serif; font-size: 1.32rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 14px; }
+  .card-problem { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+  .m-sys .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--signal); display: block; margin-bottom: 10px; }
+  .m-sys p { font-size: 0.9rem; line-height: 1.6; }
+
+  /* work ledger */
+  .ledger { border-top: 1px solid var(--hairline); }
+  .row {
+    display: grid; grid-template-columns: 1.4fr auto auto; gap: 28px; align-items: center;
+    padding: 32px 10px; border-bottom: 1px solid var(--hairline); text-decoration: none; color: inherit;
+    transition: background 0.5s var(--ease);
+  }
+  .row:hover { background: rgba(21, 24, 27, 0.025); }
+  .row h3 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.015em; transition: transform 0.5s var(--ease); }
+  .row:hover h3 { transform: translateX(8px); }
+  .row .type { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+  .live { color: var(--signal); display: inline-flex; align-items: center; gap: 7px; }
+  .live i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); animation: pulse 2.2s var(--ease) infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .row .thumb {
+    width: 190px; aspect-ratio: 4/3; border-radius: 14px; padding: 6px;
+    background: var(--well); border: 1px solid var(--hairline); justify-self: end;
+  }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 9px; transition: transform 0.8s var(--ease); }
+  .row:hover .thumb img { transform: scale(1.04); }
+  .row .arrow {
+    width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center; color: var(--muted);
+    transition: all 0.5s var(--ease);
+  }
+  .row:hover .arrow { background: var(--signal); border-color: var(--signal); color: #fff; transform: rotate(45deg); }
+
+  /* ---------- cta band: the one committed cobalt field ---------- */
+  .cta-band {
+    margin: 40px; border-radius: 28px;
+    background: linear-gradient(150deg, #2440C4 0%, #1D36A8 55%, #16277F 100%);
+    color: #F4F6FF;
+    padding: 100px 60px; text-align: left; position: relative; overflow: hidden;
+  }
+  .cta-band .pulse-line { display: block; margin-bottom: 36px; }
+  .cta-band .pulse-line path { stroke: #F4F6FF; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .cta-band h2 { font-size: clamp(2.2rem, 5vw, 4rem); max-width: 18ch; position: relative; }
+  .cta-band .offer {
+    margin: 30px 0 44px; max-width: 58ch; color: rgba(244, 246, 255, 0.78); font-size: 1rem; line-height: 1.7;
+    padding-left: 22px; border-left: 2px solid rgba(244, 246, 255, 0.55); position: relative;
+  }
+  .cta-band .btn-primary { background: #F4F6FF; color: var(--deep); position: relative; }
+  .cta-band .btn-primary:hover { background: #fff; box-shadow: 0 16px 34px -18px rgba(6, 12, 40, 0.5); }
+  .cta-band .btn-primary .orb { background: rgba(29, 54, 168, 0.12); }
+  .cta-band .btn-primary:hover .orb { background: rgba(29, 54, 168, 0.22); }
+
+  footer {
+    padding: 44px 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .reveal { opacity: 0; transform: translateY(34px); }
+
+  body.reduced h1 .state { grid-area: auto; }
+  body.reduced h1 .state + .state { margin-top: 0.2em; }
+  body.reduced .reveal, body.reduced .sub, body.reduced .cta-row { opacity: 1 !important; transform: none !important; }
+  body.reduced h1 .w > span { transform: none !important; }
+  body.reduced .divider .seg { transform: scaleX(1) !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    header { padding: 110px 20px 56px; display: block; }
+    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+    .stage { margin: 0 auto; max-width: 440px; }
+    section { padding: 80px 20px; }
+    .divider { padding: 0 20px; }
+    .module { grid-template-columns: 1fr; }
+    .m-sys { border-left: none; border-top: 1px solid var(--hairline); }
+    .row { grid-template-columns: 1fr; gap: 14px; }
+    .row .thumb { width: 100%; justify-self: start; }
+    .cta-band { margin: 20px; padding: 70px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .sub, .cta-row { opacity: 1 !important; transform: none !important; }
+    h1 .w > span { transform: none !important; }
+    .live i { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">RAHMET<sup>®</sup></a>
+  <div class="nav-links">
+    <a href="#systems">Systems</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Tell us what's manual</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Rahmet Labs: Automation, AI &amp; Product Engineering</span>
+      <h1 id="headline">
+        <span class="state state-a">Your business is drowning in <span class="a-manual">manual work.</span></span>
+        <span class="state state-b">We build <span class="a-system">the systems</span> that end it.</span>
+      </h1>
+      <p class="sub" id="sub">One senior team builds automation and AI that replace your spreadsheets, copy-paste, and follow-up threads, then stays to run them.</p>
+      <div class="cta-row" id="ctas">
+        <a class="btn-primary" href="#contact">
+          Tell us what's manual
+          <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="btn-ghost" href="#work">See the work</a>
+      </div>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+      <div class="plate">
+        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path class="lead" d="M14 19 C14 34, 12 46, 13 58"/>
+          <path class="lead" d="M26 19 C26 34, 24 46, 25 58"/>
+          <path class="lead" d="M38 19 C38 34, 37 46, 37 58"/>
+          <path class="lead" d="M50 19 C50 34, 50 46, 50 58"/>
+          <path class="lead" d="M62 19 C62 34, 63 46, 63 58"/>
+          <path class="lead" d="M74 19 C74 34, 76 46, 75 58"/>
+          <path class="lead" d="M18 45 C18 50, 19 53, 20 58"/>
+          <path class="lead" d="M34 45 C34 50, 35 53, 36 58"/>
+          <path class="lead" d="M50 45 C50 50, 50 53, 50 58"/>
+          <path class="lead" d="M66 45 C66 50, 65 53, 64 58"/>
+          <path class="lead" d="M64 73 C64 68, 62 63, 61 58"/>
+          <path class="bus-glow" d="M10 58 L90 58"/>
+          <path class="bus-line" d="M10 58 L90 58"/>
+        </svg>
+
+        <span class="instr lamp" style="left:14%; top:16%" data-sx="-150" data-sy="-100" data-sr="-30"><i class="dot red"></i><i class="glow red"></i></span>
+        <span class="instr lamp" style="left:26%; top:16%" data-sx="70" data-sy="-160" data-sr="45"><i class="dot red"></i><i class="glow red"></i></span>
+        <span class="instr lamp" style="left:38%; top:16%" data-sx="-50" data-sy="-200" data-sr="15"><i class="dot red"></i><i class="glow red"></i></span>
+        <span class="instr lamp" style="left:50%; top:16%" data-sx="160" data-sy="-130" data-sr="-40"><i class="dot red"></i><i class="glow red"></i></span>
+        <span class="instr lamp" style="left:62%; top:16%" data-sx="100" data-sy="-70" data-sr="60"><i class="dot red"></i><i class="glow red"></i></span>
+        <span class="instr lamp" style="left:74%; top:16%" data-sx="-120" data-sy="-50" data-sr="-55"><i class="dot red"></i><i class="glow red"></i></span>
+
+        <span class="instr switch" style="left:18%; top:40%" data-sx="-100" data-sy="70" data-sr="35"><i class="fill"></i><i class="nub"></i></span>
+        <span class="instr switch" style="left:34%; top:40%" data-sx="50" data-sy="130" data-sr="-25"><i class="fill"></i><i class="nub"></i></span>
+        <span class="instr switch" style="left:50%; top:40%" data-sx="-70" data-sy="160" data-sr="50"><i class="fill"></i><i class="nub"></i></span>
+        <span class="instr switch" style="left:66%; top:40%" data-sx="140" data-sy="90" data-sr="-45"><i class="fill"></i><i class="nub"></i></span>
+
+        <span class="instr lamp run" style="left:14%; top:76%" data-sx="-170" data-sy="40" data-sr="75"><i class="dot blue"></i><i class="glow blue"></i></span>
+        <span class="instr switch master" style="left:64%; top:74%" data-sx="130" data-sy="170" data-sr="-35"><i class="fill"></i><i class="nub"></i><i class="glow blue"></i></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="divider" aria-hidden="true"><div class="track"><div class="seg"></div></div></div>
+
+<section id="systems">
+  <div class="sec-head reveal">
+    <span class="sec-kicker">What we fix</span>
+    <h2>Four ways work breaks down, and the systems we build instead.</h2>
+    <p class="sec-sub">Four failure patterns we see again and again in Kazakhstani and regional companies. And the systems we build so they stop happening.</p>
+  </div>
+  <div class="rack">
+    <div class="module reveal">
+      <div class="m-problem">
+        <span class="card-tag">Manual ops</span>
+        <p class="card-quote">"Someone still does this by hand."</p>
+        <p class="card-problem">Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.</p>
+      </div>
+      <div class="m-sys">
+        <span class="lbl">The system</span>
+        <p>Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human, and only when.</p>
+      </div>
+    </div>
+    <div class="module reveal">
+      <div class="m-problem">
+        <span class="card-tag">AI agents</span>
+        <p class="card-quote">"Tickets wait. Leads stall. Nobody answers fast enough."</p>
+        <p class="card-problem">Support queues grow while the team sleeps. Leads from the website wait hours for a first reply that should take seconds.</p>
+      </div>
+      <div class="m-sys">
+        <span class="lbl">The system</span>
+        <p>AI agents that answer, qualify, and route in seconds, in your tone of voice, with a human handoff when the conversation needs one.</p>
+      </div>
+    </div>
+    <div class="module reveal">
+      <div class="m-problem">
+        <span class="card-tag">Web &amp; product</span>
+        <p class="card-quote">"Our site doesn't actually do anything."</p>
+        <p class="card-problem">A brochure that collects dust. No intake, no booking, no dashboard. Every enquiry still lands in a personal WhatsApp.</p>
+      </div>
+      <div class="m-sys">
+        <span class="lbl">The system</span>
+        <p>Web products that transact: intake forms, client portals, dashboards, and booking flows wired straight into your operations.</p>
+      </div>
+    </div>
+    <div class="module reveal">
+      <div class="m-problem">
+        <span class="card-tag">Data &amp; backend</span>
+        <p class="card-quote">"Nobody knows which number is the right one."</p>
+        <p class="card-problem">Sales has one figure, accounting has another, the warehouse a third. Meetings start with arguing about whose spreadsheet is current.</p>
+      </div>
+      <div class="m-sys">
+        <span class="lbl">The system</span>
+        <p>One backend of record: synced data, clean APIs, and dashboards everyone trusts because they all read from the same source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><div class="track"><div class="seg"></div></div></div>
+
+<section id="work">
+  <div class="sec-head reveal">
+    <h2>Systems we've shipped.</h2>
+  </div>
+  <div class="ledger">
+    <a class="row reveal" href="#">
+      <span><h3>Education Platform Suite</h3><span class="type">Web &amp; Product <span class="live"><i></i>Live</span></span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Beyond Lines</h3><span class="type">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/beyond-lines.png" alt="Beyond Lines live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Unhireable</h3><span class="type">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+      <span class="thumb"><img src="../assets/work/unhireable.png" alt="Unhireable live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span><h3>Multi-Platform Bot Suite</h3><span class="type">Automation · Shipped</span></span>
+      <span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band reveal" id="contact">
+  <svg class="pulse-line" width="160" height="22" viewBox="0 0 160 22" aria-hidden="true">
+    <path id="pulse-path" d="M2 14 H52 L60 14 L67 3 L76 21 L83 14 H158"/>
+  </svg>
+  <h2>Start with the manual work that eats your week.</h2>
+  <p class="offer">In the first week, we map your manual work into a scored system plan. The plan is yours whether or not we build. If we do build, the first stage is fixed-price.</p>
+  <a class="btn-primary" href="#">
+    Tell us what's manual
+    <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a>
+</div>
+
+<footer>
+  <span>© 2026 Rahmet Labs</span>
+  <span>Almaty, Kazakhstan</span>
+  <span>EN / RU / KZ</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 900px)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  if (reduced) document.body.classList.add('reduced');
+
+  /* word masking, preserving accent spans */
+  function splitWords(el) {
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = '';
+    nodes.forEach(function (n) {
+      var cls = n.nodeType === 1 ? n.className : '';
+      n.textContent.split(/(\s+)/).forEach(function (tok) {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(' ')); return; }
+        var mask = document.createElement('span');
+        mask.className = 'w';
+        var inner = document.createElement('span');
+        inner.textContent = tok;
+        if (cls) inner.className = cls;
+        mask.appendChild(inner);
+        el.appendChild(mask);
+      });
+    });
+  }
+  splitWords(document.querySelector('.state-a'));
+  splitWords(document.querySelector('.state-b'));
+
+  var aSpans = '.state-a .w > span';
+  var bSpans = '.state-b .w > span';
+
+  /* instruments start scattered */
+  var instrs = document.querySelectorAll('.instr');
+  instrs.forEach(function (el) {
+    gsap.set(el, {
+      x: reduced ? 0 : parseFloat(el.dataset.sx),
+      y: reduced ? 0 : parseFloat(el.dataset.sy),
+      rotation: reduced ? 0 : parseFloat(el.dataset.sr),
+      transformOrigin: '50% 50%'
+    });
+  });
+
+  /* wire lengths for draw-on */
+  var leads = document.querySelectorAll('.lead');
+  leads.forEach(function (p) {
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = reduced ? 0 : len;
+  });
+  var bus = document.querySelector('.bus-line');
+  var busLen = bus.getTotalLength();
+  bus.style.strokeDasharray = busLen;
+  bus.style.strokeDashoffset = reduced ? 0 : busLen;
+
+  if (reduced) {
+    gsap.set([aSpans, bSpans], { y: 0 });
+    gsap.set(['#sub', '#ctas', '.reveal'], { opacity: 1, y: 0 });
+    gsap.set('.divider .seg', { scaleX: 1 });
+    gsap.set('.lead', { opacity: 1 });
+    gsap.set('.lamp .dot.red, .lamp .glow.red', { opacity: 0 });
+    gsap.set('.switch .fill', { opacity: 1 });
+    gsap.set('.switch:not(.master) .nub', { x: 20 });
+    gsap.set('.master .nub', { x: 29 });
+    gsap.set('.lamp.run .dot.blue, .lamp.run .glow.blue, .master .glow.blue, .bus-glow', { opacity: 1 });
+    return;
+  }
+
+  /* entrance */
+  gsap.from('.plate', { opacity: 0, scale: 0.97, duration: 1.2, ease: 'expo.out', delay: 0.15 });
+  gsap.to(aSpans, { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.055, delay: 0.25 });
+  gsap.to('#sub', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.9 });
+  gsap.to('#ctas', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 1.05 });
+
+  /* section reveals */
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
+  });
+  document.querySelectorAll('.divider .seg').forEach(function (el) {
+    gsap.to(el, { scaleX: 1, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+  });
+
+  /* pulse line in CTA */
+  var pulsePath = document.getElementById('pulse-path');
+  var plen = pulsePath.getTotalLength();
+  gsap.set(pulsePath, { strokeDasharray: plen, strokeDashoffset: plen });
+  gsap.to(pulsePath, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut', scrollTrigger: { trigger: '.cta-band', start: 'top 75%' } });
+
+  /* the assembly sequence: scatter to grid, wire up, arm the panel, flip the headline */
+  var tl = gsap.timeline({ paused: true });
+  tl.to('.instr', { x: 0, y: 0, rotation: 0, duration: 0.45, stagger: 0.028, ease: 'back.out(1.3)' }, 0);
+  tl.to('.lead', { opacity: 1, duration: 0.05, stagger: 0.006 }, 0.38);
+  tl.to('.lead', { strokeDashoffset: 0, duration: 0.2, stagger: 0.006, ease: 'none' }, 0.40);
+  tl.to('.bus-line', { strokeDashoffset: 0, duration: 0.16, ease: 'none' }, 0.60);
+  tl.to('.lamp .dot.red, .lamp .glow.red', { opacity: 0, duration: 0.08, stagger: 0.014, ease: 'none' }, 0.74);
+  tl.to('.switch:not(.master) .nub', { x: 20, duration: 0.06, stagger: 0.014, ease: 'power2.inOut' }, 0.76);
+  tl.to('.switch:not(.master) .fill', { opacity: 1, duration: 0.06, stagger: 0.014, ease: 'none' }, 0.76);
+  tl.to('.master .nub', { x: 29, duration: 0.07, ease: 'power2.inOut' }, 0.86);
+  tl.to('.master .fill', { opacity: 1, duration: 0.07, ease: 'none' }, 0.86);
+  tl.to('.master .glow.blue', { opacity: 1, duration: 0.1, ease: 'none' }, 0.88);
+  tl.to('.lamp.run .dot.blue, .lamp.run .glow.blue', { opacity: 1, duration: 0.1, ease: 'none' }, 0.90);
+  tl.to('.bus-glow', { opacity: 1, duration: 0.1, ease: 'none' }, 0.90);
+  tl.to(aSpans, { y: '-115%', duration: 0.12, stagger: 0.012, ease: 'power2.in' }, 0.84);
+  tl.fromTo(bSpans, { y: '115%' }, { y: '0%', duration: 0.16, stagger: 0.016, ease: 'expo.out' }, 0.90);
+
+  if (isDesktop) {
+    /* the one pinned sequence */
+    gsap.to(tl, {
+      progress: 1, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=180%', pin: true, scrub: 0.6 }
+    });
+  } else {
+    /* touch: same story on a timer, no pin */
+    gsap.delayedCall(1.0, function () { tl.play(); });
+    tl.timeScale(1.6);
+  }
+})();
+</script>
+</body>
+</html>

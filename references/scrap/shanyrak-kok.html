@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmet Labs · The Crown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C84A1E;
+    --sky: #0E2233;
+    --bone: #F2EDE2;
+    --bone-hi: #FAF6EC;
+    --ink: #12181F;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scrollbar-color: var(--red) var(--ink); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 5px; }
+  ::selection { background: var(--ink); color: var(--bone); }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .on-red :focus-visible { outline-color: var(--bone); }
+  body {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: 'Onest', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  h1, h2, .plate-title, .row-title, .logo-word { font-family: 'Russo One', sans-serif; font-weight: 400; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- nav: floating island ---------- */
+  nav {
+    position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50;
+    display: flex; align-items: center; gap: 30px;
+    background: var(--bone); border-radius: 999px; padding: 9px 10px 9px 20px;
+  }
+  .logo { text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .logo svg { width: 20px; height: 20px; }
+  .logo-word { font-size: 1.05rem; color: var(--ink); letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; color: rgba(18, 24, 31, 0.66); text-decoration: none;
+    transition: color 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* tumar button: the amulet shape, hard poster edges, point down */
+  .btn-tumar {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--bone); color: var(--ink); text-decoration: none;
+    font-weight: 600; font-size: 0.9rem;
+    padding: 17px 28px 24px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(50% + 10px) calc(100% - 12px), 50% 100%, calc(50% - 10px) calc(100% - 12px), 0 calc(100% - 12px));
+    transition: transform 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-tumar:hover { transform: translateY(-3px); background: #FBF7EC; }
+  .btn-tumar:active { transform: scale(0.98); }
+  .btn-tumar svg { transition: transform 0.5s var(--ease); }
+  .btn-tumar:hover svg { transform: translate(2px, -2px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--bone); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    padding: 15px 24px; border: 1px solid rgba(242, 237, 226, 0.4);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-ghost:hover { border-color: var(--bone); background: rgba(242, 237, 226, 0.08); }
+  .nav-cta {
+    color: var(--bone) !important; background: var(--ink); border-radius: 999px; padding: 10px 18px;
+    font-size: 0.82rem; font-weight: 500; text-decoration: none;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav-cta:hover { background: #1E2833; transform: translateY(-1px); }
+
+  /* ---------- hero: the particle crown ---------- */
+  header {
+    position: relative; min-height: 100dvh; background: var(--sky); overflow: hidden;
+    display: flex; align-items: center;
+  }
+  #crown-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .hero-inner {
+    position: relative; z-index: 3; width: 100%; max-width: 1440px; margin: 0 auto;
+    padding: 130px 48px 90px; pointer-events: none;
+  }
+  .hero-inner a { pointer-events: auto; }
+  h1 {
+    display: grid;
+    font-size: clamp(2.6rem, 6vw, 6rem);
+    line-height: 1.02; max-width: 13ch; margin-bottom: 36px; color: var(--bone);
+    text-transform: uppercase;
+  }
+  h1 .state { grid-area: 1 / 1; align-self: start; }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: baseline; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+  h1 .w > span { display: inline-block; transform: translateY(115%); will-change: transform; }
+  h1 .a-manual { opacity: 0.5; }
+  h1 .a-system {
+    background: var(--red); color: var(--bone);
+    padding: 0.02em 0.16em 0.06em; margin: 0 0.06em;
+    display: inline-block; transform: rotate(-1.2deg);
+  }
+  .sub {
+    max-width: 44ch; color: rgba(242, 237, 226, 0.85); font-size: 1.05rem; line-height: 1.68;
+    margin-bottom: 44px; opacity: 0; transform: translateY(18px);
+  }
+  .cta-row { display: flex; gap: 18px; align-items: center; opacity: 0; transform: translateY(18px); flex-wrap: wrap; }
+
+  /* telemetry: real data at the field edges */
+  .tele { position: absolute; z-index: 4; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(242, 237, 226, 0.85); }
+  .tele b { font-weight: 500; color: var(--bone); }
+  .tele-tl { top: 96px; left: 48px; }
+  .tele-r { top: 50%; right: 22px; transform: rotate(90deg) translateX(-50%); transform-origin: right center; }
+  .tele-br { bottom: 34px; right: 48px; text-align: right; }
+  .tele-counter { bottom: 34px; left: 48px; font-size: 0.78rem; color: var(--bone); }
+
+  /* ---------- shet-oyu infinity borders ---------- */
+  .shetoyu { display: block; width: 100%; height: 26px; }
+  .shetoyu.on-bone { background: var(--bone); color: var(--ink); }
+  .shetoyu.on-ink { background: var(--ink); color: rgba(242, 237, 226, 0.9); }
+  .shetoyu.on-red { background: var(--red); color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { padding: 130px 48px; }
+  .wrap { max-width: 1440px; margin: 0 auto; }
+  .sec-head { max-width: 860px; margin-bottom: 76px; }
+  h2 { font-size: clamp(2.2rem, 4.6vw, 4.4rem); line-height: 1.04; text-transform: uppercase; }
+  .sec-sub { margin-top: 24px; font-size: 1rem; line-height: 1.65; max-width: 54ch; }
+
+  /* systems: bone field, pasted plates, four directions of the crown */
+  #systems { background: var(--bone); color: var(--ink); }
+  #systems .sec-sub { color: rgba(23, 20, 15, 0.72); }
+  .plates { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; }
+  .plate {
+    position: relative; background: var(--bone-hi); border: 1px solid rgba(23, 20, 15, 0.85);
+    padding: 40px 30px 34px; display: flex; flex-direction: column; min-height: 500px;
+  }
+  .plate:nth-child(1) { transform: rotate(-0.8deg); z-index: 1; }
+  .plate:nth-child(2) { transform: rotate(0.6deg) translateY(46px); margin-left: -22px; z-index: 2; }
+  .plate:nth-child(3) { transform: rotate(-0.5deg) translateY(12px); margin-left: -22px; z-index: 3; }
+  .plate:nth-child(4) { transform: rotate(0.9deg) translateY(62px); margin-left: -22px; z-index: 4; }
+  .plate .emblem { width: 76px; height: 76px; margin-bottom: 30px; }
+  .plate .emblem * { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .plate .emblem .acc { stroke: var(--red); }
+  .plate-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .plate-dir { font-size: 0.62rem; letter-spacing: 0.14em; color: var(--red); }
+  .plate-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--bone); background: var(--ink); padding: 6px 12px;
+  }
+  .plate-title { font-size: 1.5rem; line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; }
+  .plate-problem { color: rgba(23, 20, 15, 0.72); font-size: 0.9rem; line-height: 1.6; margin-bottom: 28px; }
+  .plate-sys { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(23, 20, 15, 0.2); }
+  .plate-sys .lbl { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 9px; }
+  .plate-sys p { font-size: 0.88rem; line-height: 1.55; color: rgba(23, 20, 15, 0.88); }
+
+  /* work: black field, mission log */
+  #work { background: var(--ink); }
+  #work .sec-sub { color: rgba(242, 237, 226, 0.65); }
+  .ledger { border-top: 1px solid rgba(242, 237, 226, 0.14); }
+  .row {
+    display: grid; grid-template-columns: 1.4fr auto auto; gap: 30px; align-items: center;
+    padding: 38px 10px; border-bottom: 1px solid rgba(242, 237, 226, 0.14); text-decoration: none; color: inherit;
+    transition: background 0.5s var(--ease);
+  }
+  .row:hover { background: rgba(242, 237, 226, 0.03); }
+  .row-title { font-size: 1.7rem; text-transform: uppercase; transition: transform 0.5s var(--ease); display: block; }
+  .row:hover .row-title { transform: translateX(8px); }
+  .row .meta { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242, 237, 226, 0.6); margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .live { color: var(--bone); display: inline-flex; align-items: center; gap: 8px; }
+  .live i { width: 7px; height: 7px; background: var(--red); animation: blink 2.2s var(--ease) infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .row .thumb {
+    width: 210px; aspect-ratio: 4/3; padding: 7px; background: var(--bone);
+    justify-self: end; transform: rotate(1.2deg);
+    transition: transform 0.6s var(--ease);
+  }
+  .row:nth-child(3) .thumb { transform: rotate(-1.1deg); }
+  .row:hover .thumb { transform: rotate(0deg) scale(1.03); }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .row .arrow {
+    width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(242, 237, 226, 0.3);
+    display: flex; align-items: center; justify-content: center; color: var(--bone);
+    transition: all 0.5s var(--ease);
+  }
+  .row:hover .arrow { background: var(--red); border-color: var(--red); color: var(--bone); transform: rotate(45deg); }
+
+  /* cta: red field close, tamgaly sun mark */
+  .cta-band { background: var(--red); position: relative; overflow: hidden; padding: 150px 48px; }
+  .cta-band .wrap { position: relative; z-index: 2; }
+  .cta-band .sun { display: block; width: 64px; height: 64px; margin-bottom: 40px; }
+  .cta-band .sun * { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+  .cta-band h2 { color: var(--bone); max-width: 15ch; }
+  .cta-band .offer {
+    margin: 34px 0 48px; max-width: 56ch; color: rgba(242, 237, 226, 0.88); font-size: 1.02rem; line-height: 1.7;
+    padding-left: 24px; border-left: 2px solid var(--ink);
+  }
+  .cta-band .ghost { position: absolute; right: -180px; bottom: -220px; width: 640px; height: 640px; opacity: 0.28; }
+  .cta-band .ghost * { fill: none; stroke: var(--ink); stroke-width: 2; }
+
+  footer {
+    background: var(--ink); padding: 48px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242, 237, 226, 0.5);
+    border-top: 1px solid rgba(242, 237, 226, 0.14);
+  }
+  footer .mono { display: flex; gap: 8px; align-items: center; }
+  footer svg { width: 14px; height: 14px; }
+
+  .reveal { opacity: 0; transform: translateY(34px); }
+
+  body.reduced h1 .state { grid-area: auto; }
+  body.reduced h1 .state + .state { margin-top: 0.2em; }
+  body.reduced .reveal, body.reduced .sub, body.reduced .cta-row { opacity: 1 !important; transform: none !important; }
+  body.reduced h1 .w > span { transform: none !important; }
+
+  @media (max-width: 900px) {
+    nav { gap: 16px; padding: 8px 8px 8px 16px; max-width: calc(100vw - 24px); }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero-inner { padding: 120px 22px 110px; }
+    .tele-r, .tele-br { display: none; }
+    .tele-tl { left: 22px; }
+    .tele-counter { left: 22px; bottom: 26px; }
+    section { padding: 90px 22px; }
+    .plates { grid-template-columns: 1fr; gap: 18px; }
+    .plate { min-height: 0; }
+    .plate:nth-child(n) { transform: none; margin-left: 0; }
+    .row { grid-template-columns: 1fr; gap: 16px; }
+    .row .thumb { width: 100%; justify-self: start; transform: none; }
+    .cta-band { padding: 90px 22px; }
+    footer { padding: 40px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .sub, .cta-row { opacity: 1 !important; transform: none !important; }
+    h1 .w > span { transform: none !important; }
+    .live i { animation: none; }
+  }
+</style>
+</head>
+<body class="on-red">
+<!--
+THESIS: The site is the night sky ordering itself into the shanyrak, the sacred crown of the yurt: manual chaos is a scattered starfield; the system is the constellation crown the stars form. Refuses the category default of dark hero plus feature cards, and refuses cliche ram's-horn clip art.
+OWN-WORLD: Kok Tengri, the eternal sky of the steppe, rendered as computation. Deep sky field (#0E2233), poster bone (#F2EDE2), cool ink (#12181F), ember accent (#C84A1E) reserved for tags, marks, and the closing field. Flat unmixed color, depth by overlap. Motifs from Kazakh ornament research, not clip art: shanyrak crown with tort kulak horn spirals (hero, ~48k WebGL particles assembling from starfield chaos into the crown constellation on scroll, cursor repulsion, perpetual slow rotation after lock), tumar amulet (pointed buttons), shet-oyu infinity border (every section seam), ilmek square spiral (tamga logo mark), Tamgaly sun-head (CTA mark). The four directions of the crown cross map to the four systems (N/E/S/W). Russo One monumental display, Onest body, JetBrains Mono for real telemetry only. Counter reads ORDER 0-100%.
+STORY: A founder watches a scattered sky order itself into the crown that holds the home; the four directions of the crown become the four systems; they message us.
+FIRST VIEWPORT: full night-sky field; monumental bone uppercase headline left; a WebGL starfield right that assembles into the shanyrak constellation on scroll (scrubbed on all viewports), repels the cursor, and keeps turning; real telemetry at the edges; bone tumar-point CTA.
+FORM: user-pinned evolution of rolled direction (orbital modernism) fused with the ornament research layer; palette locked by the user to Kok Tengri over kyzyl-red and bone-poster alternatives. Raises carried: noise-to-lock state change (oscilloscope), typographic courage (bolted book), flat-plate overlap (Lowicz), functional controls only (HyperCard).
+FINISH: finish review passed with fixes applied (tort kulak legibility, mobile scrub, palette unification, seam divider, mobile crown plane, real work captures); design/DESIGN.md records this world.
+-->
+
+<nav>
+  <a class="logo" href="#" aria-label="Rahmet Labs home">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2 H18 V18 H6 V6 H14 V14 H10 V10" fill="none" stroke="#C84A1E" stroke-width="2.4" stroke-linecap="square"/></svg>
+    <span class="logo-word">Rahmet</span>
+  </a>
+  <div class="nav-links">
+    <a href="#systems">Systems</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Tell us what's manual</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <canvas id="crown-gl" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+    <h1 id="headline">
+      <span class="state state-a">Your business is drowning in <span class="a-manual">manual work.</span></span>
+      <span class="state state-b">We build <span class="a-system">the systems</span> that end it.</span>
+    </h1>
+    <p class="sub" id="sub">One senior team builds automation and AI that replace your spreadsheets, copy-paste, and follow-up threads, then stays to run them.</p>
+    <div class="cta-row" id="ctas">
+      <a class="btn-tumar" href="#contact">
+        Tell us what's manual
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+
+  <span class="tele mono tele-tl">Almaty <b>43.24°N 76.91°E</b></span>
+  <span class="tele mono tele-r"><b>EN / RU / KZ</b></span>
+  <span class="tele mono tele-br">First call to running system <b>4-12 weeks</b></span>
+  <span class="tele mono tele-counter" id="counter">ORDER 00%</span>
+</header>
+
+<svg class="shetoyu on-bone" aria-hidden="true"><defs><pattern id="so-b" width="30" height="26" patternUnits="userSpaceOnUse"><path d="M1 20 H23 V7 H9 V14 H16" fill="none" stroke="currentColor" stroke-width="2"/></pattern></defs><rect width="100%" height="26" fill="url(#so-b)"/></svg>
+
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Four ways work breaks down, and the systems we build instead.</h2>
+      <p class="sec-sub">Four failure patterns we see again and again in Kazakhstani and regional companies. Four systems, four directions of the crown.</p>
+    </div>
+    <div class="plates">
+      <div class="plate reveal">
+        <svg class="emblem" viewBox="0 0 76 76">
+          <circle cx="38" cy="38" r="26"/>
+          <path class="acc" d="M38 12 A26 26 0 0 1 64 38"/>
+          <rect x="33" y="7" width="10" height="10"/>
+          <rect x="33" y="59" width="10" height="10"/>
+          <rect x="7" y="33" width="10" height="10"/>
+        </svg>
+        <div class="plate-meta"><span class="plate-dir mono">N</span><span class="plate-tag">Manual ops</span></div>
+        <h3 class="plate-title">Someone still does this by hand</h3>
+        <p class="plate-problem">Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.</p>
+        <div class="plate-sys"><span class="lbl">The system</span><p>Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human, and only when.</p></div>
+      </div>
+      <div class="plate reveal">
+        <svg class="emblem" viewBox="0 0 76 76">
+          <circle cx="38" cy="38" r="9"/>
+          <path d="M38 29 V10 M47 38 H66 M38 47 V66 M29 38 H10"/>
+          <circle class="acc" cx="38" cy="10" r="4"/>
+          <circle cx="66" cy="38" r="4"/>
+          <circle cx="38" cy="66" r="4"/>
+          <circle class="acc" cx="10" cy="38" r="4"/>
+        </svg>
+        <div class="plate-meta"><span class="plate-dir mono">E</span><span class="plate-tag">AI agents</span></div>
+        <h3 class="plate-title">Tickets wait. Leads stall.</h3>
+        <p class="plate-problem">Support queues grow while the team sleeps. Leads from the website wait hours for a first reply that should take seconds.</p>
+        <div class="plate-sys"><span class="lbl">The system</span><p>AI agents that answer, qualify, and route in seconds, in your tone of voice, with a human handoff when the conversation needs one.</p></div>
+      </div>
+      <div class="plate reveal">
+        <svg class="emblem" viewBox="0 0 76 76">
+          <rect x="10" y="14" width="56" height="48"/>
+          <path d="M10 26 H66"/>
+          <path class="acc" d="M18 40 H42 M18 50 H58"/>
+          <circle cx="18" cy="20" r="2.5"/>
+          <circle cx="26" cy="20" r="2.5"/>
+        </svg>
+        <div class="plate-meta"><span class="plate-dir mono">S</span><span class="plate-tag">Web &amp; product</span></div>
+        <h3 class="plate-title">Our site doesn't actually do anything</h3>
+        <p class="plate-problem">A brochure that collects dust. No intake, no booking, no dashboard. Every enquiry still lands in a personal WhatsApp.</p>
+        <div class="plate-sys"><span class="lbl">The system</span><p>Web products that transact: intake forms, client portals, dashboards, and booking flows wired straight into your operations.</p></div>
+      </div>
+      <div class="plate reveal">
+        <svg class="emblem" viewBox="0 0 76 76">
+          <path d="M12 16 H64 M12 32 H64 M12 48 H64"/>
+          <path class="acc" d="M12 64 H48"/>
+          <circle class="acc" cx="56" cy="64" r="5"/>
+        </svg>
+        <div class="plate-meta"><span class="plate-dir mono">W</span><span class="plate-tag">Data &amp; backend</span></div>
+        <h3 class="plate-title">Nobody knows which number is right</h3>
+        <p class="plate-problem">Sales has one figure, accounting has another, the warehouse a third. Meetings start with arguing about whose spreadsheet is current.</p>
+        <div class="plate-sys"><span class="lbl">The system</span><p>One backend of record: synced data, clean APIs, and dashboards everyone trusts because they all read from the same source.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="shetoyu on-ink" aria-hidden="true"><defs><pattern id="so-i" width="30" height="26" patternUnits="userSpaceOnUse"><path d="M1 20 H23 V7 H9 V14 H16" fill="none" stroke="currentColor" stroke-width="2"/></pattern></defs><rect width="100%" height="26" fill="url(#so-i)"/></svg>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Systems we've shipped.</h2>
+      <p class="sec-sub">Every entry is live and clickable. No mockups, no concept work.</p>
+    </div>
+    <div class="ledger">
+      <a class="row reveal" href="https://ageu.edu.kz" target="_blank" rel="noopener">
+        <span><span class="row-title">Education Platform Suite</span><span class="meta mono">Web &amp; Product <span class="live"><i></i>Live</span></span></span>
+        <span></span>
+        <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="row reveal" href="https://beyondlines-web.vercel.app" target="_blank" rel="noopener">
+        <span><span class="row-title">Beyond Lines</span><span class="meta mono">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+        <span class="thumb"><img src="../assets/work/beyond-lines.png" alt="Beyond Lines live site"></span>
+        <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="row reveal" href="https://unhireable-website.vercel.app" target="_blank" rel="noopener">
+        <span><span class="row-title">Unhireable</span><span class="meta mono">AI &amp; Automation <span class="live"><i></i>Live</span></span></span>
+        <span class="thumb"><img src="../assets/work/unhireable.png" alt="Unhireable live site"></span>
+        <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="row reveal" href="#">
+        <span><span class="row-title">Multi-Platform Bot Suite</span><span class="meta mono">Automation · Shipped</span></span>
+        <span></span>
+        <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<svg class="shetoyu on-red" aria-hidden="true"><defs><pattern id="so-r" width="30" height="26" patternUnits="userSpaceOnUse"><path d="M1 20 H23 V7 H9 V14 H16" fill="none" stroke="currentColor" stroke-width="2"/></pattern></defs><rect width="100%" height="26" fill="url(#so-r)"/></svg>
+
+<div class="cta-band on-red reveal" id="contact">
+  <svg class="ghost" viewBox="0 0 720 720" aria-hidden="true">
+    <circle cx="360" cy="360" r="330"/>
+    <circle cx="360" cy="360" r="300"/>
+    <path d="M60 330 H660 M60 390 H660 M330 60 V660 M390 60 V660"/>
+    <path d="M120 330 L330 120 M600 330 L390 120 M120 390 L330 600 M600 390 L390 600"/>
+  </svg>
+  <div class="wrap">
+    <svg class="sun" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="12"/>
+      <path d="M32 4 V14 M32 50 V60 M4 32 H14 M50 32 H60 M12 12 L19 19 M45 45 L52 52 M52 12 L45 19 M19 45 L12 52"/>
+    </svg>
+    <h2>Start with the manual work that eats your week.</h2>
+    <p class="offer">In the first week, we map your manual work into a scored system plan. The plan is yours whether or not we build. If we do build, the first stage is fixed-price.</p>
+    <a class="btn-tumar" href="#">
+      Tell us what's manual
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="mono"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2 H18 V18 H6 V6 H14 V14 H10 V10" fill="none" stroke="#C84A1E" stroke-width="2.4" stroke-linecap="square"/></svg>© 2026 Rahmet Labs</span>
+  <span class="mono">Almaty, Kazakhstan</span>
+  <span class="mono">EN / RU / KZ</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 900px)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  if (reduced) document.body.classList.add('reduced');
+
+  /* ============ the shanyrak target, drawn once and sampled into particles ============ */
+  function buildTargetPoints(count) {
+    var S = 1200, C = S / 2;
+    var cv = document.createElement('canvas');
+    cv.width = cv.height = S;
+    var x = cv.getContext('2d');
+    x.translate(C, C);
+    x.strokeStyle = '#fff';
+    x.lineCap = 'round';
+    function ring(r, w) { x.lineWidth = w; x.beginPath(); x.arc(0, 0, r, 0, Math.PI * 2); x.stroke(); }
+    function seg(x1, y1, x2, y2, w) { x.lineWidth = w; x.beginPath(); x.moveTo(x1, y1); x.lineTo(x2, y2); x.stroke(); }
+    function spiral(cx, cy, startAng) {
+      x.lineWidth = 15; x.beginPath();
+      for (var i = 0; i <= 64; i++) {
+        var t = i / 64;
+        var r = 10 + t * 84;
+        var a = startAng + t * Math.PI * 4.1;
+        var px = cx + Math.cos(a) * r, py = cy + Math.sin(a) * r;
+        i === 0 ? x.moveTo(px, py) : x.lineTo(px, py);
+      }
+      x.stroke();
+    }
+    /* the crown: double ring, cross beams, diagonal struts, center eye */
+    ring(398, 14); ring(366, 10);
+    seg(-350, -27, 350, -27, 16); seg(-350, 27, 350, 27, 16);
+    seg(-27, -350, -27, 350, 16); seg(27, -350, 27, 350, 16);
+    [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(function (s) {
+      seg(238 * s[0], 27 * s[1], 27 * s[0], 238 * s[1], 12);
+    });
+    ring(64, 13);
+    /* tort kulak: four horn spirals at the diagonals, outside the ring */
+    [45, 135, 225, 315].forEach(function (deg) {
+      var a = (deg - 90) * Math.PI / 180;
+      spiral(Math.cos(a) * 492, Math.sin(a) * 492, a + Math.PI * 0.5);
+    });
+    /* sample filled pixels into world points */
+    var img = x.getImageData(0, 0, S, S).data;
+    var pts = [];
+    for (var py = 0; py < S; py += 2) {
+      for (var px = 0; px < S; px += 2) {
+        if (img[(py * S + px) * 4 + 3] > 120) pts.push([px - C, C - py]);
+      }
+    }
+    var out = new Float32Array(count * 3);
+    var step = pts.length / count;
+    for (var i = 0; i < count; i++) {
+      var p = pts[Math.floor(i * step) % pts.length];
+      out[i * 3] = p[0] + (Math.random() - 0.5) * 3;
+      out[i * 3 + 1] = p[1] + (Math.random() - 0.5) * 3;
+      out[i * 3 + 2] = 0;
+    }
+    return out;
+  }
+
+  /* ============ WebGL firmament ============ */
+  var canvas = document.getElementById('crown-gl');
+  var renderer, scene, camera, points, uniforms;
+  var prog = { p: reduced ? 1 : 0 };
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var hero = document.getElementById('hero');
+  var running = true, inView = true;
+
+  function initGL() {
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(vw, vh, false);
+    scene = new THREE.Scene();
+    camera = new THREE.OrthographicCamera(-vw / 2, vw / 2, vh / 2, -vh / 2, 1, 1000);
+    camera.position.z = 10;
+
+    var COUNT = isDesktop ? 48000 : 22000;
+    var DUST = isDesktop ? 6000 : 2600;
+    var targets = buildTargetPoints(COUNT);
+    var scale = Math.min(vw, vh) * 0.0072 / 10 * 10; /* crown spans ~86% of the smaller axis */
+    var crownScale = Math.min(vw, vh) * (isDesktop ? 0.00078 : 0.00066);
+    var center = new THREE.Vector2(vw * (isDesktop ? 0.235 : 0), isDesktop ? 0 : -vh * 0.17);
+
+    var chaos = new Float32Array(COUNT * 3);
+    var target = new Float32Array(COUNT * 3);
+    var rand = new Float32Array(COUNT);
+    var size = new Float32Array(COUNT);
+    var dust = new Float32Array(COUNT);
+    for (var i = 0; i < COUNT; i++) {
+      var isDust = i >= COUNT - DUST;
+      /* chaos fills the whole field, in world space relative to crown center */
+      chaos[i * 3] = (Math.random() - 0.5) * vw * 1.15 - center.x;
+      chaos[i * 3 + 1] = (Math.random() - 0.5) * vh * 1.15 - center.y;
+      chaos[i * 3 + 2] = 0;
+      if (isDust) {
+        target[i * 3] = chaos[i * 3]; target[i * 3 + 1] = chaos[i * 3 + 1];
+        dust[i] = 1;
+      } else {
+        target[i * 3] = targets[i * 3] * crownScale * 1.12;
+        target[i * 3 + 1] = targets[i * 3 + 1] * crownScale * 1.12;
+      }
+      rand[i] = Math.random();
+      size[i] = isDust ? 1.1 + Math.random() * 1.2 : 1.9 + Math.random() * 2.6;
+    }
+
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(target, 3));
+    geo.setAttribute('aChaos', new THREE.BufferAttribute(chaos, 3));
+    geo.setAttribute('aRand', new THREE.BufferAttribute(rand, 1));
+    geo.setAttribute('aSize', new THREE.BufferAttribute(size, 1));
+    geo.setAttribute('aDust', new THREE.BufferAttribute(dust, 1));
+
+    uniforms = {
+      uProgress: { value: prog.p },
+      uTime: { value: 0 },
+      uRot: { value: 0 },
+      uMouse: { value: new THREE.Vector2(9999, 9999) },
+      uCenter: { value: center },
+      uDPR: { value: Math.min(window.devicePixelRatio, 2) }
+    };
+
+    var mat = new THREE.ShaderMaterial({
+      uniforms: uniforms,
+      transparent: true,
+      depthTest: false,
+      vertexShader: [
+        'attribute vec3 aChaos;',
+        'attribute float aRand;',
+        'attribute float aSize;',
+        'attribute float aDust;',
+        'uniform float uProgress;',
+        'uniform float uTime;',
+        'uniform float uRot;',
+        'uniform vec2 uMouse;',
+        'uniform vec2 uCenter;',
+        'uniform float uDPR;',
+        'varying float vT;',
+        'varying float vRand;',
+        'varying float vDust;',
+        'void main() {',
+        '  float t = clamp((uProgress - aRand * 0.35) / 0.65, 0.0, 1.0);',
+        '  t = t * t * (3.0 - 2.0 * t);',
+        '  t = t * (1.0 - aDust);',
+        '  vT = t; vRand = aRand; vDust = aDust;',
+        '  vec3 pos = mix(aChaos, position, t);',
+        '  float wob = (1.0 - t) * 16.0 + 1.2;',
+        '  pos.x += sin(uTime * 0.55 + aRand * 43.0) * wob * 0.45;',
+        '  pos.y += cos(uTime * 0.48 + aRand * 61.0) * wob * 0.45;',
+        '  float ang = uRot * t;',
+        '  float c = cos(ang), s = sin(ang);',
+        '  pos.xy = mat2(c, -s, s, c) * pos.xy;',
+        '  vec2 world = pos.xy + uCenter;',
+        '  vec2 d = world - uMouse;',
+        '  float dist = length(d);',
+        '  float rep = smoothstep(130.0, 0.0, dist);',
+        '  world += normalize(d + vec2(0.0001)) * rep * 46.0 * (0.35 + 0.65 * (1.0 - t));',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(world, 0.0, 1.0);',
+        '  gl_PointSize = aSize * uDPR * (1.0 + rep * 1.6);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying float vT;',
+        'varying float vRand;',
+        'varying float vDust;',
+        'void main() {',
+        '  vec2 uv = gl_PointCoord - 0.5;',
+        '  float a = smoothstep(0.5, 0.3, length(uv));',
+        '  vec3 ink = vec3(0.45, 0.58, 0.66);',
+        '  vec3 bone = vec3(0.949, 0.929, 0.886);',
+        '  vec3 col = mix(ink, bone, vT);',
+        '  col = mix(col, vec3(1.0, 0.98, 0.94), step(0.985, vRand) * vT * 0.8);',
+        '  float alpha = a * mix(0.62, 0.95, vT);',
+        '  alpha *= (1.0 - vDust * 0.55);',
+        '  gl_FragColor = vec4(col, alpha);',
+        '}'
+      ].join('\n')
+    });
+
+    points = new THREE.Points(geo, mat);
+    scene.add(points);
+  }
+
+  function onResize() {
+    vw = window.innerWidth; vh = window.innerHeight;
+    if (!renderer) return;
+    renderer.setSize(vw, vh, false);
+    camera.left = -vw / 2; camera.right = vw / 2; camera.top = vh / 2; camera.bottom = -vh / 2;
+    camera.updateProjectionMatrix();
+  }
+
+  var start = performance.now();
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!running || !inView || !renderer) return;
+    uniforms.uTime.value = (now - start) / 1000;
+    uniforms.uProgress.value = prog.p;
+    uniforms.uRot.value = ((now - start) / 1000) * 0.05;
+    renderer.render(scene, camera);
+  }
+
+  try {
+    initGL();
+    window.addEventListener('resize', onResize);
+    new IntersectionObserver(function (e) { inView = e[0].isIntersecting; }).observe(canvas);
+    document.addEventListener('visibilitychange', function () { running = document.visibilityState === 'visible'; });
+    if (isDesktop && !reduced) {
+      hero.addEventListener('pointermove', function (e) {
+        uniforms.uMouse.value.set(e.clientX - vw / 2, -(e.clientY - vh / 2));
+      });
+      hero.addEventListener('pointerleave', function () { uniforms.uMouse.value.set(9999, 9999); });
+    }
+    requestAnimationFrame(frame);
+  } catch (e) {
+    canvas.style.display = 'none';
+  }
+
+  /* ============ word masking ============ */
+  function splitWords(elm) {
+    var nodes = Array.from(elm.childNodes);
+    elm.innerHTML = '';
+    nodes.forEach(function (n) {
+      var cls = n.nodeType === 1 ? n.className : '';
+      n.textContent.split(/(\s+)/).forEach(function (tok) {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) { elm.appendChild(document.createTextNode(' ')); return; }
+        var mask = document.createElement('span');
+        mask.className = 'w';
+        var inner = document.createElement('span');
+        inner.textContent = tok;
+        if (cls) inner.className = cls;
+        mask.appendChild(inner);
+        elm.appendChild(mask);
+      });
+    });
+  }
+  splitWords(document.querySelector('.state-a'));
+  splitWords(document.querySelector('.state-b'));
+  var aSpans = '.state-a .w > span';
+  var bSpans = '.state-b .w > span';
+
+  var counter = document.getElementById('counter');
+  function setCounter(p) {
+    counter.textContent = 'ORDER ' + String(Math.round(p * 100)).padStart(2, '0') + '%';
+  }
+
+  if (reduced) {
+    gsap.set([aSpans, bSpans], { y: 0 });
+    gsap.set(['#sub', '#ctas', '.reveal'], { opacity: 1, y: 0 });
+    setCounter(1);
+    return;
+  }
+
+  /* entrance */
+  gsap.to(aSpans, { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.055, delay: 0.25 });
+  gsap.to('#sub', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.9 });
+  gsap.to('#ctas', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 1.05 });
+
+  /* reveals */
+  document.querySelectorAll('.reveal').forEach(function (elm) {
+    gsap.to(elm, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: elm, start: 'top 86%' } });
+  });
+  document.querySelectorAll('.plate .emblem').forEach(function (elm) {
+    var paths = elm.querySelectorAll('circle, path, rect');
+    paths.forEach(function (p) {
+      var l = p.getTotalLength();
+      gsap.set(p, { strokeDasharray: l, strokeDashoffset: l });
+    });
+    gsap.to(paths, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.08, scrollTrigger: { trigger: elm, start: 'top 85%' } });
+  });
+
+  /* the ordering: chaos assembles into the crown, then the headline flips */
+  var tl = gsap.timeline({ paused: true, onUpdate: function () { setCounter(tl.progress()); } });
+  tl.to(prog, { p: 1, duration: 0.8, ease: 'none' }, 0);
+  tl.to(aSpans, { y: '-115%', duration: 0.1, stagger: 0.012, ease: 'power2.in' }, 0.82);
+  tl.fromTo(bSpans, { y: '115%' }, { y: '0%', duration: 0.14, stagger: 0.014, ease: 'expo.out' }, 0.87);
+
+  gsap.to(tl, {
+    progress: 1, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=180%', pin: true, scrub: 0.6 }
+  });
+})();
+</script>
+</body>
+</html>

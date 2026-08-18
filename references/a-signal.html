@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Direction A — Signal · Rahmet Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=general-sans@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090D;
+    --panel: #0C1016;
+    --core: #10151D;
+    --ink: #E9EDF3;
+    --muted: #8B95A5;
+    --faint: #5A6474;
+    --signal: #4C8DFF;
+    --manual: #C14A36;
+    --hairline: rgba(233, 237, 243, 0.09);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'General Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--signal); color: var(--bg); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  h1, h2, h3, .logo { font-family: 'Clash Display', 'General Sans', sans-serif; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: linear-gradient(rgba(7, 9, 13, 0.82), rgba(7, 9, 13, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .logo { font-weight: 600; letter-spacing: -0.02em; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+  .logo sup { color: var(--signal); font-size: 0.55em; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bg) !important; background: var(--ink); border-radius: 999px; padding: 10px 18px;
+    transition: background 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .nav-cta:hover { background: var(--signal); transform: translateY(-1px); }
+
+  /* ---------- hero ---------- */
+  header {
+    position: relative; min-height: 100dvh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 40px 64px;
+  }
+  #thread-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-inner { position: relative; z-index: 2; max-width: 1200px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 28px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--signal); }
+  h1 {
+    font-size: clamp(2.9rem, 7.2vw, 6.4rem);
+    font-weight: 500; letter-spacing: -0.035em; line-height: 1.02;
+    max-width: 15ch; margin-bottom: 30px;
+  }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: baseline; padding-bottom: 0.09em; margin-bottom: -0.09em; }
+  h1 .w > span { display: inline-block; transform: translateY(115%); will-change: transform; }
+  h1 .accent { color: var(--signal); font-style: normal; }
+  .sub {
+    max-width: 52ch; color: var(--muted); font-size: 1.06rem; line-height: 1.65; margin-bottom: 42px;
+    opacity: 0; transform: translateY(18px);
+  }
+  .cta-row { display: flex; gap: 16px; align-items: center; opacity: 0; transform: translateY(18px); flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--signal); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 0.86rem; letter-spacing: 0.01em;
+    padding: 8px 8px 8px 24px; border-radius: 999px;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 44px -12px rgba(76, 141, 255, 0.55); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary .orb {
+    width: 36px; height: 36px; border-radius: 999px; background: rgba(255, 255, 255, 0.16);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.5s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-primary:hover .orb { transform: translate(2px, -2px); background: rgba(255, 255, 255, 0.28); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ink); text-decoration: none; font-size: 0.86rem; font-weight: 500;
+    padding: 14px 22px; border-radius: 999px; border: 1px solid var(--hairline);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .btn-ghost:hover { border-color: rgba(233, 237, 243, 0.35); background: rgba(233, 237, 243, 0.04); }
+  .hero-meta {
+    position: absolute; right: 40px; bottom: 64px; z-index: 2;
+    display: flex; flex-direction: column; gap: 8px; text-align: right;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .hero-meta b { color: var(--muted); font-weight: 500; }
+
+  /* ---------- sections ---------- */
+  section { padding: 130px 40px; max-width: 1440px; margin: 0 auto; }
+  .sec-head { max-width: 780px; margin-bottom: 72px; }
+  .sec-kicker {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--signal); margin-bottom: 22px; display: block;
+  }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.06; }
+  .sec-sub { margin-top: 20px; color: var(--muted); font-size: 1rem; line-height: 1.65; max-width: 56ch; }
+
+  /* services: double-bezel cards */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .bezel {
+    background: rgba(233, 237, 243, 0.035); border: 1px solid var(--hairline);
+    border-radius: 26px; padding: 7px;
+    transition: border-color 0.5s var(--ease), transform 0.6s var(--ease);
+  }
+  .bezel:hover { border-color: rgba(76, 141, 255, 0.35); transform: translateY(-4px); }
+  .bezel-core {
+    background: var(--core); border-radius: 20px; padding: 34px 32px 30px;
+    height: 100%; display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(233, 237, 243, 0.05);
+    position: relative; overflow: hidden;
+  }
+  .bezel-core::after {
+    content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: var(--signal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.7s var(--ease);
+  }
+  .bezel:hover .bezel-core::after { transform: scaleX(1); }
+  .card-tag {
+    align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--manual);
+    border: 1px solid rgba(193, 74, 54, 0.35); border-radius: 999px; padding: 6px 12px; margin-bottom: 26px;
+  }
+  .card-quote { font-family: 'Clash Display', sans-serif; font-size: 1.42rem; font-weight: 500; letter-spacing: -0.015em; line-height: 1.28; margin-bottom: 16px; }
+  .card-problem { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 28px; }
+  .card-sys { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--hairline); }
+  .card-sys .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--signal); display: block; margin-bottom: 8px; }
+  .card-sys p { font-size: 0.88rem; line-height: 1.55; color: var(--ink); }
+
+  /* work ledger */
+  .ledger { border-top: 1px solid var(--hairline); }
+  .row {
+    display: grid; grid-template-columns: 90px 1.4fr 1fr auto; gap: 28px; align-items: center;
+    padding: 34px 10px; border-bottom: 1px solid var(--hairline); text-decoration: none; color: inherit;
+    transition: background 0.5s var(--ease);
+  }
+  .row:hover { background: rgba(233, 237, 243, 0.025); }
+  .row .idx { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--faint); transition: color 0.4s; }
+  .row:hover .idx { color: var(--signal); }
+  .row h3 { font-size: 1.55rem; font-weight: 500; letter-spacing: -0.02em; transition: transform 0.5s var(--ease); }
+  .row:hover h3 { transform: translateX(8px); }
+  .row .type { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 6px; display: block; }
+  .row .thumb {
+    width: 190px; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--hairline); background: var(--panel); justify-self: end;
+  }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.8s var(--ease); }
+  .row:hover .thumb img { transform: scale(1.05); }
+  .row .arrow {
+    width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center; color: var(--muted);
+    transition: all 0.5s var(--ease);
+  }
+  .row:hover .arrow { background: var(--signal); border-color: var(--signal); color: #fff; transform: rotate(45deg); }
+  .no-thumb { grid-template-columns: 90px 1.4fr auto; }
+
+  /* cta band */
+  .cta-band {
+    margin: 40px; border-radius: 32px; background: linear-gradient(135deg, #0E1830 0%, #0A1020 60%, #0A0E18 100%);
+    border: 1px solid rgba(76, 141, 255, 0.22);
+    padding: 110px 60px; text-align: left; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; width: 700px; height: 700px; right: -200px; top: -300px;
+    background: radial-gradient(circle, rgba(76, 141, 255, 0.16) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-band h2 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); max-width: 18ch; }
+  .cta-band .offer {
+    margin: 30px 0 44px; max-width: 58ch; color: var(--muted); font-size: 1rem; line-height: 1.7;
+    padding-left: 22px; border-left: 2px solid var(--signal);
+  }
+  footer {
+    padding: 44px 40px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint);
+  }
+
+  .reveal { opacity: 0; transform: translateY(34px); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    header { padding: 0 20px 48px; }
+    section { padding: 80px 20px; }
+    .cards { grid-template-columns: 1fr; }
+    .row, .no-thumb { grid-template-columns: 1fr; gap: 14px; }
+    .row .thumb { width: 100%; justify-self: start; }
+    .hero-meta { display: none; }
+    .cta-band { margin: 20px; padding: 70px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .sub, .cta-row { opacity: 1 !important; transform: none !important; }
+    h1 .w > span { transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">RAHMET<sup>®</sup></a>
+  <div class="nav-links">
+    <a href="#systems">Systems</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Tell us what's manual</a>
+  </div>
+</nav>
+
+<header>
+  <canvas id="thread-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <span class="eyebrow">Rahmet Labs: Automation, AI &amp; Product Engineering</span>
+    <h1 id="headline">Your business is drowning in <i class="accent">manual work.</i> We build the systems that end it.</h1>
+    <p class="sub" id="sub">One senior team builds automation and AI that replace your spreadsheets, copy-paste, and follow-up threads, then stays to run them.</p>
+    <div class="cta-row" id="ctas">
+      <a class="btn-primary" href="#contact">
+        Tell us what's manual
+        <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span><b>Almaty</b> · Kazakhstan</span>
+    <span>EN / RU / KZ</span>
+    <span>WhatsApp · Telegram · Email</span>
+  </div>
+</header>
+
+<section id="systems">
+  <div class="sec-head reveal">
+    <span class="sec-kicker">What we build</span>
+    <h2>Four ways work breaks down, and the systems we build instead.</h2>
+    <p class="sec-sub">Four failure patterns we see again and again in Kazakhstani and regional companies. And the systems we build so they stop happening.</p>
+  </div>
+  <div class="cards">
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Manual ops</span>
+      <p class="card-quote">"Someone still does this by hand."</p>
+      <p class="card-problem">Invoices copied between Excel and the accounting system. Tender portals refreshed at midnight. Reports stitched together in a group chat.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Workflows that run end-to-end: n8n/Make pipelines, browser automation, system sync, alerts when something needs a human, and only when.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">AI agents</span>
+      <p class="card-quote">"Tickets wait. Leads stall. Nobody answers fast enough."</p>
+      <p class="card-problem">Support queues grow while the team sleeps. Leads from the website wait hours for a first reply that should take seconds.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>AI agents that answer, qualify, and route in seconds, in your tone of voice, with a human handoff when the conversation needs one.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Web &amp; product</span>
+      <p class="card-quote">"Our site doesn't actually do anything."</p>
+      <p class="card-problem">A brochure that collects dust. No intake, no booking, no dashboard. Every enquiry still lands in a personal WhatsApp.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>Web products that transact: intake forms, client portals, dashboards, and booking flows wired straight into your operations.</p></div>
+    </div></div>
+    <div class="bezel reveal"><div class="bezel-core">
+      <span class="card-tag">Data &amp; backend</span>
+      <p class="card-quote">"Nobody knows which number is the right one."</p>
+      <p class="card-problem">Sales has one figure, accounting has another, the warehouse a third. Meetings start with arguing about whose spreadsheet is current.</p>
+      <div class="card-sys"><span class="lbl">The system</span><p>One backend of record: synced data, clean APIs, and dashboards everyone trusts because they all read from the same source.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="sec-head reveal">
+    <span class="sec-kicker">Selected work</span>
+    <h2>Systems we've shipped.</h2>
+  </div>
+  <div class="ledger">
+    <a class="row no-thumb reveal" href="#">
+      <span class="idx">/01</span>
+      <span><h3>Education Platform Suite</h3><span class="type">Web &amp; Product · Live</span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span class="idx">/02</span>
+      <span><h3>Beyond Lines</h3><span class="type">AI &amp; Automation · Live</span></span>
+      <span class="thumb"><img src="../assets/work/beyond-lines.png" alt="Beyond Lines live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row reveal" href="#">
+      <span class="idx">/03</span>
+      <span><h3>Unhireable</h3><span class="type">AI &amp; Automation · Live</span></span>
+      <span class="thumb"><img src="../assets/work/unhireable.png" alt="Unhireable live site"></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="row no-thumb reveal" href="#">
+      <span class="idx">/04</span>
+      <span><h3>Multi-Platform Bot Suite</h3><span class="type">Automation · Shipped</span></span>
+      <span class="arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band reveal" id="contact">
+  <span class="sec-kicker">Free diagnostic</span>
+  <h2>Start with the manual work that eats your week.</h2>
+  <p class="offer">In the first week, we map your manual work into a scored system plan. The plan is yours whether or not we build. If we do build, the first stage is fixed-price.</p>
+  <a class="btn-primary" href="#">
+    Tell us what's manual
+    <span class="orb"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H3.5M11 2V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a>
+</div>
+
+<footer>
+  <span>© 2026 Rahmet Labs</span>
+  <span>Direction A · Signal</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* headline word stagger (whitespace preserved as text nodes) */
+  var h1 = document.getElementById('headline');
+  var nodes = Array.from(h1.childNodes);
+  h1.innerHTML = '';
+  nodes.forEach(function (n) {
+    var isAccent = n.nodeType === 1 && n.classList.contains('accent');
+    n.textContent.split(/(\s+)/).forEach(function (tok) {
+      if (!tok) return;
+      if (/^\s+$/.test(tok)) { h1.appendChild(document.createTextNode(' ')); return; }
+      var mask = document.createElement('span');
+      mask.className = 'w';
+      var inner = document.createElement('span');
+      inner.textContent = tok;
+      if (isAccent) inner.className = 'accent';
+      mask.appendChild(inner);
+      h1.appendChild(mask);
+    });
+  });
+
+  if (!reduced) {
+    gsap.to('h1 .w > span', { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.055, delay: 0.25 });
+    gsap.to('#sub', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.9 });
+    gsap.to('#ctas', { opacity: 1, y: 0, duration: 1, ease: 'expo.out', delay: 1.05 });
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
+    });
+  } else {
+    gsap.set('h1 .w > span', { y: 0 });
+    gsap.set(['#sub', '#ctas', '.reveal'], { opacity: 1, y: 0 });
+  }
+
+  /* thread canvas: red scribble resolves into one clean signal line */
+  var canvas = document.getElementById('thread-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+  var start = performance.now();
+  var visible = true, running = true;
+  var mouseX = 0.5;
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(canvas);
+  document.addEventListener('visibilitychange', function () { running = document.visibilityState === 'visible'; });
+  window.addEventListener('pointermove', function (e) { mouseX = e.clientX / window.innerWidth; }, { passive: true });
+
+  function noise(x, t) {
+    return Math.sin(x * 7.3 + t * 1.7) * Math.cos(x * 3.1 - t * 1.1) + Math.sin(x * 13.7 + t * 0.7) * 0.5;
+  }
+
+  function draw(now) {
+    requestAnimationFrame(draw);
+    if (!visible || !running) return;
+    var t = (now - start) / 1000;
+    var intro = reduced ? 1 : Math.min(1, t / 2.4);
+    intro = 1 - Math.pow(1 - intro, 3);
+
+    ctx.clearRect(0, 0, W, H);
+
+    ctx.strokeStyle = 'rgba(233,237,243,0.045)';
+    ctx.lineWidth = 1;
+    for (var gx = 0; gx <= W; gx += 64) { ctx.beginPath(); ctx.moveTo(gx + 0.5, 0); ctx.lineTo(gx + 0.5, H); ctx.stroke(); }
+    for (var gy = 0; gy <= H; gy += 64) { ctx.beginPath(); ctx.moveTo(0, gy + 0.5); ctx.lineTo(W, gy + 0.5); ctx.stroke(); }
+
+    var baseY = H * 0.62;
+    var endX = W * intro;
+
+    ctx.lineWidth = 1.4;
+    for (var s = 0; s < 3; s++) {
+      ctx.strokeStyle = 'rgba(193,74,54,' + (0.34 - s * 0.09) + ')';
+      ctx.beginPath();
+      for (var x = 0; x <= Math.min(endX, W * 0.52); x += 5) {
+        var u = x / W;
+        var chaos = Math.max(0, 1 - u / 0.5);
+        var y = baseY + noise(u * 4 + s * 2.7, reduced ? 0 : t) * 46 * chaos + Math.sin(u * 40 + s * 5 + t * 2) * 12 * chaos;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    if (endX > W * 0.3) {
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = '#4C8DFF';
+      ctx.shadowColor = 'rgba(76,141,255,0.55)';
+      ctx.shadowBlur = 14;
+      ctx.beginPath();
+      var from = W * 0.3;
+      for (var sx = from; sx <= endX; sx += 4) {
+        var su = sx / W;
+        var settle = Math.max(0, 1 - (su - 0.3) / 0.28);
+        var sy = baseY - (su - 0.3) * H * 0.34 + noise(su * 4, t * 0.6) * 26 * settle * settle;
+        sx === from ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      if (intro >= 1 && !reduced) {
+        var pu = 0.55 + ((t * 0.12 + mouseX * 0.1) % 0.42);
+        ctx.fillStyle = '#9DBFFF';
+        ctx.shadowColor = '#4C8DFF'; ctx.shadowBlur = 18;
+        ctx.beginPath(); ctx.arc(pu * W, baseY - (pu - 0.3) * H * 0.34, 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
