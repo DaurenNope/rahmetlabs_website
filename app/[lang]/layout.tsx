@@ -36,17 +36,35 @@ export async function generateMetadata({
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Rahmet Labs',
-  url: 'https://rahmetlabs.com',
-  logo: 'https://rahmetlabs.com/icon.svg',
-  description:
-    'Business automation and AI development studio based in Almaty, Kazakhstan.',
-  address: { '@type': 'PostalAddress', addressLocality: 'Almaty', addressCountry: 'KZ' },
-  sameAs: [
-    'https://github.com/rahmetlabs',
-    'https://linkedin.com/company/rahmetlabs',
-    'https://x.com/rahmetlabs',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://rahmetlabs.com/#org',
+      name: 'Rahmet Labs',
+      url: 'https://rahmetlabs.com',
+      logo: 'https://rahmetlabs.com/icon.svg',
+      description:
+        'Business automation and AI development studio based in Almaty, Kazakhstan.',
+      address: { '@type': 'PostalAddress', addressLocality: 'Almaty', addressCountry: 'KZ' },
+      areaServed: ['KZ', 'UZ', 'KG', 'Central Asia'],
+      knowsLanguage: ['en', 'ru', 'kk'],
+      sameAs: [
+        'https://github.com/rahmetlabs',
+        'https://linkedin.com/company/rahmetlabs',
+        'https://x.com/rahmetlabs',
+      ],
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://rahmetlabs.com/#service',
+      name: 'Rahmet Labs',
+      url: 'https://rahmetlabs.com',
+      image: 'https://rahmetlabs.com/og.png',
+      priceRange: '$500–$10000',
+      address: { '@type': 'PostalAddress', addressLocality: 'Almaty', addressCountry: 'KZ' },
+      areaServed: ['KZ', 'UZ', 'KG', 'Central Asia'],
+      parentOrganization: { '@id': 'https://rahmetlabs.com/#org' },
+    },
   ],
 };
 
