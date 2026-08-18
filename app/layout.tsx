@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Oswald, Onest, JetBrains_Mono, Spectral } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Metrica from '@/components/Metrica';
 import './globals.css';
 
 /* Oswald carries the monumental display role: full cyrillic-ext coverage,
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Analytics />
         <SpeedInsights />
+        <Metrica />
       </body>
     </html>
   );
