@@ -14,20 +14,28 @@ export default function Comparison({ t }: { t: Dictionary }) {
           <p className="sec-sub">{c.subheading}</p>
         </Reveal>
 
-        <Reveal className="cmp-board" once>
-          <div className="cmp-head2">
-            <div className="cmp-hcol man">
-              <span className="cmp-hcol-lbl mono">{c.seriesManual}</span>
-              <span className="cmp-hcol-num">{c.resolutionManual}</span>
-            </div>
-            <span className="cmp-vs mono" aria-hidden="true">
-              →
-            </span>
-            <div className="cmp-hcol aut">
-              <span className="cmp-hcol-lbl mono">{c.seriesAuto}</span>
-              <span className="cmp-hcol-num">{c.resolutionAuto}</span>
-            </div>
-          </div>
+              <Reveal className="cmp-board" once>
+                {/* shet-oyu interlock watermark — ambient CSS sway, never interactive */}
+                <svg className="cmp-ghost" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                  <circle cx="72" cy="100" r="56" strokeWidth="2.5" />
+                  <circle cx="128" cy="100" r="56" strokeWidth="2.5" />
+                  <circle cx="72" cy="100" r="18" strokeWidth="2.5" />
+                  <circle cx="128" cy="100" r="18" strokeWidth="2.5" />
+                </svg>
+                <div className="cmp-head2">
+                  <div className="cmp-hcol man">
+                    <span className="cmp-hcol-lbl mono">{c.seriesManual}</span>
+                    <span className="cmp-hcol-num">{c.resolutionManual}</span>
+                  </div>
+                  <div className="cmp-vs" aria-hidden="true">
+                    <span className="cmp-vs-line" />
+                    <span className="cmp-vs-arrow mono">→</span>
+                  </div>
+                  <div className="cmp-hcol aut">
+                    <span className="cmp-hcol-lbl mono">{c.seriesAuto}</span>
+                    <span className="cmp-hcol-num">{c.resolutionAuto}</span>
+                  </div>
+                </div>
 
           <div className="cmp-table">
             {c.beats.map((b, i) => (

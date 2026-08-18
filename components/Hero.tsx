@@ -545,7 +545,8 @@ export default function Hero({ t }: { t: Dictionary }) {
         scrollTrigger: {
           trigger: root,
           start: 'top top',
-          end: '+=260%',
+          /* shorter runway on phones: the chaos act reads as dead sky there */
+          end: isDesktop ? '+=260%' : '+=205%',
           pin: true,
           scrub: 0.45,
           onUpdate: (self) => {

@@ -365,11 +365,22 @@ a.row:hover .arrow { background: var(--red); border-color: var(--red); color: va
 /* comparison: static side-by-side — no state, the layout makes the argument */
 .comparison { background: var(--bone); color: var(--ink); }
 .comparison .sec-sub { color: rgba(23, 20, 15, 0.72); }
-.cmp-board { border: 1px solid rgba(23, 20, 15, 0.85); padding: clamp(24px, 4vw, 56px); position: relative; }
+.cmp-board { border: 1px solid rgba(23, 20, 15, 0.85); padding: clamp(24px, 4vw, 56px); position: relative; overflow: hidden; }
+.cmp-ghost {
+  position: absolute; right: -110px; top: -130px; width: 400px; height: 400px;
+  opacity: 0.055; pointer-events: none;
+  animation: cmpsway 16s ease-in-out infinite alternate;
+}
+.cmp-ghost * { stroke: var(--ink); }
+@keyframes cmpsway {
+  from { transform: rotate(3deg) translateY(0); }
+  to { transform: rotate(11deg) translateY(16px); }
+}
 .cmp-head2 {
-  display: grid; grid-template-columns: 1fr auto 1fr; gap: 26px; align-items: end;
+  display: grid; grid-template-columns: 1fr minmax(96px, 150px) 1fr; gap: 26px; align-items: end;
   padding-bottom: clamp(26px, 3.4vw, 42px); margin-bottom: clamp(6px, 1vw, 12px);
   border-bottom: 1px solid rgba(23, 20, 15, 0.85);
+  position: relative;
 }
 .cmp-hcol { display: flex; flex-direction: column; gap: 12px; }
 .cmp-hcol-lbl { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(23, 20, 15, 0.55); }
@@ -379,19 +390,37 @@ a.row:hover .arrow { background: var(--red); border-color: var(--red); color: va
   font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; text-transform: uppercase; color: var(--ink);
 }
 .cmp-hcol.aut .cmp-hcol-num { color: var(--red); }
-.cmp-vs { font-size: 1.4rem; color: rgba(23, 20, 15, 0.4); padding-bottom: 0.4em; }
+/* dashes flow toward the system column — the argument, animated */
+.cmp-vs { position: relative; display: flex; align-items: center; justify-content: center; align-self: stretch; }
+.cmp-vs-line {
+  position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -6px;
+  background: repeating-linear-gradient(90deg, rgba(217, 58, 30, 0.65) 0 8px, transparent 8px 18px);
+  animation: cmpflow 0.9s linear infinite;
+}
+@keyframes cmpflow { to { background-position: 18px 0; } }
+.cmp-vs-arrow { position: relative; font-size: 1.25rem; color: var(--red); background: var(--bone); padding: 0 9px; }
 .cmp-row {
+  position: relative;
   display: grid; grid-template-columns: 42px 0.85fr 1fr 1fr;
   gap: 14px 26px; align-items: baseline; padding: 20px 8px;
   border-bottom: 1px solid rgba(23, 20, 15, 0.18);
   transition: background 0.3s;
 }
+.cmp-row::after {
+  content: ''; position: absolute; left: 0; bottom: -1px; width: 100%; height: 1px;
+  background: var(--red); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s var(--ease);
+}
 .cmp-row:hover { background: rgba(23, 20, 15, 0.04); }
+.cmp-row:hover::after { transform: scaleX(1); }
 .cmp-row-idx { font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(23, 20, 15, 0.45); }
 .cmp-title { font-family: var(--font-display), sans-serif; font-weight: 500; font-size: 1.02rem; text-transform: uppercase; }
 .cmp-cell { font-size: 0.9rem; line-height: 1.5; }
 .cmp-cell.col-man { color: rgba(23, 20, 15, 0.6); }
-.cmp-cell.col-aut { color: var(--ink); font-weight: 500; }
+.cmp-cell.col-aut {
+  color: var(--ink); font-weight: 500;
+  background: rgba(217, 58, 30, 0.055); box-shadow: 0 0 0 7px rgba(217, 58, 30, 0.055);
+}
 .cmp-cell.col-aut::before { content: '\2192'; color: var(--red); margin-right: 9px; font-family: var(--font-mono), monospace; font-weight: 400; }
 .cmp-note { margin-top: 26px; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(23, 20, 15, 0.45); }
 
@@ -402,6 +431,13 @@ a.row:hover .arrow { background: var(--red); border-color: var(--red); color: va
   position: relative; height: 2px; background: rgba(23, 20, 15, 0.85);
   margin: clamp(44px, 5vw, 68px) 0 clamp(30px, 4vw, 44px);
 }
+/* red packets ride the rail toward the shipped system */
+.proc-rail::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, var(--red) 0 8px, transparent 8px 34px);
+  opacity: 0.55; animation: railflow 1.5s linear infinite;
+}
+@keyframes railflow { to { background-position: 34px 0; } }
 .proc-rail-dot {
   position: absolute; top: 50%; width: 11px; height: 11px; border-radius: 999px;
   background: var(--red); transform: translate(-50%, -50%);
@@ -414,6 +450,14 @@ a.row:hover .arrow { background: var(--red); border-color: var(--red); color: va
 }
 .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(26px, 3vw, 46px); }
 .proc-step { position: relative; }
+.proc-step::before {
+  content: attr(data-n); position: absolute; top: -20px; right: -4px;
+  font-family: var(--font-display), sans-serif; font-weight: 600;
+  font-size: clamp(4rem, 6vw, 6.4rem); line-height: 1;
+  color: rgba(23, 20, 15, 0.05); pointer-events: none;
+}
+.proc-step.key::before { color: rgba(217, 58, 30, 0.12); }
+.proc-step.key .proc-glyph { color: var(--red); }
 .proc-step-top { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
 .proc-code { color: var(--red); }
 .proc-glyph { width: 30px; height: 30px; color: var(--ink); transition: color 0.35s var(--ease), transform 0.35s var(--ease); }
@@ -426,7 +470,12 @@ a.row:hover .arrow { background: var(--red); border-color: var(--red); color: va
 }
 .proc-desc { font-size: 0.88rem; line-height: 1.6; color: rgba(23, 20, 15, 0.72); margin-bottom: 20px; }
 .proc-bar { height: 7px; border: 1px solid rgba(23, 20, 15, 0.4); position: relative; margin-bottom: 16px; }
-.proc-bar-fill { position: absolute; inset: 1px auto 1px 1px; background: var(--ink); transition: background 0.35s var(--ease); }
+.proc-bar-fill {
+  position: absolute; inset: 1px auto 1px 1px; background: var(--ink);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.15s var(--ease) 0.25s, background 0.35s var(--ease);
+}
+.proc-step.is-in .proc-bar-fill { transform: scaleX(1); }
 .proc-bar-fill.build { background: var(--red); }
 .proc-bar-fill.ongoing { background: repeating-linear-gradient(-45deg, var(--ink) 0 3px, transparent 3px 8px); }
 .proc-out { display: flex; align-items: baseline; gap: 9px; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(23, 20, 15, 0.65); line-height: 1.55; }
@@ -589,9 +638,10 @@ body.reduced header, body.reduced .hero { background: var(--ink); }
   .row { grid-template-columns: 1fr 48px; gap: 14px; padding: 28px 14px; }
   .row-code, .row-main { grid-column: 1 / -1; }
   .row-media { display: none; }
-  .row-side { justify-content: flex-start; text-align: left; }
+  .row-side { justify-content: flex-start; text-align: left; flex-direction: column; align-items: flex-start; gap: 7px; }
+  .row-side > * { white-space: nowrap; }
   .cmp-head2 { grid-template-columns: 1fr; gap: 22px; }
-  .cmp-vs { display: none; }
+  .cmp-vs { min-height: 30px; }
   .cmp-hcol-num { font-size: clamp(2.6rem, 13vw, 3.6rem); }
   .cmp-row { grid-template-columns: 1fr 1fr; gap: 8px 18px; }
   .cmp-row-idx { display: none; }
@@ -614,6 +664,8 @@ body.reduced header, body.reduced .hero { background: var(--ink); }
   .live i { animation: none; }
   .cta-ring { animation: none; }
   .door-ghost, .sys-cell .emblem, .proc-rail-dot { animation: none; }
+  .proc-rail::after, .cmp-vs-line, .cmp-ghost { animation: none; }
+  .proc-bar-fill { transition: none; }
 }
 
 /* ---------- sub-pages ---------- */
@@ -809,6 +861,9 @@ body.reduced .proc-rail-dot { animation: none; }
 .door-b:hover .door-link { color: var(--bone); }
 @media (max-width: 900px) {
   .doors-split { flex-direction: column; min-height: 0; }
+  /* flex:1 1 0 in an indefinite-height column collapses the second door —
+     on touch there is no hover-expansion, so each door sizes to its content */
+  .door { flex: none; }
   .doors-split:hover .door, .doors-split .door:hover { flex-grow: 1; }
   .door { padding: 48px 26px 40px; }
   .door-b { border-top: 1px solid rgba(23, 20, 15, 0.85); }

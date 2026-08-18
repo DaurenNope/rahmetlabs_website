@@ -48,9 +48,15 @@ export default function Process({ t }: { t: Dictionary }) {
         </div>
 
         <div className="proc-grid">
-          {p.stages.map((s, i) => (
-            <Reveal key={s.code} className="proc-step" style={{ transitionDelay: `${i * 70}ms` }} once>
-              <div className="proc-step-top mono">
+                {p.stages.map((s, i) => (
+                  <Reveal
+                    key={s.code}
+                    className={`proc-step${i === 2 ? ' key' : ''}`}
+                    style={{ transitionDelay: `${i * 70}ms` }}
+                    data-n={s.code}
+                    once
+                  >
+                    <div className="proc-step-top mono">
                 <span className="proc-code">{s.code}</span>
                 <span className="proc-glyph">{GLYPHS[i]}</span>
                 <span className="proc-dur">{s.duration}</span>
