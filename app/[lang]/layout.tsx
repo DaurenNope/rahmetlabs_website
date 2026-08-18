@@ -38,6 +38,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Rahmet Labs',
+  url: 'https://rahmetlabs.com',
+  logo: 'https://rahmetlabs.com/icon.svg',
   description:
     'Business automation and AI development studio based in Almaty, Kazakhstan.',
   address: { '@type': 'PostalAddress', addressLocality: 'Almaty', addressCountry: 'KZ' },

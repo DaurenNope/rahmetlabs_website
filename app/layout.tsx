@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Oswald, Onest, JetBrains_Mono, Spectral } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 
 /* Oswald carries the monumental display role: full cyrillic-ext coverage,
@@ -42,7 +44,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${accent.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
